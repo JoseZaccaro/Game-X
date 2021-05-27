@@ -1,0 +1,10 @@
+html *{
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-bg-color: #A3EEE9;
+    --secundary-bg-color: black;
+  }
