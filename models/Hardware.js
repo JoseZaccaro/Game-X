@@ -7,7 +7,7 @@ const hardwareSchema = new mongoose.Schema({
         description:{type:String, required:true},
         features:[{type:String, required:true,}],
         stock:	{type:Number, default:0},
-        aditionals:[{gameId:{type: mongoose.Types.ObjectId, ref: 'game', required:true}, productId:{type: mongoose.Types.ObjectId, ref: 'hardware', required:true}}],
+        aditionals:[{gameId:{type: mongoose.Types.ObjectId, ref: 'game'}, productId:{type: mongoose.Types.ObjectId, ref: 'hardware'}}],
         virtual:{type:Boolean, default:false},
         imageBanner:{type:String, required:true},
         imagesBackground:[{type:String, required:true}],
