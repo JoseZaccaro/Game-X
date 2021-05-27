@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.containPageHome{
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+}
+.spaceLeftParallax{
+    width: 50%;
+    height: 100%;
+}
+.parallaxRigthHome{
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y:auto;
+}
+.contentMove{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.titleContentMove{
+    color: #A3EEE9;
+    font-size: 6vh;
+    text-align: left;
+    line-height: 1;
+    min-height: 0vw;
+}
+.textContentMove{
+    width: 70%;
+    color: #8B95A6;
+    font-family: questrial,sans-serif;
+    font-weight: normal;
+    font-size: calc(16px + (18 - 16) * ((100vw - var(--minViewportSize) * 1px) / (var(--maxViewportSize) - var(--minViewportSize))));
+    font-style: normal;
+    letter-spacing: 0em;
+    line-height: 1.6;
+    min-height: 0vw;
+    margin-top: 4vh;
+}
+.buttonContenMove{
+    background-color: #A3EEE9;
+    border-radius: 50px;
+    width: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vh;
+    color: rgb(6, 119, 184);
+    height: 7vh;
+    text-align: center;
+    margin-top: 4vh;
+    cursor: pointer;
+}
+.buttonContenMove:hover{
+    background-color: #ade7e3;
+    color: rgb(59, 149, 201);
+}
+.contentVideoMove{
+    background-color: rgba(51, 66, 94, 0.2);
+    height: 60vh;
+    width: 25vw;
+    margin-top: 3vh;
+    border: 1px solid rgba(128, 128, 128, 0.438);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4vh;
+}
+.videoContent{
+    border: 1px solid rgba(128, 128, 128, 0.438);
+    height: 45%;
+    width: 80%;
+    margin-bottom: 4vh;
+    background-position: center;
+    background-size: cover;
+}
+.titleVideoMove{
+    font-weight: bolder;
+    color: white;
+    font-size: 3vh;
+    width: 80%;;
+    text-align: left;
+}
+.descriptionVideoMove{
+    width: 80%;
+    color: #8B95A6;
+    font-family: questrial,sans-serif;
+    font-weight: normal;
+    font-size: calc(16px + (18 - 16) * ((100vw - var(--minViewportSize) * 1px) / (var(--maxViewportSize) - var(--minViewportSize))));
+    font-style: normal;
+    letter-spacing: 0em;
+    line-height: 1.6;
+    min-height: 0vw;
+    text-align: left;
+}
+.titleTwoContentMove{
+    color: #A3EEE9;
+    font-size: 3vh;
+    text-align: left;
+    line-height: 1;
+    min-height: 0vw;
+    width: 40%;
+}
+.btnHoverPlay{
+    background-color: transparent;
+    border: 1px solid rgb(212, 209, 209);
+    border-radius: 50px;
+    width: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5vh;
+    color: rgb(212, 209, 209);
+    height: 7vh;
+    text-align: center;
+    margin-top: 4vh;
+    cursor: pointer;
+}
+.btnHoverPlay:hover{
+    background-color: #A3EEE9;
+    color: rgb(6, 119, 184);
+}
+
+
