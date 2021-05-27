@@ -12,7 +12,7 @@ const gameSchema = new mongoose.Schema({
         description:{type:String, required:true},
         discount:{type:Number, default:0},
         DLC:[{name:{type:String, required:true}, price:{type:Number, required:true}, description:{type:String, required:true}}],
-        valoration:[{good:{type:Boolean, default:0}, commentary:{type:String, default:0}, userId:{type: mongoose.Types.ObjectId, ref: 'user', default:0}}],
+        valoration:[{good:{type:Boolean, required:true}, commentary:{type:String, default:''}, userId:{type: mongoose.Types.ObjectId, ref: 'user', required:true}}],
         imageBanner:{type:String, required:true},
         imagesBackground:[{type:String, required:true}],
         PEGI:{type:Number, required:true},
