@@ -14,6 +14,7 @@ import ServerDown from './pages/ServerDown';
 import Administrator from './pages/Administrator';
 import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
+import Product from './pages/Product';
 
 
 class App extends React.Component{
@@ -41,6 +42,7 @@ class App extends React.Component{
                 <Route path="/payment" component={Payment} />
                 <Route path="/administrator" component={Administrator} />
                 <Route path="/serverdown" component={ServerDown} />
+                <Route path="/product/:id" component={Product} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/login" component={LogIn} />
                 <Redirect to="/" />
