@@ -34,13 +34,10 @@ class Access extends React.Component{
             userName: "",
         },
         buttonChange: 'container'
-        
-
     }
 
     changeForm = (e)=>{
         let id = e.target.id
-        console.log(id)
         id === 'signUp' && this.setState({...this.state, buttonChange:"container right-panel-active"})
         id === 'logIn' && this.setState({...this.state, buttonChange: "container"})
     }
@@ -178,8 +175,8 @@ class Access extends React.Component{
 
         return(
 
-                <div className='body' style={{backgroundImage:"url(../assets/fondo.png)"}}>   
-                    <div className={this.state.buttonChange}  id="container">
+                <div className='body ' style={{backgroundImage:"url(../assets/fondo.png)"}}>   
+                    <div className={`animate__animated animate__fadeInRight ${this.state.buttonChange}`}  id="container">
                         <div className="form-container sign-up-container">
                             <form className="registerForm" action="#">
                                 <h1>Create Account</h1>
@@ -187,7 +184,7 @@ class Access extends React.Component{
                                     <GoogleLogin
                                         clientId="768453080794-ldth5cg2rmpvlb0k55f08gdigaba5nj0.apps.googleusercontent.com"
                                         render={renderProps => (
-                                            <button className="social buttonFormSignUp" onClick={renderProps.onClick} disabled={renderProps.disabled}><svg className='svgGoogle' width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fillRule="evenodd"><path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path><path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path><path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path><path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path><path fill="none" d="M0 0h18v18H0z"></path></g></svg>Sign up with Google</button>
+                                            <button className="social buttonFormSignUp" onClick={renderProps.onClick} disabled={renderProps.disabled}><svg className='svgGoogle' width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fillRule="evenodd"><path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path><path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path><path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path><path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path><path fill="none" d="M0 0h18v18H0z"></path></g></svg>Google Account</button>
                                         )}
                                         onSuccess={this.responseGoogleSignUp}
                                         onFailure={this.responseGoogleSignUp}
@@ -216,7 +213,7 @@ class Access extends React.Component{
                                     <GoogleLogin
                                         clientId="768453080794-ldth5cg2rmpvlb0k55f08gdigaba5nj0.apps.googleusercontent.com"
                                         render={renderProps => (
-                                            <button className="social buttonForm" onClick={renderProps.onClick} disabled={renderProps.disabled}><svg className='svgGoogle' width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fillRule="evenodd"><path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path><path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path><path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path><path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path><path fill="none" d="M0 0h18v18H0z"></path></g></svg>Log in with Google</button>
+                                            <button className="social buttonForm" onClick={renderProps.onClick} disabled={renderProps.disabled}><svg className='svgGoogle' width="18" height="18" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fillRule="evenodd"><path d="M9 3.48c1.69 0 2.83.73 3.48 1.34l2.54-2.48C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l2.91 2.26C4.6 5.05 6.62 3.48 9 3.48z" fill="#EA4335"></path><path d="M17.64 9.2c0-.74-.06-1.28-.19-1.84H9v3.34h4.96c-.1.83-.64 2.08-1.84 2.92l2.84 2.2c1.7-1.57 2.68-3.88 2.68-6.62z" fill="#4285F4"></path><path d="M3.88 10.78A5.54 5.54 0 0 1 3.58 9c0-.62.11-1.22.29-1.78L.96 4.96A9.008 9.008 0 0 0 0 9c0 1.45.35 2.82.96 4.04l2.92-2.26z" fill="#FBBC05"></path><path d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.84-2.2c-.76.53-1.78.9-3.12.9-2.38 0-4.4-1.57-5.12-3.74L.97 13.04C2.45 15.98 5.48 18 9 18z" fill="#34A853"></path><path fill="none" d="M0 0h18v18H0z"></path></g></svg>Google Account</button>
                                         )}
                                         onSuccess={this.responseGoogleLogIn}
                                         onFailure={this.responseGoogleLogIn}
@@ -233,12 +230,12 @@ class Access extends React.Component{
                             <div className="overlay">
                                 <div className="overlay-panel overlay-left">
                                     <h1>Welcome Back!</h1>
-                                    <p>To keep connected with us please login with your personal info</p>
+                                    <p>To keep connected with us please login with your account info</p>
                                     <button style={{color:'#ADE7E3'}} className="ghost buttonForm" id="logIn" onClick={(e)=> this.changeForm(e)}>Log In</button>
                                 </div>
                                 <div className="overlay-panel overlay-right">
                                     <h1>Hello, Friend!</h1>
-                                    <p>Enter your personal details and start journey with us</p>
+                                    <p>Define your personal details and start journey with us</p>
                                     <button style={{color:'#ADE7E3'}}className="ghost buttonForm" id="signUp" onClick={(e)=> this.changeForm(e)}>Sign Up</button>
                                 </div>
                             </div>

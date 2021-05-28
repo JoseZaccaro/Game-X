@@ -1,9 +1,25 @@
 const User = require('../models/User')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+require('dotenv').config()
+const nodemailer = require('nodemailer')
+
+
+let transport = nodemailer.createTransport({
+    port: 465,
+    host: 'smtp.gmail.com',
+    auth: {
+        user: "gamex.arg@gmail.com",
+        pass: "matias388"
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+})
 
 const userController = {
     newUser: async (req, res) => {
+        console.log(transport)
         var {userName, email, password, avatarURL, country, imageUrl} = req.body
         const {avatar} = req.files ? req.files : req.body
         const existentMail = await User.findOne({email})
@@ -25,8 +41,46 @@ const userController = {
                         return res.json({success: false, respuesta: "failed trying to save avatar"})
                     }
                 })
+                let mailOptions = {
+                    from: 'Account Created! <nocontestar@donotreply.com>',
+                    to: email,
+                    subject: 'Thanks for your Registration!',
+                    html: `<div style="
+                    background-image: url('https://i.imgur.com/blau73C.jpg');                     
+                    height:100vh; 
+                    width:100%; 
+                    background-position: top;
+                    background-size: cover;
+                    margin:0 ;
+                    padding: 0;
+                    ">
+                        <div style="padding-top: 40%;">
+                            <h1 style="
+                            background-color: #A3EEE9;
+                            width: 25vw;
+                            height: 40px;
+                            color: #A3EEE9;
+                            text-align: center;
+                            border-radius: 30px;
+                            ">Welcome to Game-X !</h1>
+                        </div>
+                        <div>
+                            <h1 style="
+                            background-color: #A3EEE9;
+                            width: 25vw;
+                            height: 40px;
+                            color: #A3EEE9;
+                            text-align: center;
+                            border-radius: 30px;
+                            ">Thanks for your register!</h1>
+                        </div>`
+                    }
+                    transport.sendMail(mailOptions, (err) => {
+                        if (err) console.log(err)
+                        res.json({success: true})
+                    })           
                 const token = jwt.sign({...createdUser}, process.env.SECRET_OR_KEY)
-                respuesta = token              
+                respuesta = token   
             } catch (error) {
                 console.log(error)
                 error = "There was an error in the register."
@@ -40,7 +94,7 @@ const userController = {
            success: !error ? true : false,
            respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id}: null,
            error: error
-       })        
+       })  
     },
     logIn: async (req, res) => {
         const {userName, password, country} = req.body
@@ -72,6 +126,19 @@ const userController = {
     },
     forcedLogin: (req, res) => {
         res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id}})
+    },
+    changeRol: async (req, res) => {
+        const {userName, newRol} = req.body  
+        if (req.user.rol === 'admin') {
+            const userToModify = await User.findOneAndUpdate({userName: userName}, {rol:newRol}, {new:true}) 
+            if (userToModify) {
+                res.json({success:true, respuesta: userToModify})              
+            } else{
+                res.json({success:false, error: 'User not founded'}) 
+            }
+        } else {
+            res.json({success:false, error: "You must be authorized Administrator to modify this property"}) 
+        }
     },
 }
 

@@ -6,11 +6,11 @@ const hardwareSchema = new mongoose.Schema({
         brand:{type:String, required:true},
         description:{type:String, required:true},
         features:[{type:String, required:true,}],
-        stock:	{type:Number, default:0},
+        stock:{type:Number, default:0},
         aditionals:[{gameId:{type: mongoose.Types.ObjectId, ref: 'game'}, productId:{type: mongoose.Types.ObjectId, ref: 'hardware'}}],
         virtual:{type:Boolean, default:false},
         imageBanner:{type:String, required:true},
-        imagesBackground:[{type:String, required:true}],
+        imagesBackground:[{type:String, default:null}],
         
 })
 

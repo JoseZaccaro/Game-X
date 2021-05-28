@@ -7,45 +7,48 @@ const userController = require('../controllers/userController')
 const validatorUser = require('../config/validatorUser')
 
 
-const {newUser, logIn, forcedLogin} = userController
+const {newUser, logIn, forcedLogin, changeRol} = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 
 
 // ------------ROUTES USER---------
 router.route('/user/signup')
-.post(validatorUser,newUser)
+    .post(validatorUser,newUser)
 
 router.route('/user/login')
-.post(logIn)
+    .post(logIn)
 
 router.route('/user/loginLS')
-.get(passport.authenticate('jwt', {session: false}), forcedLogin)
+    .get(passport.authenticate('jwt', {session: false}), forcedLogin)
+
+router.route('/user/changeRol')
+    .put(passport.authenticate('jwt', {session: false}), changeRol)
 
 
 // ------------ROUTES GAMES---------
 router.route('/games')
     .get(getAllGames)
-    .post(uploadGame)
+    .post(passport.authenticate('jwt', {session: false}), uploadGame)
 router.route('/game/:titleOrId')
     .put(modifyGame)
     .delete(deleteGame)
-router.route('/game/:fileName')
+router.route('/game/edit/:fileName')
     .delete(deleteGameImageBackground)
 
 
 
 // ------------ROUTES HARDWARE---------
 router.route('/hardware')
-.get(getAllHardwares)
-.post(addNewHardware)
+    .get(getAllHardwares)
+    .post(passport.authenticate('jwt', {session: false}), addNewHardware)
 
 router.route('/hardware/:id')
-.get(getOneHardware)
-.delete(deleteHardware)
-.put(updateHardware)
+    .get(getOneHardware)
+    .delete(deleteHardware)
+    .put(updateHardware)
 
-router.route('/hardware/:fileName')
+router.route('/hardware/edit/:fileName')
     .delete(deleteHardwareImageBackground)
 
 module.exports = router
