@@ -73,6 +73,19 @@ const userController = {
     forcedLogin: (req, res) => {
         res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id}})
     },
+    getUser: async(req, res)=>{
+        try{
+            let users
+            const {userName} = req.body
+            userName.trim().length > 0 ?
+            users = await User.find({userName:{$regex: userName.trim(), $options:'i'}})
+            : users = ["There are no results for this search"]
+            res.json({success:true, response:users})
+        }catch(e){
+            console.log(e)
+            res.json({success:false})
+        }
+    }
 }
 
 module.exports = userController

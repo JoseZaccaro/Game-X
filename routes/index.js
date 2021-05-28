@@ -4,14 +4,18 @@ const passport = require('passport')
 const hardwareControllers = require('../controllers/hardwareControllers')
 const gameController = require('../controllers/gameController')
 const userController = require('../controllers/userController')
+const chatControllers = require('../controllers/chatControllers')
 const validatorUser = require('../config/validatorUser')
-
-const { newUser, logIn, forcedLogin } = userController
+const { getChatOfUser, postChatOfUser } = chatControllers
+const { newUser, logIn, forcedLogin, getUser } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 
 
 // ------------ROUTES USER---------
+router.route('/user')
+.put(getUser)
+
 router.route('/user/signup')
     .post(validatorUser, newUser)
 
@@ -30,7 +34,7 @@ router.route('/game/:_id')
     .get(findOneGame)
     .put(modifyGame)
     .delete(deleteGame)
-router.route('/game/:fileName')
+router.route('/game/edit/:fileName')
     .delete(deleteGameImageBackground)
 
 
@@ -47,5 +51,14 @@ router.route('/hardware/:id')
 
 router.route('/hardware/:fileName')
     .delete(deleteHardwareImageBackground)
+
+
+// ------------ROUTES CHATS---------
+router.route('/chats/:_id')
+.get(getChatOfUser)
+.post(passport.authenticate('jwt', {session:false}), postChatOfUser)
+
+
+
 
 module.exports = router

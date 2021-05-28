@@ -65,7 +65,20 @@ const loginActions = {
             dispatch({type: 'LOG_OUT'})
         }
     },
-    
+    searchUser: (userName)=>{
+        return async(dispatch, getState) => {
+            try{
+                const users = await axios.put('http://localhost:4000/api/user',{userName})
+                if(users.data.success){
+                    return users.data.response
+                }else{
+                    return ["There are no results for this search"]
+                }
+            }catch(e){
+                console.log(e)
+            }
+        }
+    }
 }
 
 export default loginActions
