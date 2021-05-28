@@ -8,14 +8,15 @@
     background-position: top;
     background-size: cover;
     display: flex;
-    background-attachment: fixed;
 }
-.spaceLeftParallax{
-    width: 50%;
-    height: 100%;
+.containPageHomeDos{
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
 }
 .parallaxRigthHome{
-    width: 50%;
+    width: 100%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -26,10 +27,19 @@
 }
 .contentMove{
     height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+}
+.contentMoveDos{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 .titleContentMove{
     color: #A3EEE9;
@@ -63,10 +73,13 @@
     text-align: center;
     margin-top: 4vh;
     cursor: pointer;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .buttonContenMove:hover{
-    background-color: #ade7e3;
-    color: rgb(59, 149, 201);
+    background-color: transparent;
+    color: white;
+    border: 1px solid gray;
 }
 .contentVideoMove{
     background-color: rgba(51, 66, 94, 0.2);
@@ -79,6 +92,8 @@
     flex-direction: column;
     align-items: center;
     padding-top: 4vh;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .videoContent{
     border: 1px solid rgba(128, 128, 128, 0.438);
@@ -129,11 +144,490 @@
     text-align: center;
     margin-top: 4vh;
     cursor: pointer;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .btnHoverPlay:hover{
     background-color: #A3EEE9;
     color: rgb(6, 119, 184);
 }
+.shadowHeader{
+    position: absolute;
+    bottom: 0;
+    height: 20vh;
+    width: 100%;
+    z-index: 30;
+    background: linear-gradient(to top, #0B1321, transparent);
+}
+.shadowHeaderArriba{
+    position: absolute;
+    bottom: -30vh;
+    height: 30vh;
+    width: 100%;
+    z-index: 40;
+    background: linear-gradient(to bottom, #0B1321, transparent);
+}
+.alignContentMove{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gifLogo{
+    height: 17vh;
+    width: 8vw;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+.containHeader{
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    position: absolute;
+    width: 98vw;
+    padding: 3vh 2vw;
+}
+.logoHeader{
+    display: flex;
+    align-items: center;
+}
+.nameLogoHeader{
+    color: #A3EEE9;
+    cursor: pointer;
+}
+.navHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30vw;
+}
+.linkHeaderNav{
+    color: rgb(212, 209, 209);
+    margin-right: 2vw;
+    font-size: 3vh;
+    cursor: pointer;
+    padding-bottom: 0.5vh;
+    border-bottom: 1px solid transparent;
+    transition: 1s;
+    letter-spacing: 1px;
+}
+.linkHeaderNav:hover{   
+    color: #A3EEE9;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #A3EEE9;
+}
+a{
+    text-decoration: none;
+}
+.containHomeBottom{
+    height: 100vh;
+    background-color: #0B1321;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shadowBottom{
+    position: absolute;
+    bottom: -100vh;
+    height: 20vh;
+    width: 100%;
+    z-index: 40;
+    background: linear-gradient(to top, #0B1321, transparent);
+}
+.imagenHomeBottom{
+    width: 80%;
+    height: 80%;
+    border: 1px solid white;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    border-radius: 20px;
+}
+.contentImgHomeBottom{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.textContentMoveBottom{
+    width: 70%;
+    color: #8B95A6;
+    font-family: questrial,sans-serif;
+    font-weight: normal;
+    font-size: calc(16px + (18 - 16) * ((100vw - var(--minViewportSize) * 1px) / (var(--maxViewportSize) - var(--minViewportSize))));
+    font-style: normal;
+    letter-spacing: 0em;
+    line-height: 1.6;
+    min-height: 0vw;
+    margin-top: 4vh;
+    text-align: center;
+}
+.containFooter{
+    background-color: #0B1321;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hrFooter{
+    color: #8B95A6;
+    width: 80%;
+    height: 1px;
+}
+.containNavFooter{
+    height: 80%;
+    width: 95%;
+    margin-top: 2vh;
+    display: flex;
+}
+.divContainNavFooter{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1vw;
+}
+.nameLogoFooter{
+    color: #A3EEE9;
+    cursor: pointer;
+    font-size: 6vh;
+}
+.titleSeccionFooter{
+    color: #8B95A6;
+    font-size: 4.5vh;
+    
+}
+.pContainNavFooter{
+    color: #8B95A6;
+    margin: 1vh 0;
+}
 
-
-
+.contentHomeCall{
+    background-color: #0B1321;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cards {
+    width: calc(100% - 2em);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1em;
+    grid-template-areas: "a a b c" "a a d d";
+    width: 80%;
+  }
+  
+  .card {
+    width: 100%;
+    position: relative;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+  }
+  .card:last-child {
+    margin-bottom: 0;
+  }
+  .card:before {
+    height: 0;
+    content: "";
+    display: block;
+    padding-bottom: 47.36%;
+  }
+  .card.content:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    content: "";
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+  }
+  .card:nth-child(1) {
+    grid-area: a;
+  }
+  .card:nth-child(2) {
+    grid-area: b;
+  }
+  .card:nth-child(3) {
+    grid-area: c;
+  }
+  .card:nth-child(4) {
+    grid-area: d;
+  }
+  .card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .card-img img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .card-label {
+    position: absolute;
+    top: 0.45rem;
+    left: 0.45rem;
+    background: #089f8a;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 0.7em;
+    color: white;
+    padding: 0.5em;
+  }
+  .card-title {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    color: #d6dbeb;
+    z-index: 5;
+    font-size: 0.8em;
+  }
+  .card.form {
+    position: relative;
+  }
+  .card.form:before {
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  }
+  .card.form:after {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    width: calc(100% - 1em);
+    height: calc(100% - 1em);
+    content: "";
+    background: #252833;
+  }
+  .card.form .form-title {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 7vw;
+    font-weight: 900;
+    z-index: 5;
+    text-transform: uppercase;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  .card.form .form-title:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    content: "Sign Up";
+    opacity: 0.5;
+    filter: blur(10px);
+    transition: all 0.25s ease;
+    z-index: 2;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .card:nth-child(2) .card-label {
+    background: #ef4e7b;
+  }
+  .card:nth-child(3) .card-label {
+    background: #1098ad;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+  }
+  .card:hover .form-title:before {
+    filter: blur(3px);
+    opacity: 0.7;
+  }
+.containGameComp{
+    min-height: 100vh;
+    background-color: #0B1321;
+    display: flex;
+    justify-content: center;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.containBoxGame{
+    width: 80%;
+    min-height: 40vh;
+    margin-top: 30vh;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.imgBanerBkGame{
+    height: 50vh;
+    background-position: top;
+    background-size: cover;
+    width: 100%;
+}
+.imgPortadaBkGame{
+    height: 60vh;
+    width: 20vw;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 5vw;
+    top: 30vh;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.infoFastGame{
+    display: flex;
+    width: 100%;
+    padding-left: 40%;
+    align-items: baseline;
+    margin-top: 10vh;
+}
+.titleGameCard{
+    color: white;
+    font-size: 7vh;
+    margin-right: 1vw;
+}
+.yearGameCard{
+    color: white;
+    font-size: 4vh;
+}
+.divTagsGame{
+    width: 100%;
+    padding-left: 40%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3%;
+    margin-top: 8vh;
+}
+.tagTitleGame{
+    margin-right: 1vw;
+    background-color: #18499e;
+    color: grey;
+    padding: 1vh 2vw;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 6px;
+}
+.tag {
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+    color: #999;
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    cursor: pointer;
+  }
+  
+  .tag::before {
+    background: #0B1321;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+  }
+  
+  .tag::after {
+    background: #0B1321;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .tag:hover {
+    background-color: #A3EEE9;
+    color: black;
+  }
+  
+  .tag:hover::after {
+     border-left-color: #A3EEE9; 
+  }
+.descriptionPrice{
+    height: 40vh;
+    display: flex;
+}
+.divAddCart{
+    width: 50%;
+    padding-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.priceGame{
+    padding: 1vh 2vw;
+    font-size: 4vh;
+    font-weight: 500;
+    color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+.addToCartGame{
+    padding: 1vh 2vw;
+    background-color: #eee;
+    font-size: 4vh;
+    font-weight: 500;
+    margin-left: 2vw;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #8B95A6;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+.addToCartGame:hover{
+    background-color: #A3EEE9;
+    color: #0B1321;
+}
+.divDescriptionGameCard{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15vh;
+    border: 1px solid black;
+    padding: 1vh 1vw;
+}
+.pDescriptionTitle{
+    color: white;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+.pDescriptionContent{
+    color: #8B95A6;
+}
+.otroDivCard{
+    height: 40vh;
+    margin-top: 2vh;
+    border: 1px solid black;
+}

@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import swal from 'sweetalert'
 import GoogleLogin from 'react-google-login';
 import axios from "axios";
+import Header from "../components/Header";
 
 
 class Access extends React.Component{
@@ -176,8 +177,8 @@ class Access extends React.Component{
     
     render() {
 
-        return(
-
+        return(<>
+                <Header />
                 <div className='body' style={{backgroundImage:"url(../assets/fondo.png)"}}>   
                     <div className={this.state.buttonChange}  id="container">
                         <div className="form-container sign-up-container">
@@ -244,7 +245,8 @@ class Access extends React.Component{
                             </div>
                         </div>
                     </div>
-                </div>     
+                </div>   
+                </>  
         )
     }
 }

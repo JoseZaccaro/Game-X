@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "../components/Header"
 import CardProduct from "../components/Store/CardProduct"
 
 
@@ -54,6 +55,7 @@ class Store extends React.Component {
 
         return (
             <>
+            <Header />
                 <div className="parent">
                     <div className="div1" style={{ backgroundImage: `url("${this.state.products[0].src}")` }}> </div>
                     <div className="div2" style={{ backgroundImage: `url("${this.state.products[2].src}")` }}> </div>
