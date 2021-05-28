@@ -5,7 +5,7 @@
 }
 .containPageHome{
     height: 100vh;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     display: flex;
     background-attachment: fixed;
