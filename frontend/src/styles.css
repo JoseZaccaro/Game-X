@@ -114,6 +114,7 @@ button.ghost {
 	min-width: 100%;
 	max-height: 6%;
 	min-height: 6%;
+	outline: none;
 }
 input[type="file" ] {
 	font-weight: bold;
