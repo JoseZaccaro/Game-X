@@ -2,7 +2,7 @@ const joi = require('joi')
 
 const validatorUser = (req, res, next) => {
     const schema = joi.object({
-        userName: joi.string().trim().min(2).max(25).required().pattern(new RegExp('^(?=.{2,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._@]+(?<![_.])$')).messages({
+        userName: joi.string().trim().min(2).max(25).required().pattern(new RegExp('^(?=.{2,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._@-]+(?<![_.])$')).messages({
             "string.empty": "Your userName is a required field",
             "string.min": "Your userName must have at least 2 characters",
             "string.max": "Your userName could have max. 15 characters",
@@ -29,7 +29,6 @@ const validatorUser = (req, res, next) => {
     })
     const validation = schema.validate(req.body, {abortEarly: true})
     if (validation.error) {
-        console.log(validation.error.details[0])
         return res.json({success: false, error: validation.error.details[0]})
     }
     next()

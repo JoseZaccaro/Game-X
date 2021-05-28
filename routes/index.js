@@ -8,8 +8,8 @@ const validatorUser = require('../config/validatorUser')
 
 
 const {newUser, logIn, forcedLogin} = userController
-const { getAllGames, uploadGame, modifyGame, deleteGame } = gameController
-const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware}=hardwareControllers
+const { getAllGames, uploadGame, modifyGame, deleteGame, deleteGameImageBackground } = gameController
+const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 
 
 // ------------ROUTES USER---------
@@ -30,6 +30,9 @@ router.route('/games')
 router.route('/game/:titleOrId')
     .put(modifyGame)
     .delete(deleteGame)
+router.route('/game/:fileName')
+    .delete(deleteGameImageBackground)
+
 
 
 // ------------ROUTES HARDWARE---------
@@ -41,5 +44,8 @@ router.route('/hardware/:id')
 .get(getOneHardware)
 .delete(deleteHardware)
 .put(updateHardware)
+
+router.route('/hardware/:fileName')
+    .delete(deleteHardwareImageBackground)
 
 module.exports = router
