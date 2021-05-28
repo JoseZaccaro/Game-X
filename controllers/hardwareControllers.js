@@ -1,4 +1,5 @@
 const HardwareModel = require('../models/Hardware')
+const fs = require('fs')
 
 const hardwareControllers = {
     addNewHardware: async (req, res)=>{
@@ -67,5 +68,14 @@ const hardwareControllers = {
         }
         res.json({success: !error ? true: false, response, error})
     },
+    deleteHardwareImageBackground: (req, res) => {
+        const imageToDelete = req.params.fileName
+        fs.unlink(`${__dirname, './'}/client/build/fotos/${imageToDelete}`, error => {
+            if (error) {
+                return res.json({success: false, error})
+            }
+            res.json({success: true, mensaje: "Borrado!"})
+        })
+    }
 }
 module.exports = hardwareControllers
