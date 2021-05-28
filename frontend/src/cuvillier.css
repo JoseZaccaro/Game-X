@@ -5,9 +5,10 @@
 }
 .containPageHome{
     height: 100vh;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     display: flex;
+    background-attachment: fixed;
 }
 .spaceLeftParallax{
     width: 50%;
@@ -19,6 +20,9 @@
     justify-content: space-between;
     align-items: center;
     overflow-y:auto;
+}
+.parallaxRigthHome::-webkit-scrollbar{
+    display: none;
 }
 .contentMove{
     height: 100vh;
@@ -130,5 +134,6 @@
     background-color: #A3EEE9;
     color: rgb(6, 119, 184);
 }
+
 
 

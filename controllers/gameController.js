@@ -1,4 +1,5 @@
 const Game = require("../models/Game");
+const fs = require('fs')
 
 const gameControllers = {
     uploadGame: async(req, res) => {
@@ -90,6 +91,15 @@ const gameControllers = {
         } catch (e) {
             res.json({ success: false, response: e })
         }
+    },
+    deleteGameImageBackground: (req, res) => {
+        const imageToDelete = req.params.fileName
+        fs.unlink(`${__dirname, './'}/client/build/fotos/${imageToDelete}`, error => {
+            if (error) {
+                return res.json({success: false, error})
+            }
+            res.json({success: true, mensaje: "Borrado!"})
+        })
     }
 };
 

@@ -7,9 +7,8 @@ import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
 import Prueba from './components/Prueba';
+import Access from './pages/Access';
 import Store from './pages/Store';
-import SignUp from './pages/SignUp';
-import LogIn from './pages/LogIn';
 import Payment from './pages/Payment';
 import ServerDown from './pages/ServerDown';
 import Administrator from './pages/Administrator';
@@ -42,8 +41,7 @@ class App extends React.Component{
                 <Route path="/payment" component={Payment} />
                 <Route path="/administrator" component={Administrator} />
                 <Route path="/serverdown" component={ServerDown} />
-                <Route path="/signup" component={SignUp} />
-                <Route path="/login" component={LogIn} />
+                {!this.props.userLogged && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>
           </BrowserRouter>  
