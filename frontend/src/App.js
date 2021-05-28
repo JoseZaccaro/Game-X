@@ -6,6 +6,7 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
+import Prueba from './components/Prueba';
 import Store from './pages/Store';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
@@ -36,7 +37,7 @@ class App extends React.Component{
       return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Prueba} />
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/administrator" component={Administrator} />
