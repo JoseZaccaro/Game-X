@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from 'react-redux';
 import CardProduct from "../components/Store/CardProduct";
+import SliderProductCard from "../components/Store/SliderProductCard";
 import hardwareProductsActions from '../redux/actions/hardwareProductsActions';
 
 
@@ -16,7 +17,7 @@ class Store extends React.Component {
     state = {
         products: [
             {
-                src: 'https://i.imgur.com/JueO6Qo.jpg',
+                src: 'https://www.gamespot.com/a/uploads/screen_kubrick/1406/14063904/3476994-9383307504-337761.jpeg',
                 header: 'Ushuaia',
                 id: 1,
                 price: 250
@@ -28,7 +29,7 @@ class Store extends React.Component {
                 price: 350
             },
             {
-                src: 'https://as.com/meristation/imagenes/2020/06/12/noticias/1591952507_470156_1591952814_noticia_normal_recorte1.jpg',
+                src: 'https://i.pinimg.com/originals/9f/a2/b8/9fa2b8f49b4bb41fbcd0ef6a651b0c98.jpg',
                 header: 'New York',
                 id: 5,
                 price: 150
@@ -38,6 +39,30 @@ class Store extends React.Component {
                 header: 'Sydney',
                 id: 6,
                 price: 650
+            },
+            {
+                src: 'https://i.imgur.com/7CApOUG.jpg',
+                header: 'Shanghai',
+                id: 8,
+                price: 550
+            },
+            {
+                src: 'https://i.imgur.com/sBrjv2i.jpg',
+                header: 'Seattle',
+                id: 7,
+                price: 250
+            },
+            {
+                src: 'https://i.imgur.com/8OXZEVs.jpg',
+                header: 'Sydney',
+                id: 6,
+                price: 650
+            },
+            {
+                src: 'https://i.imgur.com/7CApOUG.jpg',
+                header: 'Shanghai',
+                id: 8,
+                price: 550
             },
             {
                 src: 'https://i.imgur.com/7CApOUG.jpg',
@@ -83,12 +108,25 @@ class Store extends React.Component {
                     <div className="div5" style={{ backgroundImage: `url("${this.state.products[5].src}")` }}> </div>
                 </div>
 
-                <div className="cards containerCards">
-                    {this.state.products.map((product, index) => {
-                        return (
-                            <CardProduct image={product.src} title={product.header} id={product.id} />
-                        )
-                    })}
+                <div >
+                    <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Days of play</h2>
+                    <div className="cards containerCards">
+                        {this.state.products.map((product, index) => {
+                            return (
+                                <CardProduct image={product.src} title={product.header} id={product.id} />
+                            )
+                        })}
+                    </div>
+                </div>
+                <div style={{ marginTop: '2rem' }}>
+                    <h3 style={{ fontSize: '2rem',  color: 'white' }}>New games</h3>
+                    <div className="containerSlider" style={{ overflowX: 'auto' }}>
+                        {this.state.products.map((product, index) => {
+                            return (
+                                <SliderProductCard image={product.src} id={product.id} />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         )
