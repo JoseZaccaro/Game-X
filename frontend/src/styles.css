@@ -48,9 +48,9 @@ div form h1 {
 .buttonForm {
 	cursor: pointer;
 	border-radius: 20px;
-	border: 1px solid #0B5762;
-	background-color: #0B5762;
-	color: #FFFFFF;
+	border: 1px solid #ADE7E3;
+	background-color: #ADE7E3;
+	color: #0B252C;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
@@ -63,8 +63,8 @@ div form h1 {
 .buttonFormSignUp{
 	cursor: pointer;
 	border-radius: 20px;
-	border: 1px solid #0B252C;
-	background-color: #0B252C;
+	border: 1px solid #0B5762;
+	background-color: #0B5762;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;

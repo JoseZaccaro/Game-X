@@ -234,12 +234,12 @@ class Access extends React.Component{
                                 <div className="overlay-panel overlay-left">
                                     <h1>Welcome Back!</h1>
                                     <p>To keep connected with us please login with your personal info</p>
-                                    <button className="ghost buttonForm" id="logIn" onClick={(e)=> this.changeForm(e)}>Log In</button>
+                                    <button style={{color:'#ADE7E3'}} className="ghost buttonForm" id="logIn" onClick={(e)=> this.changeForm(e)}>Log In</button>
                                 </div>
                                 <div className="overlay-panel overlay-right">
                                     <h1>Hello, Friend!</h1>
                                     <p>Enter your personal details and start journey with us</p>
-                                    <button className="ghost buttonForm" id="signUp" onClick={(e)=> this.changeForm(e)}>Sign Up</button>
+                                    <button style={{color:'#ADE7E3'}}className="ghost buttonForm" id="signUp" onClick={(e)=> this.changeForm(e)}>Sign Up</button>
                                 </div>
                             </div>
                         </div>
