@@ -89,7 +89,16 @@ const userActions = {
             try{
                 const users = await axios.put('http://localhost:4000/api/user',{userName})
                 if(users.data.success){
-                    return users.data.response
+                    let usersFiltered = []
+                    if(users.data.response.length > 0){
+                        users.data.response.map(user =>{
+                            const {avatar,chats,country,friends,userName,_id, email} = user
+                            const userFiltered = {avatar,chats,country,friends,userName,_id, email}
+                            usersFiltered.push(userFiltered)
+                        })
+                    }
+                        
+                    return usersFiltered 
                 }else{
                     return ["There are no results for this search"]
                 }

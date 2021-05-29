@@ -23,20 +23,22 @@ const Messages = (props)=>{
             leftSideHide ={
                 height:'3rem',
                 transition:".7s",
-                 transform:'translate(-20rem,0)'
+                 transform:'translate(-20rem,0)',
+                 cursor:'pointer'
                 }
         }else if(!rightHide && minimized){
             leftSideHide ={
                 height:'3rem',
                 transition:".7s",
-                 transform:'translate(20,0)'
+                 transform:'translate(20,0)',
                 }
         }else if( minimized && rightHide ){
             
             leftSideHide = {
                 height:'3rem',
                 transition:".7s",
-                 transform:'translate(0,0)'
+                 transform:'translate(0,0)',
+                 cursor:'pointer'
                 }
         }else if (leftHide){
 
@@ -65,9 +67,9 @@ const Messages = (props)=>{
         }
 
     return (
-            <div className="containerLeftSide" style={ leftSideHide }>
+            <div className="containerLeftSide"  onClick={ ()=> minimized && minimize()} style={ leftSideHide }>
                 <div className="infoUserContainer" style={minimized ? {height:'100%',transition:".7s",borderBottom:'1px solid rgba(0,0,0,0)', marginTop:'10px'}: null}>
-                    <div className="friendUserImage" style={minimized ? {backgroundImage:'url(../assets/fondo.png)',width:'2rem', height:'2rem'}:{backgroundImage:'url(../assets/fondo.png)'}}></div>
+                    <div className="friendUserImage" style={minimized ? {backgroundImage:'url(../assets/fondo.png)',width:'2rem',transition:".7s", height:'2rem'}:{transition:".7s",backgroundImage:'url(../assets/fondo.png)'}}></div>
                     <p className="userName"> UserName</p>
                     <div className="iconoClose" style={minimized ? {marginLeft:'2.5rem'}: null} onClick={minimize}><FaWindowMinimize /></div>
                     { !minimized && <div className="iconoClose" onClick={close}><VscChromeClose className="iconoClose"/></div>}                

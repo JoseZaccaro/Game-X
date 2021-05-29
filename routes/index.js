@@ -10,8 +10,8 @@ const chatControllers = require('../controllers/chatControllers')
 
 
 
-const { getChatOfUser, postChatOfUser } = chatControllers
-const { newUser, logIn, forcedLogin, getUser, changeRol } = userController
+const { getChatOfUser, postMessageOfUser, deleteChat, getFriendList } = chatControllers
+const { newUser, logIn, forcedLogin, getUser, changeRol, addFriend, deleteFriend } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
@@ -19,6 +19,9 @@ const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
 // ------------ROUTES USER---------
 router.route('/user')
 .put(getUser)
+
+router.route('/user/addFriend/:friendId')
+.put(passport.authenticate('jwt', {session: false}),addFriend)
 
 router.route('/user/signup')
     .post(validatorUser,newUser)
@@ -71,11 +74,13 @@ router.route('/buy/:id')
 .put(modifyBuyByID)
 
 // ------------ROUTES CHATS---------
-router.route('/chats/:_id')
-.get(getChatOfUser)
-.post(passport.authenticate('jwt', {session:false}), postChatOfUser)
+router.route('/chats/:friendId')
+.get(passport.authenticate('jwt', {session:false}), getChatOfUser)
+.put(passport.authenticate('jwt', {session:false}), postMessageOfUser)
+.delete(deleteChat)
 
-
-
+router.route('/friends/:userId')
+.get(getFriendList)
+.delete(passport.authenticate('jwt', {session:false}),deleteFriend)
 
 module.exports = router
