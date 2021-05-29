@@ -176,7 +176,9 @@
 }
 .gifLogo{
     height: 17vh;
+    min-height: 150px;
     width: 8vw;
+    min-width: 150px;
     background-position: center;
     background-size: cover;
     cursor: pointer;
@@ -187,7 +189,7 @@
     background-color: transparent;
     position: absolute;
     width: 98vw;
-    padding: 3vh 2vw;
+    padding: 1vh 2vw;
 }
 .logoHeader{
     display: flex;
