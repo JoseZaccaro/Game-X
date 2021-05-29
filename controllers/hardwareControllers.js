@@ -3,6 +3,8 @@ const fs = require('fs')
 
 const hardwareControllers = {
     addNewHardware: async (req, res)=>{
+        console.log(req.body)
+        
         let response;
         let error;
         if (req.user.rol === 'admin') {
@@ -23,7 +25,6 @@ const hardwareControllers = {
         
     },
     getAllHardwares: async (req,res) =>{
-        console.log('Hola');
         let response;
         let error;
         try {

@@ -24,6 +24,7 @@ const productActions = {
         }
     },
     addHardware: (infoHardware, token) => {
+        console.log(infoHardware)
         return async () => {
             try {
                 const respuesta = await axios.post(`http://localhost:4000/api/hardware`,infoHardware, {

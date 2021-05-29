@@ -4,6 +4,7 @@ import userActions from "../redux/actions/userActions";
 import swal from 'sweetalert'
 import AddGame from "../components/AddGame";
 import AddHardware from "../components/AddHardware";
+import Header from "../components/Header";
 
 
 class AdminPanel extends React.Component{
@@ -77,26 +78,29 @@ class AdminPanel extends React.Component{
     render() {
          
         return(
-            <div className='containerAdminPanel'>
-                <div className='options'>
-                    <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>
-                    <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:false, addingGame:true })}>Add Game</button>
-                    <button onClick={() => this.setState({...this.state, modifyUserRol:true, addingHardware:false, addingGame:false })}>Modify user rol</button>
-                </div>
-                <div className='adminPanelForm'>
-                    {this.state.modifyUserRol &&
-                        <form className='modifyUserRol'>
-                            <input type="text" placeholder="Username" name="userName" value={this.state.userInfoToEdit.userName} onChange={this.readInput} />
-                            <input type="text" placeholder="New Rol" name="newRol" value={this.state.userInfoToEdit.newRol} onChange={this.readInput} />
-                            <button onClick={(e)=>this.confirm(e)}>Send</button>
-                        </form>}
-                    <div className='addProduct'>
-                        {this.state.addingGame && <AddGame />}
-                        {this.state.addingHardware && <AddHardware />}
-
+            <>
+                <Header />
+                <div className='containerAdminPanel'>
+                    <div className='options'>
+                        <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>
+                        <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:false, addingGame:true })}>Add Game</button>
+                        <button onClick={() => this.setState({...this.state, modifyUserRol:true, addingHardware:false, addingGame:false })}>Modify user rol</button>
                     </div>
-                </div>
-            </div>        
+                    <div className='adminPanelForm'>
+                        {this.state.modifyUserRol &&
+                            <form className='modifyUserRol'>
+                                <input type="text" placeholder="Username" name="userName" value={this.state.userInfoToEdit.userName} onChange={this.readInput} />
+                                <input type="text" placeholder="New Rol" name="newRol" value={this.state.userInfoToEdit.newRol} onChange={this.readInput} />
+                                <button onClick={(e)=>this.confirm(e)}>Send</button>
+                            </form>}
+                        <div className='addProduct'>
+                            {this.state.addingGame && <AddGame />}
+                            {this.state.addingHardware && <AddHardware />}
+
+                        </div>
+                    </div>
+                </div> 
+            </>       
         )
     }
 }

@@ -6,7 +6,7 @@ html *{
 
 :root {
     --main-bg-color: #A3EEE9;
-    --secundary-bg-color: #05131E;
+    --secundary-bg-color: #051e12;
 	--third-bg-color: #089f8a;
   }
 
@@ -23,6 +23,7 @@ html *{
 }
 
 .body {
+	overflow: hidden;
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -205,8 +206,8 @@ input[type="file" ] {
 
 .overlay {
 	background: #06171F;
-	background: -webkit-linear-gradient(to right, var(--secundary-bg-color), #060F1D);
-	background: linear-gradient(to right, var(--secundary-bg-color), #060F1D);
+	background: -webkit-linear-gradient(to right, var(--third-bg-color), #060F1D);
+	background: linear-gradient(to right, var(--third-bg-color), #060F1D);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -274,10 +275,12 @@ input[type="file" ] {
 /* ADMIN PANEL */
 
 .containerAdminPanel{
+	padding-top: 13rem;
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: row;
+	background-color: black;
 
 }
 .options{
