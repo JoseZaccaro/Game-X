@@ -48,7 +48,6 @@ const gameControllers = {
             res.json({ success: true, response: newGame })
 
         } catch (e) {
-            // console.log(e)
             res.json({ success: false, response: e })
         }
     },
@@ -63,10 +62,10 @@ const gameControllers = {
     modifyGame: async(req, res) => {
         try {
 
-            let titleOrId = req.params.title.toLowerCase()
+            const { _id } = req.params
             const newModifications = {...req.body }
-            const query = { $or: [{ title: titleOrId }, { _id: titleOrId }] };
-            const gameToModify = await Game.findOneAndUpdate(query, newModifications, { new: true, runValidators: true })
+
+            const gameToModify = await Game.findOneAndUpdate({ _id }, newModifications, { new: true, runValidators: true })
             res.json({ success: true, response: gameToModify })
         } catch (e) {
             res.json({ success: false, response: e })
@@ -75,10 +74,20 @@ const gameControllers = {
     deleteGame: async(req, res) => {
         try {
 
-            const { titleOrId } = req.params
-            await Game.findOneAndDelete({ _id: titleOrId })
+            const { _id } = req.params
+
+            await Game.findOneAndDelete({ _id })
             res.json({ success: true, response: "Deleted Successfully" })
 
+        } catch (e) {
+            res.json({ success: false, response: e })
+        }
+    },
+    findOneGame: async(req, res) => {
+        try {
+            const { _id } = req.params
+            const game = await Game.findOne({ _id })
+            res.json({ success: true, response: game })
         } catch (e) {
             res.json({ success: false, response: e })
         }

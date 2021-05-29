@@ -6,6 +6,7 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
+import Prueba from './components/Prueba';
 import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
