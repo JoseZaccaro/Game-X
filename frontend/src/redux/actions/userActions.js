@@ -1,7 +1,7 @@
 import axios from "axios"
 import swal from 'sweetalert'
 
-const loginActions = {
+const userActions = {
     logUser: (userInfo) => {
         return async (dispatch, getState) => {
            try {
@@ -60,6 +60,25 @@ const loginActions = {
             }           
         }
     },
+    changeRol: (userName, token) => {
+        return async () => {
+            try {
+                const respuesta = await axios.put(`http://localhost:4000/api/user/changeRol`,userName, {
+                headers: {
+                    'Authorization': 'Bearer '+ token
+                }
+            })
+                if(!respuesta.data.success){
+                    console.log(respuesta)
+                    return respuesta.data                   
+                }else{
+                    return respuesta.data.respuesta.userName
+                }
+            } catch(error) {
+                return swal("Failed to try to connect with server", "Please try again in a few minutes", "error")
+            }           
+        }
+    },
     removeUserInfo: () => {
         return (dispatch, getState) => {
             dispatch({type: 'LOG_OUT'})
@@ -81,4 +100,4 @@ const loginActions = {
     }
 }
 
-export default loginActions
+export default userActions

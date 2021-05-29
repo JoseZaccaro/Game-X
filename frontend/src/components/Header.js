@@ -1,5 +1,9 @@
+import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
-const Header = () =>{ 
+import userActions from '../redux/actions/userActions'
+const Header = (props) =>{ 
+
+
     return(
         <div className='containHeader'>
             <div className='logoHeader'>
@@ -9,10 +13,20 @@ const Header = () =>{
             <div className='navHeader'>
                 <NavLink to='/'><p className='linkHeaderNav'>Home</p></NavLink>
                 <NavLink to='/store'><p className='linkHeaderNav'>Store</p></NavLink>
-                <NavLink to='/access'><p className='linkHeaderNav'>Access</p></NavLink>
+                {!props.userLogged && <NavLink to='/access'><p className='linkHeaderNav'>Access</p></NavLink>}
             </div>
         </div>       
     )
 }
 
-export default Header
+const mapStateToProps = state => {
+    return {
+        userLogged: state.userReducer.userLogged
+    }
+  }
+  const mapDispatchToProps = {
+    forcedLoginByLS :  userActions.forcedLoginByLS,
+  
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(Header)

@@ -6,7 +6,7 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
-import Prueba from './components/Prueba';
+// import Prueba from './components/Prueba';
 import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
@@ -16,6 +16,7 @@ import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
 import Game from './components/Game';
 import Product from './pages/Product';
+import AdminPanel from './pages/AdminPanel';
 
 
 class App extends React.Component{
@@ -45,6 +46,7 @@ class App extends React.Component{
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game" component={Game} />
                 <Route path="/product/:id" component={Product} />
+                <Route path="/admin" component={AdminPanel} />
                 {!this.props.userLogged && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>

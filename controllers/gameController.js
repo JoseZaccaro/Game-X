@@ -3,53 +3,25 @@ const fs = require('fs')
 
 const gameControllers = {
     uploadGame: async(req, res) => {
-        try {
-            const {
-                title, //String
-                year, // Number
-                genre, // [String]
-                language, // [String]
-                developer, // String
-                online, // Boolean
-                platform, // [String]
-                price, // Number
-                description, // String
-                discount, // Number
-                DLC, // [Object:{name:String,price:Number,description:String}]
-                valoration, // [{good:Boolean, commentary:String, userId: (ObjectId ref:'user') }]
-                imageBanner, // String
-                imagesBackground, //[String]
-                PEGI, //Number
-                virtual, // Boolean
-            } = req.body;
-
-            const dataToUpload = {
-                title,
-                year,
-                genre,
-                language,
-                developer,
-                online,
-                platform,
-                price,
-                description,
-                discount,
-                DLC,
-                valoration,
-                imageBanner,
-                imagesBackground,
-                PEGI,
-                virtual
-            };
-            let error
-
-            const newGame = new Game(dataToUpload)
-            await newGame.save()
-            res.json({ success: true, response: newGame })
-
-        } catch (e) {
-            res.json({ success: false, response: e })
+        console.log(req.body)
+        let response;
+        let error;
+        if (req.user.rol === 'admin') {
+            try {
+                const gameToAdd = new Game(req.body)
+                await gameToAdd.save()
+                const allGames = await Game.find()
+                response = allGames
+                res.json({ success: !error ? true : false, response, error })
+            } catch (err) {
+                res.json({success:false, error: "There is some invalid fields"})
+                console.log(err);
+            }
+        } else {
+            res.json({success:false, error: "You must be authorized Administrator to modify this property"}) 
         }
+        
+        
     },
     getAllGames: async(req, res) => {
         try {

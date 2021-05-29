@@ -11,7 +11,7 @@ const chatControllers = require('../controllers/chatControllers')
 
 
 const { getChatOfUser, postChatOfUser } = chatControllers
-const { newUser, logIn, forcedLogin, getUser } = userController
+const { newUser, logIn, forcedLogin, getUser, changeRol } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
@@ -21,7 +21,7 @@ router.route('/user')
 .put(getUser)
 
 router.route('/user/signup')
-    .post(validatorUser, newUser)
+    .post(validatorUser,newUser)
 
 router.route('/user/login')
     .post(logIn)
@@ -29,15 +29,20 @@ router.route('/user/login')
 router.route('/user/loginLS')
     .get(passport.authenticate('jwt', { session: false }), forcedLogin)
 
+router.route('/user/changeRol')
+    .put(passport.authenticate('jwt', {session: false}), changeRol)
+
 
 // ------------ROUTES GAMES---------
 router.route('/games')
     .get(getAllGames)
-    .post(uploadGame)
+    .post(passport.authenticate('jwt', {session: false}), uploadGame)
+
 router.route('/game/:_id')
     .get(findOneGame)
     .put(modifyGame)
     .delete(deleteGame)
+
 router.route('/game/edit/:fileName')
     .delete(deleteGameImageBackground)
 
@@ -46,14 +51,14 @@ router.route('/game/edit/:fileName')
 // ------------ROUTES HARDWARE---------
 router.route('/hardware')
     .get(getAllHardwares)
-    .post(addNewHardware)
+    .post(passport.authenticate('jwt', {session: false}), addNewHardware)
 
 router.route('/hardware/:id')
     .get(getOneHardware)
     .delete(deleteHardware)
     .put(updateHardware)
 
-router.route('/hardware/:fileName')
+router.route('/hardware/edit/:fileName')
     .delete(deleteHardwareImageBackground)
 
 //------------ROUTES BUYS ---------

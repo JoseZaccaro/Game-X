@@ -5,16 +5,22 @@ const hardwareControllers = {
     addNewHardware: async (req, res)=>{
         let response;
         let error;
-        try {
-            const hardwareToAdd = new HardwareModel(req.body)
-            await hardwareToAdd.save()
-            const allHardwares = await HardwareModel.find()
-            response = allHardwares
-        } catch (err) {
-            error= 'Error, could not add new hardware'
-            console.log(err);
+        if (req.user.rol === 'admin') {
+            try {
+                const hardwareToAdd = new HardwareModel(req.body)
+                await hardwareToAdd.save()
+                const allHardwares = await HardwareModel.find()
+                response = allHardwares
+                res.json({ success: !error ? true : false, response, error })
+            } catch (err) {
+                res.json({success:false, error: "There is some invalid fields"})
+                console.log(err);
+            }
+        } else {
+            res.json({success:false, error: "You must be authorized Administrator to modify this property"}) 
         }
-        res.json({ success: !error ? true : false, response, error })
+        
+        
     },
     getAllHardwares: async (req,res) =>{
         console.log('Hola');

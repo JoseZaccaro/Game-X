@@ -1,5 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux';
+import Header from "../components/Header";
 import CardProduct from "../components/Store/CardProduct";
 import SliderProductCard from "../components/Store/SliderProductCard";
 import hardwareProductsActions from '../redux/actions/hardwareProductsActions';
@@ -99,6 +100,8 @@ class Store extends React.Component {
     render() {
 
         return (
+            <>
+             <Header/>
             <div className="containerStore">
                 <div className="parent">
                     <div className="div1" style={{ backgroundImage: `url("${this.state.products[0].src}")` }}> </div>
@@ -129,6 +132,7 @@ class Store extends React.Component {
                     </div>
                 </div>
             </div>
+            </>
         )
     }
 }
