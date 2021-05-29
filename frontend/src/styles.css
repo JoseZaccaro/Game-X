@@ -142,8 +142,9 @@ input[type="file" ] {
 	overflow: hidden;
 	width: 36rem;
 	max-width: 100%;
-	min-height: 35rem;
+	min-height: 30rem;
 	margin-right: 1vw;
+	margin-top: 7rem;
 }
 
 .form-container {
