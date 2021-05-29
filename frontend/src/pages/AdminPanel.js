@@ -82,16 +82,19 @@ class AdminPanel extends React.Component{
                 <Header />
                 <div className='containerAdminPanel'>
                     <div className='options'>
-                        <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>
-                        <button onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:false, addingGame:true })}>Add Game</button>
-                        <button onClick={() => this.setState({...this.state, modifyUserRol:true, addingHardware:false, addingGame:false })}>Modify user rol</button>
+                        <button className='buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>
+                        <button className='buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:false, addingGame:true })}>Add Game</button>
+                        <button className='buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:true, addingHardware:false, addingGame:false })}>Modify user rol</button>
                     </div>
                     <div className='adminPanelForm'>
                         {this.state.modifyUserRol &&
                             <form className='modifyUserRol'>
-                                <input type="text" placeholder="Username" name="userName" value={this.state.userInfoToEdit.userName} onChange={this.readInput} />
-                                <input type="text" placeholder="New Rol" name="newRol" value={this.state.userInfoToEdit.newRol} onChange={this.readInput} />
-                                <button onClick={(e)=>this.confirm(e)}>Send</button>
+                                <h1 className='titleForm'>Modify user's Rol</h1>
+                                <div>
+                                    <input className='input2' type="text" placeholder="Username" name="userName" value={this.state.userInfoToEdit.userName} onChange={this.readInput} />
+                                    <input  className='input2' type="text" placeholder="New Rol" name="newRol" value={this.state.userInfoToEdit.newRol} onChange={this.readInput} />
+                                </div>
+                                <button className='btnSubmitAdminPanel' onClick={(e)=>this.confirm(e)}>Send</button>
                             </form>}
                         <div className='addProduct'>
                             {this.state.addingGame && <AddGame />}

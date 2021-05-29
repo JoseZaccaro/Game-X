@@ -13,6 +13,7 @@ const Header = (props) =>{
             <div className='navHeader'>
                 <NavLink to='/'><p className='linkHeaderNav'>Home</p></NavLink>
                 <NavLink to='/store'><p className='linkHeaderNav'>Store</p></NavLink>
+                {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><p className='linkHeaderNav'>Adm Panel</p></NavLink>}
                 {!props.userLogged && <NavLink to='/access'><p className='linkHeaderNav'>Access</p></NavLink>}
             </div>
         </div>       

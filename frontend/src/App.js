@@ -11,10 +11,10 @@ import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
 import ServerDown from './pages/ServerDown';
-import Administrator from './pages/Administrator';
 import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
 import Game from './components/Game';
+import Loader from './components/Loader';
 import Product from './pages/Product';
 import AdminPanel from './pages/AdminPanel';
 
@@ -34,6 +34,9 @@ class App extends React.Component{
 
 
   render(){
+    if (!this.props.userLogged && localStorage.getItem('token') ) {
+        <Loader/>
+    }
 
 
       return (
@@ -42,12 +45,13 @@ class App extends React.Component{
                 <Route exact path="/" component={Home} />
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
-                <Route path="/administrator" component={Administrator} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game" component={Game} />
                 <Route path="/product/:id" component={Product} />
-                <Route path="/admin" component={AdminPanel} />
-                {!this.props.userLogged && <Route path="/access" component={Access} />}
+                {/* {this.props.userLogged && this.props.userLogged.rol === "admin" ?  */}
+                <Route path="/admin" component={AdminPanel} /> 
+                {/* : null} */}
+                {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>
           </BrowserRouter>  

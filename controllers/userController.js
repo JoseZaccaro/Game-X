@@ -92,7 +92,7 @@ const userController = {
        }
        res.json({
            success: !error ? true : false,
-           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id}: null,
+           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id, rol:createdUser.rol}: null,
            error: error
        })  
     },
@@ -120,12 +120,12 @@ const userController = {
         }
         res.json({
             success: !error ? true : false,
-            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id} : null,
+            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol} : null,
             error: error
         })
     },
     forcedLogin: (req, res) => {
-        res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id}})
+        res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id, rol:req.user.rol}})
     },
     getUser: async(req, res)=>{
         try{
