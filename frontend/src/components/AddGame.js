@@ -133,13 +133,13 @@ class AddGame extends React.Component{
                 <div className='divInput'>
                     <input className='input2' type="text" placeholder="Developer" name="developer" value={this.state.infoGame.developer} onChange={this.readInput} />
                     <div className='input2'>
-                        <span style={{color:'white'}}>is Online?</span>  
-                        <label htmlFor="yes" className="l-radio">
-                                        <span style={{color:'white'}}>Yes</span>                                
+                        <span  className='spanAdminPanel'>is Online?</span>  
+                        <label htmlFor="yes" className="radioButton">
+                                        <span className='spanAdminPanel'>Yes</span>                                
                                         <input type="radio" id="yes" name="online" value={true} onChange={this.readInput} tabIndex="1"></input>
                         </label>
-                        <label htmlFor="no" className="l-radio">
-                                        <span style={{color:'white'}}>No</span>                                
+                        <label htmlFor="no" className="radioButton">
+                                        <span className='spanAdminPanel'>No</span>                                
                                         <input type="radio" id="no" name="online" value={false} onChange={this.readInput} tabIndex="2"></input>
                         </label>
                     </div>
@@ -166,14 +166,14 @@ class AddGame extends React.Component{
                             </div>
                         </div>
                         <div className='divButtons'>
-                            <button className='btnSendAdminPannel' onClick={(e, value=false )=> this.selectOptionDLCs(e, value)}>Cancel</button>
-                            <button className='btnSendAdminPannel' onClick={this.addDLC}>Add DLC</button>
+                            <button className='buttonForm' style={{backgroundColor:'#089f8a', border:'none'}} onClick={(e, value=false )=> this.selectOptionDLCs(e, value)}>Cancel</button>
+                            <button className='buttonForm' style={{backgroundColor:'#089f8a', border:'none'}} onClick={this.addDLC}>Add DLC</button>
                         </div>
                      </div>
                     :<div className='divDLC'>
-                            <label className='divDLC' htmlFor="yes" className="l-radio">
-                                <span style={{color:'white'}}>Has available DLC's?</span>                                
-                                <input className='input2' type="radio" id="yes" name="aditionals" onChange={(e, value=true) => this.selectOptionDLCs(e, value)} tabIndex="1"></input>
+                            <label className='radioAdminPanel' htmlFor="yes" className="l-radio">
+                                <span  className='spanAdminPanel' style={{color:'white'}}>Has available DLC's?</span>                                
+                                <input className='radioButton' type="radio" id="yes" name="aditionals" onChange={(e, value=true) => this.selectOptionDLCs(e, value)} tabIndex="1"></input>
                             </label>
                      </div>
                 }
@@ -183,7 +183,7 @@ class AddGame extends React.Component{
                 <div className='divInput'>
                     <input className='input1' type="text" placeholder="Images for Background (Landscape)" name="imagesBackground" value={this.state.infoGame.imagesBackground} onChange={this.arrayConverter} />                
                 </div>
-                <button className='btnSubmitAdminPanel'onClick={(e)=>this.confirm(e)}>Send</button>
+                <button className='buttonForm btnSubmitAdminPanel'onClick={(e)=>this.confirm(e)}>Send</button>
             </form>       
         )
     }

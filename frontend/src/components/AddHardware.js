@@ -141,23 +141,23 @@ class AddHardware extends React.Component{
                     <input className='input2' type="text" placeholder="Stock" name="stock" value={this.state.infoHardware.stock} onChange={this.readInput} />
                 </div>
                 {this.state.aditionals 
-                    ?<div>
+                    ?<div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
                         <div>
                             <div className='divInput'>
                                 <input className='input2' type="text" placeholder="Product ID" name="aditionalProduct" value={this.state.aditionalProduct} onChange={this.readAditionals} />
-                                <button className='btnSendAdminPannel' onClick={this.addProductId}>Add Product ID</button>
+                                <button className='buttonForm' style={{backgroundColor:'#089f8a', border:'none'}} onClick={this.addProductId}>Add Product ID</button>
                             </div>
                             <div className='divInput'>
                                 <input className='input2' type="text" placeholder="Game ID" name="aditionalGame" value={this.state.aditionalGame} onChange={this.readAditionals} />
-                                <button className='btnSendAdminPannel' onClick={this.addGameId}>Add Game ID</button>
+                                <button className='buttonForm' style={{backgroundColor:'#089f8a', border:'none'}} onClick={this.addGameId}>Add Game ID</button>
                             </div>
                         </div>
-                        <button onClick={(e, value=false )=> this.selectOptionAditionals(e, value)}>Cancel</button>
+                        <button className='buttonForm' style={{backgroundColor:'#089f8a', border:'none', alignSelf:'center'}} onClick={(e, value=false )=> this.selectOptionAditionals(e, value)}>Cancel</button>
                      </div>
-                    :<div className='divInput'>
-                            <label htmlFor="yes" className="l-radio">
-                                <span style={{color:'white'}}>Has aditional content?</span>                                
-                                <input className='input2' type="radio" id="yes" name="aditionals" onChange={(e, value=true) => this.selectOptionAditionals(e, value)} tabIndex="1"></input>
+                    :<div className='divDLC'>
+                            <label htmlFor="yes" className="radioAdminPanel">
+                                <span className='spanAdminPanel' style={{color:'white'}}>Has aditional content?</span>                                
+                                <input className='radioButton' type="radio" id="yes" name="aditionals" onChange={(e, value=true) => this.selectOptionAditionals(e, value)} tabIndex="1"></input>
                             </label>
                      </div>
                 } 
@@ -165,7 +165,7 @@ class AddHardware extends React.Component{
                     <input className='input2' type="text" placeholder="Image Banner" name="imageBanner" value={this.state.infoHardware.imageBanner} onChange={this.readInput} />
                     <input className='input2' type="text" placeholder="Images for Background (Landscape)" name="imagesBackground" value={this.state.infoHardware.imagesBackground} onChange={this.arrayConverter} />
                 </div>  
-                <button className='btnSubmitAdminPanel' onClick={(e)=>this.confirm(e)}>Send</button>
+                <button className='buttonForm btnSubmitAdminPanel' onClick={(e)=>this.confirm(e)}>Send</button>
             </form>       
         )
     }
