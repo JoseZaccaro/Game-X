@@ -4,13 +4,15 @@ const passport = require('passport')
 const hardwareControllers = require('../controllers/hardwareControllers')
 const gameController = require('../controllers/gameController')
 const userController = require('../controllers/userController')
+const buyController  = require('../controllers/buyController')
 const validatorUser = require('../config/validatorUser')
+
 
 
 const {newUser, logIn, forcedLogin} = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
-
+const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
 
 // ------------ROUTES USER---------
 router.route('/user/signup')
@@ -47,5 +49,14 @@ router.route('/hardware/:id')
 
 router.route('/hardware/:fileName')
     .delete(deleteHardwareImageBackground)
+
+//------------ROUTES BUYS ---------
+router.route('/buy')
+.get(getAllbuys)
+
+router.route('/buy/:id')
+.get(getBuyByID)
+.delete(deleteBuyByID)
+.put(modifyBuyByID)
 
 module.exports = router
