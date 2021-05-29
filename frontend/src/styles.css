@@ -413,6 +413,89 @@ input[type="file" ] {
 	margin: 0 1vw;
 }
 
+/* DROPDOWN PROFILE */
+.profileBody, .nav, .menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.profileBody {
+    margin: 30px 0;
+    padding: 0;
+    min-height: auto;
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+
+.nav {
+    position: absolute;
+    background-color: #fff;
+	right: 10px;
+    transition: 0.5s;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+	flex-direction: column;
+}
+
+.menu {
+	flex-direction: column;
+    margin: 0;
+    padding: 0;
+	width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.nav input:checked ~ .menu {
+	width: auto;
+    height: auto;
+}
+
+.menu li {
+    list-style: none;
+    margin: 10px;
+	cursor: pointer;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.menu li a:hover {
+    color: #161919;
+}
+
+.nav input {
+    width: 85px;
+    height: 85px;
+	margin: 0;
+	padding: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.nav .avatarHeader {
+    position: absolute;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	top: 0px;
+    width: 85px;
+    height: 85px;
+    border-radius: 50px;
+    background-color: #666;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
 
 
 @media screen and (min-width: 1500px) and (max-width: 2000px) {
