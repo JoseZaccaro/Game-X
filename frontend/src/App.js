@@ -14,6 +14,7 @@ import Administrator from './pages/Administrator';
 import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
 import Game from './components/Game';
+import Product from './pages/Product';
 
 
 class App extends React.Component{
@@ -42,6 +43,7 @@ class App extends React.Component{
                 <Route path="/administrator" component={Administrator} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game" component={Game} />
+                <Route path="/product/:id" component={Product} />
                 {!this.props.userLogged && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>

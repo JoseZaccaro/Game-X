@@ -1,15 +1,15 @@
+import { NavLink } from 'react-router-dom'
 const CardProduct = (props) => {
-    const {image, title} = props
+    const { image, title, id } = props
     return (
-        <div className={`card ${title === 'London' ?'ultimasUnidades' : null}`}>
-            <div className="productImageCard" style={{ backgroundImage: `url("${image}")` }}></div>
-            <div className="card-info">
-                <h3>God of War</h3>
-            </div>
-            <div className="card-hover">
-                <p className="description-card">description</p>
-            </div>
-        </div>
+        <>
+        {<NavLink to={`/product/${id}`}>
+                <figure className="card">
+                    <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
+                    <figcaption>{title}</figcaption>
+                </figure>
+        </ NavLink>}       
+        </>
     );
 }
 
