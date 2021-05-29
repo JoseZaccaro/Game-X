@@ -317,7 +317,7 @@ a{
     justify-content: center;
     align-items: center;
 }
-.cards {
+.divHardHome {
     width: calc(100% - 2em);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -327,7 +327,7 @@ a{
     width: 80%;
   }
   
-  .card {
+  .tarjetaHomeHard {
     width: 100%;
     position: relative;
     transition: all 0.25s ease;
@@ -335,16 +335,16 @@ a{
     font-family: "Roboto", sans-serif;
     font-weight: 300;
   }
-  .card:last-child {
+  .tarjetaHomeHard:last-child {
     margin-bottom: 0;
   }
-  .card:before {
+  .tarjetaHomeHard:before {
     height: 0;
     content: "";
     display: block;
     padding-bottom: 47.36%;
   }
-  .card.content:after {
+  .tarjetaHomeHard.content:after {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -353,39 +353,39 @@ a{
     content: "";
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
   }
-  .card:nth-child(1) {
+  .tarjetaHomeHard:nth-child(1) {
     grid-area: a;
   }
-  .card:nth-child(2) {
+  .tarjetaHomeHard:nth-child(2) {
     grid-area: b;
   }
-  .card:nth-child(3) {
+  .tarjetaHomeHard:nth-child(3) {
     grid-area: c;
   }
-  .card:nth-child(4) {
+  .tarjetaHomeHard:nth-child(4) {
     grid-area: d;
   }
-  .card-content {
+  .tarjetaHomeHard-content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-  .card-img {
+  .tarjetaHomeHard-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
-  .card-img img {
+  .tarjetaHomeHard-img img {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
   }
-  .card-label {
+  .tarjetaHomeHard-label {
     position: absolute;
     top: 0.45rem;
     left: 0.45rem;
@@ -396,7 +396,7 @@ a{
     color: white;
     padding: 0.5em;
   }
-  .card-title {
+  .tarjetaHomeHard-title {
     position: absolute;
     left: 1em;
     bottom: 1em;
@@ -404,13 +404,13 @@ a{
     z-index: 5;
     font-size: 0.8em;
   }
-  .card.form {
+  .tarjetaHomeHard.form {
     position: relative;
   }
-  .card.form:before {
+  .tarjetaHomeHard.form:before {
     background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
   }
-  .card.form:after {
+  .tarjetaHomeHard.form:after {
     position: absolute;
     top: 0.5em;
     left: 0.5em;
@@ -419,7 +419,7 @@ a{
     content: "";
     background: #252833;
   }
-  .card.form .form-title {
+  .tarjetaHomeHard.form .form-title {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -431,7 +431,7 @@ a{
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
   }
-  .card.form .form-title:before {
+  .tarjetaHomeHard.form .form-title:before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -447,17 +447,17 @@ a{
     -webkit-background-clip: text;
     transform: translateX(-50%) translateY(-50%);
   }
-  .card:nth-child(2) .card-label {
+  .tarjetaHomeHard:nth-child(2) .tarjetaHomeHard-label {
     background: #ef4e7b;
   }
-  .card:nth-child(3) .card-label {
+  .tarjetaHomeHard:nth-child(3) .tarjetaHomeHard-label {
     background: var(--secondary-bg-color);
   }
-  .card:hover {
+  .tarjetaHomeHard:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
   }
-  .card:hover .form-title:before {
+  .tarjetaHomeHard:hover .form-title:before {
     filter: blur(3px);
     opacity: 0.7;
   }

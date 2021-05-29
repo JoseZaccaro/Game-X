@@ -78,45 +78,45 @@ class Home extends React.Component{
                 </div>
             </div>
             <div className='contentHomeCall'>
-                <div className="cards">
-                    <div className="card content">
-                        <div className="card-content">
-                        <div className="card-img">
+                <div className="divHardHome">
+                    <div className="tarjetaHomeHard content">
+                        <div className="tarjetaHomeHard-content">
+                        <div className="tarjetaHomeHard-img">
                             <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80" alt="Gamer"/>
                         </div>
-                        <div className="card-label">Hardware</div>
-                        <div className="card-title">
+                        <div className="tarjetaHomeHard-label">Hardware</div>
+                        <div className="tarjetaHomeHard-title">
                             descripcion de hardwares
                         </div>
                         </div>
                     </div>
-                    <div className="card content">
-                        <div className="card-content">
-                        <div className="card-img">
+                    <div className="tarjetaHomeHard content">
+                        <div className="tarjetaHomeHard-content">
+                        <div className="tarjetaHomeHard-img">
                             <img src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="keyboard"/>
                         </div>
-                        <div className="card-label">
+                        <div className="tarjetaHomeHard-label">
                             Accesorios
                         </div>
-                        <div className="card-title">
+                        <div className="tarjetaHomeHard-title">
                             The Future of Gaming
                         </div>
                         </div>
                     </div>
-                    <div className="card content">
-                        <div className="card-content">
-                        <div className="card-img">
+                    <div className="tarjetaHomeHard content">
+                        <div className="tarjetaHomeHard-content">
+                        <div className="tarjetaHomeHard-img">
                             <img src="https://images.unsplash.com/photo-1519326844852-704caea5679e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2034&q=80" alt="Controller"/>
                         </div>
-                        <div className="card-label">
+                        <div className="tarjetaHomeHard-label">
                             Consoles
                         </div>
-                        <div className="card-title">
+                        <div className="tarjetaHomeHard-title">
                             PS5 la mejor de las consolas
                         </div>
                         </div>
                     </div>
-                    <div className="card form">
+                    <div className="tarjetaHomeHard form">
                         <div className="form-title">Sign Up</div>
                     </div>
                 </div>
