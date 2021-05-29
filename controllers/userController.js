@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Chat = require('../models/Chat')
 const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
@@ -30,7 +31,7 @@ const userController = {
         password = bcryptjs.hashSync(password, 10)
         if (!existentMail && !existentUserName) {
             try {
-                createdUser = new User({userName, email, password, avatar: avatarURL ? avatarURL : '', country, imageUrl: imageUrl ? imageUrl: null, loggedWithGoogle: country === "null" })
+                createdUser = new User({userName, email, password, avatar: avatarURL ? avatarURL : '', country, imageUrl: imageUrl ? imageUrl: null, loggedWithGoogle: country === "null", friends:[] })
                 const {_id} = createdUser
                 const fileName = _id + ".jpg"
                 const path = `${__dirname, './'}/client/build/assets/${fileName}`
@@ -92,7 +93,7 @@ const userController = {
        }
        res.json({
            success: !error ? true : false,
-           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id, rol:createdUser.rol}: null,
+           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id, rol:createdUser.rol, friends:createdUser.friends,}: null,
            error: error
        })  
     },
@@ -120,12 +121,12 @@ const userController = {
         }
         res.json({
             success: !error ? true : false,
-            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol} : null,
+            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol, friends:userExist.friends,} : null,
             error: error
         })
     },
     forcedLogin: (req, res) => {
-        res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id, rol:req.user.rol}})
+        res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id, rol:req.user.rol, friends:req.user.friends}})
     },
     getUser: async(req, res)=>{
         try{
@@ -153,6 +154,44 @@ const userController = {
             res.json({success:false, error: "You must be authorized Administrator to modify this property"}) 
         }
     },
+    addFriend: async(req,res)=>{
+        try{
+            const {friendId} = req.params
+            const user = req.user
+            const newChat = new Chat({issuer:user._id,receiver:friendId,messages:[]})
+            const newUpdate = {new:true}
+            const queryChatIssuer = {$push:{friends:friendId,chats:newChat._id}}
+            const queryChatReceiver = {$push:{friends:user._id, chats:newChat._id}}
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
+            newChat.save()
+            res.json({success:true, response:newChat})
+
+        }catch(e){
+            res.json({success:false, response:e})
+        }
+    },
+    deleteFriend: async(req,res)=>{
+        try{
+            const friendId = req.params.userId
+            const user = req.user
+            const query = {$and: [
+                { $or: [ { issuer:user._id }, { issuer:friendId } ] },
+                { $or: [ { receiver: friendId }, { receiver:user._id } ] }
+            ]}
+            const chatFinded = await Chat({query})
+            const newUpdate = {new:true}
+            const queryChatIssuer = {$pull:{friends:friendId,chats:newChat._id}}
+            const queryChatReceiver = {$pull:{friends:user._id, chats:newChat._id}}
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
+            newChat.save()
+            res.json({success:true, response:newChat})
+
+        }catch(e){
+            res.json({success:false, response:e})
+        }
+    }
 }
 
 module.exports = userController

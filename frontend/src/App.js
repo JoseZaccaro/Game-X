@@ -6,7 +6,7 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
-import Prueba from './components/Prueba';
+// import Prueba from './components/Prueba';
 import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
@@ -42,15 +42,13 @@ class App extends React.Component{
       return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Prueba} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game" component={Game} />
                 <Route path="/product/:id" component={Product} />
-                {/* {this.props.userLogged && this.props.userLogged.rol === "admin" ?  */}
-                <Route path="/admin" component={AdminPanel} /> 
-                {/* : null} */}
+                {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>
