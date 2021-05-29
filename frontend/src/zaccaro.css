@@ -10,7 +10,7 @@
 .innerContainerRightSide {
     width:20rem;
     height:80vh;
-    background-color:rgba(0, 126, 145, 1);
+    background-color:var(--main-bg-color);
     border-top: 1px solid black;
     border-left: 1px solid black;
     display:flex;
@@ -27,7 +27,7 @@
     width:18rem;
     display:flex;
     flex-direction:column;
-    background-color:rgba(0, 126, 145, 1);
+    background-color:var(--main-bg-color);
     justify-content:space-between;
     position: absolute;
     bottom: 0;

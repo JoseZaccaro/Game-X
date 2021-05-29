@@ -6,7 +6,8 @@ html *{
 
 :root {
     --main-bg-color: #A3EEE9;
-    --secundary-bg-color: #0B5762;
+    --secundary-bg-color: #05131E;
+	--third-bg-color: #089f8a;
   }
 
   
@@ -55,8 +56,8 @@ div form h1 {
 .buttonForm {
 	cursor: pointer;
 	border-radius: 20px;
-	border: 1px solid #ADE7E3;
-	background-color: #ADE7E3;
+	border: 1px solid var(--main-bg-color);
+	background-color: var(--main-bg-color);
 	color: #0B252C;
 	font-size: 12px;
 	font-weight: bold;
@@ -70,8 +71,8 @@ div form h1 {
 .buttonFormSignUp{
 	cursor: pointer;
 	border-radius: 20px;
-	border: 1px solid #0B5762;
-	background-color: #0B5762;
+	border: 1px solid var(--secundary-bg-color) ;
+	background-color: var(--secundary-bg-color);
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -204,8 +205,8 @@ input[type="file" ] {
 
 .overlay {
 	background: #06171F;
-	background: -webkit-linear-gradient(to right, #0B5762, #060F1D);
-	background: linear-gradient(to right, #0B5762, #060F1D);
+	background: -webkit-linear-gradient(to right, var(--secundary-bg-color), #060F1D);
+	background: linear-gradient(to right, var(--secundary-bg-color), #060F1D);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

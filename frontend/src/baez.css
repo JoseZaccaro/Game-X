@@ -18,7 +18,7 @@
 }
 .div2 { 
     grid-area: 1 / 5 / 3 / 6;
-    background-color: lightblue;
+    background-color: var(--main-bg-color);
     background-size: contain;
 }
 .div3 { 
@@ -33,7 +33,7 @@
 }
 .div5 { 
     grid-area: 5 / 3 / 6 / 5; 
-    background-color: teal;
+    background-color: var(--secundary-bg-color);
     background-size: cover;
 }
 
@@ -287,14 +287,14 @@
     height: 10px;
    }
    ::-webkit-scrollbar-thumb {
-    background: linear-gradient(13deg, #e5e2f5 14%,#0B5762 64%);
+    background: linear-gradient(13deg, var(--main-bg-color) 14%,var(--secundary-bg-color) 64%);
     border-radius: 10px;
    }
    ::-webkit-scrollbar-thumb:hover{
-    background: linear-gradient(13deg, #ADE7E3 14%,#0b5762 64%);
+    background: linear-gradient(13deg, var(--main-bg-color) 14%,var(--secundary-bg-color) 64%);
    }
    ::-webkit-scrollbar-track{
     background: #ffffff;
     border-radius: 10px;
-    box-shadow: inset 7px 10px 12px #f0f0f0;
+    box-shadow: inset 7px 10px 12px var(--main-bg-color);
    }

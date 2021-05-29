@@ -42,7 +42,7 @@
     align-items: flex-start;
 }
 .titleContentMove{
-    color: #A3EEE9;
+    color: var(--main-bg-color);
     font-size: 6vh;
     text-align: left;
     line-height: 1;
@@ -61,7 +61,7 @@
     margin-top: 4vh;
 }
 .buttonContenMove{
-    background-color: #A3EEE9;
+    background-color: var(--main-bg-color);
     border-radius: 50px;
     width: 15vw;
     display: flex;
@@ -123,7 +123,7 @@
     text-align: left;
 }
 .titleTwoContentMove{
-    color: #A3EEE9;
+    color: var(--main-bg-color);
     font-size: 3vh;
     text-align: left;
     line-height: 1;
@@ -149,7 +149,7 @@
 }
 .btnHoverPlay:hover{
     background-color: #A3EEE9;
-    color: rgb(6, 119, 184);
+    color: var(--secundary-bg-color);
 }
 .shadowHeader{
     position: absolute;
@@ -214,9 +214,9 @@
     letter-spacing: 1px;
 }
 .linkHeaderNav:hover{   
-    color: #A3EEE9;
+    color: var(--main-bg-color);
     letter-spacing: 2px;
-    border-bottom: 1px solid #A3EEE9;
+    border-bottom: 1px solid var(--main-bg-color);
 }
 a{
     text-decoration: none;
@@ -234,7 +234,7 @@ a{
     height: 20vh;
     width: 100%;
     z-index: 40;
-    background: linear-gradient(to top, #0B1321, transparent);
+    background: linear-gradient(to top, var(--secundary-bg-color), transparent);
 }
 .imagenHomeBottom{
     width: 80%;
@@ -267,7 +267,7 @@ a{
     text-align: center;
 }
 .containFooter{
-    background-color: #0B1321;
+    background-color: var(--secundary-bg-color);
     height: 60vh;
     display: flex;
     flex-direction: column;
@@ -296,7 +296,7 @@ a{
     padding: 0 1vw;
 }
 .nameLogoFooter{
-    color: #A3EEE9;
+    color: var(--main-bg-color);
     cursor: pointer;
     font-size: 6vh;
 }
@@ -389,7 +389,7 @@ a{
     position: absolute;
     top: 0.45rem;
     left: 0.45rem;
-    background: #089f8a;
+    background: var(--secondary-bg-color);
     text-transform: uppercase;
     font-weight: 300;
     font-size: 0.7em;
@@ -451,7 +451,7 @@ a{
     background: #ef4e7b;
   }
   .card:nth-child(3) .card-label {
-    background: #1098ad;
+    background: var(--secondary-bg-color);
   }
   .card:hover {
     transform: scale(1.05);
@@ -521,7 +521,7 @@ a{
 }
 .tagTitleGame{
     margin-right: 1vw;
-    background-color: #18499e;
+    background-color: var(--secundary-bg-color);
     color: grey;
     padding: 1vh 2vw;
     cursor: pointer;
@@ -567,12 +567,12 @@ a{
   }
   
   .tag:hover {
-    background-color: #A3EEE9;
+    background-color: var(--main-bg-color);
     color: black;
   }
   
   .tag:hover::after {
-     border-left-color: #A3EEE9; 
+     border-left-color: var(--main-bg-color); 
   }
 .descriptionPrice{
     height: 40vh;
@@ -606,7 +606,7 @@ a{
     box-shadow: 5px 5px 15px 5px #000000;
 }
 .addToCartGame:hover{
-    background-color: #A3EEE9;
+    background-color: var(--main-bg-color);
     color: #0B1321;
 }
 .divDescriptionGameCard{
