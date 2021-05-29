@@ -119,7 +119,7 @@ class AddGame extends React.Component{
 
     render(){
         return(
-            <form className='formGames'>
+            <form className='animate__animated animate__fadeIn formGames'>
                 <h1 className='titleForm'>Add New Game</h1>
                 <div className='divInput'>
                     <input className='input3' type="text" placeholder="Title" name="title" value={this.state.infoGame.title} onChange={this.readInput} />

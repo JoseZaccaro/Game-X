@@ -126,7 +126,7 @@ class AddHardware extends React.Component{
 
         return(
 
-            <form className='formGames'>
+            <form className='animate__animated animate__fadeIn formGames'>
                 <h1 className='titleForm'>Add New Hardware</h1>
                 <div className='divInput'> 
                     <input className='input3' type="text" placeholder="Product Name" name="productName" value={this.state.infoHardware.productName} onChange={this.readInput} />

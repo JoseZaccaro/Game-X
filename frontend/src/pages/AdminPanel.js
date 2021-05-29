@@ -88,7 +88,7 @@ class AdminPanel extends React.Component{
                     </div>
                     <div className='adminPanelForm'>
                         {this.state.modifyUserRol &&
-                            <form className='modifyUserRol'>
+                            <form className='animate__animated animate__fadeIn modifyUserRol'>
                                 <h1 className='titleForm'>Modify user's Rol</h1>
                                 <div>
                                     <input className='input2' type="text" placeholder="Username" name="userName" value={this.state.userInfoToEdit.userName} onChange={this.readInput} />
