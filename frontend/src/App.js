@@ -15,7 +15,6 @@ import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
 import Game from './components/Game';
 import Loader from './components/Loader';
-import Product from './pages/Product';
 import AdminPanel from './pages/AdminPanel';
 
 
@@ -46,8 +45,7 @@ class App extends React.Component{
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />
-                <Route path="/game" component={Game} />
-                <Route path="/product/:id" component={Product} />
+                <Route path="/game/:id" component={Game} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
                 <Redirect to="/" />

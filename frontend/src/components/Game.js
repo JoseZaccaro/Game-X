@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import Header from './Header'
 
-const Game = () =>{
+const Game = (props) =>{
+    console.log(props.match.params.id);
+    // useEffect(()=>{
+
+    // })
     return(
         <>
             <Header />

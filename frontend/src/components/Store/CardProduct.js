@@ -3,7 +3,7 @@ const CardProduct = (props) => {
     const { image, title, idGame } = props
     return (
         <>
-        {<NavLink to={`/product/${idGame}`}>
+        {<NavLink to={`/game/${idGame}`}>
                 <figure className="card">
                     <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
                     <figcaption>{title}</figcaption>
