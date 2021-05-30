@@ -3,56 +3,91 @@ import axios from 'axios'
 const chatActions = {
     getChatOfUser: (friendId)=>{
         return async(dispatch, getState)=>{
-            const token = localStorage.getItem('token')
-            const oldChat = await axios.get('http://localhost:4000/api/chats/'+friendId,{
-                headers:{
-                    'Authorization':'Bearer '+ token
+            try{
+                const token = localStorage.getItem('token')
+                const oldChat = await axios.get('http://localhost:4000/api/chats/'+friendId,{
+                    headers:{
+                        'Authorization':'Bearer '+ token
+                    }
+                })
+                if(oldChat.data.success && oldChat.data.response){
+                    return oldChat.data.response
+                }else{
+                    const friend = await axios.put(`http://localhost:4000/api/user/addFriend/${friendId}`,null,{
+                        headers:{
+                            'Authorization': 'Bearer '+ token
+                        }
+                    })
+                    if(friend.data.success){
+                        return friend.data.response
+                    }
                 }
-            })
-            console.log(oldChat.data)
-            if(oldChat.data.success && oldChat.data.response){
-                return oldChat.data.response
-            }else{
-                const friend = await axios.put(`http://localhost:4000/api/user/addFriend/${friendId}`,null,{
-                headers:{
-                    'Authorization': 'Bearer '+ token
+            }catch(e){
+                console.log(e)
                 }
-            })
-            console.log(friend.data)
-            if(friend.data.success){
-                return friend.data.response
             }
-            }
-        }
-    },
+        },
     postChatOfuser: (userId)=>{
         return async(dispatch, getState)=>{
-            const token = localStorage.getItem('token')
-            axios.post('http://localhost:4000/api/chats/' + userId,{
-                headers:{
-                    'Authorization':'Bearer '+ token
-                }
-            })
+            try{
+
+                const token = localStorage.getItem('token')
+                axios.post('http://localhost:4000/api/chats/' + userId,{
+                    headers:{
+                        'Authorization':'Bearer '+ token
+                    }
+                })
+            }catch(e){
+
+            }
         }
     },
     getFriendList: (userId)=>{
         return async(dispatch,getState)=>{
-            const friendList = await axios.get('http://localhost:4000/api/friends/'+userId)            
-            if(friendList.data.success){
-                return friendList.data.response
-            }else{
-                console.log(friendList.data.response)
+            try{
+
+                const friendList = await axios.get('http://localhost:4000/api/friends/'+userId)            
+                if(friendList.data.success){
+                    return friendList.data.response
+                }else{
+                    console.log(friendList.data.response)
+                }
+            }catch(e){
+                console.log(e)
             }
         }
     },
     deleteFriend: (userId)=>{
         return async(dispatch,getState)=>{
+            try{
+                const token = localStorage.getItem('token')
+                const friendList = await axios.delete('http://localhost:4000/api/friends/'+userId,{
+                    headers:{
+                        'Authorization':'Bearer '+ token
+                    }
+                })            
+                if(friendList.data.success){
+                    return friendList.data.response
+                }else{
+                    console.log(friendList.data.response)
+                }
+            }catch(e){
+                console.log(e)
+            }
+        }
+    },
+    sendMessage:(message, friendId)=>{
+        return async (dispatch, getState)=>{
+            try{    
+                console.log("entro al action")
+                const token = localStorage.getItem('token')
+                    const savedMessage = await axios.put('http://localhost:4000/api/chats/'+friendId,{message},{
+                        headers:{
+                            'Authorization':'Bearer '+ token
+                        }
+                    })
+            }catch(e){
 
-            const friendList = await axios.delete('http://localhost:4000/api/friends/'+userId)            
-            if(friendList.data.success){
-                return friendList.data.response
-            }else{
-                console.log(friendList.data.response)
             }
         }
     }

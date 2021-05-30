@@ -159,11 +159,11 @@ const userController = {
             const {friendId} = req.params
             const user = req.user
             const newChat = new Chat({issuer:user._id,receiver:friendId,messages:[]})
-            const newUpdate = {new:true}
+            const options = {new:true}
             const queryChatIssuer = {$push:{friends:friendId,chats:newChat._id}}
             const queryChatReceiver = {$push:{friends:user._id, chats:newChat._id}}
-            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
-            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,options)
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, options)
             newChat.save()
             res.json({success:true, response:newChat})
 
@@ -179,16 +179,21 @@ const userController = {
                 { $or: [ { issuer:user._id }, { issuer:friendId } ] },
                 { $or: [ { receiver: friendId }, { receiver:user._id } ] }
             ]}
-            const chatFinded = await Chat({query})
-            const newUpdate = {new:true}
-            const queryChatIssuer = {$pull:{friends:friendId,chats:newChat._id}}
-            const queryChatReceiver = {$pull:{friends:user._id, chats:newChat._id}}
-            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
-            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
-            newChat.save()
-            res.json({success:true, response:newChat})
+            await Chat.findOneAndDelete(query)
+            const options = {new:true}
+            const queryChatIssuer = {$pull:{friends:friendId}}
+            const queryChatReceiver = {$pull:{friends:user._id}}
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,options)
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, options)
+            const userFriends = await User.findOne({_id:user._id}).populate('friends')
+            const filteredFriendData = userFriends.friends.map(friend =>{
+                return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
+            })
+
+            res.json({success:true, response:filteredFriendData})
 
         }catch(e){
+            console.log(e)
             res.json({success:false, response:e})
         }
     }

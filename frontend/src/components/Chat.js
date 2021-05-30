@@ -4,6 +4,8 @@ import userActions from '../redux/actions/userActions'
 import Messages from './Messages' 
 import {AiOutlineUsergroupAdd, AiOutlineUserDelete,AiOutlineUsergroupDelete} from 'react-icons/ai'
 import {BsPersonPlus} from 'react-icons/bs'
+import {BiChat} from 'react-icons/bi'
+import {GiSplitCross} from 'react-icons/gi'
 import chatActions from '../redux/actions/chatActions'
 
 
@@ -12,7 +14,7 @@ const Chat = (props) => {
     const [chats, setChats] = useState([])
     const [leftHide, setLeftHide] = useState(true)
     const [rightHide, setRightHide] = useState(true)
-    const [chatToView, setChatToView] = useState({messages:[], user:{name:"jose"}})
+    const [chatToView, setChatToView] = useState({})
     const [inputValue,setInputValue] = useState({ inputValue:""})
     const [list, setList] = useState ({ beAFriendList:[]})
     const [viewSearchBar, setViewSearchBar]  = useState(false)
@@ -22,7 +24,6 @@ const Chat = (props) => {
         const valor = e.target.value
         setInputValue({inputValue:valor})
     }
-    console.log(props.userLogged)
     useEffect(()=>{
         if(props.userLogged && props.userLogged.friends){
             const fetchFriends = async()=>{
@@ -49,44 +50,53 @@ const Chat = (props) => {
       }
 
 
-    const addFriend = (person)=>{
-        props.chat(person._id)
+    const addFriend = async(person)=>{
+        await props.chat(person._id)
     }
-    const deleteFriend = async(person) =>{
+    const deleteFriend =async (person) =>{
         const list = await props.deleteFriend(person.id)
-
+    }
+    const openFriendChat = async(friend)=>{
+        setLeftHide(false)
+        const chat = await props.chat(friend.id)
+        setChatToView({...chat,friend})
     }
 
     const searchBarStyle = ( rightHide && viewSearchBar ? {transform: "translate(20rem,0)", opacity:'0',transition: ".7s"}: rightHide && !viewSearchBar ? {transform: "translate(20rem,3rem)", opacity:'0',transition: ".7s"} : !viewSearchBar ? {transform: "translate(0,3rem)",transition: ".7s", opacity:'0'} : {transition: ".7s"} )
-
     const innerContainerRightSideStyle = ( rightHide ?
-    {transform: "translate(20rem, 0)",transition: ".7s" , opacity:'0'} 
-    : !viewSearchBar && !rightHide ? {transform: "translate(0, 0)",transition: ".7s", borderTopLeftRadius:'10px'}  : {transform: "translate(0, 0)",transition: ".7s", opacity:'1'} ) 
-
-
+        {transform: "translate(20rem, 0)",transition: ".7s" , opacity:'0'} 
+        : !viewSearchBar && !rightHide ? {transform: "translate(0, 0)",transition: ".7s", borderTopLeftRadius:'10px'}  : {transform: "translate(0, 0)",transition: ".7s", opacity:'1'} ) 
+        
+        
+        console.log(chatToView)
     return (<>
         <div className="extContainer">
+            <div className="chatIconContainer">
+                <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(-18rem,1rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
+            </div>
             <button onClick={()=> setLeftHide(!leftHide)}>Left</button>
-            <button onClick={()=> setRightHide(!rightHide)}>Right</button>
             <div style={searchBarStyle} className="searchBarFriend">
                 <input style={searchBarStyle, {transition:"all 0.7s ease 0.5s"}}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
             </div>
 
-            <Messages props={{ leftHide, setLeftHide, rightHide, chatToView, setChatToView}}/>
+            <Messages props={{ userLogged:props.userLogged, leftHide, setLeftHide, rightHide, chatToView, setChatToView}}/>
+
             { !inputValue.inputValue.length  ? 
             <div className="innerContainerRightSide" style={innerContainerRightSideStyle }>
                 <div className="containerRight">
                     <div className="titleContainer">
-                        <h1 className="chatTitle">Chats
-                        </h1>
                        { !viewSearchBar ? <AiOutlineUsergroupAdd onClick={changeViewSearchBar} className="iconoAddFriends" />
                         :<AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />}
+                        <h1 className="chatTitle">Chats
+                        </h1>
+                    <GiSplitCross onClick={()=>setRightHide(!rightHide)} className="iconoAddFriends" />
+
                     </div>
-                    {friendList.map(friend=>{
+                    {friendList.map((friend,i)=>{
                        return( 
-                       <div className="friendContainer">
-                        <div className="friendUserImage" style={{backgroundImage:`url(${friend.avatar})`}}></div>
-                        <p className="userName">{friend.userName}</p>
+                       <div key={i} className="friendContainer">
+                        <div className="friendUserImage" onClick={()=> openFriendChat(friend)} style={{backgroundImage:`url(${friend.avatar})`}}></div>
+                        <p className="userName" onClick={()=> openFriendChat(friend)} >{friend.userName}</p>
                         <div className="addFriend">
                             <AiOutlineUsergroupDelete onClick={()=>deleteFriend(friend)} className="iconoAddFriends" style={{width:'60%',height:'50%'}}/>
                         </div>
@@ -137,7 +147,7 @@ const mapDispatchToProps = {
     chat : chatActions.getChatOfUser,
     getFriendList: chatActions.getFriendList,
     deleteFriend: chatActions.deleteFriend
-  
+    
   }
   
 
