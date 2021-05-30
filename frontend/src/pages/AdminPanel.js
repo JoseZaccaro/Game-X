@@ -53,6 +53,7 @@ class AdminPanel extends React.Component{
             swal(respuesta.error,'', "error")           
         } else {
             swal("Changed correctly!", respuesta, "success")
+            this.setState({...this.state, userInfoToEdit:{userName:'', newRol:''}})
         }   
     }
 

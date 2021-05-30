@@ -34,26 +34,30 @@ class App extends React.Component{
 
 
   render(){
-    if (!this.props.userLogged && localStorage.getItem('token') ) {
+    console.log(this.props.userLogged)
+
+    if (!this.props.userLogged && localStorage.getItem('userLogged') ) {
         <Loader/>
     }
 
 
       return (
-        <BrowserRouter>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/store" component={Store} />
-                  <Route path="/payment" component={Payment} />
-                  <Route path="/serverdown" component={ServerDown} />
-                  <Route path="/game" component={Game} />
-                  <Route path="/product/:id" component={Product} />
-                  {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
-                  {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
-                  <Redirect to="/" />
-                </Switch>
-            {localStorage.getItem('token') && this.props.userLogged && <Chat/>}
-          </BrowserRouter>  
+        !this.props.userLogged && localStorage.getItem('userLogged')
+              ?<Loader/>
+              :<BrowserRouter>
+                    <Switch>
+                      <Route exact path="/" component={Home} />
+                      <Route exact path="/store" component={Store} />
+                      <Route path="/payment" component={Payment} />
+                      <Route path="/serverdown" component={ServerDown} />
+                      <Route path="/game" component={Game} />
+                      <Route path="/product/:id" component={Product} />
+                      {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
+                      {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
+                      <Redirect to="/" />
+                    </Switch>
+                {localStorage.getItem('token') && this.props.userLogged && <Chat/>}
+              </BrowserRouter>  
       );
 }}
 
