@@ -57,7 +57,7 @@ class Store extends React.Component {
                                 <div className="containerSlider" style={{ overflowX: 'auto' }}>
                                     {this.props.allGames.map((product, index) => {
                                         return (
-                                            product.year >2015 && (<SliderProductCard image={product.imageBanner} id={product._id} />)
+                                            product.year >2015 && (<SliderProductCard key={product._id} image={product.imageBanner} id={product._id} />)
                                             
                                         )
                                     })}
