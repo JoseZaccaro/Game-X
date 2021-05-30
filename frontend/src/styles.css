@@ -356,8 +356,7 @@ input[type="file" ] {
 	margin: 1.5vh 2vw;
 	border: none;
 	outline: none;
-	text-align: center;
-	
+	text-align: center;	
 }
 
 .divInput{
@@ -414,18 +413,24 @@ input[type="file" ] {
 }
 
 /* DROPDOWN PROFILE */
+
 .profileBody, .nav, .menu {
+	background-color:var(--third-bg-color) !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.navContainer{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .profileBody {
-    margin: 30px 0;
     padding: 0;
-    min-height: auto;
-    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
 	flex-direction: column;
 	justify-content: flex-start;
+	margin-bottom: 5.5rem;
+	padding-left: 5rem;
 }
 
 
@@ -452,37 +457,35 @@ input[type="file" ] {
 
 .nav input:checked ~ .menu {
 	width: auto;
-    height: auto;
+    height: 200px;
 }
 
 .menu li {
-    list-style: none;
+	list-style: none;
     margin: 10px;
 	cursor: pointer;
-}
-
-.menu li a {
     text-decoration: none;
-    color: #666;
-    text-transform: uppercase;
-    font-weight: 600;
+    color: black;
+	font-size:14px;
+    font-weight: bold;
     transition: 0.5s;
 }
 
-.menu li a:hover {
-    color: #161919;
+.menu li:hover {
+    color: var(--main-bg-color);
+	transition: 0.5s;
 }
 
 .nav input {
-    width: 85px;
-    height: 85px;
+    width: 84px;
+    height: 84px;
 	margin: 0;
 	padding: 0;
     cursor: pointer;
     opacity: 0;
 }
 
-.nav .avatarHeader {
+.avatarHeader {
     position: absolute;
 	background-position: center;
 	background-size: cover;
@@ -491,10 +494,10 @@ input[type="file" ] {
     width: 85px;
     height: 85px;
     border-radius: 50px;
-    background-color: #666;
     pointer-events: none;
     transition: 0.5s;
 }
+
 
 
 
