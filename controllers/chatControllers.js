@@ -7,8 +7,6 @@ const chatControllers = {
         try{
             const user = req.user
             const {friendId} = req.params
-            console.log(user)
-
             const query = {$and: [
                 { $or: [ { issuer:user._id }, { issuer:friendId } ] },
                 { $or: [ { receiver: friendId }, { receiver:user._id } ] }
@@ -21,7 +19,6 @@ const chatControllers = {
         }
     },
     postMessageOfUser: async(req, res)=>{
-        console.log("soy el controlador de mensaje", req.body, req.params)
         try{
             const chatId = req.params.friendId
             const {message} = req.body

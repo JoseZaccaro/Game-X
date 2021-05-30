@@ -19,6 +19,7 @@ const chatActions = {
                         }
                     })
                     if(friend.data.success){
+                        dispatch({type:"RELOAD_FRIEND_LIST", payload:friend.data.response})
                         return friend.data.response
                     }
                 }
@@ -67,6 +68,7 @@ const chatActions = {
                     }
                 })            
                 if(friendList.data.success){
+                    dispatch({type:"RELOAD_FRIEND_LIST", payload:friendList.data.response})
                     return friendList.data.response
                 }else{
                     console.log(friendList.data.response)
@@ -79,13 +81,15 @@ const chatActions = {
     sendMessage:(message, friendId)=>{
         return async (dispatch, getState)=>{
             try{    
-                console.log("entro al action")
                 const token = localStorage.getItem('token')
                     const savedMessage = await axios.put('http://localhost:4000/api/chats/'+friendId,{message},{
                         headers:{
                             'Authorization':'Bearer '+ token
                         }
                     })
+                    if(savedMessage.data.success){
+                        return savedMessage.data.response
+                    }
             }catch(e){
 
             }

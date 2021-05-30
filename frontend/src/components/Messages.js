@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {VscChromeClose} from 'react-icons/vsc'
 import {FaWindowMinimize} from 'react-icons/fa'
 import {SiRiotgames} from 'react-icons/si'
 import { connect } from 'react-redux'
 import chatActions from '../redux/actions/chatActions'
+import Tooltip from '@material-ui/core/Tooltip';
 
 const Messages = (props)=>{
 
+    const messagesContainerRef = useRef(null)
     
     let {leftHide, setLeftHide, rightHide, chatToView, setChatToView} = props.props
     
@@ -26,13 +28,32 @@ const Messages = (props)=>{
         setNewMessage(value)
     }
 
-    const sendMessage = (e)=>{
-        e.preventDefault()
-        const validado = newMessage.trim() !== "" && newMessage.trim() !== " " 
+    const scrollDown = ()=>{
+        messagesContainerRef.current?.scrollIntoView({ 
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest"
+        })
+    }
+    
+    useEffect(()=>{
+        scrollDown()
+    },[chatToView])
 
-        if(validado) {
-            props.sendMessage(newMessage,chatToView._id)
+
+    const sendMessage = async (e)=>{
+        const validado = newMessage.trim() !== "" && newMessage.trim() !== " " 
+        if(validado){
+            let oldMessagesCondition
+            if(chatToView.messages){
+                oldMessagesCondition = [...chatToView.messages,{message:newMessage,ownerUserMessage:props.userLogged.id}]
+            }else{
+                oldMessagesCondition = [{message:newMessage,ownerUserMessage:props.userLogged.id}]
+            }
+            setChatToView({...chatToView,messages:oldMessagesCondition})
             setNewMessage("")
+            const postedMessage = await props.sendMessage(newMessage,chatToView._id)
+            setChatToView({...postedMessage,friend:chatToView.friend})
         }
     }
     let leftSideHide 
@@ -79,26 +100,27 @@ const Messages = (props)=>{
                  opacity:'1'
                 }
         }
-        const friendUserName = chatToView.friend ? chatToView.friend.userName.slice(0,10) : ""
+        const friendUserName = chatToView.friend ? chatToView.friend.userName.split('@')[0] : ""
         const userAvatar = chatToView.friend ? chatToView.friend.avatar : ""
         
      
 
     return (
             <div className="containerLeftSide"  onClick={ ()=> minimized && minimize()} style={ leftSideHide }>
-                <div className="infoUserContainer" style={minimized ? {height:'100%',transition:".7s",borderBottom:'1px solid rgba(0,0,0,0)', marginTop:'10px'}: {transition:'.7s',cursor:'default'}}>
+                <div className="infoUserContainer" style={minimized ? {height:'100%',transition:".7s",borderBottom:'1px solid rgba(0,0,0,0)', marginTop:'10px'}: {transition:'.7s',cursor:'default',padding: "35px 0"}}>
                     <div className="friendUserImage" style={minimized ? {backgroundImage:`url(${userAvatar})`,width:'2rem',transition:".7s", height:'2rem'}:{transition:".7s",backgroundImage:`url(${userAvatar})`,cursor:'default'}}></div>
                     <p className="userName" style={minimized ? {transition:".7s"}: {transition:'.7s',cursor:'default'}}> {friendUserName}</p>
-                    <div className="iconoClose" style={minimized ? {marginLeft:'2.5rem'}: null} onClick={minimize}><FaWindowMinimize /></div>
+                    <Tooltip title="Send Message" placement="top-start">
+                        <div className="iconoClose" style={minimized ? {marginLeft:'2.5rem'}: null} onClick={minimize}><FaWindowMinimize /></div>
+                    </Tooltip>
                     { !minimized && <div className="iconoClose" onClick={close}><VscChromeClose className="iconoClose"/></div>}                
                     </div>
                 <div className="chatsContainer" style={minimized ? {opacity:"0", height:'0',transition:".7s"}: {transition:'.7s'}}>
                     {/* Mapeo de mensajes */}
                     { chatToView.messages ? chatToView.messages.map((message,index) => {
-                        console.log(message)
                         const receiving = message.ownerUserMessage !== props.userLogged.id 
                         return(
-                    <div key={index} className="containerMessageContainer" style={receiving ? { justifyContent:'flex-start', margin: "0px 10px 10px 0px" } : { justifyContent:'flex-end', margin: "10px 0px 0px 10px" }}>
+                    <div ref={messagesContainerRef} key={index} className="containerMessageContainer" style={receiving ? { justifyContent:'flex-start', margin: "0px 10px 5px 0px" } : { justifyContent:'flex-end', margin: "5px 0px 0px 10px" }}>
                         <div className="messageContainer" style={ receiving ? {borderTopLeftRadius:"0px"}: {borderTopRightRadius:"0px"}}>
                             <p className="messageText"> {message.message}</p>
                         </div>
@@ -108,13 +130,12 @@ const Messages = (props)=>{
                     })
                     : null
                 }
-
                 </div>
                 <div className="inputContainer" style={minimized ? {opacity:"0", height:'0',transition:".7s"}: null}>
-                    <input style={minimized ? {opacity:"0", height:'0',transition:".7s"}: null} value={newMessage} onChange={readInput} type="text" className="inputStyle" ></input>
-                    <div className="iconSendContainer" onClick={sendMessage} style={minimized ? {opacity:"0", height:'0',transition:".7s"}: {transition:".7s"}}>
-                        <SiRiotgames/>
-                    </div>
+                    <input onKeyPress={(e)=> e.key === 'Enter' && sendMessage()} style={minimized ? {opacity:"0", height:'0',transition:".7s"}: null} value={newMessage} onChange={readInput} type="text" className="inputStyle" ></input>
+                        <div className="iconSendContainer" onClick={sendMessage} style={minimized ? {opacity:"0", height:'0',transition:".7s"}: {transition:".7s"}}>
+                            <SiRiotgames/>
+                        </div>
                 </div>
             </div>
     

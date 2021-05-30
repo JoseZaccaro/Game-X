@@ -7,6 +7,8 @@ import {BsPersonPlus} from 'react-icons/bs'
 import {BiChat} from 'react-icons/bi'
 import {GiSplitCross} from 'react-icons/gi'
 import chatActions from '../redux/actions/chatActions'
+import swal from 'sweetalert'
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const Chat = (props) => {
@@ -24,6 +26,30 @@ const Chat = (props) => {
         const valor = e.target.value
         setInputValue({inputValue:valor})
     }
+
+    useEffect(()=>{
+        const windowListener = window.addEventListener('keydown',(e)=>{
+            if(e.key === "Escape" || e.key === "ArrowRight" || e.key === "ArrowLeft"){ 
+                e.preventDefault()
+            }
+            switch (e.key){
+                case "Escape":
+                        setRightHide(true)
+                    break;
+                case "ArrowRight":
+                        setRightHide(true)
+                    break;
+                case "ArrowLeft":
+                        setRightHide(false)
+                    break;
+                }
+        })
+        return ()=>{
+            window.removeEventListener('keydown',windowListener)
+        }
+
+    },[])
+
     useEffect(()=>{
         if(props.userLogged && props.userLogged.friends){
             const fetchFriends = async()=>{
@@ -37,10 +63,13 @@ const Chat = (props) => {
 
     useEffect(()=>{
         const buscarAmigos = async()=>{
-            const res = await props.searchUser(inputValue.inputValue)
+            const res = await props.searchUsers(inputValue.inputValue)
             setList({beAFriendList:res})
+            console.log(res)
         }
-        buscarAmigos()
+        if(inputValue.inputValue.trim() !== "" && inputValue.inputValue.trim() !== " "){
+            buscarAmigos()
+        } 
         // eslint-disable-next-line
     },[inputValue])    
    
@@ -51,15 +80,27 @@ const Chat = (props) => {
 
 
     const addFriend = async(person)=>{
-        await props.chat(person._id)
+        setFriendList([...friendList,person])
+        const newChatOfFriendToAdd = await props.chat(person._id)
+        setFriendList(newChatOfFriendToAdd)
+
     }
     const deleteFriend =async (person) =>{
-        const list = await props.deleteFriend(person.id)
+
+        setFriendList(friendList.filter(friend => friend.id !== person.id))
+        await props.deleteFriend(person.id)
+        console.log(chatToView)
+        if(chatToView.friend.id === person.id){
+            setLeftHide(true)
+        }
     }
     const openFriendChat = async(friend)=>{
-        setLeftHide(false)
+
         const chat = await props.chat(friend.id)
-        setChatToView({...chat,friend})
+        setChatToView({...chat,friend})      
+        if(chat){
+            setLeftHide(false)
+        }
     }
 
     const searchBarStyle = ( rightHide && viewSearchBar ? {transform: "translate(20rem,0)", opacity:'0',transition: ".7s"}: rightHide && !viewSearchBar ? {transform: "translate(20rem,3rem)", opacity:'0',transition: ".7s"} : !viewSearchBar ? {transform: "translate(0,3rem)",transition: ".7s", opacity:'0'} : {transition: ".7s"} )
@@ -67,13 +108,14 @@ const Chat = (props) => {
         {transform: "translate(20rem, 0)",transition: ".7s" , opacity:'0'} 
         : !viewSearchBar && !rightHide ? {transform: "translate(0, 0)",transition: ".7s", borderTopLeftRadius:'10px'}  : {transform: "translate(0, 0)",transition: ".7s", opacity:'1'} ) 
         
-        
-        console.log(chatToView)
+
     return (<>
         <div className="extContainer">
-            <div className="chatIconContainer">
-                <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(-18rem,1rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
-            </div>
+            <Tooltip title="Send Message" placement="top-start">
+                <div className="chatIconContainer">
+                    <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(-18rem,1rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
+                </div>
+            </Tooltip>
             <button onClick={()=> setLeftHide(!leftHide)}>Left</button>
             <div style={searchBarStyle} className="searchBarFriend">
                 <input style={searchBarStyle, {transition:"all 0.7s ease 0.5s"}}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
@@ -92,42 +134,46 @@ const Chat = (props) => {
                     <GiSplitCross onClick={()=>setRightHide(!rightHide)} className="iconoAddFriends" />
 
                     </div>
-                    {friendList.map((friend,i)=>{
-                       return( 
-                       <div key={i} className="friendContainer">
-                        <div className="friendUserImage" onClick={()=> openFriendChat(friend)} style={{backgroundImage:`url(${friend.avatar})`}}></div>
-                        <p className="userName" onClick={()=> openFriendChat(friend)} >{friend.userName}</p>
-                        <div className="addFriend">
-                            <AiOutlineUsergroupDelete onClick={()=>deleteFriend(friend)} className="iconoAddFriends" style={{width:'60%',height:'50%'}}/>
-                        </div>
-                    </div>)
-                    })}
+                    <div className="friendCardsContainer">
+
+                        {friendList.map((friend,i)=>{
+                        return( 
+                        <div key={i} className="friendContainer">
+                            <div className="friendUserImage" onClick={()=> openFriendChat(friend)} style={{backgroundImage:`url(${friend.avatar})`}}></div>
+                            <p className="userName" onClick={()=> openFriendChat(friend)} >{friend.userName.split('@')[0]}</p>
+                            <div className="addFriend">
+                                <AiOutlineUsergroupDelete onClick={()=>deleteFriend(friend)} className="iconoAddFriends" style={{width:'60%',height:'40%',border:'none'}}/>
+                            </div>
+                        </div>)
+                        })}
+                    </div>
+
                 </div>
             </div>
             : <div className="innerContainerRightSide">
                 <div className="containerRight">
                     <div className="titleContainer">
+                    <AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />
                         <h1 className="chatTitle">
                             People
                             </h1>
-                            <AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />
                     </div>
-
-                    {list.beAFriendList.map((person,i) => {
-                        const isFriend = props.userLogged.friends.find(friendId => person._id === friendId)
-                        if(person.userName !== props.userLogged.userName && !isFriend){
-                            return (
-                                <div key={i} className="friendContainer">
-                            <div className="friendUserImage" style={{backgroundImage:`url(${person.avatar})`}}></div>
-                            <p className="userName">{person.userName}</p>
-                            <div className="addFriend">
-                            <BsPersonPlus onClick={()=>addFriend(person)} className="iconoAddFriends" style={{width:'80%'}}/>
-                            </div>
-                        </div>)
-                        }else{
-                            return null
-                        }
-                    })}
+                    <div className="friendCardsContainer">
+                        {list.beAFriendList.map((person,i) => {
+                            if(person.userName !== props.userLogged.userName && !props.userLogged.friends.find(friend => person._id === friend.id)){
+                                return (
+                                    <div key={i} className="friendContainer">
+                                <div className="friendUserImage" style={{backgroundImage:`url(${person.avatar})`}}></div>
+                                <p className="userName">{person.userName.split('@')[0]}</p>
+                                <div className="addFriend">
+                                <BsPersonPlus onClick={()=>addFriend(person)} className="iconoAddFriends" style={{width:'80%', border:'none'}}/>
+                                </div>
+                            </div>)
+                            }else{
+                                return null
+                            }
+                        })}
+                    </div>
                 </div>
             </div>
             }
@@ -143,7 +189,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = {
 
-    searchUser : userActions.searchUser,
+    searchUsers : userActions.searchUsers,
     chat : chatActions.getChatOfUser,
     getFriendList: chatActions.getFriendList,
     deleteFriend: chatActions.deleteFriend
