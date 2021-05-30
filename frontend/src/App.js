@@ -16,7 +16,7 @@ import { connect } from 'react-redux';
 import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
-
+import Chat from './components/Chat'
 
 class App extends React.Component{
 
@@ -33,7 +33,9 @@ class App extends React.Component{
 
 
   render(){
-    if (!this.props.userLogged && localStorage.getItem('token') ) {
+    console.log(this.props.userLogged)
+
+    if (!this.props.userLogged && localStorage.getItem('userLogged') ) {
         <Loader/>
     }
 

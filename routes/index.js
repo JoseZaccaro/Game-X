@@ -11,14 +11,14 @@ const chatControllers = require('../controllers/chatControllers')
 
 
 const { getChatOfUser, postMessageOfUser, deleteChat, getFriendList } = chatControllers
-const { newUser, logIn, forcedLogin, getUser, changeRol, addFriend, deleteFriend } = userController
+const { newUser, logIn, forcedLogin, getUsers, changeRol, addFriend, deleteFriend } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
 
 // ------------ROUTES USER---------
 router.route('/user')
-.put(getUser)
+.put(getUsers)
 
 router.route('/user/addFriend/:friendId')
 .put(passport.authenticate('jwt', {session: false}),addFriend)

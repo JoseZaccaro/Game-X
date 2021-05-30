@@ -6,6 +6,7 @@ import SliderProductCard from "../components/Store/SliderProductCard";
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
 import HeroStore from "../components/Store/HeroStore";
+import Loader from '../components/Loader';
 
 
 class Store extends React.Component {
@@ -33,9 +34,7 @@ class Store extends React.Component {
             <>
                 {this.props.preLoaderGames
                     ? (
-                        <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent:'center', alignItems:'center' }}>
-                            <h1>cargando.....</h1>
-                        </div>
+                        <Loader/>
                     )
                     : (
                         <>

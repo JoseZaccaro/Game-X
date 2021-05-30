@@ -4,27 +4,36 @@ const User = require('../models/User')
 const chatControllers = {
 
     getChatOfUser: async(req, res)=>{
-        console.log("soy el buscador de chat")
         try{
             const user = req.user
             const {friendId} = req.params
-            console.log(user)
-            // const userToPopulateChat = await User.findOne({_id:user._id}).populate('')
-
             const query = {$and: [
                 { $or: [ { issuer:user._id }, { issuer:friendId } ] },
                 { $or: [ { receiver: friendId }, { receiver:user._id } ] }
             ]}
 
             const chat = await Chat.findOne(query)
-            console.log("soyElChat",chat)
             res.json({success:true, response:chat}) 
         }catch(e){
             res.json({success:false})
         }
     },
     postMessageOfUser: async(req, res)=>{
-        console.log("soy el controlador de mensaje")
+        try{
+            const chatId = req.params.friendId
+            const {message} = req.body
+            const user = req.user
+            const query = {_id:chatId}
+            const messageAndEmitter = {message, ownerUserMessage:user._id}
+            const update = {$push:{messages:messageAndEmitter}}
+            const options = {new:true}
+            const newMessage = await Chat.findOneAndUpdate(query,update,options)
+
+            res.json({success:true, response:newMessage})
+
+        }catch(e){
+            res.json({success:false, response:e})
+        }
     },
     deleteUserChats: async(req, res) =>{
         try{

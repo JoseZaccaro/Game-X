@@ -84,7 +84,7 @@ const userActions = {
             dispatch({type: 'LOG_OUT'})
         }
     },
-    searchUser: (userName)=>{
+    searchUsers: (userName)=>{
         return async(dispatch, getState) => {
             try{
                 const users = await axios.put('http://localhost:4000/api/user',{userName})
