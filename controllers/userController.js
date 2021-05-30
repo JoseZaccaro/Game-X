@@ -101,13 +101,18 @@ const userController = {
         const {userName, password, country} = req.body
         var respuesta;
         var error;
-        const userExist = await User.findOne({userName: userName})
+        let filteredFriendData
+        const userExist = await User.findOne({userName: userName}).populate('friends')
         if (userExist) {
             if (!userExist.loggedWithGoogle && !country || userExist.loggedWithGoogle && country === "null") {
                 const passwordMatch = bcryptjs.compareSync(password, userExist.password)
                 if (passwordMatch) {
                     const token = jwt.sign({...userExist}, process.env.SECRET_OR_KEY)
                     respuesta = token
+                    const populatedFriends = userExist.friends
+                    filteredFriendData = populatedFriends.map(friend =>{
+                        return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
+                    })
                 } else {
                     error = "Invalid User or Password"
                 } 
@@ -121,14 +126,20 @@ const userController = {
         }
         res.json({
             success: !error ? true : false,
-            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol, friends:userExist.friends,} : null,
+            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol, friends:filteredFriendData,} : null,
             error: error
         })
     },
-    forcedLogin: (req, res) => {
-        res.json({success: true, respuesta: {avatar: req.user.avatar, imageUrl:req.user.imageUrl, userName: req.user.userName , id:req.user._id, rol:req.user.rol, friends:req.user.friends}})
+    forcedLogin: async(req, res) => {
+        const {_id} = req.user
+        const user = await User.findOne({_id}).populate('friends')
+        const populatedFriends = user.friends
+        const filteredFriendData = populatedFriends.map(friend =>{
+            return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
+        })
+        res.json({success: true, respuesta: {avatar: user.avatar, imageUrl:user.imageUrl, userName: user.userName , id:user._id, rol:user.rol, friends:filteredFriendData}})
     },
-    getUser: async(req, res)=>{
+    getUsers: async(req, res)=>{
         try{
             let users
             const {userName} = req.body
@@ -137,7 +148,6 @@ const userController = {
             : users = ["There are no results for this search"]
             res.json({success:true, response:users})
         }catch(e){
-            console.log(e)
             res.json({success:false})
         }
     },
@@ -159,13 +169,18 @@ const userController = {
             const {friendId} = req.params
             const user = req.user
             const newChat = new Chat({issuer:user._id,receiver:friendId,messages:[]})
-            const newUpdate = {new:true}
+            const options = {new:true}
             const queryChatIssuer = {$push:{friends:friendId,chats:newChat._id}}
             const queryChatReceiver = {$push:{friends:user._id, chats:newChat._id}}
-            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
-            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,options).populate('friends')
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, options)
             newChat.save()
-            res.json({success:true, response:newChat})
+            const populatedFriends = issuer.friends
+            const filteredFriendData = populatedFriends.map(friend =>{
+                return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
+            })
+            res.json({success:true,response:filteredFriendData})
+            // res.json({success:true, response:newChat})
 
         }catch(e){
             res.json({success:false, response:e})
@@ -179,16 +194,21 @@ const userController = {
                 { $or: [ { issuer:user._id }, { issuer:friendId } ] },
                 { $or: [ { receiver: friendId }, { receiver:user._id } ] }
             ]}
-            const chatFinded = await Chat({query})
-            const newUpdate = {new:true}
-            const queryChatIssuer = {$pull:{friends:friendId,chats:newChat._id}}
-            const queryChatReceiver = {$pull:{friends:user._id, chats:newChat._id}}
-            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,newUpdate)
-            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, newUpdate)
-            newChat.save()
-            res.json({success:true, response:newChat})
+            await Chat.findOneAndDelete(query)
+            const options = {new:true}
+            const queryChatIssuer = {$pull:{friends:friendId}}
+            const queryChatReceiver = {$pull:{friends:user._id}}
+            const issuer = await User.findOneAndUpdate({_id:user._id},queryChatIssuer,options)
+            const receiver = await User.findOneAndUpdate({_id:friendId},queryChatReceiver, options)
+            const userFriends = await User.findOne({_id:user._id}).populate('friends')
+            const filteredFriendData = userFriends.friends.map(friend =>{
+                return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
+            })
+
+            res.json({success:true, response:filteredFriendData})
 
         }catch(e){
+            console.log(e)
             res.json({success:false, response:e})
         }
     }

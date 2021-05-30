@@ -17,7 +17,7 @@ import Game from './components/Game';
 import Loader from './components/Loader';
 import Product from './pages/Product';
 import AdminPanel from './pages/AdminPanel';
-
+import Chat from './components/Chat'
 
 class App extends React.Component{
 
@@ -41,17 +41,18 @@ class App extends React.Component{
 
       return (
         <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/store" component={Store} />
-                <Route path="/payment" component={Payment} />
-                <Route path="/serverdown" component={ServerDown} />
-                <Route path="/game" component={Game} />
-                <Route path="/product/:id" component={Product} />
-                {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
-                {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
-                <Redirect to="/" />
-            </Switch>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/store" component={Store} />
+                  <Route path="/payment" component={Payment} />
+                  <Route path="/serverdown" component={ServerDown} />
+                  <Route path="/game" component={Game} />
+                  <Route path="/product/:id" component={Product} />
+                  {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
+                  {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
+                  <Redirect to="/" />
+                </Switch>
+            {localStorage.getItem('token') && this.props.userLogged && <Chat/>}
           </BrowserRouter>  
       );
 }}
