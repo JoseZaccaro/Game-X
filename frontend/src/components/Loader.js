@@ -22,6 +22,7 @@ class UncontrolledLottie extends Component {
               height={700}
               width={700}
         />
+        <h1 style={{color:'white'}}>Loading...</h1>
       </div>
     )
   }
