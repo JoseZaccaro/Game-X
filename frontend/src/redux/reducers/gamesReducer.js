@@ -1,15 +1,15 @@
 const initialState = {
-    hardwareProducts: [],
-    preLoader: true
+    allGames: [],
+    preLoader: true 
 }
 
-const hardwareProductsReducer = (state = initialState, action) =>{
+const gamesReducer = (state = initialState, action) =>{
     switch(action.type) {
-        case 'LOAD_HARDWARES':
+        case 'LOAD_GAMES':
             console.log(action.payload)
             return {
                 ...state, 
-                hardwareProducts: action.payload,
+                allGames: action.payload,
                 preLoader: false
             }
         default:
@@ -17,4 +17,4 @@ const hardwareProductsReducer = (state = initialState, action) =>{
     }
 }
 
-export default hardwareProductsReducer
+export default gamesReducer

@@ -38,37 +38,27 @@
 }
 
   /* nuevo grid--------- */
-  /* img {
-	max-width: 100%;
-	height: auto;
-	vertical-align: middle;
-	display: inline-block;
-}
-
-.gridCard{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.card{
-    width: 15rem;
-    height: 18rem;
-    transition: all .5s;
-    margin: 1rem;
-
-}
-.card:hover{
-    transform: translateY(-15px);
-    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-}
-.productImageCard{
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0px 0px;
     width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-} */
-/* cards products */
+    height: 100vh;
+    grid-template-areas:
+      "main main main main main blockOne blockOne"
+      "main main main main main blockOne blockOne"
+      "main main main main main blockTwo blockTwo"
+      "main main main main main blockTwo blockTwo";
+  }
+  .main { grid-area: main; }
+  .blockOne { grid-area: blockOne; }
+  .blockTwo { grid-area: blockTwo; }
+
+
+
+
+/* cards products ----------------------------*/
 .abs,
 .cards .card figcaption,
 .cards .card:after,
@@ -129,7 +119,7 @@
 .cards .card,
 .news .card {
   margin: 10px;
-  width: 14rem;
+  width: 15rem;
   height: 270px;
   overflow: hidden;
   box-shadow: 0 5px 10px rgba(0,0,0,0.8);
@@ -142,7 +132,7 @@
 }
 .cards .card div,
 .news .card div {
-  width: 14rem;
+  width: 15rem;
   min-height: 100%;
 }
 .cards .cardImageProduct{
@@ -282,6 +272,7 @@
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
+/*----------- scroll------------------ */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;

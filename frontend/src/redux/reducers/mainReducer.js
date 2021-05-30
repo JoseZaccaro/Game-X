@@ -1,12 +1,15 @@
 import {combineReducers} from "redux";
 import usersReducer from './userReducer'
-import hardwareProductsReducer from './hardwareProductsReducer'
+import hardwareReducer from './hardwareReducer'
+import gamesReducer from './gamesReducer'
 
 
 
 const mainReducer = combineReducers({
     userReducer: usersReducer,
-    hardwareProductsReducer: hardwareProductsReducer
+    hardwareReducer: hardwareReducer,
+    gamesReducer: gamesReducer
+
 })
 
 export default mainReducer

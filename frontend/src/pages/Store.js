@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import Header from "../components/Header";
 import CardProduct from "../components/Store/CardProduct";
 import SliderProductCard from "../components/Store/SliderProductCard";
-import hardwareProductsActions from '../redux/actions/hardwareProductsActions';
+import hardwareActions from '../redux/actions/hardwareActions';
+import gamesActions from '../redux/actions/gamesActions';
 
 
 class Store extends React.Component {
@@ -94,55 +95,62 @@ class Store extends React.Component {
 
     componentDidMount() {
         this.toTop()
-        this.props.loadHardwareProducts()
+        this.props.loadHardwares()
+        this.props.loadGames()
     }
-
     render() {
 
         return (
             <>
-             <Header/>
-            <div className="containerStore">
-                <div className="parent">
-                    <div className="div1" style={{ backgroundImage: `url("${this.state.products[0].src}")` }}> </div>
-                    <div className="div2" style={{ backgroundImage: `url("${this.state.products[2].src}")` }}> </div>
-                    <div className="div3" style={{ backgroundImage: `url("${this.state.products[3].src}")` }}> </div>
-                    <div className="div4" style={{ backgroundImage: `url("${this.state.products[4].src}")` }}> </div>
-                    <div className="div5" style={{ backgroundImage: `url("${this.state.products[5].src}")` }}> </div>
+                <Header />
+                <div class="grid-container">
+                    <div class="main" style={{ backgroundImage: `url("${this.state.products[0].src}")` }}></div>
+                    <div class="blockOne" style={{ backgroundImage: `url("${this.state.products[2].src}")` }}></div>
+                    <div class="blockTwo" style={{ backgroundImage: `url("${this.state.products[3].src}")` }}></div>
                 </div>
-
-                <div >
-                    <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Days of play</h2>
-                    <div className="cards containerCards">
-                        {this.state.products.map((product, index) => {
-                            return (
-                                <CardProduct image={product.src} title={product.header} id={product.id} />
-                            )
-                        })}
+                <div className="containerStore">
+                    <div className="parent">
+                        <div className="div1" style={{ backgroundImage: `url("${this.state.products[0].src}")` }}> </div>
+                        <div className="div2" style={{ backgroundImage: `url("${this.state.products[2].src}")` }}> </div>
+                        <div className="div3" style={{ backgroundImage: `url("${this.state.products[3].src}")` }}> </div>
+                        <div className="div4" style={{ backgroundImage: `url("${this.state.products[4].src}")` }}> </div>
+                        <div className="div5" style={{ backgroundImage: `url("${this.state.products[5].src}")` }}> </div>
+                    </div>
+                    <div >
+                        <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Days of play</h2>
+                        <div className="cards containerCards">
+                            {this.props.allGames.map((game, index) => {
+                                return (
+                                    <CardProduct image={game.imageBanner} />
+                                )
+                            })}
+                        </div>
+                    </div>
+                    <div style={{ marginTop: '2rem' }}>
+                        <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
+                        <div className="containerSlider" style={{ overflowX: 'auto' }}>
+                            {this.state.products.map((product, index) => {
+                                return (
+                                    <SliderProductCard image={product.src} id={product.id} />
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
-                <div style={{ marginTop: '2rem' }}>
-                    <h3 style={{ fontSize: '2rem',  color: 'white' }}>New games</h3>
-                    <div className="containerSlider" style={{ overflowX: 'auto' }}>
-                        {this.state.products.map((product, index) => {
-                            return (
-                                <SliderProductCard image={product.src} id={product.id} />
-                            )
-                        })}
-                    </div>
-                </div>
-            </div>
             </>
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        hardwareProducts: state.hardwareProductsReducer.hardwareProducts,
-        preLoader: state.hardwareProductsReducer.preLoader,
+        allHardwares: state.hardwareReducer.allHardwares,
+        preLoader: state.hardwareReducer.preLoader,
+        allGames: state.gamesReducer.allGames,
+        preLoader: state.gamesReducer.preLoader
     }
 }
 const mapDispatchToProps = {
-    loadHardwareProducts: hardwareProductsActions.loadHardwareProducts
+    loadHardwares: hardwareActions.loadHardwares,
+    loadGames: gamesActions.loadGames
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Store)
