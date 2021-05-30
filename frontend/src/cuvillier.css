@@ -628,8 +628,79 @@ a{
 .pDescriptionContent{
     color: #8B95A6;
 }
-.otroDivCard{
-    height: 40vh;
+.divInfoSecondCardGame{
+    min-height: 40vh;
     margin-top: 2vh;
     border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 5vh;
 }
+.cadaDivInfoSec{
+    border: 1px solid black;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    margin-bottom: 5vh;
+    width: 40%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+.pTituloInfoSec{
+    color: #d6dbeb;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+}
+.tagPlataform {
+    background: rgb(122, 122, 122);
+    border-radius: 3px 0 0 3px;
+    color: rgb(204, 197, 197);
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 20px 0 23px;
+    position: relative;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    -webkit-transition: color 0.2s;
+    cursor: pointer;
+  }
+  
+  .tagPlataform::before {
+    background: #0B1321;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+  }
+  
+  .tagPlataform::after {
+    background: #0B1321;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid rgb(122, 122, 122);
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .tagPlataform:hover {
+    background-color: var(--main-bg-color);
+    color: black;
+  }
+  
+  .tagPlataform:hover::after {
+     border-left-color: var(--main-bg-color); 
+  }
+
+
