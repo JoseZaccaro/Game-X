@@ -17,46 +17,56 @@ class Store extends React.Component {
             behavior: "smooth"
         })
     }
-    state={
-        games:[],
-        hardware:[],
+    state = {
+        games: [],
+        hardware: [],
     }
     componentDidMount() {
         this.toTop()
         this.props.loadHardwares()
-        
         this.props.loadGames()
+       
     }
-    heroGames =this.props.allGames.splice(0,(6))
     render() {
 
         return (
             <>
-                <Header />
-                <div className="containerStore">
-                    <HeroStore heroGames={this.heroGames} />
-                    <div >
-                        {console.log(this.heroGames)}
-                        <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Days of play</h2>
-                        <div className="cards containerCards">
-                            {this.props.allGames.map((game, index) => {
-                                return (
-                                    <CardProduct key={game._id} idGame={game._id} image={game.imageBanner} />
-                                )
-                            })}
+                {this.props.preLoaderGames
+                    ? (
+                        <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent:'center', alignItems:'center' }}>
+                            <h1>cargando.....</h1>
                         </div>
-                    </div>
-                    {/* <div style={{ marginTop: '2rem' }}>
-                        <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
-                        <div className="containerSlider" style={{ overflowX: 'auto' }}>
-                            {this.state.products.map((product, index) => {
-                                return (
-                                    <SliderProductCard image={product.src} id={product.id} />
-                                )
-                            })}
+                    )
+                    : (
+                        <>
+                        <Header />
+                        <div className="containerStore">
+                            <HeroStore heroGames={!this.props.preLoaderGames ?this.props.allGames.sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 6): this.props.allGames} />
+                            <div >
+                                <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Days of play</h2>
+                                <div className="cards containerCards">
+                                    {this.props.allGames.map((game, index) => {
+                                        return (
+                                            <CardProduct key={game._id} idGame={game._id} image={game.imageBanner} />
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                            <div style={{ marginTop: '2rem' }}>
+                                <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
+                                <div className="containerSlider" style={{ overflowX: 'auto' }}>
+                                    {this.props.allGames.map((product, index) => {
+                                        return (
+                                            product.year >2015 && (<SliderProductCard image={product.imageBanner} id={product._id} />)
+                                            
+                                        )
+                                    })}
+                                </div>
+                            </div>
                         </div>
-                    </div> */}
-                </div>
+                    </>
+                    )
+                }
             </>
         )
     }
