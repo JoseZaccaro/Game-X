@@ -25,9 +25,9 @@ class Store extends React.Component {
     componentDidMount() {
         this.toTop()
         this.props.loadHardwares()
-        this.props.loadGames()
-       
+        this.props.loadGames()       
     }
+    
     render() {
 
         return (
