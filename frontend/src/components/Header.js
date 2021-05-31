@@ -78,6 +78,19 @@ const Header = (props) =>{
                         {!props.userLogged && <NavLink to='/access'><p>Access</p></NavLink>}
                     </div>
             </div>
+            <div className='profileBody'>
+                    <div className="nav">
+                        <input type="checkbox"/>
+                        <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
+                        {props.userLogged &&
+                        <div className="menu">
+                            <li >Favorites</li>
+                            <li >My Buys</li>
+                            <li >Chat</li>
+                            <li onClick={(e)=>logOut(e.target)}>LogOut</li>
+                        </div>}
+                    </div>
+                </div>
         </div>       
     )
 }
