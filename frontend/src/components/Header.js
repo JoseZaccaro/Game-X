@@ -33,15 +33,9 @@ const Header = (props) =>{
     } else {
         image = "assets/generic-user-icon.jpg"
     }
+    /*
     
-    
-    return(
-        <div className='containHeader'>
-            <div className='logoHeader'>
-                <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
-                <h1 className='nameLogoHeader'>Game-X</h1>
-            </div>
-            <div className='navContainer'>
+     <div className='navContainer'>
                 <div className='navHeader'>
                     <NavLink to='/'><p className='linkHeaderNav'>Home</p></NavLink>
                     <NavLink to='/store'><p className='linkHeaderNav'>Store</p></NavLink>
@@ -61,6 +55,28 @@ const Header = (props) =>{
                         </div>}
                     </div>
                 </div>
+            </div>
+    
+    
+    
+    */
+    
+    return(
+        <div className='containHeader'>
+            <div className='logoHeader'>
+                <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
+                <h1 className='nameLogoHeader'>Game-X</h1>
+            </div>
+                <div class="navHeaderDespl">
+                    <input type="checkbox"/>
+                    <span></span>
+                    <span></span>
+                    <div class="menuHeaderDespl">
+                        <NavLink to='/'><p>Home</p></NavLink>
+                        <NavLink to='/store'><p>Store</p></NavLink>
+                        {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><p >Adm Panel</p></NavLink>}
+                        {!props.userLogged && <NavLink to='/access'><p>Access</p></NavLink>}
+                    </div>
             </div>
         </div>       
     )
