@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom'
 const HeroStore = (props) => {
-    console.log(props.heroGames);
     const { heroGames } = props
     return (
         <>
