@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
 
 function openTab(url) {
     window.open(url)
 }
-const Footer = () =>{ 
+const Footer = (props) =>{ 
     return(
         <div className='containFooter'>
             <hr className='hrFooter'></hr>
@@ -24,10 +25,9 @@ const Footer = () =>{
                 </div>
                 <div className='divContainNavFooter'>
                     <h3 className='titleSeccionFooter'>Quick Menu</h3>
-                    <Link to="/games" className='pContainNavFooter'>Games</Link>
-                    <Link to="/company" className='pContainNavFooter'>Company</Link>
-                    <Link to="/categories" className='pContainNavFooter'>Categories</Link>
-                    <Link to="/contact" className='pContainNavFooter'>Contact</Link>
+                    <Link to="/" className='pContainNavFooter'>Home</Link>
+                    <Link to="/store" className='pContainNavFooter'>Game Store</Link>
+                    {props.userLogged && props.userLogged.rol === "admin" && <Link to="/admin" className='pContainNavFooter'>Adm Panel</Link>}
                 </div>
                 <div className='divContainNavFooter'>
                     <h3 className='titleSeccionFooter'>Socials</h3>
@@ -41,4 +41,10 @@ const Footer = () =>{
     )
 }
 
-export default Footer
+const mapStateToProps = state =>{
+    return {
+        userLogged: state.userReducer.userLogged
+    }
+}
+
+export default connect(mapStateToProps , null) (Footer)
