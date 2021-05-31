@@ -63,7 +63,8 @@
 .buttonContenMove{
     background-color: var(--main-bg-color);
     border-radius: 50px;
-    width: 15vw;
+    width: auto;
+    padding: 1vh 1vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +84,7 @@
 }
 .contentVideoMove{
     background-color: rgba(51, 66, 94, 0.2);
-    height: 60vh;
+    height: 65vh;
     width: 25vw;
     margin-top: 3vh;
     border: 1px solid rgba(128, 128, 128, 0.438);
