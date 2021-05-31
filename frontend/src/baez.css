@@ -1,11 +1,10 @@
 .containerStore{
     background-color: #0B252C;
-
 }
 .parent {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     width: 100%;
@@ -13,44 +12,43 @@
 }
     
 .div1 {
-     grid-area: 1 / 1 / 5 / 4; 
+    grid-area: 1 / 1 / 5 / 4;
      background-size: cover;
-     background-position: center;
+     background-position: top center;
      overflow: hidden;
 }
 .div2 {
-     grid-area: 1 / 4 / 4 / 6;
+    grid-area: 1 / 4 / 4 / 6;
      background-size: cover;
-     background-position: center;
+     background-position: top center;
      overflow: hidden;
 }
 .div3 {
-     grid-area: 4 / 4 / 7 / 6;
+    grid-area: 4 / 4 / 7 / 6;
      background-size: cover;
-     background-position: center;
+     background-position: top center;
      overflow: hidden;
 }
 .div4 {
-     grid-area: 5 / 1 / 7 / 2;
+    grid-area: 5 / 3 / 7 / 4;
      background-size: cover;
-     background-position: center;
+     background-position: top center;
      overflow: hidden;
 }
 .div5 {
-     grid-area: 5 / 2 / 7 / 3;
+    grid-area: 5 / 2 / 7 / 3;
      background-size: cover;
-     background-position: center;
+     background-position: top center;
      overflow: hidden;
 }
 .div6 {
-     grid-area: 5 / 3 / 7 / 4;
+    grid-area: 5 / 1 / 7 / 2;
      background-size: cover;
-     background-position: top left;
+     background-position: top center;
      overflow: hidden;
 }
 
 .div1:hover,.div2:hover,.div3:hover,.div4:hover,.div5:hover,.div6:hover{
-    border: 1px solid white;
     cursor: pointer;
 }
 .imageHeroStore{
@@ -165,7 +163,7 @@
 }
 .cards .cardImageProduct{
     background-size: cover;
-    background-position: center;
+    background-position: top center;
 }
 .cards .card figcaption,
 .news .card figcaption {
@@ -296,7 +294,7 @@
     width: 10rem;
     height: 10rem;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
