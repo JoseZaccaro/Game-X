@@ -176,10 +176,8 @@
     align-items: center;
 }
 .gifLogo{
-    height: 17vh;
-    min-height: 150px;
-    width: 8vw;
-    min-width: 150px;
+    min-height: 120px;
+    min-width: 120px;
     background-position: center;
     background-size: cover;
     cursor: pointer;
@@ -707,87 +705,188 @@ a{
 .containHeader{
     display: flex;
     align-items: center;
+    z-index: 10000;
 }
-  .navHeaderDespl {
-    position: relative;
-    background-color: #0A7C6C;
-    padding: 20px;
-    transition: 0.5s;
-    border-radius: 50px;
-    overflow: hidden;
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+  
+.modalCartContain{
+    position: absolute;
+    background-color: #0b1321cc;
+    height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding-right: 30px;
+    align-items: center;
+    z-index: 40;
 }
-
-.menuHeaderDespl {
-    margin: 0;
-    padding: 0;
-    width: 0;
-    overflow: hidden;
-    transition: 0.5s;
+.modalCart{
+    width: 80%;
+    height: 80%;
+    background-color: #13233d;
+    display: flex;
+    border-radius: 30px;
+}
+.divDisplayProducts{
+    height: 100%;
+    width: 83%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logoCart{
+    height: 100%;
+    width: 17%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonsCart{
+    height: 20%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
-
-.navHeaderDespl input:checked ~ .menuHeaderDespl {
-    width: 450px;
+.divProducts{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh 1vw;
+    overflow-y:scroll;
 }
-
-.menuHeaderDespl p {
-    list-style: none;
-    margin: 0 10px;
+.cadaDivProduct{
+    min-height: 20vh;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.39); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.39);
+    border-radius: 30px;
+    margin-bottom: 3vh;
+    background-color: #eee;
 }
-
-.menuHeaderDespl p {
-    text-decoration: none;
-    color: #0B1321;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.5s;
+.divImgPortadaProductCart{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgPortadaProductCart{
+    height: 95%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    margin-right: 1vw;
+}
+.divInfoProductCart{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.divPriceAmountCart{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.closeModalCart{
+    font-weight: bold;
+    position: relative;
+    top: 2vh;
+    right: 2vw;
+    cursor: pointer;
+    font-size: 4vh;
+    color: red;
+}
+.divInfoProductCart p{
+    font-size: 3.5vh;
+    font-weight: bold;
+}
+.priceCart{
+    display: flex;
+    height: 100%;
+    width: 30%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1vw;
+}
+.amountCart{
+    display: flex;
+    height: 100%;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1vw;
+}
+.divTotalCartProduct{
+    display: flex;
+    height: 100%;
+    width: 30%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 1vw;
+}
+.gifLogoCart{
+    height: 40%;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+.buttonSumCart{
+    border: 1px solid black;
+    padding: 0 1vh;
+    border-radius: 5px;
+    background-color: #1DD05D;
+    border: 1px solid #1DD05D;
     cursor: pointer;
 }
-
-.menuHeaderDespl p:hover {
-    color: #A3EEE9;
-}
-
-.navHeaderDespl input {
-    width: 40px;
-    height: 40px;
+.buttonRestCart{
+    border: 1px solid black;
+    padding: 0 1vh;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid red;
     cursor: pointer;
-    opacity: 0;
 }
-
-.navHeaderDespl span {
-    position: absolute;
-    left: 30px;
-    width: 30px;
-    height: 4px;
-    border-radius: 50px;
-    background-color: #0B1321;
-    pointer-events: none;
-    transition: 0.5s;
+.deleteProductCard{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.navHeaderDespl input:checked ~ span {
-    background-color: #f974a1;
+.deleteProductCard p{
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 0 1vh;
+    background-color: #5073b8;
 }
-
-.navHeaderDespl span:nth-child(2) {
-    transform: translateY(-8px);
+.buttonCloseModalCancel{
+    color: white;
+    background-color: #1098ad;
+    padding: 1vh 3vh;
+    border-radius: 10px;
+    font-size: 3vh;
+    -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.39); 
+    box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.39);
+    cursor: pointer;
 }
-
-.navHeaderDespl input:checked ~ span:nth-child(2) {
-    transform: translateY(0) rotate(-45deg);
+.buttonCloseModalBuy{
+    color: white;
+    background-color: #1DD05D;
+    padding: 1vh 3vh;
+    border-radius: 10px;
+    font-size: 3vh;
+    -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.39); 
+    box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.39);
+    cursor: pointer;
 }
-.navHeaderDespl span:nth-child(3) {
-    transform: translateY(8px);
-}
-
-.navHeaderDespl input:checked ~ span:nth-child(3) {
-    transform: translateY(0) rotate(45deg);
+.buttonRestCartBloq{
+    border: 1px solid black;
+    padding: 0 1vh;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid red;
+    cursor:no-drop;
 }

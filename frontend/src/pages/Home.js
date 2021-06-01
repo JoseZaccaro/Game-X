@@ -20,7 +20,7 @@ class Home extends React.Component{
          
         return(
             <>
-            <Header />
+            <Header props={this.props.history}/>
             <div className='containPageHome' style={{backgroundImage:"url(../assets/fondo.png)"}}>
                 <div className='parallaxRigthHome'>
                     <div className='contentMove'>

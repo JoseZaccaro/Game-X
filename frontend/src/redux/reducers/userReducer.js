@@ -1,5 +1,6 @@
 const initialState = {
     userLogged:null,
+    favouritesList:null
 }
 
 const userReducer = (state = initialState, action) => {
@@ -9,7 +10,8 @@ const userReducer = (state = initialState, action) => {
             localStorage.setItem('token', action.payload.token)
             return {
                 ...state,
-                userLogged: action.payload         
+                userLogged: action.payload,
+                favouritesList: action.payload.favouritesList         
             }
         case 'LOG_OUT':
             localStorage.clear()
@@ -22,6 +24,11 @@ const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 userLogged:{...state.userLogged,friends:action.payload}
+            }
+        case "RELOAD_FAVORITES_LIST":
+            return{
+                ...state,
+                favouritesList: action.payload.favouritesList  
             }
         default:
             return state

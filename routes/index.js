@@ -11,7 +11,7 @@ const chatControllers = require('../controllers/chatControllers')
 
 
 const { getChatOfUser, postMessageOfUser, deleteChat, getFriendList } = chatControllers
-const { newUser, logIn, forcedLogin, getUsers, changeRol, addFriend, deleteFriend } = userController
+const { newUser, logIn, forcedLogin, getUsers, changeRol, addFriend, deleteFriend, getAllAddedProducts, addToList } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
 const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
@@ -27,13 +27,19 @@ router.route('/user/signup')
     .post(validatorUser,newUser)
 
 router.route('/user/login')
-    .post(logIn)
+    .post(logIn)    
 
 router.route('/user/loginLS')
     .get(passport.authenticate('jwt', { session: false }), forcedLogin)
 
 router.route('/user/changeRol')
     .put(passport.authenticate('jwt', {session: false}), changeRol)
+
+router.route('/user/mylist/:id')
+    .get(getAllAddedProducts)
+
+router.route('/user/addToList/:id')
+    .put(passport.authenticate('jwt', {session: false}), addToList)
 
 
 // ------------ROUTES GAMES---------

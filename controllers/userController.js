@@ -93,7 +93,7 @@ const userController = {
        }
        res.json({
            success: !error ? true : false,
-           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id, rol:createdUser.rol, friends:createdUser.friends,}: null,
+           respuesta: !error ? {token: respuesta, avatar: createdUser.avatar , imageUrl: createdUser.imageUrl , userName: createdUser.userName, id:createdUser._id, rol:createdUser.rol, friends:createdUser.friends,favouritesList:createdUser.favouritesList}: null,
            error: error
        })  
     },
@@ -126,7 +126,7 @@ const userController = {
         }
         res.json({
             success: !error ? true : false,
-            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol, friends:filteredFriendData,} : null,
+            respuesta:!error ? {token: respuesta, avatar: userExist.avatar, imageUrl:userExist.imageUrl, userName: userExist.userName, id:userExist._id, rol:userExist.rol, friends:filteredFriendData, favouritesList:userExist.favouritesList} : null,
             error: error
         })
     },
@@ -137,7 +137,7 @@ const userController = {
         const filteredFriendData = populatedFriends.map(friend =>{
             return {avatar:friend.avatar, userName:friend.userName,id:friend._id,email:friend.email}
         })
-        res.json({success: true, respuesta: {avatar: user.avatar, imageUrl:user.imageUrl, userName: user.userName , id:user._id, rol:user.rol, friends:filteredFriendData}})
+        res.json({success: true, respuesta: {avatar: user.avatar, imageUrl:user.imageUrl, userName: user.userName , id:user._id, rol:user.rol, friends:filteredFriendData, favouritesList:user.favouritesList}})
     },
     getUsers: async(req, res)=>{
         try{
@@ -211,7 +211,27 @@ const userController = {
             console.log(e)
             res.json({success:false, response:e})
         }
-    }
+    },
+    addToList: async (req, res) => {
+        var {sendedData} = req.body
+        var {game} = sendedData
+        try {
+            const addedToList = await User.findOneAndUpdate({_id: req.params.id}, sendedData.add ? {$push:{favouritesList:{gameId: game}}} : {$pull:{favouritesList: {gameId: game}}}, {new: true})
+            res.json({success: true, response: addedToList})
+        } catch(error) {
+            console.log(error)
+            res.json({success: false, response: 'Oops! the ID you enter was not founded'})
+        }
+    },
+    getAllAddedProducts: async (req, res) => {
+        try {
+            const gamesListed = await User.find({_id: req.params.id}).populate({ path:"favouritesList", populate:{path:"gameId"}})
+            res.json({success: true, response: gamesListed[0].favouritesList})
+        } catch(error) {
+            console.log(error)
+            res.json({success: false, response: 'Oops! the ID you enter was not founded'})
+        }
+    },
 }
 
 module.exports = userController

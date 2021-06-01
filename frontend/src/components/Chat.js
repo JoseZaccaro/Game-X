@@ -2,25 +2,23 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import userActions from '../redux/actions/userActions'
 import Messages from './Messages' 
-import {AiOutlineUsergroupAdd, AiOutlineUserDelete,AiOutlineUsergroupDelete} from 'react-icons/ai'
+import {AiOutlineUsergroupAdd, AiOutlineUserDelete,AiOutlineUsergroupDelete, AiOutlineClose} from 'react-icons/ai'
 import {BsPersonPlus} from 'react-icons/bs'
 import {BiChat} from 'react-icons/bi'
-import {GiSplitCross} from 'react-icons/gi'
 import chatActions from '../redux/actions/chatActions'
-import swal from 'sweetalert'
 import Tooltip from '@material-ui/core/Tooltip';
 
 
 const Chat = (props) => {
 
-    const [chats, setChats] = useState([])
     const [leftHide, setLeftHide] = useState(true)
-    const [rightHide, setRightHide] = useState(true)
+    const [rightHide, setRightHide] = useState(false)
     const [chatToView, setChatToView] = useState({})
     const [inputValue,setInputValue] = useState({ inputValue:""})
     const [list, setList] = useState ({ beAFriendList:[]})
     const [viewSearchBar, setViewSearchBar]  = useState(false)
     const [friendList, setFriendList] = useState([])
+    
 
     const setInput = (e) => {
         const valor = e.target.value
@@ -36,12 +34,17 @@ const Chat = (props) => {
                 case "Escape":
                         setRightHide(true)
                     break;
+                default:
+                         
                 }
         })
+        props.open ? setRightHide(!rightHide) : setRightHide(!rightHide)
         return ()=>{
             window.removeEventListener('keydown',windowListener)
         }
-    },[])
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[props.open])
 
     useEffect(()=>{
         if(props.userLogged && props.userLogged.friends){
@@ -58,6 +61,7 @@ const Chat = (props) => {
         const buscarAmigos = async()=>{
             const res = await props.searchUsers(inputValue.inputValue)
             setList({beAFriendList:res})
+
         }
         if(inputValue.inputValue.trim() !== "" && inputValue.inputValue.trim() !== " "){
             buscarAmigos()
@@ -81,6 +85,7 @@ const Chat = (props) => {
 
         setFriendList(friendList.filter(friend => friend.id !== person.id))
         await props.deleteFriend(person.id)
+
         if(chatToView.friend && chatToView.friend.id === person.id){
             setLeftHide(true)
         }
@@ -102,14 +107,15 @@ const Chat = (props) => {
 
     return (<>
         <div className="extContainer">
-            <Tooltip title="Send Message" placement="top-start">
+        { props.userLogged && 
+            <Tooltip title="Send Message" placement="top-start">               
                 <div className="chatIconContainer">
                     <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(-18rem,1rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
                 </div>
-            </Tooltip>
+            </Tooltip>}
             <button onClick={()=> setLeftHide(!leftHide)}>Left</button>
             <div style={searchBarStyle} className="searchBarFriend">
-                <input style={searchBarStyle, {transition:"all 0.7s ease 0.5s"}}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
+                <input style={searchBarStyle}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
             </div>
 
             <Messages props={{ userLogged:props.userLogged, leftHide, setLeftHide, rightHide, chatToView, setChatToView}}/>
@@ -122,7 +128,7 @@ const Chat = (props) => {
                         :<AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />}
                         <h1 className="chatTitle">Chats
                         </h1>
-                    <GiSplitCross onClick={()=>setRightHide(!rightHide)} className="iconoAddFriends" />
+                    <AiOutlineClose onClick={()=>setRightHide(!rightHide)} className="iconoAddFriends" />
 
                     </div>
                     <div className="friendCardsContainer">
