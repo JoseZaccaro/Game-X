@@ -17,6 +17,7 @@ import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
 import Chat from './components/Chat'
+import Formulario from './components/Formulario'
 
 class App extends React.Component{
 
@@ -48,6 +49,7 @@ class App extends React.Component{
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game/:id" component={Game} />
+                <Route path="/formulario" component={Formulario} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
