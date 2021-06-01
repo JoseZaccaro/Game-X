@@ -11,6 +11,16 @@ const gamesActions = {
                 alert('error en games action')
             }        
         }
+    },
+    filterGames: (valueSearch, flag)=>{
+        return async (dispatch, getState)=>{
+            dispatch({ type: 'FILTER_GAMES', payload: {value: valueSearch, flag: flag} })
+            try {
+            } catch (error) {
+                
+                console.log(error);
+            }
+        }
     }
 }
 export default gamesActions

@@ -164,6 +164,8 @@
 .cards .cardImageProduct{
     background-size: cover;
     background-position: top center;
+    display: flex;
+    align-items: flex-end;
 }
 .cards .card figcaption,
 .news .card figcaption {
@@ -177,6 +179,8 @@
   color: #fff;
   transform: translateY(100%);
   transition: 0.3s;
+  background-color: rgba(0, 0, 0, 0.479);
+
 }
 .cards .card:after,
 .news .card:after {
@@ -269,8 +273,6 @@
 /* slider--------------------------------------- */
 .containerSlider{
     width: 100%;
-    display: flex;
-    overflow-x: scroll;
     margin-top: 1rem;
 }
 .containerSlider a{
@@ -315,3 +317,65 @@
     border-radius: 10px;
     box-shadow: inset 7px 10px 12px var(--main-bg-color);
    }
+   /* -------containerFilters------------ */
+   .containerFilters{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   .containerFilters div input{
+     width: 30rem;
+     outline: none;
+     border: none;
+     text-align: center;
+     font-size: 1.5rem;
+     border-radius: 2rem;
+     padding: .5rem;
+     margin-top: 1rem;
+   }
+   .tagsContainer{
+     width: 100%;
+     display: flex;
+     justify-content: flex-start;
+     margin-top: 1rem;
+   }
+   .tagsContainer h4{
+     color: white;
+     margin-right: .6rem;
+     margin-left: .6rem;
+   }
+   .tagsFilter{
+    width: 25rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  p.tagFilter{
+    background-color: white;
+  }
+  p.tagFilter::before {
+    background: #0B252C;
+    border-radius: 10px;
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+    content: '';
+    height: 6px;
+    left: 10px;
+    position: absolute;
+    width: 6px;
+    top: 10px;
+  }
+  
+  p.tagFilter::after {
+    background: #0B252C;
+    border-bottom: 13px solid transparent;
+    border-left: 10px solid #eee;
+    border-top: 13px solid transparent;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  p.tagFilterClick{
+    background-color: var(--main-bg-color);
+    color: black;
+  }
