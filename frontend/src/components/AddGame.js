@@ -171,9 +171,9 @@ class AddGame extends React.Component{
                         </div>
                      </div>
                     :<div className='divDLC'>
-                            <label className='radioAdminPanel' htmlFor="yes" className="l-radio">
+                            <label className='radioAdminPanel' htmlFor="yess" >
                                 <span  className='spanAdminPanel' style={{color:'white'}}>Has available DLC's?</span>                                
-                                <input className='radioButton' type="radio" id="yes" name="aditionals" onChange={(e, value=true) => this.selectOptionDLCs(e, value)} tabIndex="1"></input>
+                                <input className='radioButton' type="radio" id="yess" name="aditionals" onChange={(e, value=true) => this.selectOptionDLCs(e, value)} tabIndex="1"></input>
                             </label>
                      </div>
                 }

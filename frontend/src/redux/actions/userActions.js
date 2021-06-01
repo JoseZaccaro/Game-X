@@ -69,7 +69,6 @@ const userActions = {
                 }
             })
                 if(!respuesta.data.success){
-                    console.log(respuesta)
                     return respuesta.data                   
                 }else{
                     return respuesta.data.respuesta.userName
@@ -95,6 +94,7 @@ const userActions = {
                             const {avatar,chats,country,friends,userName,_id, email} = user
                             const userFiltered = {avatar,chats,country,friends,userName,_id, email}
                             usersFiltered.push(userFiltered)
+                            return null
                         })
                     }
                         
@@ -106,7 +106,36 @@ const userActions = {
                 console.log(e)
             }
         }
-    }
+    },
+    addToMyList: (sendedData, token, id) => {
+        return async (dispatch, getstate) => {
+            try {
+                const response = await axios.put(`http://localhost:4000/api/user/addToList/${id}`, {sendedData}, {
+                    headers: {
+                    'Authorization': 'Bearer '+token
+                    }
+                })            
+                dispatch({
+                    type: "RELOAD_FAVORITES_LIST",
+                    payload: response.data.response
+                    
+                })
+                return response.data.response               
+            }catch(error) {
+                return swal("Failed to try to connect with server", "Please try again in a few minutes", "error")
+            } 
+        }
+    }, 
+    getProductsOnList: (id, props) => {
+        return async () => {
+           try {
+            const response = await axios.get(`http://localhost:4000/api/user/mylist/${id}`,)   
+            return  response.data.response
+            } catch {
+               return props.push('/serverdown') 
+            }
+        }
+    }, 
 }
 
 export default userActions

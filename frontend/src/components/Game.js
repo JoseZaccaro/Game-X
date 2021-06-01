@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
 import Loader from '../components/Loader';
+import userActions from '../redux/actions/userActions';
+import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const Game = (props) => {
     const [gameDetails, setGameDetails] = useState(null)
+    const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
 
     useEffect(() => {
         if (props.allGames.length === 0) {
@@ -20,31 +24,34 @@ const Game = (props) => {
                ...gameFilter
             })
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    if (gameDetails) {
-        console.log(gameDetails);
-        
+
+
+
+    const token= localStorage.getItem('token')
+
+    const idGame = props.match.params.id
+  
+    var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
+    
+    const sendGameToList = async(game) =>{
+      setMyList({...myList, fetching:true})
+      const add = {game, add:true}
+      const remove = {game, add:false}
+      const sendedData = gameFounded ? remove : add
+      const response = await props.addToMyList(sendedData, token, props.userLogged.id)
+        setMyList({myList: response.favouritesList, fetching: false})     
     }
-    const harcodeo = {
-        title: 'Ciberpunk',
-        year: '2021',
-        genre: ['Action', 'Tag', 'Otra'],
-        price: '9.99',
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        plataform: ['PS4', 'Xbox-One', 'PC'],
-        pegi: 13,
-        developer: 'grupo tres',
-        language: ['español', 'ingles', 'turco'],
-        multiplayer: true,
-        valoration: 'muy malo'
-    }
+
+
     return (
         <>
             {!gameDetails
                 ? <Loader />
                 : (
                     <>
-                        <Header />
+                        <Header props={props.history}/>
                         <div className='containGameComp'>
                             <div className='containBoxGame'>
                                 <div className='imgBanerBkGame' style={{ backgroundImage: `url('${gameDetails.imagesBackground[0]}')` }}></div>
@@ -62,6 +69,18 @@ const Game = (props) => {
                                     <div className='divAddCart'>
                                         <p className='priceGame'>${gameDetails.price}</p>
                                         <p className='addToCartGame'>Add To Cart</p>
+                                        {!gameFounded 
+                                        ? <Tooltip title="Add to Wishlist" placement="center" > 
+                                            <div>
+                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='addToWishListOnComponent'/>
+                                            </div>
+                                        </Tooltip>
+                                        : <Tooltip title="Remove from Wishlist" placement="center" >
+                                            <div>
+                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='removeFromWishListOnComponent'/>
+                                            </div>
+                                        </Tooltip>
+                                        }
                                     </div>
                                     <div className='divDescriptionGameCard'>
                                         <p className='pDescriptionTitle'>Description:</p>
@@ -85,8 +104,8 @@ const Game = (props) => {
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Language:</p>
-                                        {gameDetails.language.map(lenguaje => {
-                                            return <p>{lenguaje}</p>
+                                        {gameDetails.language.map((lenguaje,i) => {
+                                            return <p key={i}>{lenguaje}</p>
                                         })}
                                     </div>
                                     <div className='cadaDivInfoSec'>
@@ -111,11 +130,13 @@ const mapStateToProps = (state) => {
         allHardwares: state.hardwareReducer.allHardwares,
         preLoader: state.hardwareReducer.preLoader,
         allGames: state.gamesReducer.allGames,
-        preLoaderGames: state.gamesReducer.preLoader
+        preLoaderGames: state.gamesReducer.preLoader,
+        userLogged: state.userReducer.userLogged
     }
 }
 const mapDispatchToProps = {
     loadHardwares: hardwareActions.loadHardwares,
-    loadGames: gamesActions.loadGames
+    loadGames: gamesActions.loadGames,
+    addToMyList :  userActions.addToMyList,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Game)

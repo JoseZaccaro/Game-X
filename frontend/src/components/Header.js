@@ -1,10 +1,19 @@
+import { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import swal from 'sweetalert'
 import userActions from '../redux/actions/userActions'
+import Chat from './Chat'
+import SimplePopover from "./Popover";
 
 
 const Header = (props) =>{ 
+
+
+
+    const [openChat, setOpenChat] = useState(false)
+    const [favouritesList, setFavouriteslist] = useState([])
+    const visibility = props.open ? "visible" : "hidden"
 
     const logOut=(()=> {
         swal({
@@ -23,6 +32,19 @@ const Header = (props) =>{
             } 
         });
     })
+
+
+    useEffect(()=>{
+        if(props.userLogged && props.favouritesList.length){
+            const fetchProducts = async(favouritesList)=>{
+                const list = await props.getProductsOnList(props.userLogged.id)
+                setFavouriteslist(list)
+            }
+            fetchProducts(props.favouritesList)
+        }
+    // eslint-disable-next-line
+    },[props.favouritesList])
+
     
     let image = ""
     
@@ -33,33 +55,6 @@ const Header = (props) =>{
     } else {
         image = "assets/generic-user-icon.jpg"
     }
-    /*
-    
-     <div className='navContainer'>
-                <div className='navHeader'>
-                    <NavLink to='/'><p className='linkHeaderNav'>Home</p></NavLink>
-                    <NavLink to='/store'><p className='linkHeaderNav'>Store</p></NavLink>
-                    {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><p className='linkHeaderNav'>Adm Panel</p></NavLink>}
-                    {!props.userLogged && <NavLink to='/access'><p className='linkHeaderNav'>Access</p></NavLink>}
-                </div>
-                <div className='profileBody'>
-                    <div className="nav">
-                        <input type="checkbox"/>
-                        <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
-                        {props.userLogged &&
-                        <div className="menu">
-                            <li >Favorites</li>
-                            <li >My Buys</li>
-                            <li >Chat</li>
-                            <li onClick={(e)=>logOut(e.target)}>LogOut</li>
-                        </div>}
-                    </div>
-                </div>
-            </div>
-    
-    
-    
-    */
     
     return(
         <div className='containHeader'>
@@ -67,41 +62,58 @@ const Header = (props) =>{
                 <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
                 <h1 className='nameLogoHeader'>Game-X</h1>
             </div>
-                <div class="navHeaderDespl">
-                    <input type="checkbox"/>
-                    <span></span>
-                    <span></span>
-                    <div class="menuHeaderDespl">
-                        <NavLink to='/'><p>Home</p></NavLink>
-                        <NavLink to='/store'><p>Store</p></NavLink>
-                        {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><p >Adm Panel</p></NavLink>}
-                        {!props.userLogged && <NavLink to='/access'><p>Access</p></NavLink>}
-                    </div>
-            </div>
-            <div className='profileBody'>
-                    <div className="nav">
-                        <input type="checkbox"/>
-                        <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
-                        {props.userLogged &&
-                        <div className="menu">
-                            <li >Favorites</li>
-                            <li >My Buys</li>
-                            <li >Chat</li>
-                            <li onClick={(e)=>logOut(e.target)}>LogOut</li>
-                        </div>}
-                    </div>
+            <div style={{display:'flex', flexDirection:'row'}}>
+                <div className='navbarMenu'>
+                        <div className="navigation" style={{marginRight:'100px'}}>
+                            <input type="checkbox"/>
+                            <span></span>
+                            <span></span>
+                            <div className="menuNav" >
+                                <NavLink to='/'><li>Home</li></NavLink>
+                                <NavLink to='/store'><li>Store</li></NavLink>
+                                {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
+                                {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
+                            </div>
+                        </div>
                 </div>
+                <div className='profileBody'>
+                        <div className="nav">
+                            <input type="checkbox"/>
+                            <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
+                            {props.userLogged &&
+                            <div className="menu">
+                                <SimplePopover favouritesList={favouritesList} props={props.props}/>
+                                <li >My Buys</li>
+                                <li onClick={()=> setOpenChat(!openChat)}>Chat</li>
+                                <li onClick={(e)=>logOut(e.target)}>LogOut</li>
+                            </div>}
+                        </div>
+                </div>
+            </div>
+            <div className="popOverBody" style={{visibility: visibility}}>        
+                <div className="con-tooltip left">
+                    <p> Left </p>
+                    <div className="tooltip ">
+                        <p>Left</p>
+                    </div>
+
+                </div>
+            </div>
+            <Chat open = {openChat}/>
         </div>       
     )
 }
 
 const mapStateToProps = state => {
     return {
-        userLogged: state.userReducer.userLogged
+        userLogged: state.userReducer.userLogged,
+        favouritesList: state.userReducer.favouritesList
+
     }
   }
   const mapDispatchToProps = {
     removeUserInfo :  userActions.removeUserInfo,
+    getProductsOnList: userActions.getProductsOnList
   
   }
   

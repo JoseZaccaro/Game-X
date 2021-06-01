@@ -175,7 +175,7 @@ class Access extends React.Component{
     render() {
 
         return(<>
-                <Header />
+                <Header  />
                 <div className='body' style={{backgroundImage:"url(../assets/fondo.png)"}}>   
                      <div className={`animate__animated animate__fadeInRight ${this.state.buttonChange}`}  id="container">
                         <div className="form-container sign-up-container">

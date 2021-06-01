@@ -6,7 +6,6 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
-// import Prueba from './components/Prueba';
 import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
@@ -16,7 +15,6 @@ import { connect } from 'react-redux';
 import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
-import Chat from './components/Chat'
 
 class App extends React.Component{
 
@@ -33,7 +31,6 @@ class App extends React.Component{
 
 
   render(){
-    console.log(this.props.userLogged)
 
     if (!this.props.userLogged && localStorage.getItem('userLogged') ) {
         <Loader/>

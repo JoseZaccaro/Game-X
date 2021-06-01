@@ -1,9 +1,7 @@
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
-function openTab(url) {
-    window.open(url)
-}
+
 const Footer = (props) =>{ 
     return(
         <div className='containFooter'>
@@ -31,10 +29,10 @@ const Footer = (props) =>{
                 </div>
                 <div className='divContainNavFooter'>
                     <h3 className='titleSeccionFooter'>Socials</h3>
-                   <a target="_blank" href="http://facebook.com" className='pContainNavFooter'>Facebook</a>
-                   <a target="_blank" href="http://instagram.com" className='pContainNavFooter'>Instagram</a>
-                   <a target="_blank" href="http://twitter.com" className='pContainNavFooter'>Twitter</a>
-                   <a target="_blank" href="http://youtube.com" className='pContainNavFooter'>Youtube</a>
+                   <a  href="http://facebook.com" className='pContainNavFooter'>Facebook</a>
+                   <a  href="http://instagram.com" className='pContainNavFooter'>Instagram</a>
+                   <a  href="http://twitter.com" className='pContainNavFooter'>Twitter</a>
+                   <a  href="http://youtube.com" className='pContainNavFooter'>Youtube</a>
                 </div>
             </div>
         </div>       

@@ -80,7 +80,7 @@ class AdminPanel extends React.Component{
          
         return(
             <>
-                <Header />
+                <Header props={this.props.history}/>
                 <div className='containerAdminPanel'>
                     <div className='options'>
                         <button className='buttonForm buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>

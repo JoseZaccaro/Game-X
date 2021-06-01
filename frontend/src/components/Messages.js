@@ -12,7 +12,6 @@ const Messages = (props)=>{
     
     let {leftHide, setLeftHide, rightHide, chatToView, setChatToView} = props.props
     
-    const receiving = true
     const [minimized , setMinimized] = useState(false)
     const [newMessage , setNewMessage] = useState("")
 

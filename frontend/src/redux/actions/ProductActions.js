@@ -12,10 +12,8 @@ const productActions = {
                 }
             })
                 if(!respuesta.data.success){
-                    console.log(respuesta)
                     return respuesta.data                   
                 }else{
-                    console.log(respuesta)
                     return respuesta.data
                 }
             } catch(error) {
@@ -24,7 +22,6 @@ const productActions = {
         }
     },
     addHardware: (infoHardware, token) => {
-        console.log(infoHardware)
         return async () => {
             try {
                 const respuesta = await axios.post(`http://localhost:4000/api/hardware`,infoHardware, {
@@ -33,7 +30,6 @@ const productActions = {
                 }
             })
                 if(!respuesta.data.success){
-                    console.log(respuesta)
                     return respuesta.data                   
                 }else{
                     return respuesta.data

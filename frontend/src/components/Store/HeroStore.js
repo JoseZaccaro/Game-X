@@ -39,7 +39,7 @@ const HeroStore = (props) => {
                             </div>
                         </div>
                     )
-                    : <h1>holaaa</h1>
+                    : null
 
             }
         </>
