@@ -5,6 +5,10 @@ import swal from 'sweetalert'
 import userActions from '../redux/actions/userActions'
 import Chat from './Chat'
 import SimplePopover from "./Popover";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import Cart from './Cart'
+
 
 
 const Header = (props) =>{ 
@@ -55,52 +59,66 @@ const Header = (props) =>{
     } else {
         image = "assets/generic-user-icon.jpg"
     }
-    
-    return(
-        <div className='containHeader'>
-            <div className='logoHeader'>
-                <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
-                <h1 className='nameLogoHeader'>Game-X</h1>
-            </div>
-            <div style={{display:'flex', flexDirection:'row'}}>
-                <div className='navbarMenu'>
-                        <div className="navigation" style={{marginRight:'100px'}}>
-                            <input type="checkbox"/>
-                            <span></span>
-                            <span></span>
-                            <div className="menuNav" >
-                                <NavLink to='/'><li>Home</li></NavLink>
-                                <NavLink to='/store'><li>Store</li></NavLink>
-                                {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
-                                {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
-                            </div>
-                        </div>
-                </div>
-                <div className='profileBody'>
-                        <div className="nav">
-                            <input type="checkbox"/>
-                            <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
-                            {props.userLogged &&
-                            <div className="menu">
-                                <SimplePopover favouritesList={favouritesList} props={props.props}/>
-                                <li >My Buys</li>
-                                <li onClick={()=> setOpenChat(!openChat)}>Chat</li>
-                                <li onClick={(e)=>logOut(e.target)}>LogOut</li>
-                            </div>}
-                        </div>
-                </div>
-            </div>
-            <div className="popOverBody" style={{visibility: visibility}}>        
-                <div className="con-tooltip left">
-                    <p> Left </p>
-                    <div className="tooltip ">
-                        <p>Left</p>
-                    </div>
 
+    const [displayModal, setDisplayModal] = useState(false)
+    const openCloseModal = ()=>{
+        setDisplayModal(!displayModal)
+    }
+    var modal = {
+        display : displayModal ? 'flex' : 'none',
+    }
+
+    return(
+        <>
+            <div className='containHeader'>
+                <div className='logoHeader'>
+                    <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
+                    <h1 className='nameLogoHeader'>Game-X</h1>
                 </div>
-            </div>
-            <Chat open = {openChat}/>
-        </div>       
+                <div style={{display:'flex', flexDirection:'row'}}>
+                    <div className='navbarMenu'>
+                            <div className="navigation" style={{marginRight:'100px'}}>
+                                <input type="checkbox"/>
+                                <span></span>
+                                <span></span>
+                                <div className="menuNav" >
+                                    <NavLink to='/'><li>Home</li></NavLink>
+                                    <NavLink to='/store'><li>Store</li></NavLink>
+                                    {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
+                                    {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
+                                    {props.userLogged && <li onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} /></li>}
+                                </div>
+                            </div>
+                    </div>
+                    <div className='profileBody'>
+                            <div className="nav">
+                                <input type="checkbox"/>
+                                <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />
+                                {props.userLogged &&
+                                <div className="menu">
+                                    <SimplePopover favouritesList={favouritesList} props={props.props}/>
+                                    <li >My Buys</li>
+                                    <li onClick={()=> setOpenChat(!openChat)}>Chat</li>
+                                    <li onClick={(e)=>logOut(e.target)}>LogOut</li>
+                                </div>}
+                            </div>
+                    </div>
+                </div>
+                <div className="popOverBody" style={{visibility: visibility}}>        
+                    <div className="con-tooltip left">
+                        <p> Left </p>
+                        <div className="tooltip ">
+                            <p>Left</p>
+                        </div>
+
+                    </div>
+                </div>
+                <Chat open = {openChat}/>
+            </div>  
+            <div style={modal}>
+                <Cart openCloseModal={openCloseModal}/> 
+            </div>  
+        </>   
     )
 }
 

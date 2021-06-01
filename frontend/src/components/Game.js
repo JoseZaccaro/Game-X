@@ -7,6 +7,9 @@ import Loader from '../components/Loader';
 import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import cartActions from '../redux/actions/cartActions';
 
 
 const Game = (props) => {
@@ -43,6 +46,16 @@ const Game = (props) => {
       const response = await props.addToMyList(sendedData, token, props.userLogged.id)
         setMyList({myList: response.favouritesList, fetching: false})     
     }
+        
+    const [inCart, setInCart]=useState(false)
+    const addToCart = ()=>{
+        setInCart(!inCart)
+        props.addToCart(gameDetails)
+    }
+    const removeToCart = ()=>{
+        setInCart(!inCart)
+        props.deleteToCart(gameDetails._id)
+    }
 
 
     return (
@@ -68,7 +81,9 @@ const Game = (props) => {
                                 <div className='descriptionPrice'>
                                     <div className='divAddCart'>
                                         <p className='priceGame'>${gameDetails.price}</p>
-                                        <p className='addToCartGame'>Add To Cart</p>
+                                        {!inCart 
+                                            ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
+                                            : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
                                         {!gameFounded 
                                         ? <Tooltip title="Add to Wishlist" placement="center" > 
                                             <div>
@@ -81,6 +96,7 @@ const Game = (props) => {
                                             </div>
                                         </Tooltip>
                                         }
+                                        
                                     </div>
                                     <div className='divDescriptionGameCard'>
                                         <p className='pDescriptionTitle'>Description:</p>
@@ -131,12 +147,16 @@ const mapStateToProps = (state) => {
         preLoader: state.hardwareReducer.preLoader,
         allGames: state.gamesReducer.allGames,
         preLoaderGames: state.gamesReducer.preLoader,
-        userLogged: state.userReducer.userLogged
+        userLogged: state.userReducer.userLogged,
+        allCart: state.cartReducer.allCart
     }
 }
 const mapDispatchToProps = {
     loadHardwares: hardwareActions.loadHardwares,
     loadGames: gamesActions.loadGames,
     addToMyList :  userActions.addToMyList,
+    addToCart: cartActions.addToCart,
+    deleteToCart: cartActions.deleteToCart
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
