@@ -17,6 +17,7 @@ import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
 import Chat from './components/Chat'
+import Cart from './components/Cart';
 
 class App extends React.Component{
 

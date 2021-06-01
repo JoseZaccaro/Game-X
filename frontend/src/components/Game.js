@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
 import Loader from '../components/Loader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import cartActions from '../redux/actions/cartActions';
 
 
 const Game = (props) => {
@@ -22,21 +25,16 @@ const Game = (props) => {
         }
     }, [])
     if (gameDetails) {
-        console.log(gameDetails);
-        
+        //console.log(gameDetails); 
     }
-    const harcodeo = {
-        title: 'Ciberpunk',
-        year: '2021',
-        genre: ['Action', 'Tag', 'Otra'],
-        price: '9.99',
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        plataform: ['PS4', 'Xbox-One', 'PC'],
-        pegi: 13,
-        developer: 'grupo tres',
-        language: ['español', 'ingles', 'turco'],
-        multiplayer: true,
-        valoration: 'muy malo'
+    const [inCart, setInCart]=useState(false)
+    const addToCart = ()=>{
+        setInCart(!inCart)
+        props.addToCart(gameDetails)
+    }
+    const removeToCart = ()=>{
+        setInCart(!inCart)
+        props.deleteToCart(gameDetails._id)
     }
     return (
         <>
@@ -61,7 +59,10 @@ const Game = (props) => {
                                 <div className='descriptionPrice'>
                                     <div className='divAddCart'>
                                         <p className='priceGame'>${gameDetails.price}</p>
-                                        <p className='addToCartGame'>Add To Cart</p>
+                                        {!inCart 
+                                            ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
+                                            : <p className='addToCartGame' onClick={removeToCart}>Remove To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
+                                        
                                     </div>
                                     <div className='divDescriptionGameCard'>
                                         <p className='pDescriptionTitle'>Description:</p>
@@ -85,8 +86,8 @@ const Game = (props) => {
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Language:</p>
-                                        {gameDetails.language.map(lenguaje => {
-                                            return <p>{lenguaje}</p>
+                                        {gameDetails.language.map((lenguaje,i) => {
+                                            return <p key={i}>{lenguaje}</p>
                                         })}
                                     </div>
                                     <div className='cadaDivInfoSec'>
@@ -111,11 +112,14 @@ const mapStateToProps = (state) => {
         allHardwares: state.hardwareReducer.allHardwares,
         preLoader: state.hardwareReducer.preLoader,
         allGames: state.gamesReducer.allGames,
-        preLoaderGames: state.gamesReducer.preLoader
+        preLoaderGames: state.gamesReducer.preLoader,
+        allCart: state.cartReducer.allCart
     }
 }
 const mapDispatchToProps = {
     loadHardwares: hardwareActions.loadHardwares,
-    loadGames: gamesActions.loadGames
+    loadGames: gamesActions.loadGames,
+    addToCart: cartActions.addToCart,
+    deleteToCart: cartActions.deleteToCart
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
