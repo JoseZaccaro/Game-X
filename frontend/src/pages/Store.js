@@ -45,7 +45,7 @@ class Store extends React.Component {
                         <Header props={this.props.history}/>
                             <div className="containerStore">
                                 <HeroStore heroGames={!this.props.preLoaderGames ? this.props.allGames.sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 6) : this.props.allGames} />
-                                <StoreGame />
+                                <StoreGame props={this.props.history}/>
                                 <div style={{ marginTop: '2rem' }}>
                                     <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
                                     <div className="containerSlider" >

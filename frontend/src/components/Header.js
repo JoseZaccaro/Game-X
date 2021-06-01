@@ -40,11 +40,11 @@ const Header = (props) =>{
 
     useEffect(()=>{
         if(props.userLogged && props.favouritesList.length){
-            const fetchProducts = async(favouritesList)=>{
+            const fetchProducts = async()=>{
                 const list = await props.getProductsOnList(props.userLogged.id)
                 setFavouriteslist(list)
             }
-            fetchProducts(props.favouritesList)
+            fetchProducts()
         }
     // eslint-disable-next-line
     },[props.favouritesList])
@@ -57,7 +57,7 @@ const Header = (props) =>{
     } else if ( props.userLogged && !props.userLogged.imageUrl && props.userLogged.avatar) {
         image = props.userLogged.avatar      
     } else {
-        image = "assets/generic-user-icon.jpg"
+        image = "/assets/generic-user-icon.jpg"
     }
 
     const [displayModal, setDisplayModal] = useState(false)
@@ -70,13 +70,13 @@ const Header = (props) =>{
 
     return(
         <>
-            <div className='containHeader'>
+            <div className='containHeader animate__animated animate__fadeIn animate__delay-1s'>
                 <div className='logoHeader'>
-                    <div className='gifLogo' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
-                    <h1 className='nameLogoHeader'>Game-X</h1>
+                    <div className='gifLogo animate__animated animate__fadeInLeft animate__delay-1s' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
+                    <h1 className='nameLogoHeader animate__animated animate__fadeIn animate__delay-3s'>Game-X</h1>
                 </div>
-                <div style={{display:'flex', flexDirection:'row'}}>
-                    <div className='navbarMenu'>
+                <div className='animate__animated animate__fadeIn animate__delay-1s'style={{display:'flex', flexDirection:'row'}}>
+                    <div className='navbarMenu '>
                             <div className="navigation" style={{marginRight:'100px'}}>
                                 <input type="checkbox"/>
                                 <span></span>
@@ -90,7 +90,7 @@ const Header = (props) =>{
                                 </div>
                             </div>
                     </div>
-                    <div className='profileBody'>
+                    <div className='profileBody animate__animated animate__fadeIn animate__delay-2s'>
                             <div className="nav">
                                 <input type="checkbox"/>
                                 <div style={{backgroundImage: `url("${image}")`}} className="avatarHeader" />

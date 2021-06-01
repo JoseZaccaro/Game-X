@@ -10,25 +10,51 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import cartActions from '../redux/actions/cartActions';
+import swal from 'sweetalert';
 
 
 const Game = (props) => {
+
+
+    const toTop = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+    }
+
     const [gameDetails, setGameDetails] = useState(null)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
 
+    const logAlert = ()=> swal("You must be logged to do that", "Want to Log in/Sign up?", "warning", {
+        buttons: {
+          signup: {text: "Yes!", value: "catch"},
+          cancel: "Maybe later",
+        },
+      })
+      .then((value) => {
+        switch (value) {           
+          case "catch":
+            props.history.push('/access')
+            break         
+          default:
+        }
+      })
+
     useEffect(() => {
+        toTop()
         if (props.allGames.length === 0) {
             props.history.push('/store')
         }
-        if (!gameDetails) {
-            let idGame = props.match.params.id
-            let gameFilter = props.allGames.find(game => game._id === idGame)
-            setGameDetails({
-               ...gameFilter
-            })
-        }
+        let idGame = props.match.params.id
+        let gameFilter = props.allGames.find(game => game._id === idGame)
+        setGameDetails({
+            ...gameFilter
+        })
+    
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [props.match.params.id])
 
 
 
@@ -39,12 +65,16 @@ const Game = (props) => {
     var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
     
     const sendGameToList = async(game) =>{
-      setMyList({...myList, fetching:true})
-      const add = {game, add:true}
-      const remove = {game, add:false}
-      const sendedData = gameFounded ? remove : add
-      const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-        setMyList({myList: response.favouritesList, fetching: false})     
+        if (props.userLogged) {
+            setMyList({...myList, fetching:true})
+            const add = {game, add:true}
+            const remove = {game, add:false}
+            const sendedData = gameFounded ? remove : add
+            const response = await props.addToMyList(sendedData, token, props.userLogged.id)
+              setMyList({myList: response.favouritesList, fetching: false})     
+        } else{
+            logAlert()
+        }
     }
         
     const [inCart, setInCart]=useState(false)
@@ -67,7 +97,7 @@ const Game = (props) => {
                         <Header props={props.history}/>
                         <div className='containGameComp'>
                             <div className='containBoxGame'>
-                                <div className='imgBanerBkGame' style={{ backgroundImage: `url('${gameDetails.imagesBackground[0]}')` }}></div>
+                                <div className='imgBanerBkGame' style={{ backgroundImage: `url('${gameDetails.imagesBackground[1]}')` }}></div>
                                 <div className='imgPortadaBkGame' style={{ backgroundImage: `url('${gameDetails.imageBanner}')` }}></div>
                                 <div className='infoFastGame'>
                                     <h2 className='titleGameCard'>{gameDetails.title}</h2>
@@ -85,12 +115,12 @@ const Game = (props) => {
                                             ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
                                             : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
                                         {!gameFounded 
-                                        ? <Tooltip title="Add to Wishlist" placement="center" > 
+                                        ? <Tooltip title="Add to Wishlist" placement="top" > 
                                             <div>
                                                 <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='addToWishListOnComponent'/>
                                             </div>
                                         </Tooltip>
-                                        : <Tooltip title="Remove from Wishlist" placement="center" >
+                                        : <Tooltip title="Remove from Wishlist" placement="top" >
                                             <div>
                                                 <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='removeFromWishListOnComponent'/>
                                             </div>
