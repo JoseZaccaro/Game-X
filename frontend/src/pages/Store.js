@@ -52,6 +52,12 @@ class Store extends React.Component {
                                         <CarruselStore games={this.props.allGames.filter(game => game.year >= 2021)} />
                                     </div>
                                 </div>
+                                <div style={{ marginTop: '2rem' }}>
+                                    <h3 style={{ fontSize: '2rem', color: 'white' }}>Retro games</h3>
+                                    <div className="containerSlider" >
+                                        <CarruselStore games={this.props.allGames.filter(game => game.year <= 2015)} />
+                                    </div>
+                                </div>
                             </div>
                         </>
                     )
