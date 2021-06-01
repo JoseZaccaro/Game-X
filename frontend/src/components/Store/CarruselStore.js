@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from 'infinite-react-carousel';
 import { NavLink } from 'react-router-dom'
+
 const CarruselStore = (props) => {
     props.games.map(game => {
-        console.log(game)
+        return console.log(game)
     });
     return (
         <Slider slidesToShow={6} arrowsScroll={2} autoplay={true} dots dotsScroll={6}>

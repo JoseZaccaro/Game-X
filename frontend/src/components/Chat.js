@@ -115,7 +115,7 @@ const Chat = (props) => {
             </Tooltip>}
             <button onClick={()=> setLeftHide(!leftHide)}>Left</button>
             <div style={searchBarStyle} className="searchBarFriend">
-                <input style={searchBarStyle, {transition:"all 0.7s ease 0.5s"}}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
+                <input style={searchBarStyle}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
             </div>
 
             <Messages props={{ userLogged:props.userLogged, leftHide, setLeftHide, rightHide, chatToView, setChatToView}}/>

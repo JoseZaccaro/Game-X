@@ -10,7 +10,7 @@ const cartReducer = (state = initialState, action) =>{
                 ...state
             }
         case 'DELETE_TO_CART':
-            const newProducts = state.allCart.filter(article => article._id != action.payload)
+            const newProducts = state.allCart.filter(article => article._id !== action.payload)
             return {
                 ...state,
                 allCart: newProducts

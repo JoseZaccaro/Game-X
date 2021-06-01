@@ -1,8 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux';
 import Header from "../components/Header";
-import CardProduct from "../components/Store/CardProduct";
-import CarruselStore from "../components/Store/CarruselStore";
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
 import HeroStore from "../components/Store/HeroStore";

@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import hardwareActions from '../../redux/actions/hardwareActions';
 import gamesActions from '../../redux/actions/gamesActions';
 import CardProduct from "./CardProduct";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
 const StoreGame = (props) => {
     useEffect(() => {
         props.filterGames('All', false)

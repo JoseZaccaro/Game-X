@@ -10,7 +10,9 @@ const ProductCard = (props)=>{
     }
     useEffect(()=>{
         props.setSubTotal(props.articulo.price * cantidadAMostrar)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cantidadAMostrar])
+    
     return(
         <div className='cadaDivProduct'>
             <div className='divImgPortadaProductCart'>
