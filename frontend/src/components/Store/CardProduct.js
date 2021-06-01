@@ -43,7 +43,7 @@ const CardProduct = (props) => {
                 {<NavLink to={`/game/${idGame}`}>
                         <figure className="card">
                             <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
-                            <figcaption>{title}</figcaption>
+                            <figcaption>{title.toUpperCase()}</figcaption>
                         </figure>
                 </ NavLink>}       
             </>
