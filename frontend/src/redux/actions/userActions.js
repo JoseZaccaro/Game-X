@@ -87,7 +87,12 @@ const userActions = {
     searchUsers: (userName)=>{
         return async(dispatch, getState) => {
             try{
-                const users = await axios.put('http://localhost:4000/api/user',{userName})
+                const token = localStorage.getItem('token')
+                const users = await axios.put('http://localhost:4000/api/user',{userName},{
+                    headers: {
+                        'Authorization': 'Bearer '+ token
+                    }
+                })
                 if(users.data.success){
                     let usersFiltered = []
                     if(users.data.response.length > 0){

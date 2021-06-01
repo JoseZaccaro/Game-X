@@ -18,7 +18,7 @@ const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
 
 // ------------ROUTES USER---------
 router.route('/user')
-.put(getUsers)
+.put(passport.authenticate('jwt', {session: false}),getUsers)
 
 router.route('/user/addFriend/:friendId')
 .put(passport.authenticate('jwt', {session: false}),addFriend)
