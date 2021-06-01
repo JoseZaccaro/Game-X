@@ -29,25 +29,18 @@ const Chat = (props) => {
 
     useEffect(()=>{
         const windowListener = window.addEventListener('keydown',(e)=>{
-            if(e.key === "Escape" || e.key === "ArrowRight" || e.key === "ArrowLeft"){ 
+            if(e.key === "Escape"){ 
                 e.preventDefault()
             }
             switch (e.key){
                 case "Escape":
                         setRightHide(true)
                     break;
-                case "ArrowRight":
-                        setRightHide(true)
-                    break;
-                case "ArrowLeft":
-                        setRightHide(false)
-                    break;
                 }
         })
         return ()=>{
             window.removeEventListener('keydown',windowListener)
         }
-
     },[])
 
     useEffect(()=>{
@@ -65,7 +58,6 @@ const Chat = (props) => {
         const buscarAmigos = async()=>{
             const res = await props.searchUsers(inputValue.inputValue)
             setList({beAFriendList:res})
-            console.log(res)
         }
         if(inputValue.inputValue.trim() !== "" && inputValue.inputValue.trim() !== " "){
             buscarAmigos()
@@ -89,8 +81,7 @@ const Chat = (props) => {
 
         setFriendList(friendList.filter(friend => friend.id !== person.id))
         await props.deleteFriend(person.id)
-        console.log(chatToView)
-        if(chatToView.friend.id === person.id){
+        if(chatToView.friend && chatToView.friend.id === person.id){
             setLeftHide(true)
         }
     }

@@ -34,7 +34,7 @@ const gameControllers = {
     modifyGame: async(req, res) => {
         try {
 
-            const { _id } = req.params
+            const { _id } = req.params  
             const newModifications = {...req.body }
 
             const gameToModify = await Game.findOneAndUpdate({ _id }, newModifications, { new: true, runValidators: true })

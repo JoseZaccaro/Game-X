@@ -6,7 +6,6 @@ import './espinoza.css';
 import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
-// import Prueba from './components/Prueba';
 import Access from './pages/Access';
 import Store from './pages/Store';
 import Payment from './pages/Payment';
@@ -52,6 +51,7 @@ class App extends React.Component{
                 {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>
+            {localStorage.getItem('token') && this.props.userLogged && <Chat />}
           </BrowserRouter>  
       );
 }}

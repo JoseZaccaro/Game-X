@@ -68,6 +68,7 @@ const chatActions = {
                     }
                 })            
                 if(friendList.data.success){
+                    console.log(friendList.data)
                     dispatch({type:"RELOAD_FRIEND_LIST", payload:friendList.data.response})
                     return friendList.data.response
                 }else{
