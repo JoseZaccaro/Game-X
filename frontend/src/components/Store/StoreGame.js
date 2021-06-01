@@ -37,7 +37,7 @@ const StoreGame = (props) => {
                 {props.gamesFiltered.map((game, index) => {
                     return (
                         <div key ={game._id} className='divCardProduct'>
-                            <CardProduct key={game._id} idGame={game._id} image={game.imageBanner} title={game.title} />
+                            <CardProduct key={game._id} discount={game.discount} idGame={game._id} image={game.imageBanner} title={game.title} />
                         </div>
                         
                     )

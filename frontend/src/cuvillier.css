@@ -467,16 +467,18 @@ a{
     background-color: #0B1321;
     display: flex;
     justify-content: center;
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+    
 }
 .containBoxGame{
     width: 80%;
     min-height: 40vh;
-    margin-top: 30vh;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
     position: relative;
     border-radius: 30px;
     overflow: hidden;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .imgBanerBkGame{
     height: 50vh;
@@ -502,6 +504,7 @@ a{
     padding-left: 40%;
     align-items: baseline;
     margin-top: 10vh;
+    
 }
 .titleGameCard{
     color: white;
@@ -513,12 +516,13 @@ a{
     font-size: 4vh;
 }
 .divTagsGame{
-    width: 100%;
-    padding-left: 40%;
     display: flex;
-    justify-content: flex-end;
-    padding-right: 3%;
-    margin-top: 8vh;
+    flex-direction: row;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15vh;
+    border: 1px solid black;
 }
 .tagTitleGame{
     margin-right: 1vw;
@@ -580,8 +584,9 @@ a{
     display: flex;
 }
 .divAddCart{
-    width: 50%;
-    padding-top: 15vh;
+    width: 100%;
+    padding-top: 5vh;
+    padding-left: 35%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -890,3 +895,110 @@ a{
     border: 1px solid red;
     cursor:no-drop;
 }
+.iconHeaderCart{
+    font-size: 3.5vh;
+}
+.pRecicladoTextInfo{
+    color: #8B95A6;
+    margin-right: 1vw;
+}
+.divSinArtCart{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.botonStoreCart{
+    color: white;
+    background-color: #1DD05D;
+    padding: 1vh 3vh;
+    border-radius: 10px;
+    font-size: 3vh;
+    -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.39); 
+    box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.39);
+    cursor: pointer;
+    margin-top: 4vh;
+}
+.totalPriceCart{
+    display: flex;
+    background-color: #A3EEE9;
+    border-radius: 5px;
+    padding: 0.5vh 0;
+    padding-left: 1vw;
+}
+.totalPriceCart p{
+    font-weight: bold;
+    margin-right: 1vw;
+    font-size: 3.5vh;
+}
+.priceGameConDiscount{
+    padding: 1vh 2vw;
+    font-size: 4vh;
+    font-weight: 500;
+    color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+.borderPriceDiscount{
+    position: relative;
+}
+.priceGameSinDiscount{
+    position: absolute;
+    top: -2vh;
+    right: -1vw;
+    color: red;
+    text-decoration: line-through;
+    transform: rotate(25deg);
+    font-size: 3.5vh;
+}
+
+.contentRibbon {
+    width: 200px; height: 300px;
+    position: relative;
+    border: 1px solid #BBB;
+    background: #EEE;
+  }
+  .ribbon {
+    position: absolute;
+    left: -5px; top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px; height: 75px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    width: 100px;
+    display: block;
+    background: #79A70A;
+    background: linear-gradient(#F70505 0%, #8F0808 100%);
+    box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 19px; left: -21px;
+  }
+  .ribbon span::before {
+    content: "";
+    position: absolute; left: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid #8F0808;
+    border-right: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #8F0808;
+  }
+  .ribbon span::after {
+    content: "";
+    position: absolute; right: 0px; top: 100%;
+    z-index: -1;
+    border-left: 3px solid transparent;
+    border-right: 3px solid #8F0808;
+    border-bottom: 3px solid transparent;
+    border-top: 3px solid #8F0808;
+  }

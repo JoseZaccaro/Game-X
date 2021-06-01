@@ -8,7 +8,7 @@ import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faCartArrowDown, faCartPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import cartActions from '../redux/actions/cartActions';
 
 
@@ -73,30 +73,37 @@ const Game = (props) => {
                                     <h2 className='titleGameCard'>{gameDetails.title}</h2>
                                     <p className='yearGameCard'>({gameDetails.year})</p>
                                 </div>
-                                <div className='divTagsGame'>
-                                    {gameDetails.genre.map((genero, i) => {
-                                        return <p key={i} className='tag'>{genero}</p>
-                                    })}
-                                </div>
-                                <div className='descriptionPrice'>
-                                    <div className='divAddCart'>
-                                        <p className='priceGame'>${gameDetails.price}</p>
-                                        {!inCart 
-                                            ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
-                                            : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
-                                        {!gameFounded 
-                                        ? <Tooltip title="Add to Wishlist" placement="center" > 
-                                            <div>
-                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='addToWishListOnComponent'/>
+                                <div className='divAddCart'>
+                                        {gameDetails.discount ? <div className='borderPriceDiscount'>
+                                                <p className='priceGameSinDiscount'>${gameDetails.price}</p>
+                                                <p className='priceGameConDiscount'>${gameDetails.price - gameDetails.discount}</p>
                                             </div>
-                                        </Tooltip>
-                                        : <Tooltip title="Remove from Wishlist" placement="center" >
-                                            <div>
-                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='removeFromWishListOnComponent'/>
-                                            </div>
-                                        </Tooltip>
-                                        }
+                                            :<p className='priceGame'>${gameDetails.price}</p>}  
+                                    {!inCart 
+                                        ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faCartPlus}/></p>
+                                        : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faCartArrowDown}/></p>}
+                                    {!gameFounded 
+                                    ? <Tooltip title="Add to Wishlist" placement="center" > 
+                                        <div>
+                                            <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='addToWishListOnComponent'/>
+                                        </div>
+                                    </Tooltip>
+                                    : <Tooltip title="Remove from Wishlist" placement="center" >
+                                        <div>
+                                            <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='removeFromWishListOnComponent'/>
+                                        </div>
+                                    </Tooltip>
+                                    }
                                         
+                                </div>
+
+                                <div className='descriptionPrice'>
+                                    
+                                    <div className='divTagsGame'>
+                                        <p className='pTituloInfoSec'>Categories: </p>
+                                        {gameDetails.genre.map((genero, i) => {
+                                            return <p key={i} className='tag'>{genero}</p>
+                                        })}
                                     </div>
                                     <div className='divDescriptionGameCard'>
                                         <p className='pDescriptionTitle'>Description:</p>
@@ -112,25 +119,25 @@ const Game = (props) => {
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Pegi:</p>
-                                        <p>{gameDetails.PEGI}</p>
+                                        <p className='pRecicladoTextInfo'>{gameDetails.PEGI}</p>
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Developer:</p>
-                                        <p>{gameDetails.developer}</p>
+                                        <p className='pRecicladoTextInfo'>{gameDetails.developer}</p>
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Language:</p>
                                         {gameDetails.language.map((lenguaje,i) => {
-                                            return <p key={i}>{lenguaje}</p>
+                                            return <p className='pRecicladoTextInfo' key={i}>{lenguaje}</p>
                                         })}
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Multiplayer:</p>
-                                        {gameDetails.multiplayer ? <p>Yes</p> : <p>No</p>}
+                                        {gameDetails.multiplayer ? <p className='pRecicladoTextInfo'>Yes</p> : <p className='pRecicladoTextInfo'>No</p>}
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Valoration:</p>
-                                        <p>{gameDetails.valoration}</p>
+                                        <p className='pRecicladoTextInfo'>{gameDetails.valoration}</p>
                                     </div>
                                 </div>
                             </div>

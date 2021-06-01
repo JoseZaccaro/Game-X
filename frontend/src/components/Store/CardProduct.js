@@ -41,7 +41,8 @@ const CardProduct = (props) => {
                   </Tooltip>
                 }
                 {<NavLink to={`/game/${idGame}`}>
-                        <figure className="card">
+                        <figure className="card contentRibbon">
+                            {props.discount && <div class="ribbon"><span>OFFER</span></div>}
                             <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
                             <figcaption>{title}</figcaption>
                         </figure>
