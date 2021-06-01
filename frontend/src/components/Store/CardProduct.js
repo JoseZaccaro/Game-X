@@ -3,12 +3,13 @@ const CardProduct = (props) => {
     const { image, title, idGame } = props
     return (
         <>
-        {<NavLink to={`/game/${idGame}`}>
+            {<NavLink to={`/game/${idGame}`}>
                 <figure className="card">
-                    <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
-                    <figcaption>{title}</figcaption>
+                    <div className="cardImageProduct" style={{ backgroundImage: `url("${image}")` }}>
+                        <figcaption>{title}</figcaption>
+                    </div>
                 </figure>
-        </ NavLink>}       
+            </ NavLink>}
         </>
     );
 }
