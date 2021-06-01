@@ -27,7 +27,7 @@ const Chat = (props) => {
 
     useEffect(()=>{
         const windowListener = window.addEventListener('keydown',(e)=>{
-            if(e.key === "Escape" || e.key === "ArrowRight" || e.key === "ArrowLeft"){ 
+            if(e.key === "Escape"){ 
                 e.preventDefault()
             }
             switch (e.key){

@@ -13,10 +13,8 @@ const StoreGame = (props) => {
     const filterGamesEvent = async (genre) => {
         props.filterGames(genre, false)
     }
-    console.log(props.gamesFiltered);
     const searchGame = (e) => {
         let valueSearch = e.target.value.trim().toLowerCase()
-        console.log(valueSearch);
         props.filterGames(valueSearch, true)
 
     }
