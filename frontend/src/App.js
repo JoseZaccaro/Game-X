@@ -52,7 +52,7 @@ class App extends React.Component{
                 <Route path="/hardware/:id" component={Hardware} />
                 <Route path="/formulario" component={Formulario} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
-                {!localStorage.getItem('token') && <Route path="/access" component={Access} />}
+                {!this.props.userLogged && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
             </Switch>
           </BrowserRouter>  

@@ -1,19 +1,24 @@
 .containerStore{
     background-color: #0B252C;
+    padding-top: 8rem;
+    /* height: 100%;
+    width: 100%;
+    background-size:cover;
+    background-repeat: repeat; */
 }
 .parent {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  grid-column-gap: 2px;
-  grid-row-gap: 2px;
+  grid-column-gap: 4px;
+  grid-row-gap: 4px;
   width: 100%;
-  height: 130vh;
+  height: 100vh;
   }
   
 
 .div1 { 
-  grid-area: 1 / 1 / 5 / 5; 
+  grid-area: 1 / 1 / 5 / 4; 
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -31,14 +36,8 @@
   background-position: center;
   overflow: hidden;
 }
-.div4 { 
-  grid-area: 5 / 3 / 9 / 4; 
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
 .div5 { 
-  grid-area: 5 / 4 / 9 / 5; 
+  grid-area: 1 / 4 / 5 / 5; 
   background-size: cover;
   background-position:  center;
   overflow: hidden;
@@ -50,7 +49,7 @@
   overflow: hidden;
 }
 .div7 { 
-  grid-area: 5 / 5 / 9 / 6; 
+  grid-area: 5 / 3 / 9 / 6; 
   background-size: cover;
   background-position:  center;
   overflow: hidden;
@@ -66,17 +65,22 @@
   width: 100%;
 }
 .imageHeroStore{
+    background-color: #4646462a;
+    background-blend-mode: soft-light;
     width: 100%;
     height: 100%;
     background-size: cover;
-     background-position: center !important;
-     transition: all 1s;
+     background-position: top center !important;
+     transition: all 0.5s;
      display: flex;
      align-items: flex-end;
 }
 .imageHeroStore:hover{
-    transform: scale(1.05) !important;
+    background-color: #464646b8;
+    background-blend-mode: soft-light;
+    transform: scale(0.98) !important;
     cursor: pointer;
+    transition: all 0.5s;
     
 }
 /* cards products ----------------------------*/
@@ -303,11 +307,11 @@
     height: 10px;
    }
    ::-webkit-scrollbar-thumb {
-    background: linear-gradient(13deg, var(--main-bg-color) 14%,var(--secundary-bg-color) 64%);
+    background: var(--secundary-bg-color);
     border-radius: 10px;
    }
    ::-webkit-scrollbar-thumb:hover{
-    background: linear-gradient(13deg, var(--main-bg-color) 14%,var(--secundary-bg-color) 64%);
+    background: #0a2c4f;
    }
    ::-webkit-scrollbar-track{
     background: #ffffff;
@@ -361,9 +365,29 @@
     width: 6px;
     top: 10px;
   }
+
+  .gamesNotFounded{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .titleGamesNotFounded{
+    padding: 5rem 0;
+    text-align: center;
+    font-size: 35px;
+    color: var(--main-bg-color);
+  }
+  
+  .iconGamesNotFounded{
+    text-align: center;
+    font-size: 80px;
+    color: var(--main-bg-color);
+  }
   
   p.tagFilter::after {
-    background: #0B252C;
+    background-color: #0B252C;
     border-bottom: 13px solid transparent;
     border-left: 10px solid #eee;
     border-top: 13px solid transparent;

@@ -113,7 +113,7 @@ class Access extends React.Component{
         }   
     }
 
-    
+    // fati_04_8@hotmail.com
     validate = (e) => {
         const field = e.name
         var message = null
@@ -123,7 +123,7 @@ class Access extends React.Component{
         if (e.value.length !== 0) {
             switch(field){
                 case 'userName' :
-                    expression= /^[a-z ']{2,14}$/i
+                    expression= ('^(?=.{2,40}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._@-]+(?<![_.])$')
                     message= !e.value.match(expression) 
                     break
                 case 'email':
