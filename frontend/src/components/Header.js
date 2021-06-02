@@ -71,10 +71,12 @@ const Header = (props) =>{
     return(
         <>
             <div className='containHeader animate__animated animate__fadeIn animate__delay-1s'>
-                <div className='logoHeader'>
-                    <div className='gifLogo animate__animated animate__fadeInLeft animate__delay-1s' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
-                    <h1 className='nameLogoHeader animate__animated animate__fadeIn animate__delay-3s'>Game-X</h1>
-                </div>
+                <NavLink to='/'>
+                    <div className='logoHeader'>
+                        <div className='gifLogo animate__animated animate__fadeInLeft animate__delay-1s' style={{backgroundImage:'url("../assets/logoGif.gif")'}}></div>
+                        <h1 className='nameLogoHeader animate__animated animate__fadeIn animate__delay-3s'>Game-X</h1>
+                    </div>
+                </NavLink>
                 <div className='animate__animated animate__fadeIn animate__delay-1s'style={{display:'flex', flexDirection:'row'}}>
                     <div className='navbarMenu '>
                             <div className="navigation" style={{marginRight:'100px'}}>

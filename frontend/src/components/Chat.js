@@ -127,7 +127,7 @@ const Chat = (props) => {
                     </div>
                     <div className="friendCardsContainer">
 
-                        {friendList.length && friendList.map((friend,i)=>{
+                        {friendList && friendList.map((friend,i)=>{
                         return( 
                         <div key={i} className="friendContainer">
                             <div className="friendUserImage" onClick={()=> openFriendChat(friend)} style={{backgroundImage:`url(${friend.avatar})`}}></div>

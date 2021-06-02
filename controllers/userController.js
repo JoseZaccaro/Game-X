@@ -6,12 +6,13 @@ require('dotenv').config()
 const nodemailer = require('nodemailer')
 
 
+
 let transport = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
     auth: {
-        user: "gamex.arg@gmail.com",
-        pass: "matias388"
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
@@ -60,7 +61,7 @@ const userController = {
                             background-color: #A3EEE9;
                             width: 25vw;
                             height: 40px;
-                            color: #A3EEE9;
+                            color: black;
                             text-align: center;
                             border-radius: 30px;
                             ">Welcome to Game-X !</h1>
@@ -70,15 +71,18 @@ const userController = {
                             background-color: #A3EEE9;
                             width: 25vw;
                             height: 40px;
-                            color: #A3EEE9;
+                            color: black;
                             text-align: center;
                             border-radius: 30px;
                             ">Thanks for your register!</h1>
                         </div>`
                     }
                     transport.sendMail(mailOptions, (err) => {
-                        if (err) console.log(err)
-                        res.json({success: true})
+                        console.log(mailOptions)
+                        if (err) { 
+                            console.log(err)
+                            res.json({success: true})
+                        }
                     })           
                 const token = jwt.sign({...createdUser}, process.env.SECRET_OR_KEY)
                 respuesta = token   

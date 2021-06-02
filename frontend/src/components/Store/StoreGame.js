@@ -3,6 +3,7 @@ import hardwareActions from '../../redux/actions/hardwareActions';
 import gamesActions from '../../redux/actions/gamesActions';
 import CardProduct from "./CardProduct";
 import { useEffect } from 'react';
+import { IoArrowDownOutline } from "react-icons/io5";
 
 const StoreGame = (props) => {
     useEffect(() => {
@@ -24,7 +25,7 @@ const StoreGame = (props) => {
             <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Leaders and heroes don't choose themselves</h2>
             <h4 style={{ fontSize: '2rem', textAlign: 'center', color: 'white' }}>But you can choose your Game to be a Hero!</h4>
             <div className="containerFilters">
-                <div><input type="text" placeholder="What video game do you want?" onChange={searchGame} /></div>
+                <div><input type="text" placeholder="Specific game?" onChange={searchGame} /></div>
                 <div className="tagsContainer">
                     <h4>Filter by Categories:</h4>
                     <div className="tagsFilter">
@@ -41,14 +42,20 @@ const StoreGame = (props) => {
                 </div>
             </div>
             <div className="cards containerCards">
-                {props.gamesFiltered.map((game, index) => {
+                {props.gamesFiltered.length
+                ? props.gamesFiltered.map((game, index) => {
                     return (
                         <div key ={game._id} className='divCardProduct'>
                             <CardProduct key={game._id} discount={game.discount} idGame={game._id} image={game.imageBanner} title={game.title} props={props.props} />
                         </div>
                         
                     )
-                })}
+                })
+                : <div className='gamesNotFounded'>
+                    <h1 className='titleGamesNotFounded'>Sorry, that game is not available yet... Try one of the newest!</h1>
+                    <IoArrowDownOutline className='iconGamesNotFounded'/>
+                </div>
+                }
             </div>
         </div>
     );

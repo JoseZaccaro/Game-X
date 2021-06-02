@@ -66,7 +66,7 @@ export default function MouseOverPopover({favouritesList, props}) {
         })
         :<div className='divNoGamesInList'>
             <div className='NoGamesInList'>
-            <p>You don't have added any game yet!</p>
+            <p>You don't have any game added yet!</p>
             <NavLink to='/store'><span className='spanLink'>Go to Store!</span></NavLink>
             </div>
         </div> }
