@@ -14,7 +14,7 @@ const { getChatOfUser, postMessageOfUser, deleteChat, getFriendList } = chatCont
 const { newUser, logIn, forcedLogin, getUsers, changeRol, addFriend, deleteFriend, getAllAddedProducts, addToList } = userController
 const { getAllGames, uploadGame, modifyGame, deleteGame, findOneGame, deleteGameImageBackground } = gameController
 const{getAllHardwares, getOneHardware, deleteHardware, addNewHardware, updateHardware, deleteHardwareImageBackground}=hardwareControllers
-const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID } = buyController
+const {getBuyByID , getAllbuys , modifyBuyByID , deleteBuyByID , addBuy } = buyController
 
 // ------------ROUTES USER---------
 router.route('/user')
@@ -73,6 +73,7 @@ router.route('/hardware/edit/:fileName')
 //------------ROUTES BUYS ---------
 router.route('/buy')
 .get(getAllbuys)
+.post(addBuy)
 
 router.route('/buy/:id')
 .get(getBuyByID)

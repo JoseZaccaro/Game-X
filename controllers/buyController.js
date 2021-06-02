@@ -11,6 +11,16 @@ const buyController = {
             res.json({success: false , response: error})
         }
     },
+    addBuy: async(req , res) =>{
+        try{
+            const new_buy = new Buy(req.body)
+            await new_buy.save()
+            res.json({success: true , response: new_buy})
+        }catch(error){
+            console.log("error en addBuy" , error)
+            res.json({success: false , response: error})
+        }
+    },
     getAllbuys: async(req , res)=>{
         try{
             const allBuys = await Buy.find()

@@ -1,7 +1,12 @@
 import { useState }  from 'react'
+import { connect } from 'react-redux'
+import buyActions from '../redux/actions/buyActions'
 
 
-const Formulario = () =>{
+const Formulario = (props) =>{
+
+    const token = localStorage.getItem('token')
+    console.log("hola soy el token" , token)
     const [newForm , setNewForm] = useState({
         firstName: "",
         surname: "",
@@ -18,6 +23,7 @@ const Formulario = () =>{
     const handleClick = (e)=>{
         e.preventDefault()
         console.log("formulario" , newForm)
+        props.crearCompra(newForm)
     }
     return(
         <>
@@ -89,4 +95,8 @@ const Formulario = () =>{
                 </div> 
         </div>*/
 
-export default Formulario
+const mapDispatchToProps = {
+    crearCompra: buyActions.crearCompra
+}
+
+export default connect (null  , mapDispatchToProps)(Formulario)
