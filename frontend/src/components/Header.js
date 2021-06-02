@@ -86,7 +86,7 @@ const Header = (props) =>{
                                     <NavLink to='/store'><li>Store</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
                                     {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
-                                    {props.userLogged && <li onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} /></li>}
+                                    <li onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{props.allCart.length}</li>
                                 </div>
                             </div>
                     </div>
@@ -125,8 +125,8 @@ const Header = (props) =>{
 const mapStateToProps = state => {
     return {
         userLogged: state.userReducer.userLogged,
-        favouritesList: state.userReducer.favouritesList
-
+        favouritesList: state.userReducer.favouritesList,
+        allCart: state.cartReducer.allCart
     }
   }
   const mapDispatchToProps = {

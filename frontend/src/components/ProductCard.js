@@ -9,7 +9,7 @@ const ProductCard = (props)=>{
         props.deleteToCart(props.articulo._id)
     }
     useEffect(()=>{
-        props.setSubTotal(props.articulo.price * cantidadAMostrar)
+        props.sendSubTotal(props.articulo.price * cantidadAMostrar, props.articulo._id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cantidadAMostrar])
     
