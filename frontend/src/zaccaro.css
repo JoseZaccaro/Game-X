@@ -317,6 +317,7 @@ div.iconoClose{
 .divHardware0:hover,.divHardware1:hover,.divHardware2:hover,.divHardware3:hover,.divHardware4:hover,.divHardware5:hover{
     cursor: pointer;
 }
+
 .imageHeroStore{
     width: 100%;
     height: 100%;
@@ -329,6 +330,8 @@ div.iconoClose{
     border: 1px solid white;
     cursor: pointer;
 }
+
+
 
 .imageHeroStoreHardware{
     background-color: #fff;
@@ -363,6 +366,7 @@ div.iconoClose{
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .imgPortadaBkGameAditional{
+    overflow: hidden;
     height: 10rem;
     width:7rem;
     background-size: cover;
@@ -374,8 +378,48 @@ div.iconoClose{
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
+.imgPortadaBkGameAditional:hover{
+    transition: .7s;
+    overflow: initial;
+}
+.imgPortadaBkGameAditional::before{
+    transition: .7s;
+    content: "Free with this purchase";
+    font-size: 10px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left:0%;
+    width: 130px;
+    border-radius: 5px;
+    height: 10%;
+    background-color: rgba(255, 0, 0, 0.407);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    opacity: 0;
+}
+.imgPortadaBkGameAditional:hover::before{
+    transition: .7s;
+    opacity: 1;
+    content: "Free with this purchase";
+    font-size: 10px;
+    border-radius: 5px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    padding-left: 5px;
+    width: 130px;
+    height: 10%;
+    background-color: rgba(255, 0, 0, 0.767);
+
+
+}
 .cadaDivInfoSecHard{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 7px;
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     margin-bottom: 5vh;
@@ -386,7 +430,8 @@ div.iconoClose{
     padding-left: 1vw;
 }
 .cadaDivInfoSecHardFeatures{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 7px;
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     margin-bottom: 5vh;
@@ -422,6 +467,90 @@ div.iconoClose{
     padding: 5px 0;
     color: white;
 }
+
+.divInfoSecondCardHardware{
+    min-height: 40vh;
+    margin-top: 2vh;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 5vh;
+}
+.descriptionPriceHardware{
+    min-height: 20vh;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 15vh;
+}
+
+.divAddCartHardware{
+    width: 55%;
+    padding: 5vh 0 0 .5rem;
+    /* padding-left: 35%; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.divDescriptionHardwareCard{
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-top: 15vh; */
+    /* margin-right: 5%; */
+    min-height: 20vh;
+    /* border: 1px solid black; */
+    padding: 0vh 1vw 1vh 1vw;
+}
+.divDescriptionHardwareCard > p{
+    word-break: break-word;
+}
+.addToCartHardware{
+    padding: 1vh 2vw;
+    background-color: #eee;
+    font-size: 3.67vh;
+    font-weight: 500;
+    margin-left: 2vw;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #8B95A6;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+.addToCartHardware:hover{
+    background-color: var(--main-bg-color);
+    color: #0B1321;
+}
+.priceHardware{
+    padding: 1vh 2vw;
+    font-size: 3.67vh;
+    font-weight: 500;
+    border-radius: 7px;
+    color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.addToWishListOnComponentHard{
+	cursor: pointer;
+	color: black;
+	background-color:var(--main-bg-color);
+	border-radius: 15px;
+	width: 50px;
+	height: 50px;
+	padding: 5px;
+	margin: 0 2vw 2vw 2vw ;
+	border: 1px solid var(--third-bg-color);
+	z-index: 500;
+	transition: 0.5s;
+}
+.addToWishListOnComponentHard:hover{
+	background-color: #7abfba;
+	transform: scale(1.05);
+}
+
 
 @media (max-width: 600px) {
     
