@@ -2,8 +2,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import InfiniteCarousel from 'react-leaf-carousel';
+import CarouselComponent from './CarouselComponent';
 class CarruselStore extends React.Component {
+
+
     render() {
+        
         return (
             <InfiniteCarousel
                 breakpoints={[
@@ -60,17 +64,7 @@ class CarruselStore extends React.Component {
             >
                 {this.props.games.map(game => {
                     return (
-                        <NavLink to={`/game/${game._id}`}>
-                            <figure className="image-block">
-                                <div className="imageCarrusel" style={{backgroundImage:`url("${game.imageBanner}")`}} ></div>
-                                <figcaption>
-                                    <h3>{game.title.toUpperCase()}</h3>
-                                    <p>DEVELOPER: {game.developer.toUpperCase()}</p>
-                                    <p>YEAR: {game.year}</p>
-                                    <p>PRICE: ${game.price}</p>
-                                </figcaption>
-                            </figure>
-                        </NavLink>
+                        <CarouselComponent game={game} props={this.props.props}/>
                     )
                 })}
             </InfiniteCarousel>
