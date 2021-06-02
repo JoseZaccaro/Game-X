@@ -20,7 +20,7 @@ const Cart = (props)=>{
         })
         setTotal(sumSubTotal)  
     }
-    console.log(props.allCart)
+    // console.log(props.allCart)
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
     return (
         <div className='modalCartContain'>

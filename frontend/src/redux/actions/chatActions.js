@@ -60,6 +60,7 @@ const chatActions = {
 
                 const friendList = await axios.get('http://localhost:4000/api/friends/'+userId)            
                 if(friendList.data.success){
+                    dispatch({type:"RELOAD_FRIEND_LIST", payload:friendList.data.response})
                     return friendList.data.response
                 }else{
                     console.log(friendList.data.response)
@@ -106,8 +107,22 @@ const chatActions = {
 
             }
         }
+    },
+    socketChat:(socket)=>{
+        return (dispatch,getState)=>{
+           dispatch({type:'SOCKET_IO',payload:socket})
+        }
+    },
+    reloadMessages:()=>{
+        return (dispatch, getState)=>{
+            dispatch({type:'RELOAD_MESSAGES'})
+        }
+    },
+    reloadFriendList:()=>{
+        return(dispatch, getState)=>{
+            dispatch({type:'RELOAD_FRIENDLIST_SOCKET'})
+        }
     }
-
 }
 
 export default chatActions

@@ -34,6 +34,8 @@ class HardwareStore extends React.Component {
 
 
     render() {
+    console.log(this.props.userLogged)
+
         return (
             <>
                 {!this.props.allHardwares.length
@@ -64,6 +66,7 @@ const mapStateToProps = (state) => {
     return {
         allHardwares: state.hardwareReducer.allHardwares,
         allGames: state.gamesReducer.allGames,
+        userLogged:state.userReducer.userLogged
     }
 }
 const mapDispatchToProps = {

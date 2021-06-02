@@ -18,10 +18,16 @@ import AdminPanel from './pages/AdminPanel';
 import Formulario from './components/Formulario'
 import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
+import io from 'socket.io-client'
+import chatActions from './redux/actions/chatActions'
 
 class App extends React.Component{
 
   componentDidMount() {
+                          // https://game-x-arg.herokuapp.com/
+                // ACA ABAJO 👇 VA EL LINK DE HEROKU 👆
+    this.props.socketChat(io('http://localhost:4000'))
+
     if (!this.props.userLogged && localStorage.getItem('token')) {  
       const userData = JSON.parse(localStorage.getItem('userLogged'))
       const userLS= {
@@ -66,7 +72,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
   forcedLoginByLS :  userActions.forcedLoginByLS,
-
+  socketChat: chatActions.socketChat
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App)
