@@ -21,7 +21,8 @@ const StoreGame = (props) => {
     }
     return (
         <div >
-            <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>The World is in Play</h2>
+            <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Leaders and heroes don't choose themselves</h2>
+            <h4 style={{ fontSize: '2rem', textAlign: 'center', color: 'white' }}>But you can choose your Game to be a Hero!</h4>
             <div className="containerFilters">
                 <div><input type="text" placeholder="What video game do you want?" onChange={searchGame} /></div>
                 <div className="tagsContainer">
@@ -43,7 +44,7 @@ const StoreGame = (props) => {
                 {props.gamesFiltered.map((game, index) => {
                     return (
                         <div key ={game._id} className='divCardProduct'>
-                            <CardProduct key={game._id} discount={game.discount} idGame={game._id} image={game.imageBanner} title={game.title} />
+                            <CardProduct key={game._id} discount={game.discount} idGame={game._id} image={game.imageBanner} title={game.title} props={props.props} />
                         </div>
                         
                     )

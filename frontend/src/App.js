@@ -43,8 +43,8 @@ class App extends React.Component{
       return (
         <BrowserRouter>
             <Switch>
-                {/* <Route exact path="/" component={Home} /> */}
-                <Route exact path="/" component={StoreHardware} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/hardware" component={StoreHardware} />
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />

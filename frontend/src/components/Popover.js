@@ -1,15 +1,21 @@
 import React from 'react';
 import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   popover: {
   },
   paper: {
-    width:'250px',
+    width:'240px',
     height:'auto',
     maxHeight:'350px',
+    minHeight:'10rem',
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'flex-start',
+    justifyContent:'center',
+    borderRadius:'15px',
     color:'#089f8a',
     backgroundColor:'#061320',
     margin:'-2rem -8rem'
@@ -49,14 +55,21 @@ export default function MouseOverPopover({favouritesList, props}) {
         }}
         onClose={handleClick}
       >
-        {favouritesList.map(product => {
-            return  <Link key={product._id} to={`/game/${product.gameId._id}`}>
+        {favouritesList.length 
+        ? favouritesList.map(product => {
+            return  <NavLink key={product._id} to={`/game/${product.gameId._id}`}>
                         <div  className="divPopover">
                             <div className="commentProfileImg" style={{backgroundImage: `url('${product.gameId.imageBanner}')`}}/>
                             <p>{product.gameId.title}</p>
                         </div>
-                    </Link>
-        })}
+                    </NavLink>
+        })
+        :<div className='divNoGamesInList'>
+            <div className='NoGamesInList'>
+            <p>You don't have added any game yet!</p>
+            <NavLink to='/store'><span className='spanLink'>Go to Store!</span></NavLink>
+            </div>
+        </div> }
       </Popover>
     </div>
   );

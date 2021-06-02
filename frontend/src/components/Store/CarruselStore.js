@@ -26,7 +26,7 @@ class CarruselStore extends React.Component {
                 sidesOpacity={.5}
                 sideSize={.1}
                 slidesToScroll={4}
-                slidesToShow={3}
+                slidesToShow={5}
                 scrollOnDevice={true}
             >
                 {this.props.games.map(game => {

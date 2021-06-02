@@ -32,13 +32,13 @@ const Cart = (props)=>{
                                 return <ProductCard key={i} articulo={articulo} sendSubTotal={sendSubTotal}/>
                             })
                             :<div className='divSinArtCart'>
-                                <h1>No has añadido ningun articulo al carrito</h1>
-                                <p className='botonStoreCart'>Store</p>
+                                <h1>You don't have any product on your cart!</h1>
+                                <p className='botonStoreCart'>Go to Store!</p>
                             </div>}
                     </div>
                     <div className='buttonsCart'>
-                        <p className='buttonCloseModalCancel' onClick={props.openCloseModal}>Seguir Comprando</p>
-                        <p className='buttonCloseModalBuy'>Realizar Compra</p>
+                        <p className='buttonCloseModalCancel' onClick={props.openCloseModal}>Keep looking</p>
+                        <p className='buttonCloseModalBuy'>Finish buy</p>
                         <div className='totalPriceCart'>
                             <p>TOTAL: </p>
                             <p>${total}</p>

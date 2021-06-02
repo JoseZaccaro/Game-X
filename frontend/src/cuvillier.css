@@ -11,7 +11,7 @@
 }
 .containPageHomeDos{
     height: 100vh;
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
     display: flex;
 }
@@ -47,12 +47,15 @@
     text-align: left;
     line-height: 1;
     min-height: 0vw;
+    width: 90%;
+    text-align: center;
 }
 .textContentMove{
     width: 70%;
     color: #8B95A6;
     font-family: questrial,sans-serif;
     font-weight: normal;
+    text-align: center;
     font-size: calc(16px + (18 - 16) * ((100vw - var(--minViewportSize) * 1px) / (var(--maxViewportSize) - var(--minViewportSize))));
     font-style: normal;
     letter-spacing: 0em;
@@ -76,17 +79,19 @@
     cursor: pointer;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+    transition: 0.5s;
 }
 .buttonContenMove:hover{
     background-color: transparent;
     color: white;
     border: 1px solid gray;
+    transition: 0.5s;
 }
 .contentVideoMove{
     background-color: rgba(51, 66, 94, 0.2);
-    height: 65vh;
+    height: auto;
     width: 25vw;
-    margin-top: 3vh;
+    margin: 5vh 0;
     border: 1px solid rgba(128, 128, 128, 0.438);
     border-radius: 30px;
     display: flex;
@@ -98,7 +103,7 @@
 }
 .videoContent{
     border: 1px solid rgba(128, 128, 128, 0.438);
-    height: 45%;
+    height: 25vh;
     width: 80%;
     margin-bottom: 4vh;
     background-position: center;
@@ -120,6 +125,7 @@
     font-style: normal;
     letter-spacing: 0em;
     line-height: 1.6;
+    margin: 2rem 0;
     min-height: 0vw;
     text-align: left;
 }
@@ -143,14 +149,16 @@
     color: rgb(212, 209, 209);
     height: 7vh;
     text-align: center;
-    margin-top: 4vh;
+    margin-bottom: 2rem;
     cursor: pointer;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+    transition: 0.5s;
 }
 .btnHoverPlay:hover{
     background-color: #A3EEE9;
     color: var(--secundary-bg-color);
+    transition: 0.5s;
 }
 .shadowHeader{
     position: absolute;
@@ -174,6 +182,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+    
 }
 .gifLogo{
     min-height: 120px;
@@ -232,7 +242,7 @@ a{
 .shadowBottom{
     position: absolute;
     bottom: -100vh;
-    height: 20vh;
+    height: 15vh;
     width: 100%;
     z-index: 40;
     background: linear-gradient(to top, var(--secundary-bg-color), transparent);
@@ -481,13 +491,13 @@ a{
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .imgBanerBkGame{
-    height: 50vh;
-    background-position: top;
+    height: 60vh;
+    background-position: top center;
     background-size: cover;
     width: 100%;
 }
 .imgPortadaBkGame{
-    height: 60vh;
+    height: 65vh;
     width: 20vw;
     background-size: cover;
     background-position: center;
@@ -729,6 +739,7 @@ a{
     background-color: #13233d;
     display: flex;
     border-radius: 30px;
+    margin-top: 8rem;
 }
 .divDisplayProducts{
     height: 100%;
