@@ -85,7 +85,8 @@ const Header = (props) =>{
                                 <span></span>
                                 <div className="menuNav" >
                                     <NavLink to='/'><li>Home</li></NavLink>
-                                    <NavLink to='/store'><li>Store</li></NavLink>
+                                    <NavLink to='/store'><li>Games</li></NavLink>
+                                    <NavLink to='/hardware'><li>Hardware</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
                                     {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
                                     <li onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{props.allCart.length}</li>

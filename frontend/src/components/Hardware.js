@@ -44,10 +44,10 @@ const Hardware = (props) => {
   
     var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
     
-    const sendGameToList = async(hardware) =>{
+    const sendHardwareToList = async(hardware) =>{
       setMyList({...myList, fetching:true})
-      const add = {hardware, add:true}
-      const remove = {hardware, add:false}
+      const add = {hardware, add:true, game:false}
+      const remove = {hardware, add:false, game:false}
       const sendedData = hardwareFounded ? remove : add
       const response = await props.addToMyList(sendedData, token, props.userLogged.id)
         setMyList({myList: response.favouritesList, fetching: false})     
@@ -87,12 +87,12 @@ const Hardware = (props) => {
                                         {!hardwareFounded 
                                         ? <Tooltip title="Add to Wishlist" placement="top" > 
                                             <div>
-                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='addToWishListOnComponentHard'/>
+                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='addToWishListOnComponentHard'/>
                                             </div>
                                         </Tooltip>
                                         : <Tooltip title="Remove from Wishlist" placement="top" >
                                             <div>
-                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='removeFromWishListOnComponent'/>
+                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='removeFromWishListOnComponent'/>
                                             </div>
                                         </Tooltip>
                                         }
