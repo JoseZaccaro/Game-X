@@ -113,7 +113,6 @@ class Access extends React.Component{
         }   
     }
 
-    // fati_04_8@hotmail.com
     validate = (e) => {
         const field = e.name
         var message = null

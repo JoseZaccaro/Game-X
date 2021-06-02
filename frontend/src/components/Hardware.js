@@ -44,10 +44,10 @@ const Hardware = (props) => {
   
     var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
     
-    const sendGameToList = async(hardware) =>{
+    const sendHardwareToList = async(hardware) =>{
       setMyList({...myList, fetching:true})
-      const add = {hardware, add:true}
-      const remove = {hardware, add:false}
+      const add = {hardware, add:true, game:false}
+      const remove = {hardware, add:false, game:false}
       const sendedData = hardwareFounded ? remove : add
       const response = await props.addToMyList(sendedData, token, props.userLogged.id)
         setMyList({myList: response.favouritesList, fetching: false})     
@@ -78,39 +78,39 @@ const Hardware = (props) => {
                                 <div className='infoFastGame'>
                                     <h2 className='titleGameCard'>{hardwareDetails.productName}</h2>
                                 </div>
-                                <div className='descriptionPrice'>
-                                    <div className='divAddCart'>
-                                        <p className='priceGame'>${hardwareDetails.price}</p>
+                                <div className='descriptionPriceHardware'>
+                                    <div className='divAddCartHardware'>
+                                        <p className='priceHardware'>${hardwareDetails.price}</p>
                                         {!inCart 
-                                            ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
-                                            : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
+                                            ? <p className='addToCartHardware' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
+                                            : <p className='addToCartHardware' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
                                         {!hardwareFounded 
                                         ? <Tooltip title="Add to Wishlist" placement="top" > 
                                             <div>
-                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='addToWishListOnComponent'/>
+                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='addToWishListOnComponentHard'/>
                                             </div>
                                         </Tooltip>
                                         : <Tooltip title="Remove from Wishlist" placement="top" >
                                             <div>
-                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='removeFromWishListOnComponent'/>
+                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='removeFromWishListOnComponent'/>
                                             </div>
                                         </Tooltip>
                                         }
                                         
                                     </div>
-                                    <div className='divDescriptionGameCard'>
+                                    <div className='divDescriptionHardwareCard'>
                                         <p className='pDescriptionTitle'>Description:</p>
                                         <p className='pDescriptionContent'>{hardwareDetails.description}</p>
                                     </div>
                                 </div>
-                                <div className='divInfoSecondCardGame'>
+                                <div className='divInfoSecondCardHardware'>
                                     <div className='cadaDivInfoSecHard'>
                                         <p className='pTituloInfoSecHard'>Brand:</p>
                                         <p className='pTituloInfoSecHard'>{hardwareDetails.brand}</p>
                                     </div>
                                     <div className='cadaDivInfoSecHard'>
                                         <p className='pTituloInfoSecHard'>Stock:</p>
-                                        <p className='pTituloInfoSecHard'>{hardwareDetails.stock > 5 ? hardwareDetails.stock + " unities" : hardwareDetails < 1 ? hardwareDetails.stock+" Last unities" : "Out of Stock"} </p>
+                                        <p className='pTituloInfoSecHard'>{hardwareDetails.stock > 5 ? hardwareDetails.stock + " unities" : !hardwareDetails < 1 ? hardwareDetails.stock+" Last unities" : "Out of Stock"} </p>
                                     </div>
                                     <div className='cadaDivInfoSecHardFeatures'>
                                         <p className='pTituloInfoSecHardFeatures'>Features:</p>

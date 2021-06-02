@@ -21,7 +21,6 @@ let transport = nodemailer.createTransport({
 
 const userController = {
     newUser: async (req, res) => {
-        console.log(transport)
         var {userName, email, password, avatarURL, country, imageUrl} = req.body
         const {avatar} = req.files ? req.files : req.body
         const existentMail = await User.findOne({email})
@@ -61,7 +60,7 @@ const userController = {
                             background-color: #A3EEE9;
                             width: 25vw;
                             height: 40px;
-                            color: #A3EEE9;
+                            color: black;
                             text-align: center;
                             border-radius: 30px;
                             ">Welcome to Game-X !</h1>
@@ -71,15 +70,17 @@ const userController = {
                             background-color: #A3EEE9;
                             width: 25vw;
                             height: 40px;
-                            color: #A3EEE9;
+                            color: black;
                             text-align: center;
                             border-radius: 30px;
                             ">Thanks for your register!</h1>
                         </div>`
                     }
-                    transport.sendMail(mailOptions, (err) => {
-                        if (err) console.log(err)
+                transport.sendMail(mailOptions, (err) => {
+                    if (err) { 
+                        console.log(err)
                         res.json({success: true})
+                    }
                     })           
                 const token = jwt.sign({...createdUser}, process.env.SECRET_OR_KEY)
                 respuesta = token   
@@ -215,9 +216,10 @@ const userController = {
     },
     addToList: async (req, res) => {
         var {sendedData} = req.body
-        var {game} = sendedData
+        var {game, add, } = sendedData
         try {
-            const addedToList = await User.findOneAndUpdate({_id: req.params.id}, sendedData.add ? {$push:{favouritesList:{gameId: game}}} : {$pull:{favouritesList: {gameId: game}}}, {new: true})
+            const addedToList = await User.findOneAndUpdate({_id: req.params.id}, 
+                add  ? {$push:{favouritesList:{gameId: game}}} : {$pull:{favouritesList: {gameId: game}}}, {new: true})
             res.json({success: true, response: addedToList})
         } catch(error) {
             console.log(error)

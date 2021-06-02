@@ -13,6 +13,17 @@ const chatActions = {
                 if(oldChat.data.success && oldChat.data.response){
                     return oldChat.data.response
                 }else{
+                    return null
+                }
+            }catch(e){
+                console.log(e)
+                }
+            }
+        },
+        addFriend:(friendId)=>{
+            return async(dispatch, getState)=>{
+                try{
+                const token = localStorage.getItem('token')
                     const friend = await axios.put(`http://localhost:4000/api/user/addFriend/${friendId}`,null,{
                         headers:{
                             'Authorization': 'Bearer '+ token
@@ -22,9 +33,9 @@ const chatActions = {
                         dispatch({type:"RELOAD_FRIEND_LIST", payload:friend.data.response})
                         return friend.data.response
                     }
-                }
-            }catch(e){
-                console.log(e)
+                
+                }catch(e){
+                    console.log(e)
                 }
             }
         },

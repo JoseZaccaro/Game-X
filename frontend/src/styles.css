@@ -527,7 +527,7 @@ input[type="file" ] {
 
 .navigation input:checked ~ .menuNav {
 	margin: 0 80px 0 -50px;
-	width: 300px;
+	width: 500px;
     height: auto;
 }
 
@@ -817,17 +817,11 @@ input[type="file" ] {
 		min-width: 80px;
 	}
 	.registerInput {
-		background-color: rgb(221, 221, 221);
-		border: none;
-		border-radius: 15px;
-		padding: 12px 15px;
-		margin: 4px 0;
-		width: 100%;
-		max-width: 100%;
-		min-width: 100%;
 		max-height: 9%;
 		min-height: 9%;
-		outline: none;
+	}
+	.social-container {
+		margin: 0;
 	}
 
 

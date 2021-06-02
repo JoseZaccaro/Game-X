@@ -49,9 +49,13 @@ const chatControllers = {
     deleteChat: async(req,res)=>{
         try{
             const {friendId} = req.params
-            const chatId = friendId
-            const chatDeleted = await Chat.findOneAndDelete({_id:friendId})
-            res.json({success:true,response:"deleted"})
+            // const chatId = friendId
+            // const chatDeleted = await Chat.findOneAndDelete({_id:chatId})
+            const userId = friendId
+            const userDataDeleted = await User.findOneAndUpdate({_id:userId},{chats:[],friends:[]},{new:true})
+            res.json({success:true,response:userDataDeleted})
+            
+            // res.json({success:true,response:chatDeleted})
         }catch(e){
             res.json({success:false,response:e})
         }
