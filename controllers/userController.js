@@ -21,7 +21,6 @@ let transport = nodemailer.createTransport({
 
 const userController = {
     newUser: async (req, res) => {
-        console.log(transport)
         var {userName, email, password, avatarURL, country, imageUrl} = req.body
         const {avatar} = req.files ? req.files : req.body
         const existentMail = await User.findOne({email})
@@ -77,12 +76,11 @@ const userController = {
                             ">Thanks for your register!</h1>
                         </div>`
                     }
-                    transport.sendMail(mailOptions, (err) => {
-                        console.log(mailOptions)
-                        if (err) { 
-                            console.log(err)
-                            res.json({success: true})
-                        }
+                transport.sendMail(mailOptions, (err) => {
+                    if (err) { 
+                        console.log(err)
+                        res.json({success: true})
+                    }
                     })           
                 const token = jwt.sign({...createdUser}, process.env.SECRET_OR_KEY)
                 respuesta = token   
