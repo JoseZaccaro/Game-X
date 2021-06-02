@@ -6,7 +6,7 @@ import gamesActions from '../redux/actions/gamesActions';
 import HeroStore from "../components/Store/HeroStore";
 import Loader from '../components/Loader';
 import StoreGame from "../components/Store/StoreGame";
-
+import CarruselStore from '../components/Store/CarruselStore'
 
 
 class Store extends React.Component {
@@ -44,12 +44,18 @@ class Store extends React.Component {
                         <>
                         <Header props={this.props.history}/>
                             <div className="containerStore">
-                                <HeroStore heroGames={!this.props.preLoaderGames ? this.props.allGames.sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 6) : this.props.allGames} />
+                                <HeroStore heroGames={!this.props.preLoaderGames ? this.props.allGames.sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 7) : this.props.allGames} />
                                 <StoreGame />
                                 <div style={{ marginTop: '2rem' }}>
                                     <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
                                     <div className="containerSlider" >
-                                        {/* <CarruselStore games={this.props.allGames.splice(0, 8)} /> */}
+                                        <CarruselStore games={this.props.allGames.filter(game => game.year >= 2021)} />
+                                    </div>
+                                </div>
+                                <div style={{ marginTop: '2rem' }}>
+                                    <h3 style={{ fontSize: '2rem', color: 'white' }}>Retro games</h3>
+                                    <div className="containerSlider" >
+                                        <CarruselStore games={this.props.allGames.filter(game => game.year <= 2015)} />
                                     </div>
                                 </div>
                             </div>

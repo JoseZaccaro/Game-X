@@ -44,7 +44,7 @@ const CardProduct = (props) => {
                         <figure className="card contentRibbon">
                             {props.discount && <div class="ribbon"><span>OFFER</span></div>}
                             <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
-                            <figcaption>{title}</figcaption>
+                            <figcaption>{title.toUpperCase()}</figcaption>
                         </figure>
                 </ NavLink>}       
             </>

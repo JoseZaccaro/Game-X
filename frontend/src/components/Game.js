@@ -15,18 +15,24 @@ import cartActions from '../redux/actions/cartActions';
 const Game = (props) => {
     const [gameDetails, setGameDetails] = useState(null)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
+    const toTop = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+    }
 
     useEffect(() => {
+        toTop()
         if (props.allGames.length === 0) {
             props.history.push('/store')
         }
-        if (!gameDetails) {
             let idGame = props.match.params.id
             let gameFilter = props.allGames.find(game => game._id === idGame)
             setGameDetails({
                ...gameFilter
             })
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -56,7 +62,6 @@ const Game = (props) => {
         setInCart(!inCart)
         props.deleteToCart(gameDetails._id)
     }
-
 
     return (
         <>

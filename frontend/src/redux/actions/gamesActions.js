@@ -12,9 +12,9 @@ const gamesActions = {
             }        
         }
     },
-    filterGames: (valueSearch, flag)=>{
+    filterGames: (filterBy,product, flag)=>{
         return async (dispatch, getState)=>{
-            dispatch({ type: 'FILTER_GAMES', payload: {value: valueSearch, flag: flag} })
+            dispatch({ type: 'FILTER_GAMES', payload: {value: filterBy,product:product, flag: flag} })
             try {
             } catch (error) {
                 

@@ -9,7 +9,7 @@ const HeroStore = (props) => {
                         <div className="parent">
                             <div className="div1">
                                 <NavLink to={`/game/${heroGames[0]._id}`}>
-                                    <div className="imageHeroStore" style={{ backgroundImage: `url("${heroGames[0].imageBanner}")` }}> </div>
+                                    <div className="imageHeroStore" style={{ backgroundImage: `url("${heroGames[0].imagesBackground[0]}")` }}></div>
                                 </NavLink>
                             </div>
                             <div className="div2">
@@ -34,7 +34,13 @@ const HeroStore = (props) => {
                             </div>
                             <div className="div6">
                                 <NavLink to={`/game/${heroGames[5]._id}`}>
-                                    <div className="imageHeroStore" style={{ backgroundImage: `url("${heroGames[5].imageBanner}")` }}> </div>
+                                    <div className="imageHeroStore" style={{ backgroundImage: `url("${heroGames[5].imageBanner}")` }}>
+                                    </div>
+                                </NavLink>
+                            </div>
+                            <div className="div7">
+                                <NavLink to={`/game/${heroGames[6]._id}`}>
+                                    <div className="imageHeroStore" style={{ backgroundImage: `url("${heroGames[6].imageBanner}")` }}> </div>
                                 </NavLink>
                             </div>
                         </div>

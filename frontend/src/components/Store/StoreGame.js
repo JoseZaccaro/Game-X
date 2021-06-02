@@ -6,17 +6,17 @@ import { useEffect } from 'react';
 
 const StoreGame = (props) => {
     useEffect(() => {
-        props.filterGames('All', false)
+        props.filterGames('All','games', false)
         // eslint-disable-next-line
     }, [])
     let genres = ['All', 'Action', 'Action-adventure', 'Adventure', 'Multiplayer', 'RPG', 'Strategy']
-
-    const filterGamesEvent = async (genre) => {
-        props.filterGames(genre, false)
+    let consolas = ['All','PS3','PS4','PS5','PC','Xbox One','Xbox 360']
+    const filterGamesEvent = async (filterBy, product) => {
+        props.filterGames(filterBy, product, false)
     }
     const searchGame = (e) => {
         let valueSearch = e.target.value.trim().toLowerCase()
-        props.filterGames(valueSearch, true)
+        props.filterGames(valueSearch,'games', true)
 
     }
     return (
@@ -25,10 +25,16 @@ const StoreGame = (props) => {
             <div className="containerFilters">
                 <div><input type="text" placeholder="What video game do you want?" onChange={searchGame} /></div>
                 <div className="tagsContainer">
-                    <h4>Filter by:</h4>
+                    <h4>Filter by Categories:</h4>
                     <div className="tagsFilter">
                         {genres.map((genre, i) => {
-                            return <p key={i} onClick={(e) => filterGamesEvent(genre)} className='tag tagFilter'>{genre}</p>
+                            return <p key={i} onClick={(e) => filterGamesEvent(genre,'games')} className='tag tagFilter'>{genre}</p>
+                        })}
+                    </div>
+                    <h4>Filter by Consoles:</h4>
+                    <div className="tagsFilter">
+                        {consolas.map((console, i) => {
+                            return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='tag tagFilter'>{console}</p>
                         })}
                     </div>
                 </div>
