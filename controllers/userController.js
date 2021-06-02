@@ -6,12 +6,13 @@ require('dotenv').config()
 const nodemailer = require('nodemailer')
 
 
+
 let transport = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
     auth: {
-        user: "gamex.arg@gmail.com",
-        pass: "matias388"
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     },
     tls: {
         rejectUnauthorized: false
