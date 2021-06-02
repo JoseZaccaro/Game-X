@@ -59,37 +59,29 @@ const Messages = (props)=>{
 
         if(minimized && !rightHide){
             leftSideHide ={
-                height:'3rem',
+                height:'3.5rem',
                 transition:".7s",
-                 transform:'translate(-20rem,0)',
+                 transform:'translate(32rem,0)',
                  cursor:'pointer'
-                }
-        }else if(!rightHide && minimized){
-            leftSideHide ={
-                height:'3rem',
-                transition:".7s",
-                 transform:'translate(20,0)',
                 }
         }else if( minimized && rightHide ){
             
             leftSideHide = {
-                height:'3rem',
+                height:'3.5rem',
                 transition:".7s",
-                 transform:'translate(0,0)',
+                 transform:'translate(18rem,0)',
                  cursor:'pointer'
                 }
-        }else if (leftHide){
-
-            leftSideHide={
-                transform: "translate(20rem, 0)",
-                transition: ".7s",
-                opacity:'0'
-            }
         }else if(!leftHide && !rightHide){
-
             leftSideHide={
-                transform: "translate(-20rem, 0)", 
+                transform: "translate(32rem, 0)", 
                 transition: ".7s", 
+                opacity:'1'
+            }
+        }else if (!leftHide){
+            leftSideHide={
+                transform: "translate(18rem, 0)",
+                transition: ".7s",
                 opacity:'1'
             }
         }else{

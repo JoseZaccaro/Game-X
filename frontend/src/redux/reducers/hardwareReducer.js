@@ -8,7 +8,7 @@ const hardwareReducer = (state = initialState, action) =>{
         case 'LOAD_HARDWARES':
             return {
                 ...state, 
-                allHardware: action.payload,
+                allHardwares: action.payload,
                 preLoader: false
             }
         default:

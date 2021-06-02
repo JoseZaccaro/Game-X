@@ -16,6 +16,8 @@ import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
 import Formulario from './components/Formulario'
+import StoreHardware from './pages/StoreHardware';
+import Hardware from './components/Hardware'
 
 class App extends React.Component{
 
@@ -41,11 +43,13 @@ class App extends React.Component{
       return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Home} />
+                {/* <Route exact path="/" component={Home} /> */}
+                <Route exact path="/" component={StoreHardware} />
                 <Route exact path="/store" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game/:id" component={Game} />
+                <Route path="/hardware/:id" component={Hardware} />
                 <Route path="/formulario" component={Formulario} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!localStorage.getItem('token') && <Route path="/access" component={Access} />}

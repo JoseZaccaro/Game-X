@@ -3,7 +3,7 @@
     height:0;
     display:flex;
     position:fixed;
-    right: 0;
+    left: 0;
     bottom: 0;
     z-index: 100000;
 }
@@ -12,9 +12,9 @@
     width: 3rem;
     height: 3rem;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: translate(-30px, -1rem);
+    bottom:0;
+    left:0;
+    transform: translate(30px, -1rem);
 }
 .chatIcon{
     padding: 5px;
@@ -38,11 +38,12 @@
 }
 
 .innerContainerRightSide {
-    width:20rem;
-    height:50vh;
+    padding-left: 10px;
+    width:14rem;
+    height:60vh;
     background-color:var(--main-bg-color);
     border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-right: 1px solid black;
     display:flex;
     flex-direction:column;
     position:absolute;
@@ -53,7 +54,7 @@
 }
 
 .containerLeftSide {
-    height:55vh;
+    height:50vh;
     width:18rem;
     display:flex;
     flex-direction:column;
@@ -62,7 +63,7 @@
     position: absolute;
     bottom: 0;
     right:0;
-    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     /* border: 0.1rem solid white; */
     transform: translate(20rem, 0);
     transition: .7s;
@@ -126,8 +127,8 @@
 
 
 .friendUserImage {
-    width:3rem;
-    height:3rem;
+    width:2.5rem;
+    height:2.5rem;
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -163,7 +164,7 @@
     height: calc(90% - 1rem);
     padding-top: 1rem;
     overflow: scroll;
-    padding-left: 8px;
+    /* padding-left: 8px; */
 }
 
 .userName {
@@ -256,10 +257,10 @@ div.iconoClose{
 
 .searchBarFriend{
     position: absolute;
-    right: 0;
-    bottom: 50vh;
+    left: 0;
+    bottom: 60vh;
     
-    width: 20rem;
+    width: 14rem;
     /* height: 20vw; */
     /* background-color: red; */
 }
@@ -269,11 +270,159 @@ div.iconoClose{
     border: none;
     padding: 10px;
     /* border-top-right-radius: 10px; */
-    border-top-left-radius: 10px;
-    border-left: 1px solid black;
+    border-top-right-radius: 10px;
+    border-right: 1px solid black;
     border-top: 1px solid black;
     font-size: 20px;
-    transition:"all 0.7s ease 0.5s"
-    
+    transition:"all 0.7s ease 0.5s";
+    height: 2rem;
 
+}
+
+.parentHardware {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%;
+    height: 100vh;
+}
+    
+.divHardware0 {
+    grid-area: 1 / 2 / 1 / 1;
+     overflow: hidden;
+}
+.divHardware1 {
+    grid-area: 2 / 1 / 2 / 1;
+     overflow: hidden;
+}
+.divHardware2 {
+    grid-area: 1 / 2 / 2 / 2;
+     overflow: hidden;
+}
+.divHardware3 {
+    grid-area: 2 / 2 / 2 / 2;
+     overflow: hidden;
+}
+.divHardware4 {
+    grid-area: 2 / 3 / 2 / 3;
+     overflow: hidden;
+}
+.divHardware5 {
+    grid-area: 1 / 3 / 1 / 3;
+     overflow: hidden;
+}
+
+.divHardware0:hover,.divHardware1:hover,.divHardware2:hover,.divHardware3:hover,.divHardware4:hover,.divHardware5:hover{
+    cursor: pointer;
+}
+.imageHeroStore{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+     background-position: top left;
+     transition: all 1s;
+}
+.imageHeroStore:hover{
+    transform: scale(1.1);
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.imageHeroStoreHardware{
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    background-size:cover;
+    background-position: bottom center;
+    transition: all 1s;
+}
+.imageHeroStoreHardware:hover{
+    transform: scale(1.1);
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.imgBanerBkHardware{
+    height: 70vh;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+}
+.imgPortadaBkHardware{
+    height: 70vh;
+    width: 25vw;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 5vw;
+    top: 30vh;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.imgPortadaBkGameAditional{
+    height: 10rem;
+    width:7rem;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    border-radius: 10px;
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.cadaDivInfoSecHard{
+    border: 1px solid black;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    margin-bottom: 5vh;
+    width: 40%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 1vw;
+}
+.cadaDivInfoSecHardFeatures{
+    border: 1px solid black;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    margin-bottom: 5vh;
+    width: 90%;
+    min-height: 20vh;
+    display: flex;
+    /* align-items: center; */
+    padding: 5vh 5vw;
+}
+
+.pTituloInfoSecHardFeatures{
+    color: #d6dbeb;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-right: 1vw;
+    display: flex;
+    align-items: flex-start;
+    margin-right: 2vw;
+    padding-top: 2.5px;
+}
+.pTituloInfoSecHard{
+    color: #d6dbeb;
+    font-weight: bold;
+    font-size: 2.5vh;
+    margin-right: 1vw;
+    display: flex;
+    align-items: center;
+}
+
+.featuresLi{
+    list-style-type:circle;
+    margin-left: 10px;
+    padding: 5px 0;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    
 }

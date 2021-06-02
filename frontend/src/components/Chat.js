@@ -99,23 +99,22 @@ const Chat = (props) => {
         }
     }
 
-    const searchBarStyle = ( rightHide && viewSearchBar ? {transform: "translate(20rem,0)", opacity:'0',transition: ".7s"}: rightHide && !viewSearchBar ? {transform: "translate(20rem,3rem)", opacity:'0',transition: ".7s"} : !viewSearchBar ? {transform: "translate(0,3rem)",transition: ".7s", opacity:'0'} : {transition: ".7s"} )
+    const searchBarStyle = ( rightHide && viewSearchBar ? {transform: "translate(-20rem,0rem)", opacity:'0',transition: ".7s"}: rightHide && !viewSearchBar ? {transform: "translate(-20rem,3rem)", opacity:'0',transition: ".7s"} : !viewSearchBar ? {transform: "translate(0rem,3rem)",transition: ".7s", opacity:'0'} : {transform: "translate(0rem,0rem)",transition: ".7s"} )
     const innerContainerRightSideStyle = ( rightHide ?
-        {transform: "translate(20rem, 0)",transition: ".7s" , opacity:'0'} 
-        : !viewSearchBar && !rightHide ? {transform: "translate(0, 0)",transition: ".7s", borderTopLeftRadius:'10px'}  : {transform: "translate(0, 0)",transition: ".7s", opacity:'1'} ) 
+        {transform: "translate(0rem, 0)",transition: ".7s" , opacity:'0',borderTopRightRadius:'10px'} 
+        : !viewSearchBar && !rightHide ? {transform: "translate(14rem, 0)",transition: ".7s", borderTopRightRadius:'10px'}  : {transform: "translate(14rem, 0)",transition: ".7s", opacity:'1'} ) 
         
 
     return (<>
         <div className="extContainer">
         { props.userLogged && 
-            <Tooltip title="Send Message" placement="top-start">               
+            <Tooltip title="Open Chat" placement="top-start">               
                 <div className="chatIconContainer">
-                    <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(-18rem,1rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
+                    <BiChat onClick={()=> setRightHide(!rightHide)} style={!leftHide ? {transition:'.7s',transform:'translate(18rem,0.5rem)'} : !rightHide ? {transition:'.7s',opacity:'0'}:{transition:'.7s'}} className="chatIcon"/>
                 </div>
             </Tooltip>}
-            <button onClick={()=> setLeftHide(!leftHide)}>Left</button>
             <div style={searchBarStyle} className="searchBarFriend">
-                <input style={searchBarStyle}  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
+                <input  className="searchBarInput" onChange={setInput}  value={inputValue.inputValue} placeholder="Add new friends"/>
             </div>
 
             <Messages props={{ userLogged:props.userLogged, leftHide, setLeftHide, rightHide, chatToView, setChatToView}}/>
@@ -147,7 +146,7 @@ const Chat = (props) => {
 
                 </div>
             </div>
-            : <div className="innerContainerRightSide">
+            : <div className="innerContainerRightSide" style={innerContainerRightSideStyle }>
                 <div className="containerRight">
                     <div className="titleContainer">
                     <AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />
@@ -188,7 +187,7 @@ const mapDispatchToProps = {
 
     searchUsers : userActions.searchUsers,
     chat : chatActions.getChatOfUser,
-    getFriendList: chatActions.getFriendList,
+    getFriendList: chatActions.getFriendList, 
     deleteFriend: chatActions.deleteFriend
     
   }
