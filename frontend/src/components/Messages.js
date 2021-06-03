@@ -14,6 +14,7 @@ const Messages = (props)=>{
     
     const [minimized , setMinimized] = useState(false)
     const [newMessage , setNewMessage] = useState("")
+    const [loadingMessages, setLoadingMessages] = useState(false)
 
     const close = ()=>{
         setChatToView({messages:[],user:{name:null}})
@@ -39,6 +40,13 @@ const Messages = (props)=>{
         scrollDown()
     },[chatToView])
 
+    useEffect(()=>{
+        if(props.Socket){
+            props.Socket.on('reloadMessages',()=>{
+                    props.reloadMessages()                
+            })
+        }
+    },[props.chatToView])
 
     const sendMessage = async (e)=>{
         const validado = newMessage.trim() !== "" && newMessage.trim() !== " " 
@@ -51,8 +59,15 @@ const Messages = (props)=>{
             }
             setChatToView({...chatToView,messages:oldMessagesCondition})
             setNewMessage("")
-            const postedMessage = await props.sendMessage(newMessage,chatToView._id)
-            setChatToView({...postedMessage,friend:chatToView.friend})
+            try{
+                const postedMessage = await props.sendMessage(newMessage,chatToView._id)
+                setChatToView({...postedMessage,friend:chatToView.friend})
+                props.Socket.emit('messageSent')
+                setLoadingMessages(true)
+            }catch(e){
+                // ACA UN POPUP DICIENDO QUE NO SE PUDO ENVIAR EL MENSAJE
+                console.log(e)
+            }
         }
     }
     let leftSideHide 
@@ -136,12 +151,14 @@ const Messages = (props)=>{
 
 const mapStateToProps = state =>{
     return {
-        userLogged : state.userReducer.userLogged
+        userLogged : state.userReducer.userLogged,
+        Socket: state.userReducer.Socket
     }
 }
 
 const mapDispatchToProps = {
-    sendMessage: chatActions.sendMessage
+    sendMessage: chatActions.sendMessage,
+    reloadMessages: chatActions.reloadMessages
 }
 
 export default connect (mapStateToProps, mapDispatchToProps) (Messages)
