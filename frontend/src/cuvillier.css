@@ -1013,3 +1013,329 @@ a{
     border-bottom: 3px solid transparent;
     border-top: 3px solid #8F0808;
   }
+
+
+  .wrapper {
+    --color: #1F242D;
+    --color-invert: #ffffff;
+    --clip-path: circle(15px at left);
+    --clip-path-hover: circle(70px at left);
+    --clip-path-clicked: circle(100vw at left);
+    --duration: .5s;
+    --timing-function: ease;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+  }
+  .wrapper .video {
+    height: 5vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+    transition: -webkit-clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+  }
+  .wrapper .video div {
+    position: fixed;
+    background: #c4cbde;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-size: cover;
+  }
+  .wrapper .text {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    font-size: 3.7vh;
+    opacity: var(--opacity, 1);
+    transition: opacity 0.3s var(--timing-function) 0.2s;
+  }
+  .wrapper .text::before, .wrapper .text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+    right: 25px;
+    height: 0;
+  }
+  .wrapper .text::before {
+    box-shadow: 26px 0 0 1px var(--color);
+    right: var(--r, 100%);
+    opacity: var(--opacity, 0);
+    transition: right 0.5s ease-in, opacity 0.1s linear;
+  }
+  .wrapper .text::after {
+    box-shadow: 26px 0 0 1px var(--color-invert);
+    -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+    transition: -webkit-clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+  }
+  .wrapper .text > span::before, .wrapper .text > span::after {
+    content: attr(data-text);
+    padding-left: 26px;
+  }
+  .wrapper .text > span::before {
+    color: var(--color);
+    color: #A3EEE9;
+  }
+  .wrapper .text > span::after {
+    color: var(--color-invert);
+    -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+    transition: -webkit-clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function);
+    transition: clip-path var(--duration) var(--timing-function), -webkit-clip-path var(--duration) var(--timing-function);
+    position: absolute;
+    left: 0;
+  }
+  .wrapper input {
+    width: 220px;
+    height: 40px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-radius: 40px;
+    z-index: 2;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    cursor: pointer;
+  }
+  .wrapper input:focus {
+    outline: 0;
+  }
+  .wrapper input:hover ~ .video {
+    -webkit-clip-path: var(--clip-path-hover);
+            clip-path: var(--clip-path-hover);
+  }
+  .wrapper input:hover ~ .text::before {
+    --r: 25px;
+    --opacity: 1;
+  }
+  .wrapper input:hover ~ .text::after {
+    -webkit-clip-path: var(--clip-path-hover);
+            clip-path: var(--clip-path-hover);
+  }
+  .wrapper input:hover ~ .text > span::after {
+    -webkit-clip-path: var(--clip-path-hover);
+            clip-path: var(--clip-path-hover);
+  }
+  .wrapper input:checked {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .wrapper input:checked ~ .video {
+    -webkit-clip-path: var(--clip-path-clicked);
+            clip-path: var(--clip-path-clicked);
+  }
+  .wrapper input:checked ~ .text {
+    --opacity: 0;
+    transition: opacity 0.3s var(--timing-function);
+  }
+  .wrapper input:checked ~ .text::after {
+    -webkit-clip-path: var(--clip-path-clicked);
+            clip-path: var(--clip-path-clicked);
+  }
+  .wrapper input:checked ~ .text > span::after {
+    -webkit-clip-path: var(--clip-path-clicked);
+            clip-path: var(--clip-path-clicked);
+  }
+  
+/*
+
+SEGUNDO BOTON
+*/
+
+  .effect1 {
+    color: #A3EEE9;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 2vh;
+    position: relative;
+    padding: 2px 50px 2px 10px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transform: scale(3);
+        -ms-transform: scale(3);
+            transform: scale(3); 
+    margin-top: 6vh;
+    font-weight: 600;
+   
+  }
+  
+  .effect1 .bg {
+    background: #A3EEE9;
+    width: 30px;
+    height: 2px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -1px;
+    z-index: -1;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+  
+  .effect1:hover {
+    color: #0B1321;
+    padding-right: 10px;
+  }
+  
+  .effect1:hover .bg {
+    height: 100%;
+    width: 100%;
+    -webkit-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+    overflow: hidden;
+  }
+  
+  .effect1 .bg:before, .effect1 .bg:after {
+    content: '';
+    height: 2px;
+    width: 10px;
+    background: #A3EEE9;
+    position: absolute;
+    right: -2px;      
+    -webkit-transition: all 0.5s;      
+    -o-transition: all 0.5s;      
+    transition: all 0.5s;
+  }
+  
+  .effect1 .bg:before {
+    bottom: 3px;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  .effect1 .bg:after{
+    top: 3px;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  
+  .effect1:hover .bg:before,
+  .effect1:hover .bg:after{
+    right: 0;
+  }
+  
+  .effect1:hover .bg:before{
+    bottom: 6px;
+  }
+  
+  .effect1:hover .bg:after{
+    top: 6px;
+  }
+/*
+
+SEGUNDO BOTON
+*/
+
+.shadowHeaderHardUno{
+    position: relative;
+    top: 0;
+    height: 20vh;
+    width: 100%;
+    z-index: 30;
+    background: linear-gradient(to bottom, #0B1321, transparent);
+}
+.shadowHeaderHardDos{
+    position: relative;
+    top: 60vh;
+    height: 20vh;
+    width: 100%;
+    z-index: 30;
+    background: linear-gradient(to top, #0B1321, transparent);
+}
+.heroHardwarePage{
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20vh;
+}
+.containerStore{
+    background-color: #0B1321;
+}
+.containerStoreHardwares{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+}
+.cardHardwareIndiv{
+    min-height: 40vh;
+    margin-bottom: 7vh;
+    border-radius: 30px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    width: 90%;
+    background-color: #13233d;
+    display: flex;
+}
+.allInfoProductHardware{
+    padding: 2vh 2vw;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 40vh;
+}
+.imgButtonProductHardware{
+    height: 50vh;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 2vw;
+}
+.imgProductHardwareCard{
+    height: 90%;
+    width: 90%;
+    background-position: center;
+    background-size: cover;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 30px;
+}
+.priceProductHardware{
+    display: flex;
+    justify-content: space-around;
+    padding-left: 30%;
+    margin-top: 2vh;
+    align-items: center;
+}
+.pDescriptionProductHardware{
+    margin: 1vh;
+    color: #8B95A6;
+    font-size: 2vh;
+}
+.titleProductHardware h2{
+    color: white;
+    text-align: center;
+    font-size: 5vh;
+}
+

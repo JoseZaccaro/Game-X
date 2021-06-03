@@ -6,6 +6,7 @@ import gamesActions from '../redux/actions/gamesActions';
 import HeroStoreHardware from "../components/Store/HeroStoreHardware";
 import Loader from '../components/Loader';
 import StoreGame from "../components/Store/StoreGame";
+import Hardware from "../components/Hardware";
 
 
 
@@ -31,8 +32,6 @@ class HardwareStore extends React.Component {
         this.props.loadGames()
     }
 
-
-
     render() {
         return (
             <>
@@ -43,14 +42,19 @@ class HardwareStore extends React.Component {
                     : (
                         <>
                         <Header props={this.props.history}/>
-                            <div className="containerStore">
-                                <HeroStoreHardware heroHardware={this.props.allHardwares.sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 6)} />
-                                {/* <StoreHardware /> */}
-                                <div style={{ marginTop: '2rem' }}>
-                                    <h3 style={{ fontSize: '2rem', color: 'white' }}>New games</h3>
-                                    <div className="containerSlider" >
-                                        {/* <CarruselStore games={this.props.allGames.splice(0, 8)} /> */}
-                                    </div>
+                            <div className="containerStore">             
+                                <div className='heroHardwarePage' style={{backgroundImage:"url('https://www.rockandpop.cl/wp-content/uploads/2020/06/43dff437d7f6998f083727c512c4f509.jpg')"}}>
+                                    <div className='shadowHeaderHardUno'></div>
+                                    <div className='shadowHeaderHardDos'></div>
+                                </div>
+                                <div style={{ marginTop: '2rem' }} className="containerStoreHardwares">
+                                <div className="cube"></div>
+                                <div className="cube"></div>
+                                <div className="cube"></div>
+                                <div className="cube"></div>
+                                <div className="cube"></div>
+                                <div className="cube"></div>
+                                    {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware}/>)}
                                 </div>
                             </div>
                         </>

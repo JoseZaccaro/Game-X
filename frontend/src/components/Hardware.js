@@ -14,14 +14,12 @@ import { NavLink } from 'react-router-dom';
 
 
 const Hardware = (props) => {
+    /*
     const [hardwareDetails, setHardwareDetails] = useState(null)
     const [aditionalGame, setaditionalGame] = useState(null)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
 
     useEffect(() => {
-        if (props.allHardwares.length === 0) {
-            props.history.push('/hardware')
-        }
         if (!hardwareDetails) {
             let hardwareId = props.match.params.id
             let hardwareFilter = props.allHardwares.find(hardware => hardware._id === hardwareId)
@@ -36,11 +34,9 @@ const Hardware = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    console.log(aditionalGame)
-
     const token= localStorage.getItem('token')
 
-    const hardwareId = props.match.params.id
+    const hardwareId = props.hardware._id
   
     var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
     
@@ -53,24 +49,10 @@ const Hardware = (props) => {
         setMyList({myList: response.favouritesList, fetching: false})     
     }
         
-    const [inCart, setInCart]=useState(false)
-    const addToCart = ()=>{
-        setInCart(!inCart)
-        props.addToCart(hardwareDetails)
-    }
-    const removeToCart = ()=>{
-        setInCart(!inCart)
-        props.deleteToCart(hardwareDetails._id)
-    }
-
-    console.log(hardwareDetails)
-    return (
-        <>
-            {!hardwareDetails
-                ? <Loader />
-                : (
-                    <>
-                        <Header props={props.history}/>
+    
+    /*
+    
+    <>
                         <div className='containGameComp'>
                             <div className='containBoxGame'>
                                 <div className='imgBanerBkHardware' style={{ backgroundImage: `url('${hardwareDetails.imagesBackground[0]}')` }}></div>
@@ -137,9 +119,70 @@ const Hardware = (props) => {
                             </div>
                         </div>
                     </>
-                )
-            }
-        </>
+    
+    */
+    const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
+    const token= localStorage.getItem('token')
+
+    const hardwareId = props.hardware._id
+                  
+    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
+                    
+    const sendGameToList = async(hardwarePar) =>{
+        setMyList({...myList, fetching:true})
+        const add = {hardwarePar, add:true}
+        const remove = {hardwarePar, add:false}
+        const sendedData = hardwareFounded ? remove : add
+        const response = await props.addToMyList(sendedData, token, props.userLogged.id)
+        setMyList({myList: response.favouritesList, fetching: false})     
+    }
+                    
+    const [inCart, setInCart]=useState(false)
+    const addToCart = ()=>{
+        setInCart(!inCart)
+        props.addToCart(props.hardware)
+    }
+    const removeToCart = ()=>{
+        setInCart(!inCart)
+        props.deleteToCart(props.hardware._id)
+    }
+    return (
+        <div className='cardHardwareIndiv'>
+            <div className='allInfoProductHardware'>
+                <div className='titleProductHardware'><h2>{props.hardware.productName}</h2></div>
+                <div className='descriptionProductHardware'>
+                    <p className='pTituloInfoSecHard'>Description: </p>
+                    <p className='pDescriptionProductHardware'>{props.hardware.description}</p>
+                </div>
+                <div>
+                    <p className='pTituloInfoSecHard'>Features: </p>
+                    {props.hardware.features.map(feature =><p className='pDescriptionProductHardware'>{feature}</p>)}
+                </div>
+                <div className='priceProductHardware'>
+                    <p className='priceHardware'>{props.hardware.price}</p>
+                    {!inCart 
+                        ? <p className='addToCartHardware' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
+                        : <p className='addToCartHardware' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
+                    {!hardwareFounded 
+                        ? <Tooltip title="Add to Wishlist" placement="top" > 
+                            <div>
+                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='addToWishListOnComponentHard'/>
+                            </div>
+                        </Tooltip>
+                        : <Tooltip title="Remove from Wishlist" placement="top" >
+                            <div>
+                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='removeFromWishListOnComponent'/>
+                            </div>
+                        </Tooltip>
+                    }
+                    
+                </div>
+            </div>
+            <div className='imgButtonProductHardware'>
+                <div className='imgProductHardwareCard' style={{backgroundImage:`url('${props.hardware.imageBanner}')`}}></div>
+            </div>
+        </div>
+             
     )
 }
 const mapStateToProps = (state) => {

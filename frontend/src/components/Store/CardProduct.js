@@ -43,7 +43,6 @@ const CardProduct = (props) => {
       } else{
         logAlert()
       }
-         
     }
         
 
