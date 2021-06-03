@@ -19,6 +19,7 @@ const Cart = (props)=>{
             }
             return art
         })
+        console.log(arraySubTotales)
         
         var sumSubTotal = 0
         arraySubTotales.map(art =>{
@@ -27,7 +28,7 @@ const Cart = (props)=>{
         setTotal(sumSubTotal)  
     }
 
-    console.log(arraySubTotales)
+    
 
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
 
