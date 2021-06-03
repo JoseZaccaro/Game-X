@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import Header from "../components/Header";
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
-import HeroStore from "../components/Store/HeroStore";
+import HeroStore from "../components/Games/HeroStore";
 import Loader from '../components/Loader';
-import StoreGame from "../components/Store/StoreGame";
-import CarruselStore from '../components/Store/CarruselStore'
+import StoreGame from "../components/Games/StoreGame";
+import CarruselStore from '../components/Games/CarruselStore'
+
+
+
 
 
 class Store extends React.Component {
@@ -28,7 +31,6 @@ class Store extends React.Component {
 
     componentDidMount() {
         this.toTop()
-        this.props.loadHardwares()
         this.props.loadGames()      
         this.setState({ games: this.props.allGames })
     }

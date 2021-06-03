@@ -27,7 +27,7 @@ class Home extends React.Component{
                         <div className='alignContentMove animate__animated animate__fadeIn animate__delay-4s'>
                             <h2 className='titleContentMove '>Dive in Game-X-State </h2>
                             <p className='textContentMove'>With our environment of immersive state, your games feels different, with the best quality of downloading speed, and our social Net to chat with your friends!</p>
-                            <NavLink to='/store'>
+                            <NavLink to='/games'>
                                 <p class="effect1">
                                     Explore
                                     <span class="bg"></span>
@@ -42,7 +42,7 @@ class Home extends React.Component{
                                 <div className='videoContent' style={{backgroundImage: 'url("https://steamuserimages-a.akamaihd.net/ugc/437237610885990141/4E2413375AB6BE813B7D3E31A792F4902E5E9A73/")'}}></div>
                                 <h3 className='titleVideoMove'>StarCraft 2 - DLC Game-X!</h3>
                                 <p className='descriptionVideoMove'>With your buy of $3250 or more, get the aditional Material!</p>
-                                <NavLink to='/store'><p className='btnHoverPlay'>Buy now</p></NavLink>
+                                <NavLink to='/games'><p className='btnHoverPlay'>Buy now</p></NavLink>
                             </div>
                         </div>    
                     </div>
@@ -57,7 +57,7 @@ class Home extends React.Component{
                         <div className='alignContentMove'>
                             <h2 className='titleContentMove'>Link your favourite content</h2>
                             <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the star icon and add go check your Wish List! </p>
-                            <NavLink to='/store'>
+                            <NavLink to='/games'>
                                 <p class="effect1">
                                     Try it Now!
                                     <span class="bg"></span>

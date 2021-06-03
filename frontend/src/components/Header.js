@@ -13,8 +13,8 @@ import Cart from './Cart'
 
 const Header = (props) =>{ 
 
-
-
+        console.log(props)
+    
     const [openChat, setOpenChat] = useState(false)
     const [favouritesList, setFavouriteslist] = useState([])
     const visibility = props.open ? "visible" : "hidden"
@@ -43,8 +43,10 @@ const Header = (props) =>{
             const fetchProducts = async()=>{
                 const list = await props.getProductsOnList(props.userLogged.id)
                 setFavouriteslist(list)
-            }
+            } 
             fetchProducts()
+        }else{
+            setFavouriteslist([])
         }
     // eslint-disable-next-line
     },[props.favouritesList])
@@ -85,10 +87,11 @@ const Header = (props) =>{
                                 <span></span>
                                 <div className="menuNav" >
                                     <NavLink to='/'><li>Home</li></NavLink>
-                                    <NavLink to='/store'><li>Store</li></NavLink>
+                                    <NavLink to='/games'><li>Games</li></NavLink>
+                                    <NavLink to='/hardware'><li>Hardware</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
                                     {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
-                                    <li onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{props.allCart.length}</li>
+                                    <li className='cartHeader' onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{props.allCart.length}</li>
                                 </div>
                             </div>
                     </div>
@@ -118,7 +121,7 @@ const Header = (props) =>{
                 <Chat open = {openChat}/>
             </div>  
             <div style={modal}>
-                <Cart openCloseModal={openCloseModal}/> 
+                <Cart openCloseModal={openCloseModal} props={props.props}/> 
             </div>  
         </>   
     )

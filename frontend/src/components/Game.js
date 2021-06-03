@@ -8,9 +8,9 @@ import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartArrowDown, faCartPlus, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import cartActions from '../redux/actions/cartActions';
 import swal from 'sweetalert';
+import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 
 
 const Game = (props) => {
@@ -46,7 +46,7 @@ const Game = (props) => {
     useEffect(() => {
         toTop()
         if (props.allGames.length === 0) {
-            props.history.push('/store')
+            props.history.push('/games')
         }
             let idGame = props.match.params.id
             let gameFilter = props.allGames.find(game => game._id === idGame)
@@ -64,11 +64,11 @@ const Game = (props) => {
   
     var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
     
-    const sendGameToList = async(game) =>{
+    const sendGameToList = async(product) =>{
         if (props.userLogged) {
             setMyList({...myList, fetching:true})
-            const add = {game, add:true}
-            const remove = {game, add:false}
+            const add = {product, add:true, game:true}
+            const remove = {product, add:false, game:true}
             const sendedData = gameFounded ? remove : add
             const response = await props.addToMyList(sendedData, token, props.userLogged.id)
               setMyList({myList: response.favouritesList, fetching: false})     
@@ -99,18 +99,41 @@ const Game = (props) => {
                                 <div className='imgBanerBkGame' style={{ backgroundImage: `url('${gameDetails.imagesBackground[1]}')` }}></div>
                                 <div className='imgPortadaBkGame' style={{ backgroundImage: `url('${gameDetails.imageBanner}')` }}></div>
                                 <div className='infoFastGame'>
-                                    <h2 className='titleGameCard'>{gameDetails.title}</h2>
-                                    <p className='yearGameCard'>({gameDetails.year})</p>
+                                    <div className='titleAndYear'>
+                                        <h2 className='titleGameCard'>{gameDetails.title}</h2>
+                                        <p className='yearGameCard'>({gameDetails.year})</p>
+                                    </div>
+                                    <div className='divTagsGame'>
+                                        <p className='pTituloInfoSec'>Categories: </p>
+                                        {gameDetails.genre.map((genero, i) => {
+                                            return <p key={i} className='tag'>{genero}</p>
+                                        })}
+                                    </div>
+                                    <div className='descriptionPrice'>
+                                        <div className='divDescriptionGameCard'>
+                                            <p className='pTituloInfoSec'>Description:</p>
+                                            <p className='pDescriptionContent'>{gameDetails.description}</p>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                                 <div className='divAddCart'>
                                         {gameDetails.discount ? <div className='borderPriceDiscount'>
                                                 <p className='priceGameSinDiscount'>${gameDetails.price}</p>
-                                                <p className='priceGameConDiscount'>${gameDetails.price - gameDetails.discount}</p>
+                                                <p className='priceGameConDiscount'>${(-gameDetails.price * gameDetails.discount /100 +gameDetails.price).toFixed(0)}</p>
                                             </div>
                                             :<p className='priceGame'>${gameDetails.price}</p>}  
                                     {!inCart 
-                                        ? <p className='addToCartGame' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faCartPlus}/></p>
-                                        : <p className='addToCartGame' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faCartArrowDown}/></p>}
+                                    ?<Tooltip title="Add to cart" placement="top" > 
+                                        <div>
+                                            <MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>
+                                        </div>
+                                    </Tooltip>
+                                    :<Tooltip title="Remove from cart" placement="top" >
+                                        <div>
+                                            <MdRemoveShoppingCart  onClick={removeToCart} className='removeFromWishListOnComponent'/>
+                                        </div>
+                                    </Tooltip>}
                                     {!gameFounded 
                                     ? <Tooltip title="Add to Wishlist" placement="top" > 
                                         <div>
@@ -122,23 +145,9 @@ const Game = (props) => {
                                             <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(idGame): null} className='removeFromWishListOnComponent'/>
                                         </div>
                                     </Tooltip>
-                                    }
-                                        
+                                    }                                        
                                 </div>
-
-                                <div className='descriptionPrice'>
-                                    
-                                    <div className='divTagsGame'>
-                                        <p className='pTituloInfoSec'>Categories: </p>
-                                        {gameDetails.genre.map((genero, i) => {
-                                            return <p key={i} className='tag'>{genero}</p>
-                                        })}
-                                    </div>
-                                    <div className='divDescriptionGameCard'>
-                                        <p className='pDescriptionTitle'>Description:</p>
-                                        <p className='pDescriptionContent'>{gameDetails.description}</p>
-                                    </div>
-                                </div>
+                                
                                 <div className='divInfoSecondCardGame'>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Plataform:</p>
@@ -162,10 +171,10 @@ const Game = (props) => {
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Multiplayer:</p>
-                                        {gameDetails.multiplayer ? <p className='pRecicladoTextInfo'>Yes</p> : <p className='pRecicladoTextInfo'>No</p>}
+                                        {gameDetails.online ? <p className='pRecicladoTextInfo'>Yes</p> : <p className='pRecicladoTextInfo'>No</p>}
                                     </div>
                                     <div className='cadaDivInfoSec'>
-                                        <p className='pTituloInfoSec'>Valoration:</p>
+                                        <p className='pTituloInfoSec'>Online:</p>
                                         <p className='pRecicladoTextInfo'>{gameDetails.valoration}</p>
                                     </div>
                                 </div>

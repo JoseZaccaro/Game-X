@@ -14,128 +14,22 @@ import { NavLink } from 'react-router-dom';
 
 
 const Hardware = (props) => {
-    /*
-    const [hardwareDetails, setHardwareDetails] = useState(null)
-    const [aditionalGame, setaditionalGame] = useState(null)
-    const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
-
-    useEffect(() => {
-        if (!hardwareDetails) {
-            let hardwareId = props.match.params.id
-            let hardwareFilter = props.allHardwares.find(hardware => hardware._id === hardwareId)
-            setHardwareDetails({
-               ...hardwareFilter
-            })
-            let filteredAditional = props.allGames.find(game => game._id === hardwareFilter.aditionalGame[0])
-            setaditionalGame(
-                filteredAditional
-                )
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const token= localStorage.getItem('token')
-
-    const hardwareId = props.hardware._id
-  
-    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
     
-    const sendGameToList = async(hardware) =>{
-      setMyList({...myList, fetching:true})
-      const add = {hardware, add:true}
-      const remove = {hardware, add:false}
-      const sendedData = hardwareFounded ? remove : add
-      const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-        setMyList({myList: response.favouritesList, fetching: false})     
-    }
-        
-    
-    /*
-    
-    <>
-                        <div className='containGameComp'>
-                            <div className='containBoxGame'>
-                                <div className='imgBanerBkHardware' style={{ backgroundImage: `url('${hardwareDetails.imagesBackground[0]}')` }}></div>
-                                <div className='imgPortadaBkHardware' style={{ backgroundImage: `url('${hardwareDetails.imageBanner}')` }}></div>
-                                <div className='infoFastGame'>
-                                    <h2 className='titleGameCard'>{hardwareDetails.productName}</h2>
-                                </div>
-                                <div className='descriptionPriceHardware'>
-                                    <div className='divAddCartHardware'>
-                                        <p className='priceHardware'>${hardwareDetails.price}</p>
-                                        {!inCart 
-                                            ? <p className='addToCartHardware' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
-                                            : <p className='addToCartHardware' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
-                                        {!hardwareFounded 
-                                        ? <Tooltip title="Add to Wishlist" placement="top" > 
-                                            <div>
-                                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='addToWishListOnComponentHard'/>
-                                            </div>
-                                        </Tooltip>
-                                        : <Tooltip title="Remove from Wishlist" placement="top" >
-                                            <div>
-                                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='removeFromWishListOnComponent'/>
-                                            </div>
-                                        </Tooltip>
-                                        }
-                                        
-                                    </div>
-                                    <div className='divDescriptionHardwareCard'>
-                                        <p className='pDescriptionTitle'>Description:</p>
-                                        <p className='pDescriptionContent'>{hardwareDetails.description}</p>
-                                    </div>
-                                </div>
-                                <div className='divInfoSecondCardHardware'>
-                                    <div className='cadaDivInfoSecHard'>
-                                        <p className='pTituloInfoSecHard'>Brand:</p>
-                                        <p className='pTituloInfoSecHard'>{hardwareDetails.brand}</p>
-                                    </div>
-                                    <div className='cadaDivInfoSecHard'>
-                                        <p className='pTituloInfoSecHard'>Stock:</p>
-                                        <p className='pTituloInfoSecHard'>{hardwareDetails.stock > 5 ? hardwareDetails.stock + " unities" : !hardwareDetails < 1 ? hardwareDetails.stock+" Last unities" : "Out of Stock"} </p>
-                                    </div>
-                                    <div className='cadaDivInfoSecHardFeatures'>
-                                        <p className='pTituloInfoSecHardFeatures'>Features:</p>
-                                        <ul className="featuresUl">
-                                            {hardwareDetails.features[0] && <li className="featuresLi">{hardwareDetails.features[0]}</li>}
-                                            {hardwareDetails.features[1] && <li className="featuresLi">{hardwareDetails.features[1]}</li>}
-                                            {hardwareDetails.features[2] && <li className="featuresLi">{hardwareDetails.features[2]}</li>}
-                                            {hardwareDetails.features[3] && <li className="featuresLi">{hardwareDetails.features[3]}</li>}
-                                            {hardwareDetails.features[4] && <li className="featuresLi">{hardwareDetails.features[4]}</li>}
-                                            {hardwareDetails.features[5] && <li className="featuresLi">{hardwareDetails.features[5]}</li>}
-                                            {hardwareDetails.features[6] && <li className="featuresLi">{hardwareDetails.features[6]}</li>}
-                                            {hardwareDetails.features[7] && <li className="featuresLi">{hardwareDetails.features[7]}</li>}
-                                        </ul>
-                                    </div>
-                                    {aditionalGame && 
-                                        <NavLink to={`/game/${aditionalGame._id}`}>
-                                            <div className='imgPortadaBkGameAditional' style={{ backgroundImage: `url('${aditionalGame.imageBanner}')` }}>
-                                                
-                                            </div>
-                                        </NavLink>
-                                            }
-
-                                </div>
-                            </div>
-                        </div>
-                    </>
-    
-    */
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
     const token= localStorage.getItem('token')
 
     const hardwareId = props.hardware._id
                   
-    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
+    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.productId === hardwareId): false
                     
-    const sendGameToList = async(hardwarePar) =>{
+    const sendHardwareToList = async(product) =>{
         setMyList({...myList, fetching:true})
-        const add = {hardwarePar, add:true}
-        const remove = {hardwarePar, add:false}
+        const add = {product, add:true, game:false}
+        const remove = {product, add:false, game:false}
         const sendedData = hardwareFounded ? remove : add
         const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-        setMyList({myList: response.favouritesList, fetching: false})     
-    }
+          setMyList({myList: response.favouritesList, fetching: false})     
+      }
                     
     const [inCart, setInCart]=useState(false)
     const addToCart = ()=>{
@@ -166,12 +60,12 @@ const Hardware = (props) => {
                     {!hardwareFounded 
                         ? <Tooltip title="Add to Wishlist" placement="top" > 
                             <div>
-                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='addToWishListOnComponentHard'/>
+                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='addToWishListOnComponentHard'/>
                             </div>
                         </Tooltip>
                         : <Tooltip title="Remove from Wishlist" placement="top" >
                             <div>
-                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendGameToList(hardwareId): null} className='removeFromWishListOnComponent'/>
+                                <CgPlayListRemove  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='removeFromWishListOnComponent'/>
                             </div>
                         </Tooltip>
                     }

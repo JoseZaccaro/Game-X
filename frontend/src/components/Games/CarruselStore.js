@@ -64,7 +64,7 @@ class CarruselStore extends React.Component {
             >
                 {this.props.games.map(game => {
                     return (
-                        <CarouselComponent game={game} props={this.props.props}/>
+                        <CarouselComponent key={game._id} game={game} props={this.props.props}/>
                     )
                 })}
             </InfiniteCarousel>

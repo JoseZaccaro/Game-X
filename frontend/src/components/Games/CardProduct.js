@@ -32,11 +32,11 @@ const CardProduct = (props) => {
   
     var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
     
-    const sendGameToList = async(game) =>{
+    const sendGameToList = async(product) =>{
       if (props.userLogged) {
         setMyList({...myList, fetching:true})
-        const add = {game, add:true}
-        const remove = {game, add:false}
+        const add = {product, add:true, game:true}
+        const remove = {product, add:false, game:true}
         const sendedData = gameFounded ? remove : add
         const response = await props.addToMyList(sendedData, token, props.userLogged.id)
           setMyList({myList: response.favouritesList, fetching: false}) 
@@ -62,7 +62,7 @@ const CardProduct = (props) => {
                 }
                 {<NavLink to={`/game/${idGame}`}>
                         <figure className="card contentRibbon">
-                            {props.discount ? <div class="ribbon"><span>OFFER</span></div> : null}
+                            {props.discount ? <div className="ribbon"><span>OFFER</span></div> : null}
                             <div className="cardImageProduct" style={{backgroundImage: `url("${image}")`}}></div>
                             <figcaption>{title.toUpperCase()}</figcaption>
                         </figure>

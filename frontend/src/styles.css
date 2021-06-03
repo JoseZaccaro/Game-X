@@ -526,14 +526,13 @@ input[type="file" ] {
 }
 
 .navigation input:checked ~ .menuNav {
-	margin: 0 80px 0 -50px;
-	width: 300px;
+	width: 500px;
     height: auto;
 }
 
 .menuNav li {
 	list-style: none;
-    margin: 10px 20px;
+    margin: 10px 10px;
 	width: auto;
 	text-align: center;
 	cursor: pointer;
@@ -568,13 +567,16 @@ input[type="file" ] {
     box-shadow: 0 8px 15px rgba(0,0,0,.2);
 	flex-direction: row;
 }
-.navigation input:checked ~ .menu {
-	width: auto;
-    height: 200px;
+.navigation input:checked ~ .menuNav {
+	width: 30rem;
+    height: auto;
+}
+.cartHeader{
+	margin-right: 130px !important;
 }
 .navigation input {
 	position: relative;
-	right: -20px;
+	right: 0;
     width: 84px;
     height: 84px;
 	margin: 0;
@@ -582,6 +584,7 @@ input[type="file" ] {
     cursor: pointer;
     opacity: 0;
 }
+
 .navigation span {
 	right: 26px;
     position: absolute;
@@ -673,7 +676,7 @@ input[type="file" ] {
 	width: 60px;
 	height: 60px;
 	padding: 5px;
-	margin: 2vw;
+	margin: 1rem;
 	border: 1px solid var(--third-bg-color);
 	z-index: 500;
 	transition: 0.5s;
@@ -690,7 +693,7 @@ input[type="file" ] {
 	width: 60px;
 	height: 60px;
 	padding: 5px;
-	margin: 2vw;
+	margin: 1rem;
 	border: 1px solid var(--third-bg-color);
 	z-index: 500;
 	transition: 0.5s;
@@ -764,6 +767,16 @@ input[type="file" ] {
   }
 .animate__animated.animate__fadeInRight{
 	--animate-duration: 2s;
+}
+
+/* CREDIT CARD */
+
+#PaymentForm{
+	width: 100vw;
+	height: 100vh ;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 

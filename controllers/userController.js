@@ -216,9 +216,15 @@ const userController = {
     },
     addToList: async (req, res) => {
         var {sendedData} = req.body
-        var {game} = sendedData
+        var {product, add, game} = sendedData
+        console.log(req.body)
+        let addedToList;
         try {
-            const addedToList = await User.findOneAndUpdate({_id: req.params.id}, sendedData.add ? {$push:{favouritesList:{gameId: game}}} : {$pull:{favouritesList: {gameId: game}}}, {new: true})
+            if (game === true) {
+                addedToList = await User.findOneAndUpdate({_id: req.params.id}, add  ? {$push:{favouritesList:{gameId: product}}} : {$pull:{favouritesList: {gameId: product}}}, {new: true})
+            } else{
+                addedToList = await User.findOneAndUpdate({_id: req.params.id}, add  ? {$push:{favouritesList:{productId: product}}} : {$pull:{favouritesList: {productId: product}}}, {new: true})
+            }
             res.json({success: true, response: addedToList})
         } catch(error) {
             console.log(error)
@@ -227,7 +233,7 @@ const userController = {
     },
     getAllAddedProducts: async (req, res) => {
         try {
-            const gamesListed = await User.find({_id: req.params.id}).populate({ path:"favouritesList", populate:{path:"gameId"}})
+            const gamesListed = await User.find({_id: req.params.id}).populate({ path:"favouritesList", populate:{path:"gameId"}}).populate({ path:"favouritesList", populate:{path:"productId"}})
             res.json({success: true, response: gamesListed[0].favouritesList})
         } catch(error) {
             console.log(error)
