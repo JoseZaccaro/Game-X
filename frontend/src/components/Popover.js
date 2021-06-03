@@ -65,7 +65,7 @@ export default function MouseOverPopover({favouritesList, props}) {
                       </div>
                   </NavLink>
          } else{
-          return  <NavLink key={product._id} to={`/hardware/${product.productId._id}`}>
+          return  <NavLink key={product._id} to={`/hardware`}>
                       <div  className="divPopover">
                           <div className="commentProfileImg" style={{backgroundImage: `url('${product.productId.imageBanner}')`}}/>
                           <p>{product.productId.productName}</p>

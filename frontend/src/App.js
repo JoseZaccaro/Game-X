@@ -19,7 +19,6 @@ import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
 import io from 'socket.io-client'
 import chatActions from './redux/actions/chatActions'
-import CreditCard from './components/CreditCard'
 import cartActions from './redux/actions/cartActions';
 
 class App extends React.Component{

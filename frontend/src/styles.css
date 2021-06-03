@@ -526,13 +526,13 @@ input[type="file" ] {
 }
 
 .navigation input:checked ~ .menuNav {
-	width: 500px;
+	width: 31rem;
     height: auto;
 }
 
 .menuNav li {
 	list-style: none;
-    margin: 10px 10px;
+    margin: 10px 20px;
 	width: auto;
 	text-align: center;
 	cursor: pointer;
@@ -567,10 +567,7 @@ input[type="file" ] {
     box-shadow: 0 8px 15px rgba(0,0,0,.2);
 	flex-direction: row;
 }
-.navigation input:checked ~ .menuNav {
-	width: 30rem;
-    height: auto;
-}
+
 .cartHeader{
 	margin-right: 130px !important;
 }
@@ -597,7 +594,7 @@ input[type="file" ] {
 }
 
 .navigation input:checked {
-    left: 80%;
+    left: 85%;
 }
 
 .navigation input:checked ~ span {
@@ -821,9 +818,12 @@ input[type="file" ] {
 		right: 16px;
 		top: 30px;
 	}
+	.navigation input:checked {
+		left: 90%;
+	}
 	.navigation input:checked ~ .menuNav {
-		margin: 0 50px 0 -50px;
-		width: 350px;
+		width: 31rem;
+		height: auto;
 	}
 	.gifLogo{
 		min-height: 80px;

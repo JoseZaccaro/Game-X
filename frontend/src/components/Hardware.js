@@ -38,8 +38,6 @@ const Hardware = (props) => {
     var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.productId === hardwareId): false
     var productInCart = props.hardware && props.allCart.length !== 0 ? props.allCart.some(product => product._id === props.hardware._id): false
 
-    console.log(myList.myList)
-    console.log(hardwareId)
                     
     const sendHardwareToList = async(product) =>{
         setMyList({...myList, fetching:true})
@@ -48,14 +46,7 @@ const Hardware = (props) => {
         const sendedData = hardwareFounded ? remove : add
         const response = await props.addToMyList(sendedData, token, props.userLogged.id)
           setMyList({myList: response.favouritesList, fetching: false})     
-      }
-
-    
-    console.log(inCart)
-
-    
-    
-      
+      }      
     
     const addToCart = ()=>{
         setInCart(!inCart)
