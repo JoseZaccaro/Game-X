@@ -22,32 +22,24 @@ const Hardware = (props) => {
         if (props.allHardwares.length === 0) {
             props.history.push('/hardware')
         }
-        if (!hardwareDetails) {
             let hardwareId = props.match.params.id
             let hardwareFilter = props.allHardwares.find(hardware => hardware._id === hardwareId)
             setHardwareDetails({
                ...hardwareFilter
             })
-            let filteredAditional = props.allGames.find(game => game._id === hardwareFilter.aditionalGame[0])
-            setaditionalGame(
-                filteredAditional
-                )
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    console.log(aditionalGame)
+    }, [props.match.params.id])
 
     const token= localStorage.getItem('token')
 
     const hardwareId = props.match.params.id
   
-    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.gameId === hardwareId): false
+    var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.productId === hardwareId): false
     
-    const sendHardwareToList = async(hardware) =>{
+    const sendHardwareToList = async(product) =>{
       setMyList({...myList, fetching:true})
-      const add = {hardware, add:true, game:false}
-      const remove = {hardware, add:false, game:false}
+      const add = {product, add:true, game:false}
+      const remove = {product, add:false, game:false}
       const sendedData = hardwareFounded ? remove : add
       const response = await props.addToMyList(sendedData, token, props.userLogged.id)
         setMyList({myList: response.favouritesList, fetching: false})     
@@ -63,7 +55,6 @@ const Hardware = (props) => {
         props.deleteToCart(hardwareDetails._id)
     }
 
-    console.log(hardwareDetails)
     return (
         <>
             {!hardwareDetails

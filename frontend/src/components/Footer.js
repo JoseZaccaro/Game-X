@@ -24,7 +24,7 @@ const Footer = (props) =>{
                 <div className='divContainNavFooter'>
                     <h3 className='titleSeccionFooter'>Quick Menu</h3>
                     <Link to="/" className='pContainNavFooter'>Home</Link>
-                    <Link to="/store" className='pContainNavFooter'>Game Store</Link>
+                    <Link to="/games" className='pContainNavFooter'>Game Store</Link>
                     {props.userLogged && props.userLogged.rol === "admin" && <Link to="/admin" className='pContainNavFooter'>Adm Panel</Link>}
                 </div>
                 <div className='divContainNavFooter'>

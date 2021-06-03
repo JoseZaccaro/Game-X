@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import Header from "../components/Header";
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
-import HeroStoreHardware from "../components/Store/HeroStoreHardware";
+import HeroStoreHardware from "../components/Games/HeroStoreHardware";
 import Loader from '../components/Loader';
-import StoreGame from "../components/Store/StoreGame";
+import StoreGame from "../components/Games/StoreGame";
 
 
 

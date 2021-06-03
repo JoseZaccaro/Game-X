@@ -1,6 +1,8 @@
 import ProductCard from "./ProductCard"
 import { connect } from 'react-redux'
 import { useState } from "react"
+import { NavLink } from "react-router-dom"
+
 
 const Cart = (props)=>{
     const [total, setTotal]=useState(0)   
@@ -20,8 +22,15 @@ const Cart = (props)=>{
         })
         setTotal(sumSubTotal)  
     }
-    console.log(props.allCart)
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
+
+    const proceedToPayment = ()=>{
+        props.userLogged && total
+        ? props.props.push('/payment')
+        : alert(!props.userLogged ? 'you must be logged to proceed' : "you don't have products on your cart")
+    }
+
+    
     return (
         <div className='modalCartContain'>
             <div className='modalCart'>
@@ -38,7 +47,7 @@ const Cart = (props)=>{
                     </div>
                     <div className='buttonsCart'>
                         <p className='buttonCloseModalCancel' onClick={props.openCloseModal}>Keep looking</p>
-                        <p className='buttonCloseModalBuy'>Finish buy</p>
+                        <p className='buttonCloseModalBuy' onClick={proceedToPayment}>Finish buy</p>
                         <div className='totalPriceCart'>
                             <p>TOTAL: </p>
                             <p>${total}</p>
@@ -55,7 +64,8 @@ const Cart = (props)=>{
 }
 const mapStateToProps = state => {
     return {
-        allCart: state.cartReducer.allCart
+        allCart: state.cartReducer.allCart,
+        userLogged:state.userReducer.userLogged
     }
 }
 export default connect(mapStateToProps)(Cart)

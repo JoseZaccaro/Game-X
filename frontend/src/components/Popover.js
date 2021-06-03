@@ -57,17 +57,29 @@ export default function MouseOverPopover({favouritesList, props}) {
       >
         {favouritesList.length 
         ? favouritesList.map(product => {
-            return  <NavLink key={product._id} to={`/game/${product.gameId._id}`}>
-                        <div  className="divPopover">
-                            <div className="commentProfileImg" style={{backgroundImage: `url('${product.gameId.imageBanner}')`}}/>
-                            <p>{product.gameId.title}</p>
-                        </div>
-                    </NavLink>
+          console.log(product)
+         if (product.gameId) {
+          return  <NavLink key={product._id} to={`/game/${product.gameId._id}`}>
+                      <div  className="divPopover">
+                          <div className="commentProfileImg" style={{backgroundImage: `url('${product.gameId.imageBanner}')`}}/>
+                          <p>{product.gameId.title}</p>
+                      </div>
+                  </NavLink>
+         } else{
+          return  <NavLink key={product._id} to={`/hardware/${product.productId._id}`}>
+                      <div  className="divPopover">
+                          <div className="commentProfileImg" style={{backgroundImage: `url('${product.productId.imageBanner}')`}}/>
+                          <p>{product.productId.productName}</p>
+                      </div>
+                  </NavLink>
+         }
+            
         })
         :<div className='divNoGamesInList'>
             <div className='NoGamesInList'>
-            <p>You don't have any game added yet!</p>
-            <NavLink to='/store'><span className='spanLink'>Go to Store!</span></NavLink>
+            <p>You don't have any product added yet!</p>
+            <NavLink to='/games'><span className='spanLink'>Go to Game Store!</span></NavLink>
+            <NavLink to='/hardware'><span className='spanLink'>Go to Hardware Store!</span></NavLink>
             </div>
         </div> }
       </Popover>

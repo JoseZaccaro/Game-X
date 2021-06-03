@@ -7,7 +7,7 @@ import './zaccaro.css';
 import './styles.css';
 import Home from './pages/Home';
 import Access from './pages/Access';
-import Store from './pages/Store';
+import Store from './pages/Games';
 import Payment from './pages/Payment';
 import ServerDown from './pages/ServerDown';
 import userActions from "./redux/actions/userActions";
@@ -15,9 +15,9 @@ import { connect } from 'react-redux';
 import Game from './components/Game';
 import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
-import Formulario from './components/Formulario'
 import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
+import CreditCard from './components/CreditCard'
 
 class App extends React.Component{
 
@@ -45,12 +45,11 @@ class App extends React.Component{
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/hardware" component={StoreHardware} />
-                <Route exact path="/store" component={Store} />
+                <Route exact path="/games" component={Store} />
                 <Route path="/payment" component={Payment} />
                 <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game/:id" component={Game} />
                 <Route path="/hardware/:id" component={Hardware} />
-                <Route path="/formulario" component={Formulario} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!this.props.userLogged && <Route path="/access" component={Access} />}
                 <Redirect to="/" />
