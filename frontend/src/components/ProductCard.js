@@ -38,7 +38,7 @@ const ProductCard = (props)=>{
                 </div>
                 <div className='divTotalCartProduct'>
                     <p>Total:</p>
-                    <p>${props.articulo.price * cantidadAMostrar}</p>
+                    <p>${((props.articulo.price * props.articulo.discount / 100 + props.articulo.price) * cantidadAMostrar).toFixed(0)}</p>
                 </div>
             </div>
             <div className='deleteProductCard'>

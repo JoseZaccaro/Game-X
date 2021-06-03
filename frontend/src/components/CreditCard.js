@@ -33,52 +33,60 @@ export default class PaymentForm extends React.Component {
   
   render() {
     return (
-      <div id="PaymentForm">
-        <Cards
-          cvc={this.state.creditCardData.cvc}
-          expiry={this.state.creditCardData.expiry}
-          focused={this.state.creditCardData.focus}
-          name={this.state.creditCardData.name}
-          number={this.state.creditCardData.number}
-        />        
-        <form>
-        	<input
-            type="tel"
-            name="number"
-            maxLength='16'
-            placeholder="Card Number"
-            autoComplete="false"
-            autoFocus={true}
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
-          <input
-            type="tel"
-            name="name"
-            placeholder="Owner Name"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
-          <input
-            type="tel"
-            name="expiry"
-            maxLength='4'
-            placeholder="Valid Thru"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
-          <input
-            type="tel"
-            name="cvc"
-            id="cvc"
-            maxLength='3'
-            placeholder="CVC"
-            onChange={this.handleInputChange}
-            onFocus={this.handleInputFocus}
-          />
-          <button>Pay</button>
-
-        </form>
+      <div id="PaymentForm" className='divFomularioCreditCard'>
+        <div className='formularioYTarjeta'>
+          <div className='tarjetaDeCredito'>
+            <Cards
+              cvc={this.state.creditCardData.cvc}
+              expiry={this.state.creditCardData.expiry}
+              focused={this.state.creditCardData.focus}
+              name={this.state.creditCardData.name}
+              number={this.state.creditCardData.number}
+            />  
+          </div>
+                
+          <form className='formularioCreditCard'>
+            <input
+              type="tel"
+              name="number"
+              maxLength='16'
+              placeholder="Card Number"
+              autoComplete="false"
+              autoFocus={true}
+              onChange={this.handleInputChange}
+              onFocus={this.handleInputFocus}
+            />
+            <input
+              type="tel"
+              name="name"
+              placeholder="Owner Name"
+              onChange={this.handleInputChange}
+              onFocus={this.handleInputFocus}
+            />
+            <input
+              type="tel"
+              name="expiry"
+              maxLength='4'
+              placeholder="Valid Thru"
+              onChange={this.handleInputChange}
+              onFocus={this.handleInputFocus}
+            />
+            <input
+              type="tel"
+              name="cvc"
+              id="cvc"
+              maxLength='3'
+              placeholder="CVC"
+              onChange={this.handleInputChange}
+              onFocus={this.handleInputFocus}
+            />
+            <button className='botonPayCreditCard'>Pay</button>
+          </form>
+        </div>
+        <div className='divPasosDosCreditCard'>
+          <h2 className='pasoNoActivoInfoFormulario'>01 - Basic Information</h2>
+          <h2 className='pasoActivoInfoFormulario'>02 - Credit Card Information</h2>
+        </div>
       </div>
     );
   }

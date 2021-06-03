@@ -61,7 +61,10 @@ const Header = (props) =>{
     } else {
         image = "/assets/generic-user-icon.jpg"
     }
-
+    const [reloaded, setReloaded]=useState(false)
+    useEffect(()=>{
+        setReloaded(!reloaded)
+    }, [props.inCart])
     const [displayModal, setDisplayModal] = useState(false)
     const openCloseModal = ()=>{
         setDisplayModal(!displayModal)
@@ -69,7 +72,7 @@ const Header = (props) =>{
     var modal = {
         display : displayModal ? 'flex' : 'none',
     }
-
+    console.log(props.inCart)
     return(
         <>
             <div className='containHeader animate__animated animate__fadeIn animate__delay-1s'>

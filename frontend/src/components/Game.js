@@ -86,14 +86,13 @@ const Game = (props) => {
         setInCart(!inCart)
         props.deleteToCart(gameDetails._id)
     }
-
     return (
         <>
             {!gameDetails
                 ? <Loader />
                 : (
                     <>
-                        <Header props={props.history}/>
+                        <Header props={props.history} inCart={inCart}/>
                         <div className='containGameComp'>
                             <div className='containBoxGame'>
                                 <div className='imgBanerBkGame' style={{ backgroundImage: `url('${gameDetails.imagesBackground[1]}')` }}></div>

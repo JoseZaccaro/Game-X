@@ -28,10 +28,8 @@ class Home extends React.Component{
                             <h2 className='titleContentMove '>Dive in Game-X-State </h2>
                             <p className='textContentMove'>With our environment of immersive state, your games feels different, with the best quality of downloading speed, and our social Net to chat with your friends!</p>
                             <NavLink to='/games'>
-                                <p class="effect1">
-                                    Explore
-                                    <span class="bg"></span>
-                                </p>
+                                <div class="btnExplore">Explore
+                                </div>
                             </NavLink>
                         </div>
                     </div>
@@ -58,10 +56,7 @@ class Home extends React.Component{
                             <h2 className='titleContentMove'>Link your favourite content</h2>
                             <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the star icon and add go check your Wish List! </p>
                             <NavLink to='/games'>
-                                <p class="effect1">
-                                    Try it Now!
-                                    <span class="bg"></span>
-                                </p>
+                                <div class="btnExplore">Explore</div>
                             </NavLink>
                         </div>   
                     </div>
@@ -80,11 +75,10 @@ class Home extends React.Component{
                 <div className='shadowBottom'></div>
             </div>  
             <div className='containHomeBottom'>
-                <div className='imagenHomeBottom' style={{backgroundImage: "url('../assets/fondoTres.png')"}}>
+                <div className='imagenHomeBottom' style={{backgroundImage: "url('https://www.muycomputer.com/wp-content/uploads/2020/12/PS5-frente-a-Xbox-Series-X.jpg')"}}>
                     <div className='contentImgHomeBottom'>
-                        <h1 className='titleContentMove'>Titulo Tres</h1>
-                        <p className='textContentMoveBottom'>Pequeña descripcion de algo</p>
-                        <p className='buttonContenMove'>Open</p>
+                        <h1 className='titleContentMove'>Hardwares</h1>
+                        <p className='buttonContenMove'>Explore</p>
                     </div>
                 </div>
             </div>

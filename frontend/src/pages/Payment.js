@@ -46,40 +46,43 @@ const Payment = (props) =>{
             <Header props={props.history}/>   
             <div className="contenedorFormulario">
                 {nextStep=== "" &&
-                <>
-                <div className="titulo">
-                    <h2>Basic Information</h2>
-                </div>  
+                <div className='formularioBasicInformation'>
+                    <div className="divPasosFormularios">
+                        <h2 className='pasoActivoInfoFormulario'>01 - Basic Information</h2>
+                        <h2 className='pasoNoActivoInfoFormulario'>02 - Credit Card Information</h2>
+                    </div>  
                     <div className="itemsContenedor">
-                        <label>First Name:</label>
-                        <div className="item">
-                            <input type="text" name="firstName" placeholder="Please, enter your first name"onChange={readInput}></input>
+                        <div className='divLabelInputForm'>
+                            <label>First Name:</label>
+                            <input className='inputFormularioBasicInfo' type="text" name="firstName" placeholder="Please, enter your first name"onChange={readInput}></input>                        
                         </div>
-                        <label>Surname:</label>
-                        <div className="item">                        
-                            <input type="text" name="lastName" placeholder="Please, enter your lastName" onChange={readInput}></input>
+                        <div className='divLabelInputForm'>
+                            <label>Last Name:</label>                                                  
+                            <input className='inputFormularioBasicInfo' type="text" name="lastName" placeholder="Please, enter your lastName" onChange={readInput}></input>
                         </div>
-                        <label>City:</label>
-                        <div className="item">                        
-                            <input type="text" name="city" placeholder="Please, enter your city" onChange={readInput}></input>
+                        <div className='divLabelInputForm'>
+                            <label>City:</label>
+                            <input className='inputFormularioBasicInfo' type="text" name="city" placeholder="Please, enter your city" onChange={readInput}></input>             
                         </div>
-                        <label>Cellphone number:</label>
-                        <div className="item">                        
-                            <input type="number" name="cellphone" placeholder="Please, enter your cellphone number" onChange={readInput}></input>
+                        <div className='divLabelInputForm'>
+                            <label>Cellphone number:</label>
+                            <input className='inputFormularioBasicInfo' type="number" name="cellphone" placeholder="Please, enter your cellphone number" onChange={readInput}></input>   
                         </div>
-                        <label>Direction:</label>
-                        <div className="item">
-                            <input type="text" name="direction" placeholder="Please, enter your direction" onChange={readInput}></input> 
+                        <div className='divLabelInputForm'>
+                            <label>Direction:</label>
+                            <input className='inputFormularioBasicInfo' type="text" name="direction" placeholder="Please, enter your direction" onChange={readInput}></input>              
                         </div>
-                        <button className="btn" onClick={send}>Send</button>
+                        <button className="nextBotonFormulario" onClick={send}>Next</button>
                     </div>
                 
-                </>}
+                </div>}
                 {nextStep === 'creditCard' &&
-                <>
-                <CreditCard/>
-                <Paypal compra={{concepto: 'Membresia VIP', monto: 300}} />
-                </>}
+                <div className='contenedorInfoTarjeta'>
+                    <div className='contentFormularioInforCard'>   
+                        <CreditCard/>
+                        <Paypal compra={{concepto: 'Membresia VIP', monto: 300}} />
+                    </div> 
+                </div>}
             </div>
         </>
     )

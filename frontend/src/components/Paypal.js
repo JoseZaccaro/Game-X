@@ -23,7 +23,7 @@ const Paypal = (props) => {
             }
         }).render(paypal.current)
     }, [])
-    return <div ref={paypal}></div>
+    return <div className='divPaypal' ref={paypal}></div>
 }
 
 export default Paypal
