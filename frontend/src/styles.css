@@ -784,6 +784,13 @@ input[type="file" ] {
 		width: 50rem;
 		min-height: 45rem;
 	}
+	.navigation input:checked ~ .menuNav {
+		width: 37rem;
+		height: auto;
+	}
+	.navigation input:checked {
+		left: 88%;
+	}
 
 
 
