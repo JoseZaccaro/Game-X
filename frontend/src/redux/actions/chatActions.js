@@ -108,21 +108,21 @@ const chatActions = {
             }
         }
     },
-    socketChat:(socket)=>{
-        return (dispatch,getState)=>{
-           dispatch({type:'SOCKET_IO',payload:socket})
-        }
-    },
-    reloadMessages:()=>{
-        return (dispatch, getState)=>{
-            dispatch({type:'RELOAD_MESSAGES'})
-        }
-    },
-    reloadFriendList:()=>{
-        return(dispatch, getState)=>{
-            dispatch({type:'RELOAD_FRIENDLIST_SOCKET'})
-        }
-    }
+    // socketChat:(socket)=>{
+    //     return (dispatch,getState)=>{
+    //        dispatch({type:'SOCKET_IO',payload:socket})
+    //     }
+    // },
+    // reloadMessages:()=>{
+    //     return (dispatch, getState)=>{
+    //         dispatch({type:'RELOAD_MESSAGES'})
+    //     }
+    // },
+    // reloadFriendList:()=>{
+    //     return(dispatch, getState)=>{
+    //         dispatch({type:'RELOAD_FRIENDLIST_SOCKET'})
+    //     }
+    // }
 }
 
 export default chatActions
