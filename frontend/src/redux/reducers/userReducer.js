@@ -29,7 +29,6 @@ const userReducer = (state = initialState, action) => {
                 userLogged:{...state.userLogged,friends:action.payload}
             }
         case "RELOAD_FAVORITES_LIST":
-            console.log(action.payload.favouritesList)
             return{
                 ...state,
                 favouritesList: action.payload.favouritesList  

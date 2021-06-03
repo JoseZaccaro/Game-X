@@ -50,7 +50,7 @@ const Chat = (props) => {
     }
 
     useEffect(()=>{
-        if(props.userLogged && props.userLogged.friends.length && !friendList.length){
+        if(props.userLogged && props.userLogged.friends && !friendList.length){
             fetchFriends()
         }
     // eslint-disable-next-line

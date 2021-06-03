@@ -9,10 +9,14 @@ const ProductCard = (props)=>{
         props.deleteToCart(props.articulo._id)
     }
     useEffect(()=>{
-        props.sendSubTotal(props.articulo.price * cantidadAMostrar, props.articulo._id)
+        props.sendSubTotal(precioUnitarioFinal, props.articulo._id)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cantidadAMostrar])
     
+    const precioUnitarioFinal= ((-props.articulo.price * props.articulo.discount / 100 + props.articulo.price) * cantidadAMostrar).toFixed(0)
+    const precioUnitario = (-props.articulo.price * props.articulo.discount / 100 + props.articulo.price).toFixed(0)
+
+
     return(
         <div className='cadaDivProduct'>
             <div className='divImgPortadaProductCart'>
@@ -24,7 +28,7 @@ const ProductCard = (props)=>{
             <div className='divPriceAmountCart'>
                 <div className='priceCart'>
                     <p>Precio:</p>
-                    <p>${props.articulo.price}</p>
+                    <p>${precioUnitario}</p>
                 </div>
                 <div className='amountCart'>
                     <p>Cantidad:</p>
@@ -38,7 +42,7 @@ const ProductCard = (props)=>{
                 </div>
                 <div className='divTotalCartProduct'>
                     <p>Total:</p>
-                    <p>${((props.articulo.price * props.articulo.discount / 100 + props.articulo.price) * cantidadAMostrar).toFixed(0)}</p>
+                    <p>${precioUnitarioFinal}</p>
                 </div>
             </div>
             <div className='deleteProductCard'>

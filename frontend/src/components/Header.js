@@ -13,10 +13,10 @@ import Cart from './Cart'
 
 const Header = (props) =>{ 
 
-        console.log(props)
     
     const [openChat, setOpenChat] = useState(false)
     const [favouritesList, setFavouriteslist] = useState([])
+    const [cart, setCart] = useState([])
     const visibility = props.open ? "visible" : "hidden"
 
     const logOut=(()=> {
@@ -48,8 +48,9 @@ const Header = (props) =>{
         }else{
             setFavouriteslist([])
         }
+        setCart(props.allCart)
     // eslint-disable-next-line
-    },[props.favouritesList])
+    },[props.favouritesList,props.allCart])
 
     
     let image = ""
@@ -72,7 +73,8 @@ const Header = (props) =>{
     var modal = {
         display : displayModal ? 'flex' : 'none',
     }
-    console.log(props.inCart)
+
+    
     return(
         <>
             <div className='containHeader animate__animated animate__fadeIn animate__delay-1s'>
@@ -94,7 +96,7 @@ const Header = (props) =>{
                                     <NavLink to='/hardware'><li>Hardware</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
                                     {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
-                                    <li className='cartHeader' onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{props.allCart.length}</li>
+                                    <li className='cartHeader' onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{cart.length}</li>
                                 </div>
                             </div>
                     </div>

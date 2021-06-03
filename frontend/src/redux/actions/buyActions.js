@@ -4,7 +4,7 @@ const buyActions = {
     crearCompra : ( nuevaCompra ) => {
         return async (dispatch , getState)=>{
             
-            await axios.post('http://localhost:4000/api/buy' , nuevaCompra)
+            await axios.post('https://game-x-arg.herokuapp.com/api/buy' , nuevaCompra)
            /* .then(response => dispatch({
                 type: "ADD_BUY",
                 payload: response.data.response

@@ -1,23 +1,43 @@
 const cartActions = {
-    addToCart: (game) => {
+    addToCart: (products) => {
         return async (dispatch, getState) => {
             try {
-                dispatch({type: 'ADD_TO_CART', payload: game})
+                dispatch({type: 'ADD_TO_CART', payload: products})
             } catch (error) {             
                 console.log(error);
-                alert('error en cart action')
+                alert('error en addToCart')
             }        
         }
     },
-    deleteToCart: (gameId) => {
+    deleteToCart: (products) => {
         return async (dispatch, getState) => {
             try {
-                dispatch({type: 'DELETE_TO_CART', payload: gameId})
+                dispatch({type: 'DELETE_TO_CART', payload: products})
             } catch (error) {             
                 console.log(error);
-                alert('error en cart action')
+                alert('error en deleteToCart')
             }        
         }
-    }
+    },
+    setCartLS:(products) => {
+        return async (dispatch, getState) => {
+            try {
+                dispatch({type: 'SET_CART_LS', payload: products})
+            } catch (error) {             
+                console.log(error);
+                alert('error en setCartLS')
+            }        
+        }
+    },
+    proceedToPayment:(products) => {
+        return async (dispatch, getState) => {
+            try {
+                dispatch({type: 'CLOSE_BUY_ORDER', payload: products})
+            } catch (error) {             
+                console.log(error);
+                alert('error en proceedToPayment')
+            }        
+        }
+    },
 }
 export default cartActions

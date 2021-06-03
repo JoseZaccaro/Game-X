@@ -29,6 +29,7 @@ class HardwareStore extends React.Component {
         this.props.loadGames()
     }
 
+
     render() {
 
         return (
@@ -52,7 +53,7 @@ class HardwareStore extends React.Component {
                                 <div className="cube"></div>
                                 <div className="cube"></div>
                                 <div className="cube"></div>
-                                    {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware}/>)}
+                                    {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware} props={this.props.history}/>)}
                                 </div>
                             </div>
                         </>
@@ -66,7 +67,9 @@ const mapStateToProps = (state) => {
     return {
         allHardwares: state.hardwareReducer.allHardwares,
         allGames: state.gamesReducer.allGames,
-        userLogged:state.userReducer.userLogged
+        userLogged:state.userReducer.userLogged,
+        allCart: state.cartReducer.allCart
+
     }
 }
 const mapDispatchToProps = {
