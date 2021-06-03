@@ -76,6 +76,7 @@ export default class PaymentForm extends React.Component {
             onChange={this.handleInputChange}
             onFocus={this.handleInputFocus}
           />
+          <button>Pay</button>
 
         </form>
       </div>

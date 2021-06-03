@@ -43,7 +43,8 @@ const Cart = (props)=>{
                             })
                             :<div className='divSinArtCart'>
                                 <h1>You don't have any product on your cart!</h1>
-                                <p className='botonStoreCart'>Go to Store!</p>
+                                <NavLink to='/games'><p className='botonStoreCart'>Go to Game Store!</p></NavLink>
+                                <NavLink to='/hardware'><p className='botonStoreCart'>Go to Hardware Store!</p></NavLink>
                             </div>}
                     </div>
                     <div className='buttonsCart'>

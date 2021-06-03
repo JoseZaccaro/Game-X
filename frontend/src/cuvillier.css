@@ -798,11 +798,12 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 .imgPortadaProductCart{
     height: 95%;
     width: 100%;
-    background-position: center;
+    background-position: top center;
     background-size: cover;
     margin-right: 1vw;
 }
