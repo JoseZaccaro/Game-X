@@ -5,7 +5,7 @@ const cartActions = {
                 dispatch({type: 'ADD_TO_CART', payload: products})
             } catch (error) {             
                 console.log(error);
-                alert('error en cart action')
+                alert('error en addToCart')
             }        
         }
     },
@@ -15,7 +15,7 @@ const cartActions = {
                 dispatch({type: 'DELETE_TO_CART', payload: products})
             } catch (error) {             
                 console.log(error);
-                alert('error en cart action')
+                alert('error en deleteToCart')
             }        
         }
     },
@@ -25,7 +25,17 @@ const cartActions = {
                 dispatch({type: 'SET_CART_LS', payload: products})
             } catch (error) {             
                 console.log(error);
-                alert('error en cart action')
+                alert('error en setCartLS')
+            }        
+        }
+    },
+    proceedToPayment:(products) => {
+        return async (dispatch, getState) => {
+            try {
+                dispatch({type: 'CLOSE_BUY_ORDER', payload: products})
+            } catch (error) {             
+                console.log(error);
+                alert('error en proceedToPayment')
             }        
         }
     },

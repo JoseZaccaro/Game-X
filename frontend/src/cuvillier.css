@@ -617,6 +617,7 @@ a{
 }
 .priceGame{
     padding: 1vh 2vw;
+    margin-right: 1rem;
     font-size: 4vh;
     font-weight: 500;
     color: white;

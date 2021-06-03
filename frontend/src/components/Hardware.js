@@ -85,7 +85,7 @@ const Hardware = (props) => {
                 </div>
                 <div>
                     <p className='pTituloInfoSecHard'>Features: </p>
-                    {props.hardware.features.map(feature =><p className='pDescriptionProductHardware'>{feature}</p>)}
+                    {props.hardware.features.map((feature,i )=><p key={i} className='pDescriptionProductHardware'>{feature}</p>)}
                 </div>
                 <div className='priceProductHardware'>
                     <p className='priceHardware'>${props.hardware.price}</p>

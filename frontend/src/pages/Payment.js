@@ -37,10 +37,11 @@ const Payment = (props) =>{
         }
         
     }
+    console.log(props.finishedOrder)
 
-    // if (!props.products) {
-    //     props.history.push('/')
-    // }
+    if (!props.finishedOrder) {
+        props.history.push('/')
+    }
     return(
         <>     
             <Header props={props.history}/>   
@@ -84,9 +85,13 @@ const Payment = (props) =>{
         </>
     )
 }
-
+const mapStateToProps = state => {
+    return {
+        finishedOrder: state.cartReducer.finishedOrder
+    }
+}
 const mapDispatchToProps = {
     crearCompra: buyActions.crearCompra
 }
 
-export default connect (null  , mapDispatchToProps)(Payment)
+export default connect (mapStateToProps, mapDispatchToProps)(Payment)

@@ -28,9 +28,9 @@ class Home extends React.Component{
                             <h2 className='titleContentMove '>Dive in Game-X-State </h2>
                             <p className='textContentMove'>With our environment of immersive state, your games feels different, with the best quality of downloading speed, and our social Net to chat with your friends!</p>
                             <NavLink to='/games'>
-                                <p class="effect1">
+                                <p className="effect1">
                                     Explore
-                                    <span class="bg"></span>
+                                    <span className="bg"></span>
                                 </p>
                             </NavLink>
                         </div>
@@ -58,9 +58,9 @@ class Home extends React.Component{
                             <h2 className='titleContentMove'>Link your favourite content</h2>
                             <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the star icon and add go check your Wish List! </p>
                             <NavLink to='/games'>
-                                <p class="effect1">
+                                <p className="effect1">
                                     Try it Now!
-                                    <span class="bg"></span>
+                                    <span className="bg"></span>
                                 </p>
                             </NavLink>
                         </div>   

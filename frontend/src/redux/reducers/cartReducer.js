@@ -1,5 +1,6 @@
 const initialState = {
     allCart: [],
+    finishedOrder:null
 }
 
 const cartReducer = (state = initialState, action) =>{
@@ -22,6 +23,11 @@ const cartReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 allCart: action.payload
+            }
+        case 'CLOSE_BUY_ORDER':
+            return {
+                ...state,
+                finishedOrder: action.payload
             }
         default:
             return state
