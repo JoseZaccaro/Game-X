@@ -217,7 +217,6 @@ const userController = {
     addToList: async (req, res) => {
         var {sendedData} = req.body
         var {product, add, game} = sendedData
-        console.log(req.body)
         let addedToList;
         try {
             if (game === true) {

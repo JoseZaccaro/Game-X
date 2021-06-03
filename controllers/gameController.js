@@ -3,7 +3,6 @@ const fs = require('fs')
 
 const gameControllers = {
     uploadGame: async(req, res) => {
-        console.log(req.body)
         let response;
         let error;
         if (req.user.rol === 'admin') {

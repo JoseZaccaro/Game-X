@@ -29,6 +29,7 @@ class HardwareStore extends React.Component {
         this.props.loadGames()
     }
 
+
     render() {
 
         return (
@@ -66,7 +67,9 @@ const mapStateToProps = (state) => {
     return {
         allHardwares: state.hardwareReducer.allHardwares,
         allGames: state.gamesReducer.allGames,
-        userLogged:state.userReducer.userLogged
+        userLogged:state.userReducer.userLogged,
+        allCart: state.cartReducer.allCart
+
     }
 }
 const mapDispatchToProps = {

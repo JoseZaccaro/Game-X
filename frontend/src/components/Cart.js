@@ -2,6 +2,7 @@ import ProductCard from "./ProductCard"
 import { connect } from 'react-redux'
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
+import swal from "sweetalert"
 
 
 const Cart = (props)=>{
@@ -28,7 +29,9 @@ const Cart = (props)=>{
     const proceedToPayment = ()=>{
         props.userLogged && total
         ? props.props.push('/payment')
-        : alert(!props.userLogged ? 'you must be logged to proceed' : "you don't have products on your cart")
+        : !props.userLogged 
+            ? swal( 'you must be logged to proceed', '', 'error') 
+            : swal("you don't have products on your cart", '', 'error')
     }
 
     

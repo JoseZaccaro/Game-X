@@ -34,10 +34,13 @@ const server = app.listen(port, host, () => console.log("App listening on port "
 const io = socket(server,{cors:{origin:'*'}})
 
 io.on('connection',(socket)=>{
+    console.log("Entró una nueva conexión")
         socket.on('messageSent',()=>{
+            console.log("enviando rerenderizado")
             io.sockets.emit('reloadMessages')
         })
         socket.on('reloadFriendList',()=>{
+            console.log("recargando amigos")
             io.sockets.emit('reloadFriendLists')
         })
 })

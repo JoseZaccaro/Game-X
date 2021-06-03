@@ -1292,7 +1292,7 @@ SEGUNDO BOTON
     height: 100vh;
     background-position: center;
     background-size: cover;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
 }
 .containerStore{
     background-color: #0B1321;
@@ -1342,8 +1342,7 @@ SEGUNDO BOTON
 }
 .priceProductHardware{
     display: flex;
-    justify-content: space-around;
-    padding-left: 30%;
+    justify-content: flex-start;
     margin-top: 2vh;
     align-items: center;
 }

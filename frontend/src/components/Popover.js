@@ -57,7 +57,6 @@ export default function MouseOverPopover({favouritesList, props}) {
       >
         {favouritesList.length 
         ? favouritesList.map(product => {
-          console.log(product)
          if (product.gameId) {
           return  <NavLink key={product._id} to={`/game/${product.gameId._id}`}>
                       <div  className="divPopover">
