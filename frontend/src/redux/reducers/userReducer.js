@@ -1,9 +1,9 @@
 const initialState = {
     userLogged:null,
     favouritesList:null,
-    reloadMessages:false,
-    Socket:null,
-    reloadFriendList:false
+    // reloadMessages:false,
+    // Socket:null,
+    // reloadFriendList:false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -33,21 +33,21 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 favouritesList: action.payload.favouritesList  
             }
-        case 'RELOAD_MESSAGES':
-            return{
-                ...state,
-                reloadMessages:!state.reloadMessages
-            }
-        case 'SOCKET_IO':
-            return{
-                ...state,
-                Socket:action.payload
-            }
-        case 'RELOAD_FRIENDLIST_SOCKET':
-            return{
-                ...state,
-                reloadFriendList:!state.reloadFriendList
-            }
+        // case 'RELOAD_MESSAGES':
+        //     return{
+        //         ...state,
+        //         reloadMessages:!state.reloadMessages
+        //     }
+        // case 'SOCKET_IO':
+        //     return{
+        //         ...state,
+        //         Socket:action.payload
+        //     }
+        // case 'RELOAD_FRIENDLIST_SOCKET':
+        //     return{
+        //         ...state,
+        //         reloadFriendList:!state.reloadFriendList
+        //     }
         default:
             return state
     }
