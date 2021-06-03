@@ -53,7 +53,7 @@ class HardwareStore extends React.Component {
                                 <div className="cube"></div>
                                 <div className="cube"></div>
                                 <div className="cube"></div>
-                                    {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware}/>)}
+                                    {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware} props={this.props.history}/>)}
                                 </div>
                             </div>
                         </>

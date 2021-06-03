@@ -7,6 +7,7 @@ import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import cartActions from '../redux/actions/cartActions';
+import swal from 'sweetalert';
 
 
 const Hardware = (props) => {
@@ -18,6 +19,20 @@ const Hardware = (props) => {
             behavior: "smooth"
         })
     }
+    const logAlert = ()=> swal("You must be logged to do that", "Want to Log in/Sign up?", "warning", {
+        buttons: {
+          signup: {text: "Yes!", value: "catch"},
+          cancel: "Maybe later",
+        },
+      })
+      .then((value) => {
+        switch (value) {           
+          case "catch":
+            props.props.push('/access')
+            break         
+          default:
+        }
+      })
     
     const [inCart, setInCart]=useState(false)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
@@ -40,12 +55,16 @@ const Hardware = (props) => {
 
                     
     const sendHardwareToList = async(product) =>{
-        setMyList({...myList, fetching:true})
-        const add = {product, add:true, game:false}
-        const remove = {product, add:false, game:false}
-        const sendedData = hardwareFounded ? remove : add
-        const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-          setMyList({myList: response.favouritesList, fetching: false})     
+        if (props.userLogged) {
+            setMyList({...myList, fetching:true})
+            const add = {product, add:true, game:false}
+            const remove = {product, add:false, game:false}
+            const sendedData = hardwareFounded ? remove : add
+            const response = await props.addToMyList(sendedData, token, props.userLogged.id)
+            setMyList({myList: response.favouritesList, fetching: false})
+        } else{
+            logAlert()
+        }     
       }      
     
     const addToCart = ()=>{

@@ -4,7 +4,7 @@ const hardwareActions = {
     loadHardwares: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/hardware')
+                const response = await axios.get('https://game-x-arg.herokuapp.com/api/hardware')
                 if(response.data.success){
                     dispatch({type: 'LOAD_HARDWARES', payload: response.data.response})
                 }else{

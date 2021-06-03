@@ -22,7 +22,8 @@ const Game = (props) => {
             behavior: "smooth"
         })
     }
-    
+
+    const [inCart, setInCart]=useState(false)
     const [gameDetails, setGameDetails] = useState(null)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
 
@@ -55,6 +56,10 @@ const Game = (props) => {
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.match.params.id])
+    useEffect(() => {
+        setInCart(productInCart)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.allGames, props.allCart])
 
     const token= localStorage.getItem('token')
 
@@ -77,9 +82,11 @@ const Game = (props) => {
     }
     
     const addToCart = ()=>{
+        setInCart(!inCart)
         props.addToCart(gameDetails)
     }
     const removeToCart = ()=>{
+        setInCart(!inCart)
         props.deleteToCart(gameDetails._id)
     }
 
@@ -119,7 +126,7 @@ const Game = (props) => {
                                                 <p className='priceGameConDiscount'>${(-gameDetails.price * gameDetails.discount /100 +gameDetails.price).toFixed(0)}</p>
                                             </div>
                                             :<p className='priceGame'>${gameDetails.price}</p>}  
-                                    {!productInCart 
+                                    {!inCart
                                     ?<Tooltip title="Add to cart" placement="top" > 
                                         <div>
                                             <MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>

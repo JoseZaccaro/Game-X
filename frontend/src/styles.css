@@ -826,10 +826,10 @@ input[type="file" ] {
 		top: 30px;
 	}
 	.navigation input:checked {
-		left: 90%;
+		left: 92%;
 	}
 	.navigation input:checked ~ .menuNav {
-		width: 31rem;
+		width: 35rem;
 		height: auto;
 	}
 	.gifLogo{

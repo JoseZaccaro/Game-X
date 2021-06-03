@@ -6,7 +6,7 @@ const productActions = {
     addGame: (infoGame, token) => {
         return async () => {
             try {
-                const respuesta = await axios.post(`http://localhost:4000/api/games`,infoGame, {
+                const respuesta = await axios.post(`https://game-x-arg.herokuapp.com/api/games`,infoGame, {
                 headers: {
                     'Authorization': 'Bearer '+ token
                 }
@@ -24,7 +24,7 @@ const productActions = {
     addHardware: (infoHardware, token) => {
         return async () => {
             try {
-                const respuesta = await axios.post(`http://localhost:4000/api/hardware`,infoHardware, {
+                const respuesta = await axios.post(`https://game-x-arg.herokuapp.com/api/hardware`,infoHardware, {
                 headers: {
                     'Authorization': 'Bearer '+ token
                 }
