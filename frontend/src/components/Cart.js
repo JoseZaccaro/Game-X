@@ -8,7 +8,9 @@ import cartActions from "../redux/actions/cartActions"
 
 const Cart = (props)=>{
     const [total, setTotal]=useState(0)   
+
     const arraySubTotales = []
+
     const sendSubTotal = (precioSub, idArt)=>{
         arraySubTotales.map(art=> {
             if(idArt === art.id){
@@ -22,14 +24,15 @@ const Cart = (props)=>{
         arraySubTotales.map(art =>{
             sumSubTotal += art.subtotal
         })
-        setTotal(sumSubTotal)  
+            setTotal(sumSubTotal) 
+        
     }
 
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
 
     const proceedToPayment = async()=>{
         
-        if (props.userLogged && total) {
+        if (props.userLogged && props.allCart.length) {
             const productsList= {total:total, products: props.allCart}
             const respuesta = await props.proceedToPayment(productsList)
             props.props.push('/payment')

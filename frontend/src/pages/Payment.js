@@ -119,6 +119,7 @@ const Payment = (props) =>{
                             <h2 className='pasoNoActivoInfoFormulario'>01 - Basic Information</h2>
                             <h2 className='pasoNoActivoInfoFormulario'>02 - Credit Card Information</h2>
                             <h2 className='pasoActivoInfoFormulario'>03 - Verify Information</h2>
+                            <NavLink to='/'><div className='botonHomeFormulario'>Back To Home</div></NavLink>
                         </div>  
                     </div> 
                     <button className='nextBotonFormulario' onClick={sendBuy}>Buy</button>
