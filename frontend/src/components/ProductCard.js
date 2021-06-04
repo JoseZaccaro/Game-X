@@ -5,9 +5,9 @@ import cartActions from '../redux/actions/cartActions'
 const ProductCard = (props)=>{
     
     const [cantidadAMostrar, setCantidadAMostrar] = useState(1)
-
     const deleteProductCart = ()=>{
         props.deleteToCart(props.articulo._id)
+        props.sendSubTotal(0 , props.articulo._id)
     }
     useEffect(()=>{
         {props.articulo.discount 
@@ -22,7 +22,7 @@ const ProductCard = (props)=>{
                 <div className='imgPortadaProductCart' style={{backgroundImage:`url("${props.articulo.imageBanner}")`}}></div>
             </div>
             <div className='divInfoProductCart'>
-                <p>{props.articulo.title}</p>
+                <p>{props.articulo.title}{props.articulo.productName}</p>
             </div>
             <div className='divPriceAmountCart'>
                 <div className='priceCart'>

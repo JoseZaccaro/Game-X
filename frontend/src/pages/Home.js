@@ -75,7 +75,7 @@ class Home extends React.Component{
                 <div className='shadowBottom'></div>
             </div>  
             <div className='containHomeBottom'>
-                <div className='imagenHomeBottom' style={{backgroundImage: "url('https://www.muycomputer.com/wp-content/uploads/2020/12/PS5-frente-a-Xbox-Series-X.jpg')"}}>
+                <div className='imagenHomeBottom' style={{backgroundImage: "url('https://media.elarcadia.com/data/articles/mscvqyjf71_Xbox-series-x-vs-ps5-generacionxbox.jpg')"}}>
                     <div className='contentImgHomeBottom'>
                         <h1 className='titleContentMove'>Hardwares</h1>
                         <p className='buttonContenMove'>Explore</p>
