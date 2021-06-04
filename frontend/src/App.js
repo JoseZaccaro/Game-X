@@ -18,7 +18,7 @@ import AdminPanel from './pages/AdminPanel';
 import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
 // import io from 'socket.io-client'
-import chatActions from './redux/actions/chatActions'
+// import chatActions from './redux/actions/chatActions'
 import cartActions from './redux/actions/cartActions';
 import MyBuys from './pages/MyBuys';
 

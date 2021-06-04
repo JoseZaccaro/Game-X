@@ -1,7 +1,5 @@
 import React from "react"
 import { connect } from "react-redux"
-import userActions from "../redux/actions/userActions";
-import swal from 'sweetalert'
 import Header from "../components/Header";
 import buyActions from "../redux/actions/buyActions";
 import Loader from '../components/Loader';
@@ -25,12 +23,7 @@ class MyBuys extends React.Component{
     }
 
     
-
-
-
-
     render() {
-            console.log(this.props.buyList)
             if (!this.props.buyList) {
                 return <Loader/>
                 

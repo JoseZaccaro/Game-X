@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import userActions from '../redux/actions/userActions'
 import Messages from './Messages' 
 import {AiOutlineUsergroupAdd, AiOutlineUserDelete,AiOutlineUsergroupDelete, AiOutlineClose} from 'react-icons/ai'
-import {BsPersonPlus} from 'react-icons/bs'
+// import {BsPersonPlus} from 'react-icons/bs'
 import {BiChat} from 'react-icons/bi'
 import chatActions from '../redux/actions/chatActions'
 import Tooltip from '@material-ui/core/Tooltip';

@@ -30,9 +30,7 @@ const Header = (props) =>{
         .then((willDelete) => {
             if (willDelete) {
                 props.removeUserInfo()
-                swal("Okay then, see you later!", {
-                    icon: "success",
-                });
+                swal("Good Bye!", "see you later!", "success")
             } 
         });
     })
@@ -65,6 +63,7 @@ const Header = (props) =>{
     const [reloaded, setReloaded]=useState(false)
     useEffect(()=>{
         setReloaded(!reloaded)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.inCart])
     const [displayModal, setDisplayModal] = useState(false)
     const openCloseModal = ()=>{

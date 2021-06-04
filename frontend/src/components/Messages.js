@@ -14,7 +14,7 @@ const Messages = (props)=>{
     
     const [minimized , setMinimized] = useState(false)
     const [newMessage , setNewMessage] = useState("")
-    const [loadingMessages, setLoadingMessages] = useState(false)
+    // const [loadingMessages, setLoadingMessages] = useState(false)
 
     const close = ()=>{
         setChatToView({messages:[],user:{name:null}})

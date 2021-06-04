@@ -5,14 +5,15 @@ import cartActions from '../redux/actions/cartActions'
 const ProductCard = (props)=>{
     
     const [cantidadAMostrar, setCantidadAMostrar] = useState(1)
+    
     const deleteProductCart = ()=>{
         props.deleteToCart(props.articulo._id)
         props.sendSubTotal(0 , props.articulo._id)
     }
     useEffect(()=>{
-        {props.articulo.discount 
+        props.articulo.discount 
             ? props.sendSubTotal(( props.articulo.price - props.articulo.price * props.articulo.discount / 100) * cantidadAMostrar, props.articulo._id)
-            : props.sendSubTotal(props.articulo.price * cantidadAMostrar, props.articulo._id)}       
+            : props.sendSubTotal(props.articulo.price * cantidadAMostrar, props.articulo._id)      
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[cantidadAMostrar])
     

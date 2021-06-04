@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { connect } from 'react-redux'
 import cartActions from '../redux/actions/cartActions'
 
