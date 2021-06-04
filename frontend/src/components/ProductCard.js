@@ -9,22 +9,13 @@ const ProductCard = (props)=>{
     const deleteProductCart = ()=>{
         props.deleteToCart(props.articulo._id)
     }
-
-    const removeOneUnit = () =>{
-        props.setTotal(parseInt(props.total) - parseInt(precioUnitario))
-        setCantidadAMostrar(cantidadAMostrar-1)
-    }
-
-    const addOneUnit = () =>{
-        props.setTotal(parseInt(props.total) + parseInt(precioUnitario))
-        setCantidadAMostrar(cantidadAMostrar+1)
-    }
-
-    const precioUnitario = props.articulo.discount ? (-props.articulo.price * props.articulo.discount / 100 + props.articulo.price).toFixed(0) : props.articulo.price
-    const precioUnitarioFinal= (precioUnitario * cantidadAMostrar).toFixed(0)
-
-
-
+    useEffect(()=>{
+        {props.articulo.discount 
+            ? props.sendSubTotal(( props.articulo.price - props.articulo.price * props.articulo.discount / 100) * cantidadAMostrar, props.articulo._id)
+            : props.sendSubTotal(props.articulo.price * cantidadAMostrar, props.articulo._id)}       
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[cantidadAMostrar])
+    
     return(
         <div className='cadaDivProduct'>
             <div className='divImgPortadaProductCart'>
@@ -50,11 +41,14 @@ const ProductCard = (props)=>{
                 </div>
                 <div className='divTotalCartProduct'>
                     <p>Total:</p>
-                    <p>${precioUnitarioFinal}</p>
+                    <p>${props.articulo.discount 
+                        ? (( props.articulo.price - props.articulo.price * props.articulo.discount / 100) * cantidadAMostrar).toFixed(0)
+                        :props.articulo.price * cantidadAMostrar}
+                    </p>
                 </div>
             </div>
             <div className='deleteProductCard'>
-                <p onClick={deleteProductCart}>Eliminar</p>
+                <p onClick={deleteProductCart}>Delete</p>
             </div>
         </div>
     )
