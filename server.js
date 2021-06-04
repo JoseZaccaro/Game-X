@@ -29,15 +29,19 @@ if (process.env.NODE_ENV === 'production') {
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT 
 
-const server = app.listen(port, host, () => console.log("App listening on port "+port+" on "+host))
+// const server =
+app.listen(port, host, () => console.log("App listening on port "+port+" on "+host))
 
-const io = socket(server,{cors:{origin:'*'}})
+// const io = socket(server,{cors:{origin:'*'}})
 
-io.on('connection',(socket)=>{
-        socket.on('messageSent',()=>{
-            io.sockets.emit('reloadMessages')
-        })
-        socket.on('reloadFriendList',()=>{
-            io.sockets.emit('reloadFriendLists')
-        })
-})
+// io.on('connection',(socket)=>{
+//     console.log("Entró una nueva conexión")
+//         socket.on('messageSent',()=>{
+//             console.log("enviando rerenderizado")
+//             io.sockets.emit('reloadMessages')
+//         })
+//         socket.on('reloadFriendList',()=>{
+//             console.log("recargando amigos")
+//             io.sockets.emit('reloadFriendLists')
+//         })
+// })

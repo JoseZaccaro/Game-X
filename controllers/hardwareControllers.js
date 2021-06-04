@@ -2,9 +2,7 @@ const HardwareModel = require('../models/Hardware')
 const fs = require('fs')
 
 const hardwareControllers = {
-    addNewHardware: async (req, res)=>{
-        console.log(req.body)
-        
+    addNewHardware: async (req, res)=>{        
         let response;
         let error;
         if (req.user.rol === 'admin') {

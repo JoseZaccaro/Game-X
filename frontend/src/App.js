@@ -17,16 +17,16 @@ import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
 import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import chatActions from './redux/actions/chatActions'
-import CreditCard from './components/CreditCard'
+import cartActions from './redux/actions/cartActions';
 
 class App extends React.Component{
 
   componentDidMount() {
                           // https://game-x-arg.herokuapp.com/
                 // ACA ABAJO 👇 VA EL LINK DE HEROKU 👆
-    this.props.socketChat(io('http://localhost:4000'))
+    // this.props.socketChat(io('https://game-x-arg.herokuapp.com/'))
 
     if (!this.props.userLogged && localStorage.getItem('token')) {  
       const userData = JSON.parse(localStorage.getItem('userLogged'))
@@ -36,7 +36,13 @@ class App extends React.Component{
       }
       this.props.forcedLoginByLS(userLS)
     }
+    if (!this.props.allCart.length && localStorage.getItem('cart')) {  
+      const cartInfo = JSON.parse(localStorage.getItem('cart'))
+      this.props.setCartLS(cartInfo)
+    }
   }
+  
+
 
 
   render(){
@@ -66,12 +72,14 @@ class App extends React.Component{
 
 const mapStateToProps = state => {
   return {
-      userLogged: state.userReducer.userLogged
+      userLogged: state.userReducer.userLogged,
+      allCart: state.cartReducer.allCart
   }
 }
 const mapDispatchToProps = {
   forcedLoginByLS :  userActions.forcedLoginByLS,
-  socketChat: chatActions.socketChat
+  // socketChat: chatActions.socketChat,
+  setCartLS: cartActions.setCartLS,
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App)

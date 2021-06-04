@@ -2,10 +2,10 @@
 const mongoose = require ('mongoose')
 
 const buySchema = new mongoose.Schema({
-        products:[{gameId:{type: mongoose.Types.ObjectId, ref: 'game', default:0}, productId:{type: mongoose.Types.ObjectId, ref: 'hardware', default:0}}],
-        userId:{type: mongoose.Types.ObjectId, ref: 'user', default:0},
+        products:[{type:Object, required:true}],
+        userId:{type: mongoose.Types.ObjectId, ref: 'user', required:true},
         date:{type:String, required:true},
-        paymentMethod:{type:String, required:true},
+        deliverInformation:[{type:Object , required:true}],
         totalPrice:{type:Number, required: true},
 })
 

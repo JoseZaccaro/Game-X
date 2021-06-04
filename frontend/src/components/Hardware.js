@@ -1,37 +1,72 @@
 import { useEffect, useState } from 'react';
-import Header from './Header'
 import { connect } from 'react-redux';
 import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
-import Loader from '../components/Loader';
 import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import cartActions from '../redux/actions/cartActions';
-import { NavLink } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 const Hardware = (props) => {
+
+    const toTop = () => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+        })
+    }
+    const logAlert = ()=> swal("You must be logged to do that", "Want to Log in/Sign up?", "warning", {
+        buttons: {
+          signup: {text: "Yes!", value: "catch"},
+          cancel: "Maybe later",
+        },
+      })
+      .then((value) => {
+        switch (value) {           
+          case "catch":
+            props.props.push('/access')
+            break         
+          default:
+        }
+      })
     
+    const [inCart, setInCart]=useState(false)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
     const token= localStorage.getItem('token')
+
+    useEffect(() => {
+        toTop()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        setInCart(productInCart)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.hardware, props.allCart])
 
     const hardwareId = props.hardware._id
                   
     var hardwareFounded = props.userLogged && myList.myList ? myList.myList.some(hardwareAdded => hardwareAdded.productId === hardwareId): false
+    var productInCart = props.hardware && props.allCart.length !== 0 ? props.allCart.some(product => product._id === props.hardware._id): false
+
                     
     const sendHardwareToList = async(product) =>{
-        setMyList({...myList, fetching:true})
-        const add = {product, add:true, game:false}
-        const remove = {product, add:false, game:false}
-        const sendedData = hardwareFounded ? remove : add
-        const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-          setMyList({myList: response.favouritesList, fetching: false})     
-      }
-                    
-    const [inCart, setInCart]=useState(false)
+        if (props.userLogged) {
+            setMyList({...myList, fetching:true})
+            const add = {product, add:true, game:false}
+            const remove = {product, add:false, game:false}
+            const sendedData = hardwareFounded ? remove : add
+            const response = await props.addToMyList(sendedData, token, props.userLogged.id)
+            setMyList({myList: response.favouritesList, fetching: false})
+        } else{
+            logAlert()
+        }     
+      }      
+    
     const addToCart = ()=>{
         setInCart(!inCart)
         props.addToCart(props.hardware)
@@ -50,17 +85,25 @@ const Hardware = (props) => {
                 </div>
                 <div>
                     <p className='pTituloInfoSecHard'>Features: </p>
-                    {props.hardware.features.map(feature =><p className='pDescriptionProductHardware'>{feature}</p>)}
+                    {props.hardware.features.map((feature,i )=><p key={i} className='pDescriptionProductHardware'>{feature}</p>)}
                 </div>
                 <div className='priceProductHardware'>
-                    <p className='priceHardware'>{props.hardware.price}</p>
+                    <p className='priceHardware'>${props.hardware.price}</p>
                     {!inCart 
-                        ? <p className='addToCartHardware' onClick={addToCart}>Add To Cart <FontAwesomeIcon icon={faShoppingCart}/></p>
-                        : <p className='addToCartHardware' onClick={removeToCart}>Remove From Cart <FontAwesomeIcon icon={faShoppingCart}/></p>}
+                        ? <Tooltip title="Add to cart" placement="top" > 
+                            <div>
+                                <MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>
+                            </div>
+                        </Tooltip>
+                        :<Tooltip title="Remove from cart" placement="top" >
+                            <div>
+                                <MdRemoveShoppingCart  onClick={removeToCart} className='removeFromWishListOnComponent'/>
+                            </div>
+                        </Tooltip>}
                     {!hardwareFounded 
                         ? <Tooltip title="Add to Wishlist" placement="top" > 
                             <div>
-                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='addToWishListOnComponentHard'/>
+                                <CgPlayListAdd  onClick={()=> !myList.fetching ? sendHardwareToList(hardwareId): null} className='addToWishListOnComponent'/>
                             </div>
                         </Tooltip>
                         : <Tooltip title="Remove from Wishlist" placement="top" >

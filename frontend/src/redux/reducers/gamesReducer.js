@@ -20,7 +20,6 @@ const gamesReducer = (state = initialState, action) => {
                     filterGamesComplete = state.allGames
                 }
                 filterGamesComplete = state.allGames.filter(game => game.title.toLowerCase().trim().includes(action.payload.value))
-                console.log(filterGamesComplete);
             } else {
                 // filtro por tags
                 if (action.payload.product === 'games') {

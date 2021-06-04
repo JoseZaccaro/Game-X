@@ -1,34 +1,67 @@
 import ProductCard from "./ProductCard"
 import { connect } from 'react-redux'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
+import swal from "sweetalert"
+import cartActions from "../redux/actions/cartActions"
 
 
 const Cart = (props)=>{
-    const [total, setTotal]=useState(0)   
-    const arraySubTotales = []
-    const sendSubTotal = (precioSub, idArt)=>{
-        arraySubTotales.map(art=> {
-            if(idArt === art.id){
-                art.subtotal = precioSub
-                return art
-            }
-            return art
-        })
+    const [total, setTotal]=useState(0) 
+
+    useEffect(()=>{
+        let valor=0
+        props.allCart.forEach(element => {
+            valor= valor + parseInt(element.discount ? parseInt((-element.price * element.discount / 100 + element.price).toFixed(0)) : parseInt(element.price))
+        });
+
+        setTotal(valor)
+      
+    },[props.allCart.length])
+
+    const proceedToPayment = async()=>{
         
-        var sumSubTotal = 0
-        arraySubTotales.map(art =>{
-            sumSubTotal += art.subtotal
-        })
-        setTotal(sumSubTotal)  
-    }
-
-    props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
-
-    const proceedToPayment = ()=>{
-        props.userLogged && total
-        ? props.props.push('/payment')
-        : alert(!props.userLogged ? 'you must be logged to proceed' : "you don't have products on your cart")
+        if (props.userLogged && total) {
+            const productsList= {total:total, products: props.allCart}
+            const respuesta = await props.proceedToPayment(productsList)
+            props.props.push('/payment')
+        }else{
+            if (!props.userLogged) {
+                swal("You must be logged proceed", "Want to Log in/Sign up?", "error", {
+                    buttons: {
+                      signup: {text: "Yes!", value: "catch"},
+                      cancel: "Maybe later",
+                    },
+                  })
+                  .then((value) => {
+                    switch (value) {           
+                      case "catch":
+                        props.props.push('/access')
+                        break         
+                      default:
+                    }
+                  })
+            }else{
+                swal("You don't have any product on your cart", "Want to see our store?", "error", {
+                    buttons: {
+                      hardwareStore: {text: "Hardware", value: "hardwareStore"},
+                      gameStore: {text: "Games", value: "gameStore"},
+                      cancel: "No, Thanks",
+                    },
+                  })
+                  .then((value) => {
+                    switch (value) {         
+                      case "gameStore":
+                        props.props.push('/games');              
+                        break      
+                      case "hardwareStore":
+                        props.props.push('/hardware')
+                        break         
+                      default:
+                    }
+                  })
+            }
+        }
     }
 
     
@@ -39,7 +72,7 @@ const Cart = (props)=>{
                     <div className='divProducts'>
                         {props.allCart.length 
                             ? props.allCart.map((articulo, i) => {
-                                return <ProductCard key={i} articulo={articulo} sendSubTotal={sendSubTotal}/>
+                                return <ProductCard key={i} articulo={articulo}  total={total} setTotal={setTotal}/>
                             })
                             :<div className='divSinArtCart'>
                                 <h1>You don't have any product on your cart!</h1>
@@ -70,4 +103,9 @@ const mapStateToProps = state => {
         userLogged:state.userReducer.userLogged
     }
 }
-export default connect(mapStateToProps)(Cart)
+
+const mapDispatchToProps = {
+    proceedToPayment: cartActions.proceedToPayment
+}
+
+export default connect (mapStateToProps  , mapDispatchToProps)(Cart)

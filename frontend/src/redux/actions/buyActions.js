@@ -1,17 +1,25 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const buyActions = {
-    crearCompra : ( nuevaCompra ) => {
-        return async (dispatch , getState)=>{
-            
-            await axios.post('http://localhost:4000/api/buy' , nuevaCompra)
-           /* .then(response => dispatch({
-                type: "ADD_BUY",
-                payload: response.data.response
-            }))
-            .catch(error => console.log(error))*/
+    createOrder : (product, token) => {
+        return async () => {
+            try {
+                const respuesta = await axios.post(`http://localhost:4000/api/buy`,product, {
+                headers: {
+                    'Authorization': 'Bearer '+ token
+                }
+            })
+                if(!respuesta.data.success){
+                    return respuesta.data                   
+                }else{
+                    return respuesta.data
+                }
+            } catch(error) {
+                return swal("Failed to try to connect with server", "Please try again in a few minutes", "error")
+            }           
         }
-    }
+    },
 }
 
 export default buyActions

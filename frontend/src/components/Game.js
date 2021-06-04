@@ -7,15 +7,14 @@ import Loader from '../components/Loader';
 import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cartActions from '../redux/actions/cartActions';
 import swal from 'sweetalert';
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 
 
 const Game = (props) => {
-
-
+    
+    
     const toTop = () => {
         window.scroll({
             top: 0,
@@ -24,6 +23,7 @@ const Game = (props) => {
         })
     }
 
+    const [inCart, setInCart]=useState(false)
     const [gameDetails, setGameDetails] = useState(null)
     const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
 
@@ -53,16 +53,20 @@ const Game = (props) => {
             setGameDetails({
                ...gameFilter
             })
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.match.params.id])
-
-
+    useEffect(() => {
+        setInCart(productInCart)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.allGames, props.allCart])
 
     const token= localStorage.getItem('token')
 
     const idGame = props.match.params.id
   
     var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
+    var productInCart = gameDetails && props.allCart.length !== 0 ? props.allCart.some(product => product._id === gameDetails._id): false
     
     const sendGameToList = async(product) =>{
         if (props.userLogged) {
@@ -76,8 +80,7 @@ const Game = (props) => {
             logAlert()
         }
     }
-        
-    const [inCart, setInCart]=useState(false)
+    
     const addToCart = ()=>{
         setInCart(!inCart)
         props.addToCart(gameDetails)
@@ -122,7 +125,7 @@ const Game = (props) => {
                                                 <p className='priceGameConDiscount'>${(-gameDetails.price * gameDetails.discount /100 +gameDetails.price).toFixed(0)}</p>
                                             </div>
                                             :<p className='priceGame'>${gameDetails.price}</p>}  
-                                    {!inCart 
+                                    {!inCart
                                     ?<Tooltip title="Add to cart" placement="top" > 
                                         <div>
                                             <MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>

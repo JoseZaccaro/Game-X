@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom'
 import InfiniteCarousel from 'react-leaf-carousel';
 import CarouselComponent from './CarouselComponent';
 class CarruselStore extends React.Component {

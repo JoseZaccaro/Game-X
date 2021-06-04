@@ -615,6 +615,7 @@ div.iconoClose{
 }
 .priceHardware{
     padding: 1vh 2vw;
+    margin-right: 1vw;
     font-size: 3.67vh;
     font-weight: 500;
     border-radius: 7px;

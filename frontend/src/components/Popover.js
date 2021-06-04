@@ -57,7 +57,6 @@ export default function MouseOverPopover({favouritesList, props}) {
       >
         {favouritesList.length 
         ? favouritesList.map(product => {
-          console.log(product)
          if (product.gameId) {
           return  <NavLink key={product._id} to={`/game/${product.gameId._id}`}>
                       <div  className="divPopover">
@@ -66,7 +65,7 @@ export default function MouseOverPopover({favouritesList, props}) {
                       </div>
                   </NavLink>
          } else{
-          return  <NavLink key={product._id} to={`/hardware/${product.productId._id}`}>
+          return  <NavLink key={product._id} to={`/hardware`}>
                       <div  className="divPopover">
                           <div className="commentProfileImg" style={{backgroundImage: `url('${product.productId.imageBanner}')`}}/>
                           <p>{product.productId.productName}</p>

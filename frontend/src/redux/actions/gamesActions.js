@@ -4,7 +4,7 @@ const gamesActions = {
     loadGames: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('http://localhost:4000/api/games')
+                const response = await axios.get('https://game-x-arg.herokuapp.com/api/games')
                 dispatch({type: 'LOAD_GAMES', payload: response.data.response})
             } catch (error) {             
                 console.log(error);

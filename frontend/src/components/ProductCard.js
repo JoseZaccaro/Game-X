@@ -5,6 +5,7 @@ import cartActions from '../redux/actions/cartActions'
 const ProductCard = (props)=>{
     
     const [cantidadAMostrar, setCantidadAMostrar] = useState(1)
+
     const deleteProductCart = ()=>{
         props.deleteToCart(props.articulo._id)
     }
@@ -26,14 +27,14 @@ const ProductCard = (props)=>{
             <div className='divPriceAmountCart'>
                 <div className='priceCart'>
                     <p>Precio:</p>
-                    <p>${props.articulo.price}</p>
+                    <p>${props.articulo.price * cantidadAMostrar}</p>
                 </div>
                 <div className='amountCart'>
                     <p>Cantidad:</p>
-                    <p className='buttonSumCart' onClick={()=>setCantidadAMostrar(cantidadAMostrar+1)}>+</p>
+                    <p className='buttonSumCart' onClick={setCantidadAMostrar(cantidadAMostrar + 1)} >+</p>
                     <p>{cantidadAMostrar}</p>
                     {cantidadAMostrar > 1 
-                        ? <p className='buttonRestCart' onClick={()=>setCantidadAMostrar(cantidadAMostrar-1)} >-</p>
+                        ? <p className='buttonRestCart' onClick={setCantidadAMostrar(cantidadAMostrar - 1)} >-</p>
                         : <p className='buttonRestCartBloq'>-</p>
                     }
                     

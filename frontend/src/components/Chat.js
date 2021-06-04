@@ -50,27 +50,28 @@ const Chat = (props) => {
     }
 
     useEffect(()=>{
-        if(props.userLogged && props.userLogged.friends.length && !friendList.length){
+        if(props.userLogged && props.userLogged.friends && !friendList.length){
             fetchFriends()
         }
     // eslint-disable-next-line
     },[props.userLogged])
-    useEffect(()=>{
-        if(props.userLogged && props.userLogged.friends){
-            fetchFriends()
-        }
-    // eslint-disable-next-line
-    },[props.reloadFriendListState])
+    
+    // useEffect(()=>{
+    //     if(props.userLogged && props.userLogged.friends){
+    //         fetchFriends()
+    //     }
+    // // eslint-disable-next-line
+    // },[props.reloadFriendListState])
 
-    useEffect(()=>{
-        if(props.Socket){
-            props.Socket.on('reloadFriendLists',()=>{
-                    props.reloadFriendList()
+    // useEffect(()=>{
+    //     if(props.Socket){
+    //         props.Socket.on('reloadFriendLists',()=>{
+    //                 props.reloadFriendList()
                 
 
-            })
-        }
-    })
+    //         })
+    //     }
+    // })
     useEffect(()=>{
         const buscarAmigos = async()=>{
             const res = await props.searchUsers(inputValue.inputValue)
@@ -94,9 +95,9 @@ const Chat = (props) => {
         try{
             const newChatOfFriendToAdd = await props.addFriend(person._id)
             setFriendList(newChatOfFriendToAdd)
-                if(props.Socket){
-                    props.Socket.emit('reloadFriendList')
-                }
+                // if(props.Socket){
+                //     props.Socket.emit('reloadFriendList')
+                // }
         }catch(e){
             // ACA UN POPUP DICIENDO QUE FALLO AL AGREGAR AMIGO
             console.log(e)
@@ -109,9 +110,9 @@ const Chat = (props) => {
             if(chatToView.friend && chatToView.friend.id === person.id){
                 setLeftHide(true)
             }
-            if(props.Socket){
-                props.Socket.emit('reloadFriendList')
-            }
+            // if(props.Socket){
+            //     props.Socket.emit('reloadFriendList')
+            // }
 
         }catch(e){
             // ACA UN POPUP DICIENDO QUE FALLO AL ELIMINAR AMIGO
@@ -119,21 +120,21 @@ const Chat = (props) => {
         }
     }
     
-    useEffect(()=>{
-        const reloadFriendChat = async()=>{
-            if(chatToView.issuer){
-                let noUserId;
-                chatToView.issuer === props.userLogged.id ? noUserId = chatToView.receiver : noUserId = chatToView.issuer
-                const chat = await props.chat(noUserId)
-                setChatToView({...chat,friend:chatToView.friend})      
+    // useEffect(()=>{
+    //     const reloadFriendChat = async()=>{
+    //         if(chatToView.issuer){
+    //             let noUserId;
+    //             chatToView.issuer === props.userLogged.id ? noUserId = chatToView.receiver : noUserId = chatToView.issuer
+    //             const chat = await props.chat(noUserId)
+    //             setChatToView({...chat,friend:chatToView.friend})      
                 
-                if(chat){
-                    setLeftHide(false)
-                }
-            }
-        }
-        reloadFriendChat()
-    },[props.reloadMessages])
+    //             if(chat){
+    //                 setLeftHide(false)
+    //             }
+    //         }
+    //     }
+    //     reloadFriendChat()
+    // },[props.reloadMessages])
 
     const openFriendChat = async(friend)=>{
         const chat = await props.chat(friend.id)
@@ -222,9 +223,9 @@ const Chat = (props) => {
 const mapStateToProps = state =>{
     return {
         userLogged : state.userReducer.userLogged,
-        reloadMessages:state.userReducer.reloadMessages,
-        Socket: state.userReducer.Socket,
-        reloadFriendListState: state.userReducer.reloadFriendList
+        // reloadMessages:state.userReducer.reloadMessages,
+        // Socket: state.userReducer.Socket,
+        // reloadFriendListState: state.userReducer.reloadFriendList
     }
 }
 
@@ -235,7 +236,7 @@ const mapDispatchToProps = {
     chat : chatActions.getChatOfUser,
     getFriendList: chatActions.getFriendList, 
     deleteFriend: chatActions.deleteFriend,
-    reloadFriendList:chatActions.reloadFriendList
+    // reloadFriendList:chatActions.reloadFriendList
     
   }
   
