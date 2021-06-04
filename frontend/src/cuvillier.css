@@ -248,6 +248,8 @@ a{
     background: linear-gradient(to top, var(--secundary-bg-color), transparent);
 }
 .imagenHomeBottom{
+    background-color: #22222246;
+    background-blend-mode: soft-light;
     width: 80%;
     height: 80%;
     border: 1px solid white;
