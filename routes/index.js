@@ -73,7 +73,7 @@ router.route('/hardware/edit/:fileName')
 //------------ROUTES BUYS ---------
 router.route('/buy')
 .get(getAllbuys)
-.post(addBuy)
+.post(passport.authenticate('jwt', {session:false}), addBuy)
 
 router.route('/buy/:id')
 .get(getBuyByID)

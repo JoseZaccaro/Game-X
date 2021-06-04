@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard"
 import { connect } from 'react-redux'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import swal from "sweetalert"
 import cartActions from "../redux/actions/cartActions"
@@ -9,28 +9,15 @@ import cartActions from "../redux/actions/cartActions"
 const Cart = (props)=>{
     const [total, setTotal]=useState(0) 
 
-    const arraySubTotales = []
+    useEffect(()=>{
+        let valor=0
+        props.allCart.forEach(element => {
+            valor= valor + parseInt(element.discount ? parseInt((-element.price * element.discount / 100 + element.price).toFixed(0)) : parseInt(element.price))
+        });
 
-    const sendSubTotal = (precioSub, idArt)=>{
-        arraySubTotales.map(art=> {
-            if(idArt === art.id){
-                art.subtotal = precioSub
-                return art
-            }
-            return art
-        })
-        console.log(arraySubTotales)
-        
-        var sumSubTotal = 0
-        arraySubTotales.map(art =>{
-            sumSubTotal += art.subtotal
-        })
-        setTotal(sumSubTotal)  
-    }
-
-    
-
-    props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
+        setTotal(valor)
+      
+    },[props.allCart.length])
 
     const proceedToPayment = async()=>{
         
@@ -85,7 +72,7 @@ const Cart = (props)=>{
                     <div className='divProducts'>
                         {props.allCart.length 
                             ? props.allCart.map((articulo, i) => {
-                                return <ProductCard key={i} articulo={articulo} sendSubTotal={sendSubTotal}/>
+                                return <ProductCard key={i} articulo={articulo}  total={total} setTotal={setTotal}/>
                             })
                             :<div className='divSinArtCart'>
                                 <h1>You don't have any product on your cart!</h1>

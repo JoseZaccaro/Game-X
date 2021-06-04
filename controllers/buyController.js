@@ -12,8 +12,11 @@ const buyController = {
         }
     },
     addBuy: async(req , res) =>{
+        console.log(req.body)
+        let {firstName, lastName, city, cellphone, direction, total, products, userId} = req.body
+        let personalInfo = {firstName, lastName, city, cellphone, direction}
         try{
-            const new_buy = new Buy(req.body)
+            const new_buy = new Buy({products, userId, date:'4/6/21', deliverInformation: personalInfo, totalPrice:total })
             await new_buy.save()
             res.json({success: true , response: new_buy})
         }catch(error){
