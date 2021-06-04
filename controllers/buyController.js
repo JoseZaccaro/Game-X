@@ -1,7 +1,6 @@
 const Buy = require('../models/Buys')
 
 const buyController = {
-    //obtener una compra por id
     getBuyByID: async(req , res)=>{
         try {
             const userBuys = await Buy.find({userId: req.params.id})

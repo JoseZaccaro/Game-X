@@ -5,7 +5,7 @@ const buyActions = {
     createOrder : (product, token) => {
         return async () => {
             try {
-                const respuesta = await axios.post(`http://localhost:4000/api/buy`,product, {
+                const respuesta = await axios.post(`https://game-x-arg.herokuapp.com/api/buy`,product, {
                 headers: {
                     'Authorization': 'Bearer '+ token
                 }
@@ -23,7 +23,7 @@ const buyActions = {
     loadBuys: (userId, token) => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get(`http://localhost:4000/api/buy/${userId}`, {
+                const response = await axios.get(`https://game-x-arg.herokuapp.com/api/buy/${userId}`, {
                     headers: {
                         'Authorization': 'Bearer '+ token
                     }

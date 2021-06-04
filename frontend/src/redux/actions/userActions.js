@@ -5,7 +5,7 @@ const userActions = {
     logUser: (userInfo) => {
         return async (dispatch, getState) => {
            try {
-                const respuesta = await axios.post('http://localhost:4000/api/user/login', userInfo)
+                const respuesta = await axios.post('https://game-x-arg.herokuapp.com/api/user/login', userInfo)
                 if (!respuesta.data.success) {
                     return respuesta.data
                 }
@@ -23,7 +23,7 @@ const userActions = {
     newUser: (userInfo) => {
         return async (dispatch, getState) => {
            try {
-                const respuesta = await axios.post('http://localhost:4000/api/user/signup', userInfo)
+                const respuesta = await axios.post('https://game-x-arg.herokuapp.com/api/user/signup', userInfo)
                 if (!respuesta.data.success) {
                     return respuesta.data.error
                 }
@@ -41,7 +41,7 @@ const userActions = {
     forcedLoginByLS: (userLS) => {
         return async (dispatch, getState) => {
             try {
-                const respuesta = await axios.get('http://localhost:4000/api/user/loginLS', {
+                const respuesta = await axios.get('https://game-x-arg.herokuapp.com/api/user/loginLS', {
                 headers: {
                     'Authorization': 'Bearer '+userLS.token
                 }
@@ -63,7 +63,7 @@ const userActions = {
     changeRol: (userName, token) => {
         return async () => {
             try {
-                const respuesta = await axios.put(`http://localhost:4000/api/user/changeRol`,userName, {
+                const respuesta = await axios.put(`https://game-x-arg.herokuapp.com//api/user/changeRol`,userName, {
                 headers: {
                     'Authorization': 'Bearer '+ token
                 }
@@ -87,7 +87,7 @@ const userActions = {
         return async(dispatch, getState) => {
             try{
                 const token = localStorage.getItem('token')
-                const users = await axios.put('http://localhost:4000/api/user',{userName},{
+                const users = await axios.put('https://game-x-arg.herokuapp.com/api/user',{userName},{
                     headers: {
                         'Authorization': 'Bearer '+ token
                     }
@@ -115,7 +115,7 @@ const userActions = {
     addToMyList: (sendedData, token, id) => {
         return async (dispatch, getstate) => {
             try {
-                const response = await axios.put(`http://localhost:4000/api/user/addToList/${id}`, {sendedData}, {
+                const response = await axios.put(`https://game-x-arg.herokuapp.com/api/user/addToList/${id}`, {sendedData}, {
                     headers: {
                     'Authorization': 'Bearer '+token
                     }
@@ -134,7 +134,7 @@ const userActions = {
     getProductsOnList: (id, props) => {
         return async () => {
            try {
-            const response = await axios.get(`http://localhost:4000/api/user/mylist/${id}`,)   
+            const response = await axios.get(`https://game-x-arg.herokuapp.com/api/user/mylist/${id}`,)   
             return  response.data.response
             } catch {
                return props.push('/serverdown') 

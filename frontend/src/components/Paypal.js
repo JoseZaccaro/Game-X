@@ -15,8 +15,10 @@ const Paypal = (props) => {
             },
             onApprove: (data, actions) => {
                 const order = actions.order.capture()
-                alert("Compra satisfactoria!!")
-                console.log(order)
+                setTimeout(() => {
+                    props.setNextStep('verifyOrder')
+                }, 1000);
+                
             },
             onError: (err) => {
                 alert("Compra NO exitosa, intentá otro dia!")

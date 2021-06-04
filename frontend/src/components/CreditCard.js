@@ -72,7 +72,7 @@ export default class PaymentForm extends React.Component {
               onFocus={this.handleInputFocus}
             />
             <input
-              type="tel"
+              type="string"
               name="name"
               placeholder="Owner Name"
               onChange={this.handleInputChange}
