@@ -29,6 +29,13 @@ const cartReducer = (state = initialState, action) =>{
                 ...state,
                 finishedOrder: action.payload
             }
+        case 'DELETE_CART':
+            localStorage.removeItem('cart')
+            return {
+                ...state,
+                allCart: [],
+                finishedOrder:null                
+            }
         default:
             return state
     }

@@ -16,7 +16,6 @@ app.use(fileUpload())
 app.use(cors())
 app.use(express.static('assets'))
 
-
 app.use('/api', router)
 
 if (process.env.NODE_ENV === 'production') {

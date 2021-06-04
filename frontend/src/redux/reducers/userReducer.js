@@ -1,6 +1,7 @@
 const initialState = {
     userLogged:null,
     favouritesList:null,
+    buyList:null,
     // reloadMessages:false,
     // Socket:null,
     // reloadFriendList:false
@@ -17,7 +18,8 @@ const userReducer = (state = initialState, action) => {
                 favouritesList: action.payload.favouritesList         
             }
         case 'LOG_OUT':
-            localStorage.clear()
+            localStorage.removeItem('userLogged')
+            localStorage.removeItem('token')
             return {
                 ...state,
                 userLogged: null        
@@ -32,6 +34,11 @@ const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 favouritesList: action.payload.favouritesList  
+            }
+        case "LOAD_BUYS":
+            return{
+                ...state,
+                buyList: action.payload  
             }
         // case 'RELOAD_MESSAGES':
         //     return{

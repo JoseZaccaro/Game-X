@@ -19,7 +19,7 @@ const HeroStore = (props) => {
             {
                 infoHeroGames.length > 0
                     ? (
-                        <div className="parent">
+                        <div className="parent animate__animated animate__fadeIn">
                             <div className="div1">
                                 <NavLink to={`/game/${infoHeroGames[0]._id}`}>
                                     <div className="imageHeroStore" style={{ backgroundImage: `url("${infoHeroGames[0].imagesBackground[0]}")` }}></div>

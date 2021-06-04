@@ -20,6 +20,7 @@ import Hardware from './components/Hardware'
 // import io from 'socket.io-client'
 import chatActions from './redux/actions/chatActions'
 import cartActions from './redux/actions/cartActions';
+import MyBuys from './pages/MyBuys';
 
 class App extends React.Component{
 
@@ -64,6 +65,7 @@ class App extends React.Component{
                 <Route path="/hardware/:id" component={Hardware} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}
                 {!this.props.userLogged && <Route path="/access" component={Access} />}
+                {this.props.userLogged && <Route path="/mybuys" component={MyBuys} />}
                 <Redirect to="/" />
             </Switch>
           </BrowserRouter>  

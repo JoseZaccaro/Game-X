@@ -28,6 +28,7 @@ const Cart = (props)=>{
         
     }
 
+
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
 
     const proceedToPayment = async()=>{

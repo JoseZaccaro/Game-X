@@ -107,7 +107,7 @@ const Header = (props) =>{
                                 {props.userLogged &&
                                 <div className="menu">
                                     <SimplePopover favouritesList={favouritesList} props={props.props}/>
-                                    <li >My Buys</li>
+                                    <NavLink to='/mybuys'><li>My Buys</li></NavLink>
                                     <li onClick={()=> setOpenChat(!openChat)}>Chat</li>
                                     <li onClick={(e)=>logOut(e.target)}>LogOut</li>
                                 </div>}
