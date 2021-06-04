@@ -31,10 +31,10 @@ const ProductCard = (props)=>{
                 </div>
                 <div className='amountCart'>
                     <p>Cantidad:</p>
-                    <p className='buttonSumCart' onClick={addOneUnit} >+</p>
+                    <p className='buttonSumCart' onClick={setCantidadAMostrar} >+</p>
                     <p>{cantidadAMostrar}</p>
                     {cantidadAMostrar > 1 
-                        ? <p className='buttonRestCart' onClick={removeOneUnit} >-</p>
+                        ? <p className='buttonRestCart' onClick={setCantidadAMostrar} >-</p>
                         : <p className='buttonRestCartBloq'>-</p>
                     }
                     

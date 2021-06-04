@@ -7,17 +7,25 @@ import cartActions from "../redux/actions/cartActions"
 
 
 const Cart = (props)=>{
-    const [total, setTotal]=useState(0) 
+    const [total, setTotal]=useState(0)   
+    const arraySubTotales = []
+    const sendSubTotal = (precioSub, idArt)=>{
+        arraySubTotales.map(art=> {
+            if(idArt === art.id){
+                art.subtotal = precioSub
+                return art
+            }
+            return art
+        })
+        
+        var sumSubTotal = 0
+        arraySubTotales.map(art =>{
+            sumSubTotal += art.subtotal
+        })
+        setTotal(sumSubTotal)  
+    }
 
-    useEffect(()=>{
-        let valor=0
-        props.allCart.forEach(element => {
-            valor= valor + parseInt(element.discount ? parseInt((-element.price * element.discount / 100 + element.price).toFixed(0)) : parseInt(element.price))
-        });
-
-        setTotal(valor)
-      
-    },[props.allCart.length])
+    props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
 
     const proceedToPayment = async()=>{
         
@@ -72,7 +80,7 @@ const Cart = (props)=>{
                     <div className='divProducts'>
                         {props.allCart.length 
                             ? props.allCart.map((articulo, i) => {
-                                return <ProductCard key={i} articulo={articulo}  total={total} setTotal={setTotal}/>
+                                return <ProductCard key={i} articulo={articulo} sendSubTotal={sendSubTotal} />
                             })
                             :<div className='divSinArtCart'>
                                 <h1>You don't have any product on your cart!</h1>
