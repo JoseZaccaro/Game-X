@@ -39,5 +39,15 @@ const cartActions = {
             }        
         }
     },
+    deleteCart: (products) => {
+        return async (dispatch, getState) => {
+            try {
+                dispatch({type: 'DELETE_CART'})
+            } catch (error) {             
+                console.log(error);
+                alert('error en proceedToPayment')
+            }        
+        }
+    },
 }
 export default cartActions

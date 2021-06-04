@@ -21,7 +21,7 @@ class Home extends React.Component{
         return(
             <>
             <Header props={this.props.history}/>
-            <div className='containPageHome' style={{backgroundImage:"url(../assets/fondo.png)"}}>
+            <div className='containPageHome animate__animated animate__fadeIn' style={{backgroundImage:"url(../assets/fondo.png)"}}>
                 <div className='parallaxRigthHome'>
                     <div className='contentMove'>
                         <div className='alignContentMove animate__animated animate__fadeIn animate__delay-4s'>

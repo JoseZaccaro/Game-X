@@ -20,6 +20,21 @@ const buyActions = {
             }           
         }
     },
+    loadBuys: (userId, token) => {
+        return async (dispatch, getState) => {
+            try {
+                const response = await axios.get(`http://localhost:4000/api/buy/${userId}`, {
+                    headers: {
+                        'Authorization': 'Bearer '+ token
+                    }
+                })
+                dispatch({type: 'LOAD_BUYS', payload: response.data.respuesta})
+            } catch (error) {             
+                console.log(error);
+                alert('error en obtener buys')
+            }        
+        }
+    },
 }
 
 export default buyActions

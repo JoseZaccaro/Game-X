@@ -136,11 +136,11 @@ class AddGame extends React.Component{
                         <span  className='spanAdminPanel'>is Online?</span>  
                         <label htmlFor="yes" className="radioButton">
                                         <span className='spanAdminPanel'>Yes</span>                                
-                                        <input type="radio" id="yes" name="online" value={true} onChange={this.readInput} tabIndex="1"></input>
+                                        <input className='radioOnline' type="radio" id="yes" name="online" value={true} onChange={this.readInput} tabIndex="1"></input>
                         </label>
                         <label htmlFor="no" className="radioButton">
                                         <span className='spanAdminPanel'>No</span>                                
-                                        <input type="radio" id="no" name="online" value={false} onChange={this.readInput} tabIndex="2"></input>
+                                        <input className='radioOnline' type="radio" id="no" name="online" value={false} onChange={this.readInput} tabIndex="2"></input>
                         </label>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ const Game = (props) => {
 
     const [inCart, setInCart]=useState(false)
     const [gameDetails, setGameDetails] = useState(null)
-    const [myList, setMyList] = useState({ myList: props.userLogged ? props.userLogged.favouritesList : [], fetching: false })
+    const [myList, setMyList] = useState({ myList: props.favouritesList ? props.favouritesList : [], fetching: false })
 
 
     const logAlert = ()=> swal("You must be logged to do that", "Want to Log in/Sign up?", "warning", {
@@ -65,7 +65,7 @@ const Game = (props) => {
 
     const idGame = props.match.params.id
   
-    var gameFounded = props.userLogged && myList.myList ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
+    var gameFounded = myList.myList.length ? myList.myList.some(gameAdded => gameAdded.gameId === idGame): false
     var productInCart = gameDetails && props.allCart.length !== 0 ? props.allCart.some(product => product._id === gameDetails._id): false
     
     const sendGameToList = async(product) =>{
@@ -194,7 +194,8 @@ const mapStateToProps = (state) => {
         allGames: state.gamesReducer.allGames,
         preLoaderGames: state.gamesReducer.preLoader,
         userLogged: state.userReducer.userLogged,
-        allCart: state.cartReducer.allCart
+        allCart: state.cartReducer.allCart,
+        favouritesList: state.userReducer.favouritesList
     }
 }
 const mapDispatchToProps = {

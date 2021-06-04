@@ -14,7 +14,7 @@ const Messages = (props)=>{
     
     const [minimized , setMinimized] = useState(false)
     const [newMessage , setNewMessage] = useState("")
-    const [loadingMessages, setLoadingMessages] = useState(false)
+    // const [loadingMessages, setLoadingMessages] = useState(false)
 
     const close = ()=>{
         setChatToView({messages:[],user:{name:null}})
@@ -76,7 +76,7 @@ const Messages = (props)=>{
             leftSideHide ={
                 height:'3.5rem',
                 transition:".7s",
-                 transform:'translate(32rem,0)',
+                 transform:'translate(34rem,0)',
                  cursor:'pointer'
                 }
         }else if( minimized && rightHide ){
@@ -89,7 +89,7 @@ const Messages = (props)=>{
                 }
         }else if(!leftHide && !rightHide){
             leftSideHide={
-                transform: "translate(32rem, 0)", 
+                transform: "translate(34rem, 0)", 
                 transition: ".7s", 
                 opacity:'1'
             }
@@ -115,12 +115,14 @@ const Messages = (props)=>{
             <div className="containerLeftSide"  onClick={ ()=> minimized && minimize()} style={ leftSideHide }>
                 <div className="infoUserContainer" style={minimized ? {height:'100%',transition:".7s",borderBottom:'1px solid rgba(0,0,0,0)', marginTop:'10px'}: {transition:'.7s',cursor:'default',padding: "35px 0"}}>
                     <div className="friendUserImage" style={minimized ? {backgroundImage:`url(${userAvatar})`,width:'2rem',transition:".7s", height:'2rem'}:{transition:".7s",backgroundImage:`url(${userAvatar})`,cursor:'default'}}></div>
-                    <p className="userName" style={minimized ? {transition:".7s"}: {transition:'.7s',cursor:'default'}}> {friendUserName}</p>
-                    <Tooltip title="Send Message" placement="top-start">
+                    <p className="userNameChat" style={minimized ? {transition:".7s"}: {transition:'.7s',cursor:'default'}}> {friendUserName}</p>
+                    <div style={{display:'flex'}}>
+                    <Tooltip title="Minimize chat" placement="top-start">
                         <div className="iconoClose" style={minimized ? {marginLeft:'2.5rem'}: null} onClick={minimize}><FaWindowMinimize /></div>
                     </Tooltip>
-                    { !minimized && <div className="iconoClose" onClick={close}><VscChromeClose className="iconoClose"/></div>}                
-                    </div>
+                    { !minimized && <div className="iconoClose" onClick={close}><VscChromeClose className="iconoClose"/></div>} 
+                    </div>               
+                </div>
                 <div className="chatsContainer" style={minimized ? {opacity:"0", height:'0',transition:".7s"}: {transition:'.7s'}}>
                     {/* Mapeo de mensajes */}
                     { chatToView.messages ? chatToView.messages.map((message,index) => {

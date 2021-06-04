@@ -4,8 +4,10 @@ import swal from 'sweetalert'
 import buyActions from '../redux/actions/buyActions'
 import CreditCard from '../components/CreditCard'
 import Paypal from "../components/Paypal"
-import Header from '../components/Header'
 import { NavLink } from 'react-router-dom'
+import SuccessfullyBuy1 from '../components/SuccessfullyBuy1'
+import SuccessfullyBuy2 from '../components/SuccessfullyBuy2'
+import cartActions from '../redux/actions/cartActions'
 
 
 const Payment = (props) =>{
@@ -35,24 +37,39 @@ const Payment = (props) =>{
             setNextStep('creditCard')
         }else{
             swal('All fields are required', 'Please, complete the required information', 'error')
-        }
-        
+        }        
     }
     const sendBuy = async (e) =>{
         e.preventDefault()
         const userId= props.userLogged.id
         const dataToSend = {...creditCard, ...newForm, ...props.finishedOrder,userId}
         const respuesta = await props.createOrder(dataToSend, token)
-        respuesta.success && swal('Your buy was completed!', 'Thanks for trust in Game-X!', 'success')
-        .then(props.history.push('/'))
-
+        if (respuesta.success) {
+            setNextStep('success')
+            props.deleteCart()
+        } else{
+            swal('Something went wrong', "You'll be redirected to Home", "error", {
+                buttons: {
+                  signup: {text: "Okay", value: "catch"},
+                },
+              })
+              .then((value) => {
+                switch (value) {           
+                  case "catch":
+                    props.history.push('/')
+                    break         
+                  default:
+                    props.history.push('/')
+                    break
+                }
+              })
+        }
     }
 
 
-
-    if (!props.finishedOrder) {
-        props.history.push('/')
-    }
+    // if (!props.finishedOrder) {
+    //     props.history.push('/')
+    // }
     return(
         <>      
             <div className="contenedorFormulario">
@@ -139,6 +156,20 @@ const Payment = (props) =>{
                         <button className='nextBotonFormulario' onClick={sendBuy}>Buy</button>
                     </div>
                 </div>}
+                {nextStep === 'success' &&
+                <div className='formOrderReview animate__animated animate__fadeIn'>
+                    
+                    <div className='animationsSuccessBuy'>
+                        <SuccessfullyBuy1/>
+                        <h1 className='reviewOrder'>Thanks for your buy!</h1>
+                        <SuccessfullyBuy2/>
+                    </div>
+                    <div className='divContentOrderReview'>
+                         <h1>We'll dispatch your product between the next 24hs, you should recieve your deliver in next 48hs!</h1>
+                         <p>If you have any question or problem with the deliver, please contact us at gamex.arg@gmail.com or at WhatsApp +54 011-1515-1515</p>
+                    </div> 
+                    <NavLink to='/'><p className='botonHomeFormulario'>Back To Home</p></NavLink>
+                </div>}
             </div>
         </>
     )
@@ -150,7 +181,8 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    createOrder: buyActions.createOrder
+    createOrder: buyActions.createOrder,
+    deleteCart: cartActions.deleteCart
 }
 
 export default connect (mapStateToProps, mapDispatchToProps)(Payment)

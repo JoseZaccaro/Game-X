@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import userActions from '../redux/actions/userActions'
 import Messages from './Messages' 
 import {AiOutlineUsergroupAdd, AiOutlineUserDelete,AiOutlineUsergroupDelete, AiOutlineClose} from 'react-icons/ai'
-import {BsPersonPlus} from 'react-icons/bs'
+// import {BsPersonPlus} from 'react-icons/bs'
 import {BiChat} from 'react-icons/bi'
 import chatActions from '../redux/actions/chatActions'
 import Tooltip from '@material-ui/core/Tooltip';
+import swal from 'sweetalert'
 
 const Chat = (props) => {
 
@@ -23,6 +24,22 @@ const Chat = (props) => {
         const valor = e.target.value
         setInputValue({inputValue:valor})
     }
+
+    const deleteAlert = (e, friend) =>{
+        e.preventDefault()
+        swal({
+            title: `You are about to remove ${friend.userName.split('@')[0]} from your friendlist"`,
+            text: "Is that ok?",
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((ok) => {
+            if (ok) {
+                deleteFriend(friend)
+            } 
+          });
+    } 
 
     useEffect(()=>{
         const windowListener = window.addEventListener('keydown',(e)=>{
@@ -171,7 +188,7 @@ const Chat = (props) => {
                     <div className="titleContainer">
                        { !viewSearchBar ? <AiOutlineUsergroupAdd onClick={changeViewSearchBar} className="iconoAddFriends" />
                         :<AiOutlineUserDelete onClick={changeViewSearchBar} className="iconoAddFriends" />}
-                        <h1 className="chatTitle">Chats
+                        <h1 className="chatTitle">X-Chat
                         </h1>
                     <AiOutlineClose onClick={()=>setRightHide(!rightHide)} className="iconoAddFriends" />
 
@@ -183,8 +200,8 @@ const Chat = (props) => {
                         <div key={i} className="friendContainer">
                             <div className="friendUserImage" onClick={()=> openFriendChat(friend)} style={{backgroundImage:`url(${friend.avatar})`}}></div>
                             <p className="userName" onClick={()=> openFriendChat(friend)} >{friend.userName.split('@')[0]}</p>
-                            <div onClick={()=>deleteFriend(friend)} className="deleteFriend">
-                                <AiOutlineUsergroupDelete  className="iconoAddFriends" style={{width:'60%',height:'40%',border:'none'}}/>
+                            <div onClick={(e) => deleteAlert(e, friend)} className="deleteFriend">
+                                <AiOutlineUsergroupDelete  className="iconoAddFriends" style={{width:'100%',height:'40%',border:'none'}}/>
                             </div>
                         </div>)
                         })}

@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard"
 import { connect } from 'react-redux'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { NavLink } from "react-router-dom"
 import swal from "sweetalert"
 import cartActions from "../redux/actions/cartActions"
@@ -23,10 +23,12 @@ const Cart = (props)=>{
         var sumSubTotal = 0
         arraySubTotales.map(art =>{
             sumSubTotal += art.subtotal
+            return null
         })
             setTotal(sumSubTotal) 
         
     }
+
 
     props.allCart.length && props.allCart.map(art=> arraySubTotales.push({id:art._id, subtotal:art.price}))
 
@@ -34,7 +36,7 @@ const Cart = (props)=>{
         
         if (props.userLogged && props.allCart.length) {
             const productsList= {total:total, products: props.allCart}
-            const respuesta = await props.proceedToPayment(productsList)
+            await props.proceedToPayment(productsList)
             props.props.push('/payment')
         }else{
             if (!props.userLogged) {

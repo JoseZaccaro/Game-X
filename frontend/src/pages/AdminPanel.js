@@ -81,7 +81,7 @@ class AdminPanel extends React.Component{
         return(
             <>
                 <Header props={this.props.history}/>
-                <div className='containerAdminPanel'>
+                <div className='containerAdminPanel animate__animated animate__fadeIn'>
                     <div className='options'>
                         <button className='buttonForm buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:true, addingGame:false })}>Add Hardware</button>
                         <button className='buttonForm buttonOptions' onClick={() => this.setState({...this.state, modifyUserRol:false, addingHardware:false, addingGame:true })}>Add Game</button>
