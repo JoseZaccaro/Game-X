@@ -52,7 +52,7 @@ const Cart = (props)=>{
                         <p className='buttonCloseModalBuy' onClick={proceedToPayment}>Finish buy</p>
                         <div className='totalPriceCart'>
                             <p>TOTAL: </p>
-                            <p>${total}</p>
+                            <p>${total.toFixed(0)}</p>
                         </div>
                     </div>
                 </div>
