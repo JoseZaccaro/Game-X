@@ -118,7 +118,6 @@ const Game = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <div className='divAddCart'>
                                         {gameDetails.discount ? <div className='borderPriceDiscount'>
                                                 <p className='priceGameSinDiscount'>${gameDetails.price}</p>

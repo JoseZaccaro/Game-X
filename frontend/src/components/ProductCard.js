@@ -26,18 +26,20 @@ const ProductCard = (props)=>{
             </div>
             <div className='divPriceAmountCart'>
                 <div className='priceCart'>
-                    <p>Precio:</p>
-                    <p>${props.articulo.price * cantidadAMostrar}</p>
+                    <p>Unit Price:</p>
+                    <p>${props.articulo.price}</p>
                 </div>
                 <div className='amountCart'>
-                    <p>Cantidad:</p>
-                    <p className='buttonSumCart' onClick={setCantidadAMostrar(cantidadAMostrar + 1)} >+</p>
-                    <p>{cantidadAMostrar}</p>
+                    <p>Amount:</p>
                     {cantidadAMostrar > 1 
-                        ? <p className='buttonRestCart' onClick={setCantidadAMostrar(cantidadAMostrar - 1)} >-</p>
+                        ? <p className='buttonRestCart' onClick={()=>setCantidadAMostrar(cantidadAMostrar-1)} >-</p>
                         : <p className='buttonRestCartBloq'>-</p>
+                    }            
+                    <p>{cantidadAMostrar}</p>
+                    {cantidadAMostrar > 4 
+                        ? <p className='buttonSumCartBloq'>+</p>
+                        : <p className='buttonSumCart' onClick={()=>setCantidadAMostrar(cantidadAMostrar+1)}>+</p>
                     }
-                    
                 </div>
                 <div className='divTotalCartProduct'>
                     <p>Total:</p>

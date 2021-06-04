@@ -98,31 +98,46 @@ const Payment = (props) =>{
                 </div>}
                 {nextStep === 'verifyOrder' &&
                 <div className='formOrderReview animate__animated animate__fadeIn'>
-                    <h1 className='reviewOrder'>This is your order information:</h1>
-                    <div className='divContentOrderReview'>
-                        <div>
-                            <h3>You will buy</h3>
+                    
+                    <div className='divContentOrderReview'>                  
+                        <div className='tercerFormCreditCard'>
+                            <h1 className='tituloFormularioTresPrincipal'>This is your order information:</h1>
+                            <h3 className='tituloFormTerceroCompraras'>You will buy</h3>
                             <div>{props.finishedOrder.products.map(product =>{
-                                return  <div>
-                                            <h3>Product Name: {product.title ? product.title : product.productName}</h3>
-                                            <h3>Unit price: ${product.discount ? (-product.price * product.discount / 100 + product.price).toFixed(0) : product.price}</h3>
+                                return  <div className='listadoProductosTercerForm'>
+                                            <h3>Product Name: </h3> <p>{product.title ? product.title : product.productName}</p>
+                                            <h3>Unit price: </h3><p>${product.discount ? (-product.price * product.discount / 100 + product.price).toFixed(0) : product.price}</p>
                                         </div>
                             })}</div>
-                            <h1>Total price: ${props.finishedOrder.total}</h1>
-                            <h3>With yout card finished in: {creditCard.number.slice(12,16)}</h3>
-                            <h3>To deliver in: {newForm.direction} - {newForm.city}</h3>
-                            <h3>Contact Number: {newForm.cellphone}</h3>
-                            <h3>This could only be recieved by {newForm.firstName} {newForm.lastName} or other person who validates his identity with ID and sign the delivery order.</h3>
-                            <h3>If you agree with this terms, and all this information seems correct, please click the "Buy" button to finish the process.</h3>
+                            <div className='divTotalPriceTercerForm'>
+                                <h1 className='totalPriceFormTres'>Total price: </h1><p>${props.finishedOrder.total}</p>
+                            </div>
+                            <div className='infoCompraFormTercero'>
+                                <div className='cadaDivInfoCompraTres'>
+                                    <h3>With yout card finished in: </h3><p>{creditCard.number.slice(12,16)}</p>
+                                </div>
+                                <div className='cadaDivInfoCompraTres'>
+                                    <h3>To deliver in: </h3><p>{newForm.direction} - {newForm.city}</p>
+                                </div>
+                                <div className='cadaDivInfoCompraTres'>
+                                    <h3>Contact Number: </h3><p>{newForm.cellphone}</p>
+                                </div>
+                                <div className='cadaDivInfoCompraTresNombre'>
+                                    <h3>This could only be recieved by <span>{newForm.firstName} {newForm.lastName}</span> or other person who validates his identity with ID and sign the delivery order.</h3>
+                                    <h3>If you agree with this terms, and all this information seems correct, please click the "Buy" button to finish the process.</h3>
+                                </div>
+                            </div>
                         </div>
-                        <div>
+                        <div className='ladoPasosFormularioTres'>
                             <h2 className='pasoNoActivoInfoFormulario'>01 - Basic Information</h2>
                             <h2 className='pasoNoActivoInfoFormulario'>02 - Credit Card Information</h2>
                             <h2 className='pasoActivoInfoFormulario'>03 - Verify Information</h2>
-                            <NavLink to='/'><div className='botonHomeFormulario'>Back To Home</div></NavLink>
                         </div>  
                     </div> 
-                    <button className='nextBotonFormulario' onClick={sendBuy}>Buy</button>
+                    <div className='divContenidoBotonesTercerForm'>
+                        <NavLink to='/'><div className='botonCancelFormulario'>Cancel</div></NavLink>
+                        <button className='nextBotonFormulario' onClick={sendBuy}>Buy</button>
+                    </div>
                 </div>}
             </div>
         </>

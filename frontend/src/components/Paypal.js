@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-
+import { NavLink } from 'react-router-dom'
 const Paypal = (props) => {
     const paypal = useRef()
     useEffect(() => {
@@ -24,7 +24,9 @@ const Paypal = (props) => {
         }).render(paypal.current)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    return <div className='divPaypal' ref={paypal}></div>
+    return <div className='divPaypal' ref={paypal}>
+       
+    </div>
 }
 
 export default Paypal

@@ -77,6 +77,8 @@ const Hardware = (props) => {
     }
     return (
         <div className='cardHardwareIndiv'>
+            {props.hardware.stock === 0 && console.log(props.hardware)}
+            
             <div className='allInfoProductHardware'>
                 <div className='titleProductHardware'><h2>{props.hardware.productName}</h2></div>
                 <div className='descriptionProductHardware'>
@@ -92,7 +94,9 @@ const Hardware = (props) => {
                     {!inCart 
                         ? <Tooltip title="Add to cart" placement="top" > 
                             <div>
-                                <MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>
+                                {props.hardware.stock === 0 
+                                    ? <MdAddShoppingCart className='addToWishListOnComponentBloq'/>
+                                    :<MdAddShoppingCart  onClick={addToCart} className='addToWishListOnComponent'/>}
                             </div>
                         </Tooltip>
                         :<Tooltip title="Remove from cart" placement="top" >
@@ -116,7 +120,10 @@ const Hardware = (props) => {
                 </div>
             </div>
             <div className='imgButtonProductHardware'>
-                <div className='imgProductHardwareCard' style={{backgroundImage:`url('${props.hardware.imageBanner}')`}}></div>
+                
+                <div className='imgProductHardwareCard' style={{backgroundImage:`url('${props.hardware.imageBanner}')`}}>
+                    {props.hardware.stock === 0 && <div className='divTarjetaSinStock'><p>OUT OF STOCK</p></div>}
+                </div>
             </div>
         </div>
              

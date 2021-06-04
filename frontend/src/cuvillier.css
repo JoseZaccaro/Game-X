@@ -49,6 +49,7 @@
     min-height: 0vw;
     width: 90%;
     text-align: center;
+    text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
 }
 .textContentMove{
     width: 70%;
@@ -875,6 +876,27 @@ a{
     border: 1px solid #1DD05D;
     cursor: pointer;
 }
+.buttonSumCartBloq{
+  border: 1px solid black;
+  padding: 0 1vh;
+  border-radius: 5px;
+  background-color: #1DD05D;
+  border: 1px solid #1DD05D;
+  cursor:no-drop;
+}
+.addToWishListOnComponentBloq{
+	cursor:no-drop;
+	color: black;
+	background-color:var(--main-bg-color);
+	border-radius: 15px;
+	width: 60px;
+	height: 60px;
+	padding: 5px;
+	margin: 1rem;
+	border: 1px solid var(--third-bg-color);
+	z-index: 500;
+	transition: 0.5s;
+}
 .buttonRestCart{
     border: 1px solid black;
     padding: 0 1vh;
@@ -1287,14 +1309,14 @@ SEGUNDO BOTON
 }
 .shadowHeaderHardDos{
     position: relative;
-    top: 60vh;
+    top: 30vh;
     height: 20vh;
     width: 100%;
     z-index: 30;
     background: linear-gradient(to top, #0B1321, transparent);
 }
 .heroHardwarePage{
-    height: 100vh;
+    height: 70vh;
     background-position: center;
     background-size: cover;
     margin-bottom: 10vh;
@@ -1588,4 +1610,168 @@ SEGUNDO BOTON
   100% {
     background-position: 0% 50%;
   }
+}
+.imgProductHardwareCard{
+  overflow: hidden;
+}
+.divTarjetaSinStock{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.548);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-weight: bold;
+  padding-bottom: 1vh;
+}
+.divTarjetaSinStock p{
+  background-color: red;
+  color: white;
+  padding-right: 2vw;
+  padding-left: 1vh;
+}
+.containSectionFiltersGames{
+  padding: 10vh 0;
+}
+.containInputFilterGames input{
+  color: #0B1321;
+}
+.containInputFilterGames input::placeholder{
+  color: #999;
+  font-weight: 500;
+}
+.containTextFilterGames{
+  text-align: center;
+}
+.containTextFilterGames h2{
+  color: white
+}
+.containTextFilterGames h2 {
+  color: #A3EEE9;
+  font-family: "Kanit";
+  font-size: 6vh;
+  line-height: 1em;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 3vh;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e, 0 12px 12px #1a2d4e, 0 15px 15px #1a2d4e;
+}
+.containTextFilterGames h4 {
+  color: #A3EEE9;
+  font-family: "Kanit";
+  font-size: 4vh;
+  line-height: 1em;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 4vh;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e, 0 12px 12px #1a2d4e, 0 15px 15px #1a2d4e;
+}
+.tagsContainer{
+  display: flex;
+}
+.filtroPorCategoriasGames{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30vh;
+  margin-top: 6vh;
+}
+.tercerFormCreditCard{
+  width: 55%;
+  height: 100%;
+  padding: 2vh 1vw;
+}
+.divContenidoBotonesTercerForm{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.botonCancelFormulario{
+  width: 10vw;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  background-color: #F70505;
+  color: #fff;
+  height: 3rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2.5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3vw;
+}
+.ladoPasosFormularioTres{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+}
+.tituloFormularioTresPrincipal{
+  width: 100%;
+  text-align: center;
+  font-size: 5vh;
+  color: #0B1321;
+  height: 14vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formOrderReview{
+  height: 80vh;
+  overflow: scroll;
+  padding-top: 10vh;
+}
+.listadoProductosTercerForm{
+  color: white;
+  display: flex;
+  align-items: baseline;
+}
+.listadoProductosTercerForm p{
+  margin: 0 1vw;
+}
+.listadoProductosTercerForm h3{
+  font-weight: 400;
+}
+
+.totalPriceFormTres{
+  color: #0B1321;
+  margin: 3vh 2vw;
+}
+.divTotalPriceTercerForm{
+  display: flex;
+  justify-content: flex-start ;
+  align-items: center;
+}
+.divTotalPriceTercerForm p{
+  font-size: 4vh;
+}
+.tituloFormTerceroCompraras{
+  font-size: 4vh;
+  margin-bottom: 2vh;
+}
+.cadaDivInfoCompraTres{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+.cadaDivInfoCompraTres p{
+  margin-left: 2vw;
+  color: #0B1321;
+}
+.cadaDivInfoCompraTresNombre{
+  margin-top: 1vh;
+}
+.cadaDivInfoCompraTresNombre h3{
+  font-weight: 600;
+}
+.cadaDivInfoCompraTresNombre span{
+  color:#0B1321
 }

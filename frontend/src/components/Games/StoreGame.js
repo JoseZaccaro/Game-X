@@ -21,23 +21,34 @@ const StoreGame = (props) => {
 
     }
     return (
-        <div >
-            <h2 style={{ fontSize: '3rem', textAlign: 'center', color: 'white' }}>Leaders and heroes don't choose themselves</h2>
-            <h4 style={{ fontSize: '2rem', textAlign: 'center', color: 'white' }}>But you can choose your Game to be a Hero!</h4>
-            <div className="containerFilters">
-                <div><input type="text" placeholder="Specific game?" onChange={searchGame} /></div>
-                <div className="tagsContainer">
-                    <h4>Filter by Categories:</h4>
-                    <div className="tagsFilter">
-                        {genres.map((genre, i) => {
-                            return <p key={i} onClick={(e) => filterGamesEvent(genre,'games')} className='tag tagFilter'>{genre}</p>
-                        })}
+        <div  >
+            <div className='containSectionFiltersGames'>
+                <div className='containTextFilterGames'>
+                    <h2>Leaders and heroes don't choose themselves</h2>
+                    <h4>But you can choose your Game to be a Hero!</h4>
+                </div>
+                <div className="containerFilters">
+                    <div className='containInputFilterGames'>
+                        <input type="text" placeholder="Specific game?" onChange={searchGame} />
                     </div>
-                    <h4>Filter by Consoles:</h4>
-                    <div className="tagsFilter">
-                        {consolas.map((console, i) => {
-                            return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='tag tagFilter'>{console}</p>
-                        })}
+                    <div className="tagsContainer">
+                        <div className='filtroPorCategoriasGames'>                   
+                            <h4>Filter by Categories:</h4>
+                            <div className="tagsFilter">
+                                {genres.map((genre, i) => {
+                                    return <p key={i} onClick={(e) => filterGamesEvent(genre,'games')} className='tag tagFilter'>{genre}</p>
+                                })}
+                            </div>
+                        </div>
+                        <div className='filtroPorCategoriasGames'>
+                            <h4>Filter by Consoles:</h4>
+                            <div className="tagsFilter">
+                                {consolas.map((console, i) => {
+                                    return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='tag tagFilter'>{console}</p>
+                                })}
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
