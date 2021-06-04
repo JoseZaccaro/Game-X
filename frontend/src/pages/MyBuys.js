@@ -33,7 +33,7 @@ class MyBuys extends React.Component{
                 <>
                     <Header props={this.props.history}/>
                     <div className='containerMyBuys animate__animated animate__fadeIn'>
-                        {this.props.buyList 
+                        {this.props.buyList.length 
                         ? this.props.buyList.map(buy => {
                             return  <div key={buy._id} className='containerOrder'>
                                         <div style={{display:'flex', alignItems:'center'}}>

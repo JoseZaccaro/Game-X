@@ -1407,6 +1407,7 @@ SEGUNDO BOTON
   align-items: center;
 }
 .pasoActivoInfoFormulario{
+  text-align: center;
   width: 80%;
   height: 25%;
   background-color: #0B1321;
@@ -1419,6 +1420,7 @@ SEGUNDO BOTON
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .pasoNoActivoInfoFormulario{
+  text-align: center;
   width: 80%;
   height: 25%;
   background-color: #8B95A6;
@@ -1459,9 +1461,10 @@ SEGUNDO BOTON
   font-size: 2.5vh;
 }
 .botonHomeFormulario{
-  width: 10vw;
+  width: 12rem;
   margin-top: 7rem;
   margin-bottom: 3vh;
+  padding: 0 0.5rem;
   background-color: #0B1321;
   color: #fff;
   height: 3rem;
@@ -1474,9 +1477,10 @@ SEGUNDO BOTON
   justify-content: center;
 }
 .botonHomeCreditCard{
-  width: 10vw;
+  width: 12rem;
   margin-top: 2rem;
   margin-bottom: 3vh;
+  padding: 0 0.5rem;
   background-color: #0B1321;
   color: #fff;
   height: 3rem;
@@ -1555,6 +1559,7 @@ SEGUNDO BOTON
   border-radius: 15px;
 }
 .reviewOrder{
+  text-align: center;
   color: black;
 }
 
@@ -1659,7 +1664,7 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 3vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e, 0 12px 12px #1a2d4e, 0 15px 15px #1a2d4e;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e
 }
 .containTextFilterGames h4 {
   color: #A3EEE9;
@@ -1669,7 +1674,7 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 4vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e, 0 12px 12px #1a2d4e, 0 15px 15px #1a2d4e;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e
 }
 .tagsContainer{
   display: flex;
@@ -1729,7 +1734,8 @@ SEGUNDO BOTON
 }
 .formOrderReview{
   height: 80vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding-top: 10vh;
 }
 .listadoProductosTercerForm{

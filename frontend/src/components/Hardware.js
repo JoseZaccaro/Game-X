@@ -77,7 +77,6 @@ const Hardware = (props) => {
     }
     return (
         <div className='cardHardwareIndiv'>
-            {props.hardware.stock === 0 && console.log(props.hardware)}
             
             <div className='allInfoProductHardware'>
                 <div className='titleProductHardware'><h2>{props.hardware.productName}</h2></div>
