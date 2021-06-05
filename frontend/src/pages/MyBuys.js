@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import buyActions from "../redux/actions/buyActions";
 import Loader from '../components/Loader';
 import ProductBuyed from "../components/ProductBuyed";
+import { NavLink } from "react-router-dom";
 
 
 class MyBuys extends React.Component{
@@ -56,7 +57,13 @@ class MyBuys extends React.Component{
                                         </div>    
                                     </div>
                         })
-                        :<h1>your list of buys is empty</h1>                    
+                        :<>
+                            <h1 className='emptyListBuys'>Your list of buys is empty</h1>
+                            <div className='divButtonsEmptyListBuys'>
+                                <NavLink to='/hardware' ><p className='linksEmptyListBuys'>Hardware Store</p></NavLink>
+                                <NavLink to='/games' ><p className='linksEmptyListBuys'>Game Store</p></NavLink>
+                            </div>                        
+                        </>                    
                         }
 
 
