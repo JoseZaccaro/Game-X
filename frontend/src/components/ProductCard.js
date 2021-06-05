@@ -25,7 +25,7 @@ const ProductCard = (props)=>{
             <div className='divInfoProductCart'>
                 <p>{props.articulo.title}{props.articulo.productName}</p>
             </div>
-            <div className='divPriceAmountCart'>
+            <div className='divCantidadesEnCarrito'>
                 <div className='priceCart'>
                     <p>Unit Price:</p>
                     <p>${props.articulo.price}</p>

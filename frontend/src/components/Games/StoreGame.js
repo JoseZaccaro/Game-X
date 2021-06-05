@@ -33,18 +33,18 @@ const StoreGame = (props) => {
                     </div>
                     <div className="tagsContainer">
                         <div className='filtroPorCategoriasGames'>                   
-                            <h4>Filter by Categories:</h4>
+                            <h4 className='tituloFiltroGames'>Filter by Categories:</h4>
                             <div className="tagsFilter">
                                 {genres.map((genre, i) => {
-                                    return <p key={i} onClick={(e) => filterGamesEvent(genre,'games')} className='tag tagFilter'>{genre}</p>
+                                    return <p key={i} onClick={(e) => filterGamesEvent(genre,'games')} className='cadaTextoFiltroGame'>{genre}</p>
                                 })}
                             </div>
                         </div>
                         <div className='filtroPorCategoriasGames'>
-                            <h4>Filter by Consoles:</h4>
+                            <h4 className='tituloFiltroGames'>Filter by Consoles:</h4>
                             <div className="tagsFilter">
                                 {consolas.map((console, i) => {
-                                    return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='tag tagFilter'>{console}</p>
+                                    return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='cadaTextoFiltroGame'>{console}</p>
                                 })}
                             </div>
                         </div>
