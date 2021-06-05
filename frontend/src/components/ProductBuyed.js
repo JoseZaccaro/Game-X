@@ -5,7 +5,7 @@ const ProductsBuyed = (props)=>{
 
     
     return(
-        <div className='containerProductBuyed'>
+        <div className='cadaDivProductoComprado'>
             <div className='divBannerProductBuyed'>
                 <div className='bannerProductBuyed' style={{backgroundImage:`url("${props.product.imageBanner}")`}}></div>
             </div>
@@ -13,13 +13,12 @@ const ProductsBuyed = (props)=>{
                 <p>{props.product.title}{props.product.productName}</p>
             </div>
             <div className='divPriceAmountCart'>
-                <div className='priceCart'>
-                    <div>
-                        <p>Precio:</p>
+                <div className='priceEnProductosComprados'>
+                        <p>Unit</p>
+                        <p>Price:</p>
                         <p>${props.product.price}</p>
-                    </div>
                     {props.product.discount 
-                    ?<div>
+                    ?<div className='priceEnProductosComprados'>
                         <p>Discount:</p>
                         <p>{props.product.discount}</p>
                     </div>
@@ -27,7 +26,7 @@ const ProductsBuyed = (props)=>{
                 </div>
                 <div className='amountCart'>
                 </div>
-                <div className='divTotalCartProduct'>
+                <div className='priceEnProductosComprados'>
                     <p>Total:</p>
                     <p>${props.product.discount 
                         ? (( props.product.price - props.product.price * props.product.discount / 100)).toFixed(0)

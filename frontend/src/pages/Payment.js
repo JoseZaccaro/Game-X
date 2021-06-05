@@ -157,19 +157,22 @@ const Payment = (props) =>{
                     </div>
                 </div>}
                 {nextStep === 'success' &&
-                <div className='formOrderReview animate__animated animate__fadeIn'>
-                    
-                    <div className='animationsSuccessBuy'>
-                        <SuccessfullyBuy1/>
-                        <h1 className='reviewOrder'>Thanks for your buy!</h1>
-                        <SuccessfullyBuy2/>
+                    <div className='contenedorUltimoFormCredit'>
+                        
+                        <div className='divAnimacionesFormCuatro'>
+                            <SuccessfullyBuy1/>
+                            <h1 className='reviewOrder'>Thanks for your buy!</h1>                            
+                        </div>
+                        <div className='divAnimacionesDosFormCuatro'>
+                            <h1 className='infoDeliveryFormCuatro'>We'll dispatch your product between the next 24hs, you should recieve your deliver in next 48hs!</h1>
+                            <SuccessfullyBuy2/>
+                        </div> 
+                        <div className='divVolverFormCuatro'>
+                            <NavLink to='/'><p className='botonHomeFormularioCuatro'>Back To Home</p></NavLink>
+                            <p className='infoProblemaFormCuatro'>If you have any question or problem with the deliver, please contact us at gamex.arg@gmail.com or at WhatsApp +54 011-1515-1515</p>           
+                        </div>       
                     </div>
-                    <div className='divContentOrderReview'>
-                         <h1>We'll dispatch your product between the next 24hs, you should recieve your deliver in next 48hs!</h1>
-                         <p>If you have any question or problem with the deliver, please contact us at gamex.arg@gmail.com or at WhatsApp +54 011-1515-1515</p>
-                    </div> 
-                    <NavLink to='/'><p className='botonHomeFormulario'>Back To Home</p></NavLink>
-                </div>}
+                }
             </div>
         </>
     )

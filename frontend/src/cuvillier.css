@@ -1664,7 +1664,7 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 3vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
 }
 .containTextFilterGames h4 {
   color: #A3EEE9;
@@ -1674,7 +1674,7 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 4vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
 }
 .tagsContainer{
   display: flex;
@@ -1783,4 +1783,198 @@ SEGUNDO BOTON
 }
 .cadaDivInfoCompraTresNombre span{
   color:#0B1321
+}
+.contenedorUltimoFormCredit{
+  height: 80vh;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+}
+.divAnimacionesFormCuatro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 33%;
+}
+.divAnimacionesDosFormCuatro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 33%;
+}
+.divVolverFormCuatro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 33%;
+}
+.botonHomeFormularioCuatro{
+  width: 12rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  background-color: #1DD05D;
+  color: white;
+  font-size: 3vh;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.botonHomeFormularioCuatro:hover{
+  background-color: #1de262;
+}
+.infoProblemaFormCuatro{
+  padding-top: 3vh;
+  width: 40%;
+  margin-left: 4vw;
+  text-align: center;
+  font-size: 3vh;
+  color: #0B1321;
+  font-weight: 500;
+}
+.infoDeliveryFormCuatro{
+  color: #0B1321;
+  font-size: 4vh;
+  font-weight: 600;
+  width: 50%;
+  text-align: center;
+  margin: 4vh 2vw;
+}
+.cadaDivArticulosComprados{
+  width: 80%;
+  border-radius: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.infoPrincipalDeLaCompra{
+  width: 100%;
+  background-color: #0B1321;
+  display: flex;
+  justify-content: space-between;
+  padding: 1vh 4vw;
+  border-radius: 20px;
+}
+.infoPrincipalDeLaCompra h1{
+  color: white;
+}
+.tituloInfoDelivery{
+  width: 100%;
+  background-color: #0B1321;
+  color: white;
+  font-size: 3.5vh;
+  margin-top: 5vh;
+  font-weight: 400;
+  padding-left: 2vw;
+}
+.divContenidoInfoDelivery{
+  width: 100%;
+  border-bottom: 1px solid #0B1321;
+  padding-left: 1vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.infoPersonalDisplay{
+  display: flex;
+  align-items: center;
+}
+.infoPersonalDisplay p{
+  margin-left: 1vw;
+}
+.infoProductosDeLaCompra{
+  margin-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tituloProductosComprados{
+  width: 100%;
+  display: flex;
+  justify-content:flex-start;
+  padding-left: 2vw;
+  background-color: #0B1321;
+  color: white;
+  font-weight: 400;
+  margin-bottom: 3vh;
+}
+.cadaDivProductoComprado{
+  width: 80%;
+  display: flex;
+  border-radius: 30px;
+  padding: 3vh 2vw;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3vh;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.priceEnProductosComprados{
+  display: flex;
+  width: 50%;
+}
+.priceEnProductosComprados p{
+    font-size: 4vh;
+    margin: 0 0.5vw;
+}
+.divContainerMyBuysSinCompras{
+  height: 50vh;
+  background-color: white;
+  width: 80%;
+  margin-top: 10vh;
+  border-radius: 30px;
+}
+.divContainerMyBuysSinCompras h1{
+  width: 100%;
+  background-color: #0B1321;
+  color: white;
+  text-align: center;
+}
+.divContainerMyBuysSinCompras div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  height: 70%;
+}
+.botonIrAGamesBuy{
+  width: 12rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #1DD05D;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.botonIrAHardwareBuy{
+  width: 12rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #1098ad;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.botonIrAHomeBuy{
+  width: 12rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #0B1321;
+  border-radius: 30px;
+  cursor: pointer;
 }
