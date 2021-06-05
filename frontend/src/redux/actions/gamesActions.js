@@ -1,10 +1,13 @@
 import axios from 'axios'
 
+// const host= 'https://game-x-arg.herokuapp.com/'
+const host= 'http://localhost:4000/'
+
 const gamesActions = {
     loadGames: () => {
         return async (dispatch, getState) => {
             try {
-                const response = await axios.get('https://game-x-arg.herokuapp.com/api/games')
+                const response = await axios.get(host+'api/games')
                 dispatch({type: 'LOAD_GAMES', payload: response.data.response})
             } catch (error) {             
                 console.log(error);

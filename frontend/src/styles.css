@@ -430,7 +430,7 @@ input[type="file" ] {
 
 /* DROPDOWN PROFILE */
 
-.profileBody, .nav, .menu, .menuNav, .navigation, .navbarMenu {
+.profileBody, .nav, .menu, .menuNav, .navigation, .navbarMenu, .menuNavLargo {
 	background-color:var(--main-bg-color) !important;
 	display: flex;
 	justify-content: center;
@@ -536,7 +536,7 @@ input[type="file" ] {
 }
 
 .navigation input:checked ~ .menuNav {
-	width: 31rem;
+	width: 28rem !important;
     height: auto;
 }
 
@@ -579,7 +579,7 @@ input[type="file" ] {
 }
 
 .cartHeader{
-	margin-right: 130px !important;
+	margin-right: 80px !important;
 }
 .navigation input {
 	position: relative;
@@ -625,7 +625,39 @@ input[type="file" ] {
 .navigation input:checked ~ span:nth-child(3) {
     transform: translateY(0) rotate(45deg);
 }
+/* MENUNAV LARGO */
 
+.menuNavLargo{
+	flex-direction: row;
+    padding: 0;
+	width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.menuNavLargo li{
+	list-style: none;
+    margin: 10px 20px;
+	width: auto;
+	text-align: center;
+	cursor: pointer;
+    text-decoration: none;
+	text-transform: uppercase;
+	min-width: 45px;
+	max-width: 90px;
+    color: rgb(6, 119, 184);
+	font-size:14px;
+    font-weight: bold;
+    transition: 0.5s;
+}
+.menuNavLargo li:hover {
+	color: black;
+	transition: 0.5s;
+}
+.navigation input:checked ~ .menuNavLargo {
+	width: 33rem !important;
+    height: auto;
+}
 
 /* WISHLIST */
 
@@ -889,10 +921,6 @@ input[type="file" ] {
 	}
 	.navigation input:checked {
 		left: 92%;
-	}
-	.navigation input:checked ~ .menuNav {
-		width: 35rem;
-		height: auto;
 	}
 	.gifLogo{
 		min-height: 80px;
