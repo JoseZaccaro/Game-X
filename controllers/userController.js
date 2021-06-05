@@ -34,8 +34,8 @@ const userController = {
                 createdUser = new User({userName, email, password, avatar: avatarURL ? avatarURL : '', country, imageUrl: imageUrl ? imageUrl: null, loggedWithGoogle: country === "null", friends:[] })
                 const {_id} = createdUser
                 const fileName = _id + ".jpg"
-                const path = `${__dirname, './'}/frontend/public/assets/${fileName}`
-                // const path = `${__dirname, './'}/client/build/assets/${fileName}`
+                // const path = `${__dirname, './'}/frontend/public/assets/${fileName}`
+                const path = `${__dirname, './'}/client/build/assets/${fileName}`
                 createdUser.avatar = '/assets/' + fileName 
                 await createdUser.save()
                 avatar.name && avatar.mv(path, error =>{                

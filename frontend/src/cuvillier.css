@@ -1683,12 +1683,14 @@ SEGUNDO BOTON
   display: flex;
   flex-direction: column;
   width: 85%;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 }
 .filtroPorCategoriasGames{
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-top: 4vh;
 }
 .tagsFilter{
