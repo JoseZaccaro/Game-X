@@ -335,38 +335,6 @@
      padding: 1rem;
      margin: 1.5rem;
    }
-   .tagsContainer{
-     width: 80%;
-     display: flex;
-     justify-content: center;
-     margin-top: 1rem;
-   }
-   .tagsContainer h4{
-     width: 12rem;
-     color: white;
-     margin-left: .6rem;
-     margin-bottom: 3vh;
-   }
-   .tagsFilter{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  p.tagFilter{
-    background-color: white;
-    margin-bottom: 3vh;
-  }
-  p.tagFilter::before {
-    background: #0B1321;
-    border-radius: 10px;
-    box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-    content: '';
-    height: 6px;
-    left: 10px;
-    position: absolute;
-    width: 6px;
-    top: 10px;
-  }
 
   .gamesNotFounded{
     display: flex;

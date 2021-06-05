@@ -5,6 +5,7 @@ import swal from 'sweetalert'
 import GoogleLogin from 'react-google-login';
 import axios from "axios";
 import Header from "../components/Header";
+import { AiFillPicture } from 'react-icons/ai'
 
 
 class Access extends React.Component{
@@ -70,7 +71,6 @@ class Access extends React.Component{
             [field]: value}
         })
     })
-
 
 
     sendNewAccount = async (e = null, googleUser = null) => {
@@ -196,7 +196,14 @@ class Access extends React.Component{
                                 <input className={`registerInput ${this.state.validator.userName}`} onBlur={(e) => this.validate(e.target)} type="text" placeholder="Choose your Username" name="userName" value={this.state.userInfoSignUp.userName} onChange={this.readInputSignUp} />
                                 <input className={`registerInput ${this.state.validator.email}`} onBlur={(e) => this.validate(e.target)} type="text" placeholder="E-Mail" name="email" value={this.state.userInfoSignUp.email} onChange={this.readInputSignUp} />
                                 <input id="password" autoComplete="off" className={`registerInput ${this.state.validator.password}`} onBlur={(e) => this.validate(e.target)} type="password" placeholder="Password" name="password" value={this.state.userInfoSignUp.password} onChange={this.readInputSignUp}  />
-                                <input className={`registerInput ${this.state.validator.avatar}`} onBlur={(e) => this.validate(e.target)} type="file" name="avatar" id="avatar"  onChange={this.loadImage}></input>
+                                <div class="fileinputs">
+                                    <input className={`registerInput file ${this.state.validator.avatar}`} onBlur={(e) => this.validate(e.target)} type="file" name="avatar" id="avatar"  onChange={this.loadImage}></input>
+                                    <div class="fakefile">
+                                        <p>Select Image</p>
+                                        <AiFillPicture className='iconoSelectImg'/>
+                                    </div>
+                                </div>
+                                
                                 <select className={`registerInput ${this.state.validator.country}`} onClickCapture={(e) => this.validate(e.target)} type="select" placeholder="Country" name="country" value={this.state.userInfoSignUp.country} onChange={this.readInputSignUp}>
                                         <option disabled value="">Choose your Country</option>
                                             {this.state.countries.length && 

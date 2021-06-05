@@ -52,7 +52,7 @@ body{
     min-height: 0vw;
     width: 90%;
     text-align: center;
-    text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
+    text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e
 }
 .textContentMove{
     width: 70%;
@@ -1667,7 +1667,7 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 3vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e
 }
 .containTextFilterGames h4 {
   color: #A3EEE9;
@@ -1677,19 +1677,42 @@ SEGUNDO BOTON
   text-align: center;
   width: 100%;
   margin-bottom: 4vh;
-  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e, 0 4px 0 #1a2d4e, 0 5px 0 #1a2d4e, 0 6px 0 #1a2d4e, 0 7px 0 #1a2d4e, 0 8px 0 #1a2d4e, 0 0 5px #1a2d4e, 0 -1px 3px #1a2d4e, 0 9px 9px #1a2d4e;
+  text-shadow: 0 1px 0 #1a2d4e, 0 2px 0 #1a2d4e, 0 3px 0 #1a2d4e
 }
 .tagsContainer{
   display: flex;
+  flex-direction: column;
+  width: 85%;
+  justify-content: space-around;
 }
 .filtroPorCategoriasGames{
-  width: 40%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  height: 30vh;
-  margin-top: 6vh;
+  margin-top: 4vh;
+}
+.tagsFilter{
+  display: flex;
+  align-items: center;
+}
+.tituloFiltroGames{
+  color: white;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 3vh;
+}
+.cadaTextoFiltroGame{
+  color: #A3EEE9;
+  margin: 0 1vw;
+  border: 1px solid #A3EEE9;
+  border-radius: 10px;
+  padding: 0.5vh 0.5vw;
+  cursor: pointer;
+}
+.cadaTextoFiltroGame:hover{
+  background-color: #A3EEE9;
+  color: #0B1321;
 }
 .tercerFormCreditCard{
   width: 55%;
@@ -2008,4 +2031,44 @@ SEGUNDO BOTON
   background-color: #0B1321;
   border-radius: 30px;
   cursor: pointer;
+}
+.divCantidadesEnCarrito{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+div.fileinputs {
+	position: relative;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+div.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+  background-color: #0B1321;
+  border-radius: 10px;
+  height: 6vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fakefile p{
+  color: white
+}
+
+input.file {
+	position: relative;
+	-moz-opacity:0 ;
+	z-index: 2;
+  cursor: pointer;
+  opacity: 0;
+}
+.iconoSelectImg{
+  color: white;
+  margin-left: 1vw;
 }
