@@ -91,10 +91,10 @@ const Header = (props) =>{
                                 <span></span>
                                 <div className={`${!props.userLogged ? "menuNavLargo" : props.userLogged.rol === 'admin' ? "menuNavLargo" : "menuNav"}`} >
                                     <NavLink to='/'><li>Home</li></NavLink>
-                                    <NavLink to='/games'><li>Games</li></NavLink>
+                                    <NavLink to='/games' name='games'><li>Games</li></NavLink>
                                     <NavLink to='/hardware'><li>Hardware</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
-                                    {!props.userLogged && <NavLink to='/access'><li>Access</li></NavLink>}
+                                    {!props.userLogged && <NavLink to='/access' name='access'><li>Access</li></NavLink>}
                                     <li className='cartHeader' onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{cart.length}</li>
                                 </div>
                             </div>

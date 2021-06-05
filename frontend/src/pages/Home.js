@@ -54,9 +54,9 @@ class Home extends React.Component{
                     <div className='contentMoveDos'>
                         <div className='alignContentMove'>
                             <h2 className='titleContentMove'>Link your favourite content</h2>
-                            <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the star icon and add go check your Wish List! </p>
-                            <NavLink to='/games'>
-                                <div className="btnExplore">Explore</div>
+                            <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the list icon and add go check your Wish List! </p>
+                            <NavLink to='/access'>
+                                <div className="btnExplore">Access</div>
                             </NavLink>
                         </div>   
                     </div>
