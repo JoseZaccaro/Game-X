@@ -1,8 +1,8 @@
 import axios from 'axios'
 import swal from 'sweetalert'
 
-// const host= 'https://game-x-arg.herokuapp.com/'
-const host= 'http://localhost:4000/'
+const host= 'https://game-x-arg.herokuapp.com/'
+// const host= 'http://localhost:4000/'
 
 const buyActions = {
     createOrder : (product, token) => {
