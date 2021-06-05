@@ -1784,3 +1784,23 @@ SEGUNDO BOTON
 .cadaDivInfoCompraTresNombre span{
   color:#0B1321
 }
+.emptyListBuys{
+  font-size: 4vw;
+  margin-top: 30vh;
+}
+.linksEmptyListBuys{
+    color: white;
+    background-color: #1DD05D;
+    padding: 1vh 3vh;
+    margin: 2vh 3vw;
+    border-radius: 10px;
+    font-size: 3vh;
+    -webkit-box-shadow: 3px 3px 10px 3px rgba(0, 0, 0, 0.39); 
+    box-shadow: 3px 3px 10px 3px rgba(0,0,0,0.39);
+    cursor: pointer;
+}
+.divButtonsEmptyListBuys{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
