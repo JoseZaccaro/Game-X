@@ -133,9 +133,7 @@ button.ghost {
 	min-height: 6%;
 	outline: none;
 }
-input[type="file" ] {
-	font-weight: bold;
-}
+
 
 
 .container {
@@ -148,7 +146,7 @@ input[type="file" ] {
 	overflow: hidden;
 	width: 36rem;
 	max-width: 100%;
-	min-height: 30rem;
+	min-height: 32rem;
 	margin-right: 1vw;
 	margin-top: 7rem;
 }

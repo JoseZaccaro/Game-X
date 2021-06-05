@@ -2067,6 +2067,7 @@ input.file {
 	z-index: 2;
   cursor: pointer;
   opacity: 0;
+  height: 3rem;
 }
 .iconoSelectImg{
   color: white;

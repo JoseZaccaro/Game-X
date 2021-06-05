@@ -198,8 +198,8 @@ class Access extends React.Component{
                                 <input id="password" autoComplete="off" className={`registerInput ${this.state.validator.password}`} onBlur={(e) => this.validate(e.target)} type="password" placeholder="Password" name="password" value={this.state.userInfoSignUp.password} onChange={this.readInputSignUp}  />
                                 <div class="fileinputs">
                                     <input className={`registerInput file ${this.state.validator.avatar}`} onBlur={(e) => this.validate(e.target)} type="file" name="avatar" id="avatar"  onChange={this.loadImage}></input>
-                                    <div class="fakefile">
-                                        <p>Select Image</p>
+                                    <div className="fakefile">
+                                        <p>Select Avatar</p>
                                         <AiFillPicture className='iconoSelectImg'/>
                                     </div>
                                 </div>
