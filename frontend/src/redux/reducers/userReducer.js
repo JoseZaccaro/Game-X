@@ -21,10 +21,8 @@ const userReducer = (state = initialState, action) => {
             localStorage.removeItem('userLogged')
             localStorage.removeItem('token')
             return {
-                ...state,
-                userLogged: null        
+                userLogged: action.payload
             }              
-
         case "RELOAD_FRIEND_LIST":
             return{
                 ...state,

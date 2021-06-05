@@ -30,7 +30,6 @@ const Header = (props) =>{
         .then((willDelete) => {
             if (willDelete) {
                 props.removeUserInfo()
-                swal("Good Bye!", "see you later!", "success")
             } 
         });
     })
@@ -72,6 +71,7 @@ const Header = (props) =>{
     var modal = {
         display : displayModal ? 'flex' : 'none',
     }
+
 
     
     return(

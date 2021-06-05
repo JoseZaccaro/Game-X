@@ -61,17 +61,17 @@ const Chat = (props) => {
         
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.open])
-    const fetchFriends = async()=>{
-        const list = await props.getFriendList(props.userLogged.id)
-        setFriendList(list)
-    }
+    // const fetchFriends = async()=>{
+    //     const list = await props.getFriendList(props.userLogged.id)
+    //     setFriendList(list)
+    // }
 
-    useEffect(()=>{
-        if(props.userLogged && props.userLogged.friends && !friendList.length){
-            fetchFriends()
-        }
-    // eslint-disable-next-line
-    },[props.userLogged])
+    // useEffect(()=>{
+    //     if(props.userLogged && props.userLogged.friends && !friendList.length){
+    //         fetchFriends()
+    //     }
+    // // eslint-disable-next-line
+    // },[props.userLogged])
     
     // useEffect(()=>{
     //     if(props.userLogged && props.userLogged.friends){

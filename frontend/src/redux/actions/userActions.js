@@ -83,7 +83,7 @@ const userActions = {
     },
     removeUserInfo: () => {
         return (dispatch, getState) => {
-            dispatch({type: 'LOG_OUT'})
+            dispatch({type: 'LOG_OUT', payload:null})
         }
     },
     searchUsers: (userName)=>{
