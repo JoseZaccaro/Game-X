@@ -89,7 +89,7 @@ const Header = (props) =>{
                                 <input type="checkbox"/>
                                 <span></span>
                                 <span></span>
-                                <div className="menuNav" >
+                                <div className={`${!props.userLogged ? "menuNavLargo" : props.userLogged.rol === 'admin' ? "menuNavLargo" : "menuNav"}`} >
                                     <NavLink to='/'><li>Home</li></NavLink>
                                     <NavLink to='/games'><li>Games</li></NavLink>
                                     <NavLink to='/hardware'><li>Hardware</li></NavLink>

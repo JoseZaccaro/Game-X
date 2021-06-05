@@ -1,11 +1,15 @@
 import axios from 'axios'
 
+const host= 'https://game-x-arg.herokuapp.com/'
+// const host= 'http://localhost:4000/'
+
+
 const chatActions = {
     getChatOfUser: (friendId)=>{
         return async(dispatch, getState)=>{
             try{
                 const token = localStorage.getItem('token')
-                const oldChat = await axios.get('https://game-x-arg.herokuapp.com/api/chats/'+friendId,{
+                const oldChat = await axios.get(host+'api/chats/'+friendId,{
                     headers:{
                         'Authorization':'Bearer '+ token
                     }
@@ -24,7 +28,7 @@ const chatActions = {
             return async(dispatch, getState)=>{
                 try{
                 const token = localStorage.getItem('token')
-                    const friend = await axios.put(`https://game-x-arg.herokuapp.com/api/user/addFriend/${friendId}`,null,{
+                    const friend = await axios.put(host+`api/user/addFriend/${friendId}`,null,{
                         headers:{
                             'Authorization': 'Bearer '+ token
                         }
@@ -44,7 +48,7 @@ const chatActions = {
             try{
 
                 const token = localStorage.getItem('token')
-                axios.post('https://game-x-arg.herokuapp.com/api/chats/' + userId,{
+                axios.post(host+'api/chats/' + userId,{
                     headers:{
                         'Authorization':'Bearer '+ token
                     }
@@ -58,7 +62,7 @@ const chatActions = {
         return async(dispatch,getState)=>{
             try{
 
-                const friendList = await axios.get('https://game-x-arg.herokuapp.com/api/friends/'+userId)            
+                const friendList = await axios.get(host+'api/friends/'+userId)            
                 if(friendList.data.success){
                     dispatch({type:"RELOAD_FRIEND_LIST", payload:friendList.data.response})
                     return friendList.data.response
@@ -74,7 +78,7 @@ const chatActions = {
         return async(dispatch,getState)=>{
             try{
                 const token = localStorage.getItem('token')
-                const friendList = await axios.delete('https://game-x-arg.herokuapp.com/api/friends/'+userId,{
+                const friendList = await axios.delete(host+'api/friends/'+userId,{
                     headers:{
                         'Authorization':'Bearer '+ token
                     }
@@ -95,7 +99,7 @@ const chatActions = {
         return async (dispatch, getState)=>{
             try{    
                 const token = localStorage.getItem('token')
-                    const savedMessage = await axios.put('https://game-x-arg.herokuapp.com/api/chats/'+friendId,{message},{
+                    const savedMessage = await axios.put(host+'api/chats/'+friendId,{message},{
                         headers:{
                             'Authorization':'Bearer '+ token
                         }

@@ -189,8 +189,8 @@ const Payment = (props) =>{
                         <SuccessfullyBuy2/>
                     </div>
                     <div className='divContentOrderReview'>
-                         <h1>We'll dispatch your product between the next 24hs, you should recieve your deliver in next 48hs!</h1>
-                         <p>If you have any question or problem with the deliver, please contact us at gamex.arg@gmail.com or at WhatsApp +54 011-1515-1515</p>
+                         <h1>We'll dispatch your product between the next 24hs, you should recieve your order in next 48hs!</h1>
+                         <p>If you have any question or problem with the delivery, please contact us at gamex.arg@gmail.com or at WhatsApp +54 011-1515-1515</p>
                     </div> 
                     <NavLink to='/'><p className='botonHomeFormulario'>Back To Home</p></NavLink>
                 </div>}
