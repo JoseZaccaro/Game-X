@@ -953,6 +953,15 @@ button.ghost {
 		padding-left: 5rem;
 
 	}
+	.renderAvatar{
+		border-radius: 50px;
+		width: 35px;
+		height: 35px;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-color:var(--main-bg-color);
+	}
 
 
 }

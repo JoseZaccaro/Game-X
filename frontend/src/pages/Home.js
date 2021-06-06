@@ -98,7 +98,8 @@ class Home extends React.Component{
                 <div className='imagenHomeBottom' style={{backgroundImage: "url('https://media.elarcadia.com/data/articles/mscvqyjf71_Xbox-series-x-vs-ps5-generacionxbox.jpg')"}}>
                     <div className='contentImgHomeBottom'>
                         <h1 className='titleContentMove'>Hardwares</h1>
-                        <p className='buttonContenMove'>Explore</p>
+                        <NavLink to='/hardware'><p className='buttonContenMove'>Explore</p></NavLink>
+                        
                     </div>
                 </div>
             </div>

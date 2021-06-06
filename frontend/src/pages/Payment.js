@@ -171,7 +171,7 @@ const Payment = (props) =>{
                                             <h3>E-mail: </h3><p>{props.finishedOrder.email}</p>
                                         </div> 
                                 <div className='cadaDivInfoCompraTresNombre'>
-                                    <h3>This could only be recieved by <span>{newForm.firstName} {newForm.lastName}</span> or other adult who validates his identity with ID and sign the delivery order.</h3>
+                                    <h3>In case your product requires a delivery, this could only be recieved by <span>{newForm.firstName} {newForm.lastName}</span> or other adult who validates his identity with ID and sign the delivery order. Otherwise, your buy has been storaged with the ID <span>{props.userLogged.id.slice(0,8)}</span></h3>
                                     <h3>If you agree with this terms, and all this information seems correct, please click the "Buy" button to finish the process.</h3>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@ const Payment = (props) =>{
                             <h1 className='reviewOrder'>Thanks for your buy!</h1>                            
                         </div>
                         <div className='divAnimacionesDosFormCuatro'>
-                            <h1 className='infoDeliveryFormCuatro'>We'll dispatch your product between the next 24hs, you should recieve your deliver in next 48hs!</h1>
+                            <h1 className='infoDeliveryFormCuatro'>In case your product requires a delivery, We'll dispatch your product between the next 24hs, you should recieve your product in next 48hs!</h1>
                             <SuccessfullyBuy2/>
                         </div> 
                         <div className='divVolverFormCuatro'>

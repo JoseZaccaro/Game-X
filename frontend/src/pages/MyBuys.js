@@ -37,10 +37,10 @@ class MyBuys extends React.Component{
                         {this.props.buyList.length 
                         ? this.props.buyList.map(buy => {
                             return  <div key={buy._id} className='containerOrder'>
-                                        <div style={{display:'flex', alignItems:'center'}}>
+                                        <div className='divInfoMyBuys'>
                                             <div>
                                                 <h1>Date: {buy.date.slice(5,10)}-{buy.date.slice(0,4)} at {buy.date.slice(11,19)} Hs</h1>
-                                                <h1>Total: ${buy.totalPrice}</h1>
+                                                <h1>Total: ${(buy.totalPrice).toFixed(0)}</h1>
                                             </div>
                                             <div>
                                                 <h1>Deliver information: </h1>
@@ -50,7 +50,7 @@ class MyBuys extends React.Component{
                                             </div>
                                         </div>
                                         <h2>Products acquired:</h2>
-                                        <div style={{display:'flex', alignItems:'center', justifyContent:'center', width:'90%'}}>
+                                        <div className='divProductosComprados'>
                                             {buy.products.map(product =>{
                                                 return <ProductBuyed key={product._id} product={product}/>
                                             })}

@@ -213,7 +213,7 @@ const Game = (props) => {
                                     </div>
                                     <div className='cadaDivInfoSec'>
                                         <p className='pTituloInfoSec'>Online:</p>
-                                        <p className='pRecicladoTextInfo'>{gameDetails.valoration}</p>
+                                        <p className='pRecicladoTextInfo'>{gameDetails.online ? 'Yes': 'No'}</p>
                                     </div>
                                 </div>
                             </div>
