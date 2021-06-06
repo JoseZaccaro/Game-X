@@ -175,8 +175,6 @@ class Access extends React.Component{
     
     render() {
 
-        console.log(this.state.userInfoSignUp && this.state.userInfoSignUp.avatar)
-
         return(<>
                 <Header  />
                 <div className='body' style={{backgroundImage:"url(../assets/fondo.png)"}}>   
@@ -225,7 +223,7 @@ class Access extends React.Component{
                                 <h1>Log In</h1>
                                 <div className="social-container">
                                     <GoogleLogin
-                                        // clientId="768453080794-ldth5cg2rmpvlb0k55f08gdigaba5nj0.apps.googleusercontent.com"
+                                        // clientId="768453080794-ldthgi5cg2rmpvlb0k55f08gdigaba5nj0.apps.googleusercontent.com"
                                         clientId="768453080794-vgr6sjtlb1ojjitqheqfvi6nv985jval.apps.googleusercontent.com"
                                         
                                         render={renderProps => (

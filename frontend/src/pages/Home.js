@@ -18,7 +18,6 @@ class Home extends React.Component{
     componentDidMount(){
         this.toTop()
         if (this.props.userLogged && this.props.greetings) {
-            console.log('bienvenida')
             toast.success(`Welcome ${this.props.userLogged.userName}`, {
                 position: "top-right",
                 autoClose: 5000,
@@ -58,7 +57,7 @@ class Home extends React.Component{
                         <div className='alignContentMove'>
                             <h1 className='titleTwoContentMove'>Get Exclusive Content!</h1>
                             <div className='contentVideoMove'>
-                                <div className='videoContent' style={{backgroundImage: 'url("https://steamuserimages-a.akamaihd.net/ugc/437237610885990141/4E2413375AB6BE813B7D3E31A792F4902E5E9A73/")'}}></div>
+                                <div className='videoContent' style={{backgroundImage: 'url("../assets/starcraftGif.gif")'}}></div>
                                 <h3 className='titleVideoMove'>StarCraft 2 - DLC Game-X!</h3>
                                 <p className='descriptionVideoMove'>With your buy of $3250 or more, get the aditional Material!</p>
                                 <NavLink to='/games'><p className='btnHoverPlay'>Buy now</p></NavLink>

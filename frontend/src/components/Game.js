@@ -10,6 +10,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import cartActions from '../redux/actions/cartActions';
 import swal from 'sweetalert';
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Game = (props) => {
@@ -75,7 +76,25 @@ const Game = (props) => {
             const remove = {product, add:false, game:true}
             const sendedData = gameFounded ? remove : add
             const response = await props.addToMyList(sendedData, token, props.userLogged.id)
-              setMyList({myList: response.favouritesList, fetching: false})     
+              setMyList({myList: response.favouritesList, fetching: false})
+                !gameFounded && toast.success(`Added ${gameDetails.title} to your list`, {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    });
+                gameFounded && toast.error(`Removed ${gameDetails.title} from your list`, {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    });      
         } else{
             logAlert()
         }
@@ -84,10 +103,28 @@ const Game = (props) => {
     const addToCart = ()=>{
         setInCart(!inCart)
         props.addToCart(gameDetails)
+        toast.success(`Added ${gameDetails.title} to your cart`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
     }
     const removeToCart = ()=>{
         setInCart(!inCart)
         props.deleteToCart(gameDetails._id)
+        toast.error(`Removed ${gameDetails.title} from your cart`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
     }
     return (
         <>
@@ -180,6 +217,16 @@ const Game = (props) => {
                                     </div>
                                 </div>
                             </div>
+                            <ToastContainer
+                            position="bottom-right"
+                            autoClose={1500}
+                            hideProgressBar={false}
+                            newestOnTop
+                            closeOnClick
+                            rtl={false}
+                            draggable
+                            pauseOnHover
+                            />
                         </div>
                     </>
                 )

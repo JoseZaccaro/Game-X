@@ -5,6 +5,7 @@ import userActions from '../../redux/actions/userActions';
 import { useState } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import swal from 'sweetalert';
+import { toast } from 'react-toastify';
 
 
 const CardProduct = (props) => {
@@ -40,6 +41,24 @@ const CardProduct = (props) => {
         const sendedData = gameFounded ? remove : add
         const response = await props.addToMyList(sendedData, token, props.userLogged.id)
           setMyList({myList: response.favouritesList, fetching: false}) 
+        !gameFounded && toast.success(`Added ${title} to your list`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
+        gameFounded && toast.error(`Removed ${title} from your list`, {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            }); 
       } else{
         logAlert()
       }

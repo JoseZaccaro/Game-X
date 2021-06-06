@@ -18,6 +18,11 @@ const hardwareActions = {
                 alert('error en hardware action')
             }        
         }
+    },
+    setHardwareInCart: (boolean) => {
+        return(dispatch, getstate) => {
+            dispatch({type: 'SET_IN_CART', payload:boolean})
+        }
     }
 }
 export default hardwareActions

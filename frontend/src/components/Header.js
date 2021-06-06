@@ -7,6 +7,7 @@ import Chat from './Chat'
 import SimplePopover from "./Popover";
 import { FaShoppingCart } from "react-icons/fa";
 import Cart from './Cart'
+import hardwareActions from '../redux/actions/hardwareActions'
 
 
 
@@ -65,6 +66,12 @@ const Header = (props) =>{
         setReloaded(!reloaded)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.inCart])
+    
+    useEffect(()=>{
+        setReloaded(!reloaded)
+        props.setHardwareInCart(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ props.hardwareInCart])
 
     const [displayModal, setDisplayModal] = useState(false)
     const openCloseModal = ()=>{
@@ -137,12 +144,14 @@ const mapStateToProps = state => {
     return {
         userLogged: state.userReducer.userLogged,
         favouritesList: state.userReducer.favouritesList,
-        allCart: state.cartReducer.allCart
+        allCart: state.cartReducer.allCart,
+        hardwareInCart: state.hardwareReducer.hardwareInCart
     }
   }
   const mapDispatchToProps = {
     removeUserInfo :  userActions.removeUserInfo,
-    getProductsOnList: userActions.getProductsOnList
+    getProductsOnList: userActions.getProductsOnList,
+    setHardwareInCart: hardwareActions.setHardwareInCart
   
   }
   

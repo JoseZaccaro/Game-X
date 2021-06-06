@@ -34,7 +34,7 @@ const Cart = (props)=>{
     const proceedToPayment = async()=>{
         
         if (props.userLogged && props.allCart.length) {
-            const productsList= {total:total, products: props.allCart}
+            const productsList= {total:total, products: props.allCart, email: props.userLogged.email}
             await props.proceedToPayment(productsList)
             props.props.push('/payment')
         }else{

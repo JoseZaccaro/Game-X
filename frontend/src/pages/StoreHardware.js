@@ -41,7 +41,7 @@ class HardwareStore extends React.Component {
                     )
                     : (
                         <>
-                        <Header props={this.props.history}/>
+                        <Header props={this.props.history} />
                             <div className="containerStore">             
                                 <div className='heroHardwarePage animate__animated animate__fadeIn' style={{backgroundImage:"url('https://www.rockandpop.cl/wp-content/uploads/2020/06/43dff437d7f6998f083727c512c4f509.jpg')"}}>
                                     <div className='shadowHeaderHardUno'></div>

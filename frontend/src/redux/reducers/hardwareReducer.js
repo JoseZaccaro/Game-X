@@ -1,6 +1,7 @@
 const initialState = {
     allHardwares: [],
-    preLoader: true
+    preLoader: true,
+    hardwareInCart:false
 }
 
 const hardwareReducer = (state = initialState, action) =>{
@@ -11,6 +12,12 @@ const hardwareReducer = (state = initialState, action) =>{
                 allHardwares: action.payload,
                 preLoader: false
             }
+        case 'SET_IN_CART':
+            return {
+                ...state, 
+                hardwareInCart:action.payload
+            }
+            
         default:
             return state
     }

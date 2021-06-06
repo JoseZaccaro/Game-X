@@ -4,6 +4,7 @@ import gamesActions from '../../redux/actions/gamesActions';
 import CardProduct from "./CardProduct";
 import { useEffect } from 'react';
 import { IoArrowDownOutline } from "react-icons/io5";
+import { ToastContainer } from 'react-toastify';
 
 const StoreGame = (props) => {
     useEffect(() => {
@@ -42,7 +43,7 @@ const StoreGame = (props) => {
                         </div>
                         <div className='filtroPorCategoriasGames'>
                             <h4 className='tituloFiltroGames'>Filter by Consoles:</h4>
-                            <div className="tagsFilter">
+                            <div className="tagsFilter ">
                                 {consolas.map((console, i) => {
                                     return <p key={i} onClick={(e) => filterGamesEvent(console, 'console')} className='cadaTextoFiltroGame'>{console}</p>
                                 })}
@@ -56,7 +57,7 @@ const StoreGame = (props) => {
                 {props.gamesFiltered.length
                 ? props.gamesFiltered.map((game, index) => {
                     return (
-                        <div key ={game._id} className='divCardProduct'>
+                        <div key ={game._id} className='divCardProduct '>
                             <CardProduct key={game._id} discount={game.discount} idGame={game._id} image={game.imageBanner} title={game.title} props={props.props} />
                         </div>
                         
@@ -68,6 +69,16 @@ const StoreGame = (props) => {
                 </div>
                 }
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                pauseOnHover
+                />
         </div>
     );
 }

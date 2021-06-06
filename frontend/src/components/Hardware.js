@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import hardwareActions from '../redux/actions/hardwareActions';
-import gamesActions from '../redux/actions/gamesActions';
 import userActions from '../redux/actions/userActions';
 import { CgPlayListRemove, CgPlayListAdd } from "react-icons/cg";
 import Tooltip from '@material-ui/core/Tooltip';
@@ -64,7 +63,7 @@ const Hardware = (props) => {
             const response = await props.addToMyList(sendedData, token, props.userLogged.id)
             setMyList({myList: response.favouritesList, fetching: false})
             !hardwareFounded && toast.success(`Added ${props.hardware.productName} to your list`, {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -73,7 +72,7 @@ const Hardware = (props) => {
                 progress: undefined,
                 });
             hardwareFounded && toast.error(`Removed ${props.hardware.productName} from your list`, {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -90,7 +89,7 @@ const Hardware = (props) => {
         setInCart(!inCart)
         props.addToCart(props.hardware)
         toast.success(`Added ${props.hardware.productName} to your cart`, {
-            position: "top-right",
+            position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -98,12 +97,13 @@ const Hardware = (props) => {
             draggable: true,
             progress: undefined,
             });
+        props.setHardwareInCart(true)
     }
     const removeToCart = ()=>{
         setInCart(!inCart)
         props.deleteToCart(props.hardware._id)
         toast.error(`Removed ${props.hardware.productName} from your cart`, {
-            position: "top-right",
+            position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -111,7 +111,11 @@ const Hardware = (props) => {
             draggable: true,
             progress: undefined,
             });
+        props.setHardwareInCart(true)
+        
     }
+
+
     return (
         <div className='cardHardwareIndiv'>
             
@@ -162,7 +166,7 @@ const Hardware = (props) => {
                 </div>
             </div>
             <ToastContainer
-                position="top-right"
+                position="bottom-right"
                 autoClose={1500}
                 hideProgressBar={false}
                 newestOnTop
@@ -177,20 +181,15 @@ const Hardware = (props) => {
 }
 const mapStateToProps = (state) => {
     return {
-        allHardwares: state.hardwareReducer.allHardwares,
-        preLoader: state.hardwareReducer.preLoader,
-        allGames: state.gamesReducer.allGames,
-        preLoaderGames: state.gamesReducer.preLoader,
         userLogged: state.userReducer.userLogged,
         allCart: state.cartReducer.allCart
     }
 }
 const mapDispatchToProps = {
-    loadHardwares: hardwareActions.loadHardwares,
-    loadGames: gamesActions.loadGames,
     addToMyList :  userActions.addToMyList,
     addToCart: cartActions.addToCart,
-    deleteToCart: cartActions.deleteToCart
+    deleteToCart: cartActions.deleteToCart,
+    setHardwareInCart: hardwareActions.setHardwareInCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hardware)
