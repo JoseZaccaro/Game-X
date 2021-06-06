@@ -139,13 +139,17 @@ const Payment = (props) =>{
                 </div>}
                 {nextStep === 'verifyOrder' &&
                 <div className='formOrderReview animate__animated animate__fadeIn'>                    
+                            <h1 className='tituloFormularioTresPrincipal'>This is your order information:</h1>
                     <div className='divContentOrderReview'>                  
                         <div className='tercerFormCreditCard'>
-                            <h1 className='tituloFormularioTresPrincipal'>This is your order information:</h1>
                             <div>{props.finishedOrder.products.map((product,i) =>{
                                 return  <div key={i} className='listadoProductosTercerForm'>
-                                            <h3>Product Name: </h3> <p>{product.title ? product.title : product.productName}</p>
-                                            <h3>Unit price: </h3><p>${product.discount ? (-product.price * product.discount / 100 + product.price).toFixed(0) : product.price}</p>
+                                            <div className='divProductNameYPrice'>
+                                                <h3>Product Name: </h3> <p>{product.title ? product.title : product.productName}</p>
+                                            </div>
+                                            <div className='divProductNameYPrice'>
+                                                <h3>Unit price: </h3><p>${product.discount ? (-product.price * product.discount / 100 + product.price).toFixed(0) : product.price}</p>
+                                            </div>
                                         </div>
                             })}</div>
                             <div className='divTotalPriceTercerForm'>
@@ -167,7 +171,7 @@ const Payment = (props) =>{
                                             <h3>E-mail: </h3><p>{props.finishedOrder.email}</p>
                                         </div> 
                                 <div className='cadaDivInfoCompraTresNombre'>
-                                    <h3>This could only be recieved by <span>{newForm.firstName} {newForm.lastName}</span> or other person who validates his identity with ID and sign the delivery order.</h3>
+                                    <h3>This could only be recieved by <span>{newForm.firstName} {newForm.lastName}</span> or other adult who validates his identity with ID and sign the delivery order.</h3>
                                     <h3>If you agree with this terms, and all this information seems correct, please click the "Buy" button to finish the process.</h3>
                                 </div>
                             </div>
