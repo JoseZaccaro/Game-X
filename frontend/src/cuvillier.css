@@ -287,7 +287,7 @@ a{
 }
 .containFooter{
     background-color: var(--secundary-bg-color);
-    height: 60vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -499,12 +499,16 @@ a{
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
 }
 .imgBanerBkGame{
+    background-color: #46464643;
+    background-blend-mode: soft-light;
     height: 60vh;
     background-position: top center;
     background-size: cover;
     width: 100%;
 }
 .imgPortadaBkGame{
+    background-color: #46464643;
+    background-blend-mode: soft-light;
     height: 65vh;
     width: 20vw;
     background-size: cover;
@@ -559,18 +563,21 @@ a{
 }
 .tag {
     background: #eee;
-    width: auto;
+    min-width: auto;
     border-radius: 3px 0 0 3px;
-    color: #999;
+    color: black;
     display: inline-block;
-    height: 26px;
-    line-height: 26px;
+    height: 38px;
     padding: 0 20px 0 23px;
     position: relative;
     margin: 0 10px  0;
+    font-size: 14px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
     -webkit-transition: color 0.2s;
     cursor: pointer;
+    transition: 0.5s;
   }
   
   .tag::before {
@@ -582,18 +589,20 @@ a{
     left: 10px;
     position: absolute;
     width: 6px;
-    top: 10px;
+    top: 15px;
+    transition: 0.5s;
   }
   
   .tag::after {
     background: #0B1321;
-    border-bottom: 13px solid transparent;
-    border-left: 10px solid #eee;
-    border-top: 13px solid transparent;
+    border-bottom: 19px solid transparent;
+    border-left: 13px solid #eee;
+    border-top: 19px solid transparent;
     content: '';
     position: absolute;
     right: 0;
-    top: 0;
+    top: -1;
+    transition: 0.5s;
   }
   
   .tag:hover {
@@ -607,7 +616,7 @@ a{
 .descriptionPrice{
     height: auto;
     min-height: 22rem;
-    width: 80%;    
+    width: 90%;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -675,12 +684,14 @@ a{
 }
 .cadaDivInfoSec{
     border: 1px solid black;
+    border-radius: 15px;
     -webkit-box-shadow: 5px 5px 15px 5px #000000; 
     box-shadow: 5px 5px 15px 5px #000000;
     margin-bottom: 5vh;
     width: 40%;
     height: 10vh;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding-left: 1vw;
 }
@@ -695,7 +706,7 @@ a{
 .tagPlataform {
     background: rgb(122, 122, 122);
     border-radius: 3px 0 0 3px;
-    color: rgb(204, 197, 197);
+    color: black;
     display: inline-block;
     height: 26px;
     line-height: 26px;
@@ -705,6 +716,7 @@ a{
     text-decoration: none;
     -webkit-transition: color 0.2s;
     cursor: pointer;
+    transition: 0.5s;
   }
   
   .tagPlataform::before {
@@ -717,6 +729,7 @@ a{
     position: absolute;
     width: 6px;
     top: 10px;
+    transition: 0.5s;
   }
   
   .tagPlataform::after {
@@ -728,6 +741,7 @@ a{
     position: absolute;
     right: 0;
     top: 0;
+    transition: 0.5s;
   }
   
   .tagPlataform:hover {
@@ -2056,7 +2070,7 @@ div.fakefile {
   height: 6vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 .fakefile p{

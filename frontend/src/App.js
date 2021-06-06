@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route, Redirect, Switch} from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 import './baez.css';
 import './cuvillier.css';
 import './espinoza.css';
@@ -9,11 +10,9 @@ import Home from './pages/Home';
 import Access from './pages/Access';
 import Store from './pages/Games';
 import Payment from './pages/Payment';
-import ServerDown from './pages/ServerDown';
 import userActions from "./redux/actions/userActions";
 import { connect } from 'react-redux';
 import Game from './components/Game';
-import Loader from './components/Loader';
 import AdminPanel from './pages/AdminPanel';
 import StoreHardware from './pages/StoreHardware';
 import Hardware from './components/Hardware'
@@ -48,11 +47,6 @@ class App extends React.Component{
 
   render(){
 
-    if (!this.props.userLogged && localStorage.getItem('userLogged') ) {
-        <Loader/>
-    }
-
-
       return (
         <BrowserRouter>
             <Switch>
@@ -60,7 +54,6 @@ class App extends React.Component{
                 <Route exact path="/hardware" component={StoreHardware} />
                 <Route exact path="/games" component={Store} />
                 <Route path="/payment" component={Payment} />
-                <Route path="/serverdown" component={ServerDown} />
                 <Route path="/game/:id" component={Game} />
                 <Route path="/hardware/:id" component={Hardware} />
                 {this.props.userLogged && this.props.userLogged.rol === "admin" ? <Route path="/admin" component={AdminPanel} /> : null}

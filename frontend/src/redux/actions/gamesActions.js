@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const host= 'https://game-x-arg.herokuapp.com/'
-// const host= 'http://localhost:4000/'
+// const host= 'https://game-x-arg.herokuapp.com/'
+const host= 'http://localhost:4000/'
 
 const gamesActions = {
     loadGames: () => {

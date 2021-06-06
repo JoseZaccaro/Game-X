@@ -144,6 +144,11 @@ const userActions = {
             }
         }
     }, 
+    backWelcome: () => {
+        return(dispatch, getstate) => {
+            dispatch({type: 'BACK_WELCOME'})
+        }
+    }
 }
 
 export default userActions

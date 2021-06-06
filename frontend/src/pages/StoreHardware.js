@@ -5,6 +5,7 @@ import hardwareActions from '../redux/actions/hardwareActions';
 import gamesActions from '../redux/actions/gamesActions';
 import Loader from '../components/Loader';
 import Hardware from "../components/Hardware";
+import Footer from "../components/Footer";
 
 
 class HardwareStore extends React.Component {
@@ -56,6 +57,7 @@ class HardwareStore extends React.Component {
                                     {this.props.allHardwares.map(hardware=><Hardware key={hardware._id} hardware={hardware} props={this.props.history}/>)}
                                 </div>
                             </div>
+                        <Footer/>
                         </>
                     )
                 }

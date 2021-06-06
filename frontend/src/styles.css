@@ -868,7 +868,18 @@ button.ghost {
 	align-items: flex-start;
 	justify-content: center;
 }
-
+.renderAvatar{
+	border-radius: 50px;
+	width: 50px;
+	height: 50px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color:var(--main-bg-color);
+}
+.Toastify__toast-container{
+	margin-top: 8rem;
+}
 
 @media screen and (min-width: 1500px) and (max-width: 2000px) {
 
@@ -931,7 +942,11 @@ button.ghost {
 	.social-container {
 		margin: 0;
 	}
+	.divAddCart{
+		top: 50%;
+		padding-left: 5rem;
 
+	}
 
 
 }

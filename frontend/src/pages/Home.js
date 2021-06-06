@@ -1,7 +1,10 @@
 import React from "react"
+import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
 import Footer from "../components/Footer"
 import Header from '../components/Header'
+import { ToastContainer, toast } from 'react-toastify';
+import userActions from "../redux/actions/userActions"
 
 class Home extends React.Component{
 
@@ -11,12 +14,30 @@ class Home extends React.Component{
         behavior:"smooth"
     })}
 
-    
+
     componentDidMount(){
         this.toTop()
+        if (this.props.userLogged && this.props.greetings) {
+            console.log('bienvenida')
+            toast.success(`Welcome ${this.props.userLogged.userName}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });
+        }
+
     }
-    
+
+    componentWillUnmount = () => {
+        this.props.backWelcome()
+    }
+
     render() {
+
          
         return(
             <>
@@ -64,7 +85,7 @@ class Home extends React.Component{
                         <div className='alignContentMove'>
                         <h1 className='titleTwoContentMove'>Available Now!</h1>
                         <div className='contentVideoMove'>
-                            <div className='videoContent' style={{backgroundImage: 'url("https://media.giphy.com/media/aGbJy4rPT9Nsz9wEjr/giphy.gif")'}}></div>
+                            <div className='videoContent' style={{backgroundImage: 'url("/assets/residentGif.gif")'}}></div>
                             <h3 className='titleVideoMove'>Resident Evil: Village</h3>
                             <p className='descriptionVideoMove'>Experience survival horror like never before in the 8th major installment in the Resident Evil franchise - Resident Evil Village. With detailed graphics, intense first-person action and masterful storytelling, the terror has never felt more realistic.</p>
                             <NavLink to='/game/60b1c6e2dddb7d5530551388'><p className='btnHoverPlay'>Buy now</p></NavLink>
@@ -83,9 +104,35 @@ class Home extends React.Component{
                 </div>
             </div>
             <Footer />
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                pauseOnHover
+                />
             </>   
         )
     }
 }
 
-export default Home
+const mapStateToProps = state =>{
+    return {
+        userLogged : state.userReducer.userLogged,
+        greetings: state.userReducer.greetings
+
+    }
+}
+const mapDispatchToProps = {
+
+    backWelcome: userActions.backWelcome
+    
+  }
+
+
+
+
+export default  connect(mapStateToProps, mapDispatchToProps)(Home)

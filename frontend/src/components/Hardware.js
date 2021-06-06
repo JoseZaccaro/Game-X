@@ -8,6 +8,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { MdAddShoppingCart, MdRemoveShoppingCart } from "react-icons/md";
 import cartActions from '../redux/actions/cartActions';
 import swal from 'sweetalert';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const Hardware = (props) => {
@@ -62,6 +63,24 @@ const Hardware = (props) => {
             const sendedData = hardwareFounded ? remove : add
             const response = await props.addToMyList(sendedData, token, props.userLogged.id)
             setMyList({myList: response.favouritesList, fetching: false})
+            !hardwareFounded && toast.success(`Added ${props.hardware.productName} to your list`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });
+            hardwareFounded && toast.error(`Removed ${props.hardware.productName} from your list`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });   
         } else{
             logAlert()
         }     
@@ -70,10 +89,28 @@ const Hardware = (props) => {
     const addToCart = ()=>{
         setInCart(!inCart)
         props.addToCart(props.hardware)
+        toast.success(`Added ${props.hardware.productName} to your cart`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
     }
     const removeToCart = ()=>{
         setInCart(!inCart)
         props.deleteToCart(props.hardware._id)
+        toast.error(`Removed ${props.hardware.productName} from your cart`, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            });
     }
     return (
         <div className='cardHardwareIndiv'>
@@ -124,6 +161,16 @@ const Hardware = (props) => {
                     {props.hardware.stock === 0 && <div className='divTarjetaSinStock'><p>OUT OF STOCK</p></div>}
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                draggable
+                pauseOnHover
+                />
         </div>
              
     )

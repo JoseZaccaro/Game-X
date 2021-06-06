@@ -18,13 +18,14 @@ const Footer = (props) =>{
                     <h3 className='titleSeccionFooter'>Contact</h3>
                     <p className='pContainNavFooter'>500 Terry Francois Street </p>
                     <p className='pContainNavFooter'>San Francisco, CA 94158</p>
-                    <p className='pContainNavFooter'>info@mysite.com</p>
+                    <p className='pContainNavFooter'>GameX.arg@gmail.com</p>
                     <p className='pContainNavFooter'>Tel: 123-456-7890</p>
                 </div>
                 <div className='divContainNavFooter'>
                     <h3 className='titleSeccionFooter'>Quick Menu</h3>
                     <Link to="/" className='pContainNavFooter'>Home</Link>
                     <Link to="/games" className='pContainNavFooter'>Game Store</Link>
+                    <Link to="/hardware" className='pContainNavFooter'>Hardware Store</Link>
                     {props.userLogged && props.userLogged.rol === "admin" && <Link to="/admin" className='pContainNavFooter'>Adm Panel</Link>}
                 </div>
                 <div className='divContainNavFooter'>

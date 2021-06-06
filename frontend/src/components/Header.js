@@ -5,8 +5,7 @@ import swal from 'sweetalert'
 import userActions from '../redux/actions/userActions'
 import Chat from './Chat'
 import SimplePopover from "./Popover";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FaShoppingCart } from "react-icons/fa";
 import Cart from './Cart'
 
 
@@ -39,6 +38,7 @@ const Header = (props) =>{
         if(props.userLogged && props.favouritesList.length){
             const fetchProducts = async()=>{
                 const list = await props.getProductsOnList(props.userLogged.id)
+                list !== favouritesList &&
                 setFavouriteslist(list)
             } 
             fetchProducts()
@@ -60,10 +60,12 @@ const Header = (props) =>{
         image = "/assets/generic-user-icon.jpg"
     }
     const [reloaded, setReloaded]=useState(false)
+
     useEffect(()=>{
         setReloaded(!reloaded)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.inCart])
+
     const [displayModal, setDisplayModal] = useState(false)
     const openCloseModal = ()=>{
         setDisplayModal(!displayModal)
@@ -95,7 +97,7 @@ const Header = (props) =>{
                                     <NavLink to='/hardware'><li>Hardware</li></NavLink>
                                     {props.userLogged && props.userLogged.rol === "admin" && <NavLink to='/admin'><li >Adm Panel</li></NavLink>}
                                     {!props.userLogged && <NavLink to='/access' name='access'><li>Access</li></NavLink>}
-                                    <li className='cartHeader' onClick={openCloseModal}><FontAwesomeIcon icon={faShoppingCart} className='iconHeaderCart'/>{cart.length}</li>
+                                    <li className='cartHeader' onClick={openCloseModal}><FaShoppingCart className='iconHeaderCart'/>{cart.length}</li>
                                 </div>
                             </div>
                     </div>
@@ -122,7 +124,7 @@ const Header = (props) =>{
 
                     </div>
                 </div>
-                <Chat open = {openChat}/>
+               {props.userLogged && <Chat open = {openChat}/>}
             </div>  
             <div style={modal}>
                 <Cart openCloseModal={openCloseModal} props={props.props}/> 

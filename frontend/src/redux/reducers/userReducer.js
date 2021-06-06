@@ -2,6 +2,7 @@ const initialState = {
     userLogged:null,
     favouritesList:null,
     buyList:null,
+    greetings: false
     // reloadMessages:false,
     // Socket:null,
     // reloadFriendList:false
@@ -15,7 +16,8 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userLogged: action.payload,
-                favouritesList: action.payload.favouritesList         
+                favouritesList: action.payload.favouritesList,
+                greetings: true         
             }
         case 'LOG_OUT':
             localStorage.removeItem('userLogged')
@@ -37,6 +39,11 @@ const userReducer = (state = initialState, action) => {
             return{
                 ...state,
                 buyList: action.payload  
+            }
+        case 'BACK_WELCOME':
+            return {
+                ...state,
+                greetings: false
             }
         // case 'RELOAD_MESSAGES':
         //     return{

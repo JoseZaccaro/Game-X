@@ -7,6 +7,7 @@ import HeroStore from "../components/Games/HeroStore";
 import Loader from '../components/Loader';
 import StoreGame from "../components/Games/StoreGame";
 import CarruselStore from '../components/Games/CarruselStore'
+import Footer from "../components/Footer";
 
 
 
@@ -62,6 +63,7 @@ class Store extends React.Component {
                                     </div>
                                 </div>
                             </div>
+                            <Footer/>
                         </>
                     )
                 }

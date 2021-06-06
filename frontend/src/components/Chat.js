@@ -164,7 +164,7 @@ const Chat = (props) => {
     const searchBarStyle = ( rightHide && viewSearchBar ? {transform: "translate(-20rem,0rem)", opacity:'0',transition: ".7s"}: rightHide && !viewSearchBar ? {transform: "translate(-20rem,3rem)", opacity:'0',transition: ".7s"} : !viewSearchBar ? {transform: "translate(0rem,3rem)",transition: ".7s", opacity:'0'} : {transform: "translate(0rem,0rem)",transition: ".7s"} )
     const innerContainerRightSideStyle = ( rightHide ?
         {transform: "translate(0rem, 0)",transition: ".7s" , opacity:'0',borderTopRightRadius:'10px'} 
-        : !viewSearchBar && !rightHide ? {transform: "translate(14rem, 0)",transition: ".7s", borderTopRightRadius:'10px'}  : {transform: "translate(14rem, 0)",transition: ".7s", opacity:'1'} ) 
+        : !viewSearchBar && !rightHide ? {transform: "translate(16rem, 0)",transition: ".7s", borderTopRightRadius:'10px'}  : {transform: "translate(14rem, 0)",transition: ".7s", opacity:'1'} ) 
         
 
 
