@@ -35,8 +35,8 @@ const userController = {
                 createdUser = new User({userName, email, password, avatar: avatarURL ? avatarURL : '', country, imageUrl: imageUrl ? imageUrl: null, loggedWithGoogle: country === "null", friends:[] })
                 const {_id} = createdUser
                 const fileName = _id + ".jpg"
-                // const path = `${__dirname, './'}/frontend/public/assets/${fileName}`
-                const path = `${__dirname, './'}/client/build/assets/${fileName}`
+                const path = `${__dirname, './'}/frontend/public/assets/${fileName}`
+                // const path = `${__dirname, './'}/client/build/assets/${fileName}`
                 createdUser.avatar = '/assets/' + fileName 
                 await createdUser.save()
                 avatar.name && avatar.mv(path, error =>{                
@@ -381,7 +381,7 @@ const userController = {
                         <td style="overflow-wrap:break-word;word-break:break-word;padding:10px 30px;font-family:'Lato',sans-serif;" align="left">
                           
                     <div style="color: #ffffff; line-height: 140%; text-align: center; word-wrap: break-word;">
-                      <p style="font-size: 14px; line-height: 140%;"><span style="font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;">Game-X&nbsp; it's a product developed by "Los debuggeadores de la nada 2"</span></p>
+                      <p style="font-size: 14px; line-height: 140%;"><span style="font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;">Game-X&nbsp; it's a product developed by "Los debuggeadores de la nada 2.0"</span></p>
                   <p style="font-size: 14px; line-height: 140%;"><span style="font-family: Lato, sans-serif; font-size: 14px; line-height: 19.6px;">MindHub Cohort 3</span></p>
                     </div>
                   

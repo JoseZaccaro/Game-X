@@ -287,7 +287,7 @@ a{
 }
 .containFooter{
     background-color: var(--secundary-bg-color);
-    height: 40vh;
+    height: 55vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -564,6 +564,7 @@ a{
 .tag {
     background: #eee;
     min-width: auto;
+    text-transform: uppercase;
     border-radius: 3px 0 0 3px;
     color: black;
     display: inline-block;
@@ -571,7 +572,8 @@ a{
     padding: 0 20px 0 23px;
     position: relative;
     margin: 0 10px  0;
-    font-size: 14px;
+    font-size: 11px;
+    font-weight: bold;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -1424,7 +1426,8 @@ SEGUNDO BOTON
 .pasoActivoInfoFormulario{
   text-align: center;
   width: 80%;
-  height: 25%;
+  min-height: 4rem;
+  max-height: 4rem;
   background-color: #0B1321;
   display: flex;
   justify-content: center;
@@ -1437,7 +1440,8 @@ SEGUNDO BOTON
 .pasoNoActivoInfoFormulario{
   text-align: center;
   width: 80%;
-  height: 25%;
+  min-height: 4rem;
+  max-height: 4rem;
   background-color: #8B95A6;
   display: flex;
   justify-content: center;
@@ -1446,6 +1450,9 @@ SEGUNDO BOTON
   margin-bottom: 2vh;
   -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52); 
   box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.52);
+}
+.contentFormularioInforCard {
+  overflow-y: scroll !important;
 }
 .itemsContenedor{
   width: 55%;
@@ -1477,7 +1484,7 @@ SEGUNDO BOTON
 }
 .botonHomeFormulario{
   width: 12rem;
-  margin-top: 7rem;
+  margin-top: 2rem;
   margin-bottom: 3vh;
   padding: 0 0.5rem;
   background-color: #0B1321;
@@ -1781,15 +1788,18 @@ SEGUNDO BOTON
   padding-top: 10vh;
 }
 .listadoProductosTercerForm{
-  color: white;
+  
+  color:#0B1321;
   display: flex;
   align-items: baseline;
 }
 .listadoProductosTercerForm p{
+  color: white;
   margin: 0 1vw;
+
 }
 .listadoProductosTercerForm h3{
-  font-weight: 400;
+  font-weight: bold;
 }
 
 .totalPriceFormTres{
@@ -1809,13 +1819,14 @@ SEGUNDO BOTON
   margin-bottom: 2vh;
 }
 .cadaDivInfoCompraTres{
+  color: #0B1321;
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
 }
 .cadaDivInfoCompraTres p{
   margin-left: 2vw;
-  color: #0B1321;
+  color: white;
 }
 .cadaDivInfoCompraTresNombre{
   margin-top: 1vh;

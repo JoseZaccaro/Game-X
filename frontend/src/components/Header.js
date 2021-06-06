@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import swal from 'sweetalert'
 import userActions from '../redux/actions/userActions'
-import Chat from './Chat'
+// import Chat from './Chat'
 import SimplePopover from "./Popover";
 import { FaShoppingCart } from "react-icons/fa";
 import Cart from './Cart'
@@ -14,7 +14,7 @@ import hardwareActions from '../redux/actions/hardwareActions'
 const Header = (props) =>{ 
 
     
-    const [openChat, setOpenChat] = useState(false)
+    // const [openChat, setOpenChat] = useState(false)
     const [favouritesList, setFavouriteslist] = useState([])
     const [cart, setCart] = useState([])
     const visibility = props.open ? "visible" : "hidden"
@@ -116,7 +116,8 @@ const Header = (props) =>{
                                 <div className="menu">
                                     <SimplePopover favouritesList={favouritesList} props={props.props}/>
                                     <NavLink to='/mybuys'><li>My Buys</li></NavLink>
-                                    <li onClick={()=> setOpenChat(!openChat)}>Chat</li>
+                                    {/* <li onClick={()=> setOpenChat(!openChat)}>Chat</li> */}
+                                    <li onClick={()=> swal("The chat will be available soon")}>Chat</li>
                                     <li onClick={(e)=>logOut(e.target)}>LogOut</li>
                                 </div>}
                             </div>
@@ -131,7 +132,7 @@ const Header = (props) =>{
 
                     </div>
                 </div>
-               {props.userLogged && <Chat open = {openChat}/>}
+               {/* {props.userLogged && <Chat open = {openChat}/>} */}
             </div>  
             <div style={modal}>
                 <Cart openCloseModal={openCloseModal} props={props.props}/> 

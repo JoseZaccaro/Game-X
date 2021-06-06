@@ -84,7 +84,6 @@ const Payment = (props) =>{
     let products =[]
     let totalToDolar=0
 
-    console.log(props.finishedOrder)
 
     
     if (!props.finishedOrder) {
