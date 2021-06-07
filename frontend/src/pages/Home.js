@@ -19,7 +19,7 @@ class Home extends React.Component{
         this.toTop()
         if (this.props.userLogged && this.props.greetings) {
             toast.success(`Welcome ${this.props.userLogged.userName}`, {
-                position: "top-right",
+                position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -75,9 +75,13 @@ class Home extends React.Component{
                         <div className='alignContentMove'>
                             <h2 className='titleContentMove'>Link your favourite content</h2>
                             <p className='textContentMove'>Now you can add games to your Wish List, to recive an advice when is included in our offers! Just click the list icon and add go check your Wish List! </p>
-                            <NavLink to='/access'>
+                            {!this.props.userLogged 
+                            ?<NavLink to='/access'>
                                 <div className="btnExplore">Access</div>
                             </NavLink>
+                            :<NavLink to='/games'>
+                                <div className="btnExplore">Try it!</div>
+                            </NavLink>}
                         </div>   
                     </div>
                     <div className='contentMoveDos'>

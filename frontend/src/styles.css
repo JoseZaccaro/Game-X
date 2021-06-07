@@ -133,6 +133,15 @@ button.ghost {
 	min-height: 6%;
 	outline: none;
 }
+.renderAvatar{
+	height: 50px;
+	width: 50px;
+	background-color: var(--main-bg-color);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 50px;
+}
 
 
 
@@ -809,8 +818,8 @@ button.ghost {
 /* CREDIT CARD */
 
 #PaymentForm{
-	width: 100%;
-	height: 100% ;
+	width: 100vw;
+	height: 100vh ;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -861,6 +870,7 @@ button.ghost {
 .containerOrder{
 	background-color: var(--main-bg-color);
 	border-radius: 30px;
+	margin:2vh 0;
 	width: 90%;
 	height: auto;
 	display: flex;
@@ -868,24 +878,13 @@ button.ghost {
 	align-items: flex-start;
 	justify-content: center;
 }
-.renderAvatar{
-	border-radius: 50px;
-	width: 50px;
-	height: 50px;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-color:var(--main-bg-color);
-}
-.Toastify__toast-container{
-	margin-top: 8rem;
-}
 .Toastify__toast--success{
 	background-color: var(--third-bg-color);
 }
 .Toastify__toast--error{
-	background-color: rgb(151, 49, 49);
+	background-color: rgb(169, 39, 39);
 }
+
 
 @media screen and (min-width: 1500px) and (max-width: 2000px) {
 
@@ -948,20 +947,11 @@ button.ghost {
 	.social-container {
 		margin: 0;
 	}
-	.divAddCart{
-		top: 50%;
-		padding-left: 5rem;
-
-	}
 	.renderAvatar{
-		border-radius: 50px;
-		width: 35px;
 		height: 35px;
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-color:var(--main-bg-color);
+		width: 35px;
 	}
+
 
 
 }

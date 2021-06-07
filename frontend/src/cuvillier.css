@@ -1831,16 +1831,18 @@ SEGUNDO BOTON
 }
 .divProductNameYPrice{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 50%;
 }
 .divProductNameYPrice h3{
+  text-align: start;
   font-size: 0.7vw;
   width: 50%;
 }
 .divProductNameYPrice p{
-  font-size: 15px;
+  max-width: 50%;  
+  font-size: 12px;
   text-align: center;
 }
 .cadaDivInfoCompraTres p{
@@ -2125,6 +2127,7 @@ div.fakefile {
 .fakefile p{
   color: white
 }
+.file{}
 
 input.file {
 	position: relative;

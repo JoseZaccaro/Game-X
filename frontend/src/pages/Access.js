@@ -203,6 +203,7 @@ class Access extends React.Component{
                                     <div className="fakefile">
                                         <div className='renderAvatar' style={this.state.userInfoSignUp.avatar === '' ?{backgroundImage: `url("/assets/generic-user-icon.jpg")`} :{backgroundImage:`url(${this.state.file})`} }/>   
                                         <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+                                            <div></div>
                                             <p>{this.state.userInfoSignUp.avatar === '' ? 'Select Avatar' : `${this.state.userInfoSignUp.avatar.name.slice(0,18)}...` }</p>
                                             {this.state.userInfoSignUp.avatar === '' ? <AiFillPicture className='iconoSelectImg'/>: null}
                                         </div>

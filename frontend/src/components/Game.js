@@ -55,12 +55,13 @@ const Game = (props) => {
                ...gameFilter
             })
         
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.match.params.id])
     useEffect(() => {
         setInCart(productInCart)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.allGames, props.allCart])
+    }, [props.allGames, props.allCart, props.match.params.id])
 
     const token= localStorage.getItem('token')
 
