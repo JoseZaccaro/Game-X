@@ -6,7 +6,7 @@ import GoogleLogin from 'react-google-login';
 import axios from "axios";
 import Header from "../components/Header";
 import { AiFillPicture } from 'react-icons/ai'
-import {GoogleLoginID} from '../components/GoogleLoginID'
+// import {GoogleLoginID} from '../components/GoogleLoginID'
 
 
 class Access extends React.Component{
