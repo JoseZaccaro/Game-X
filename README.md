@@ -3,7 +3,7 @@
 https://game-x-arg.herokuapp.com/
 
 ## Web-App Developed by:
-### Matias D'alessio
-### Adriel Baez
 ### Emanuel Cuvillier
-### José Zaccaro
+### Adriel Baez
+### José Lopez Zaccaro
+### Matias D'alessio
