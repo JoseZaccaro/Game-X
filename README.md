@@ -1,7 +1,8 @@
 # Game-X
 
+https://game-x-arg.herokuapp.com/
 
-## Web-App desarrollada por:
+## Web-App Developed by:
 ### Matias D'alessio
 ### Adriel Baez
 ### Emanuel Cuvillier
