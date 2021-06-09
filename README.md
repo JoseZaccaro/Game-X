@@ -6,4 +6,4 @@ https://game-x-arg.herokuapp.com/
 ### Emanuel Cuvillier
 ### Adriel Baez
 ### José Lopez Zaccaro
-### Matias D'alessio
+### Matias D'alessio (Team Leader)
